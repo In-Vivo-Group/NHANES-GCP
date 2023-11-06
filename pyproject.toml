@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "nhanes-gpt"
+version = "0.1.0"
+description = "ELT of NHANES data and LLM processes for analyzing it"
+authors = ["B. Ross Katz", "Alexander Titus"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+pandas = "^2.1.2"
+requests = "^2.31.0"
+bs4 = "^0.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
