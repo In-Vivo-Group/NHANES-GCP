@@ -2,7 +2,7 @@
 name = "nhanes-gpt"
 version = "0.1.0"
 description = "ELT of NHANES data and LLM processes for analyzing it"
-authors = ["B. Ross Katz", "Alexander Titus"]
+authors = ["B. Ross Katz", "Alexander J. Titus"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
