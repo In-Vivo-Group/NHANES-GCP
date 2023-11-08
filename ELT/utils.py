@@ -265,3 +265,37 @@ def upload_blob_from_string(
 
 def generate_filename(title, extension):
     return "_".join(re.sub(r"\W+", " ", title).lower().split()) + extension
+
+
+def scrape_nhanes_table(soup, component):
+    table = soup.find("table", id="GridView1")
+
+    headers = []
+    for i in table.find_all("th"):
+        title = i.text
+        headers.append(title)
+
+    base_url = "https://wwwn.cdc.gov"
+
+    data = []
+
+    for j in table.find_all("tr")[1:]:
+        row_data = j.find_all("td")
+        row = [i.text for i in row_data] + [
+            base_url + i.a["href"] for i in row_data if i.find("a")
+        ]
+        data.append(row)
+
+    if len(data[0]) == len(headers) + 2:
+        headers = ["_".join(h.lower().split()) for h in headers] + [
+            "doc_file_url",
+            "data_file_url",
+        ]
+    elif len(data[0]) == len(headers) + 1:
+        headers = ["_".join(h.lower().split()) for h in headers] + ["doc_file_url"]
+    else:
+        headers = ["_".join(h.lower().split()) for h in headers]
+
+    df = pd.DataFrame(columns=headers, data=data)
+
+    return df
