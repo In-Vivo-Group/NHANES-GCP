@@ -105,48 +105,6 @@ def load_data_gbq(
     destination_table = client.get_table(dataset_ref.table(table_name))
     print("Table Row Count {} rows.".format(destination_table.num_rows))
 
-
-def update_bq_table(
-    df,
-    alias,
-    dataset="brightspace",
-    bucket="aoeu-brightspace",
-    truncate=True,
-    max_error=10,
-    schema=None,
-):
-    filename = alias + "_" + datetime.datetime.now().strftime("%Y%m%d_%H%M%S") + ".csv"
-
-    upload_csv_from_df(
-        bucket_name=bucket,
-        bucket_folder=alias + "/",
-        file_name=filename,
-        dataframe=df,
-    )
-
-    if truncate == True:
-        append = False
-    else:
-        append = True
-
-    if schema == None:
-        autodetect = True
-    else:
-        autodetect = False
-
-    load_data_gbq(
-        dataset_id=dataset,
-        table_name=alias,
-        bucket_name=bucket,
-        bucket_folder=alias + "/",
-        file_name=filename,
-        schema=schema,
-        autodetect=autodetect,
-        append=append,
-        bad_records=max_error,
-    )
-
-
 def enforce_bq_schema(report_df, alias):
     schema = []
     float_fields = []
