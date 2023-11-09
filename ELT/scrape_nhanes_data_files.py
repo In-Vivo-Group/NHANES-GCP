@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 from utils import (generate_filename, scrape_nhanes_table, update_bq_table,
                    upload_blob_from_string)
 
-bucket_name = "nhanes"
+bucket_name = "nhanes_clean"
 
 ### GET METADATA DATAFRAME
 df = pd.read_gbq(
@@ -17,6 +17,8 @@ df = pd.read_gbq(
     project_id="nhanes-genai",
     dialect="standard",
 )
+
+print(f"Preparing to download data and docs from {len(df)} datasets")
 
 ### DOWNLOAD FILES FROM CDC AND STORE IN GCS BUCKET BY DATASET
 start_time = time.time()

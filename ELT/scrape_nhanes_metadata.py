@@ -57,8 +57,8 @@ for nhanes_id in ids:
             df = scrape_nhanes_table(soup, component_text)
 
             columns = df.columns.tolist()
-            df["page_component"] = component_text
-            df["dataset"] = dataset
+            df["page_component"] = component_text.strip()
+            df["dataset"] = dataset.strip()
             df["last_updated"] = datetime.datetime.utcnow()
 
             if "years" in columns:
@@ -84,6 +84,8 @@ for nhanes_id in ids:
                 if "continuous" in dataset:
                     df["gcs_doc_filename"] = (
                         df["data_file_name"]
+                        + " "
+                        + df["page_component"]
                         + " "
                         + df["dataset"].astype(str)
                         + " "
