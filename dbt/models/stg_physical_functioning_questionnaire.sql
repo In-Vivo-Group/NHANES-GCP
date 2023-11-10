@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.physical_functioning_questionnaire

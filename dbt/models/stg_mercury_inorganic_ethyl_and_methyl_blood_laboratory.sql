@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.mercury_inorganic_ethyl_and_methyl_blood_laboratory

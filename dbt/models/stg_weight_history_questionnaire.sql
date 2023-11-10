@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.weight_history_questionnaire

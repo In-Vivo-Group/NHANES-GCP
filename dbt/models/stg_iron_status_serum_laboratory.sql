@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.iron_status_serum_laboratory

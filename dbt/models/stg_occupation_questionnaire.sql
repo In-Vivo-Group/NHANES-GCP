@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.occupation_questionnaire

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.iodine_urine_laboratory
