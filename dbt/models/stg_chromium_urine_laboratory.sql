@@ -1,0 +1,1 @@
+SELECT * FROM { source('all_continuous', 'chromium_urine_laboratory') }

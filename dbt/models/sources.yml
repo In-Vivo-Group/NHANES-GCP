@@ -1,0 +1,23 @@
+version: 2
+sources: 
+  - name: all_continuous
+    schema: nhanes
+    tables: 
+      - name: acculturation_questionnaire 
+      - name: albumin_creatinine_urine_laboratory 
+      - name: alcohol_use_questionnaire 
+      - name: alpha_1_acid_glycoprotein_serum_surplus_laboratory 
+      - name: arsenic_total_urine_laboratory 
+      - name: arsenics_speciated_urine_laboratory 
+      - name: audiometry_acoustic_reflex_examination 
+      - name: audiometry_examination 
+      - name: audiometry_questionnaire 
+      - name: audiometry_wideband_reflectance_examination 
+      - name: blood_pressure_cholesterol_questionnaire 
+      - name: body_measures_examination 
+      - name: cardiovascular_health_questionnaire 
+      - name: cholesterol_high_density_lipoprotein_hdl_laboratory 
+      - name: cholesterol_low_density_lipoproteins_ldl_triglycerides_laboratory 
+      - name: cholesterol_total_laboratory 
+      - name: chromium_cobalt_laboratory 
+      - name: chromium_urine_laboratory 

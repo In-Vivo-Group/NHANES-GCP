@@ -1,0 +1,1 @@
+SELECT * FROM { source('all_continuous', 'blood_pressure_cholesterol_questionnaire') }

@@ -1,0 +1,1 @@
+SELECT * FROM { source('all_continuous', 'alcohol_use_questionnaire') }
