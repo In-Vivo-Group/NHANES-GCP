@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.immunization_questionnaire

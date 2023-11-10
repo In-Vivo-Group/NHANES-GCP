@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.current_health_status_questionnaire

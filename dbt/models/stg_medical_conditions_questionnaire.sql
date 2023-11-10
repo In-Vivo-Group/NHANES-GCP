@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.medical_conditions_questionnaire

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.body_measures_examination

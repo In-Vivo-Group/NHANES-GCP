@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.prescription_medications_questionnaire

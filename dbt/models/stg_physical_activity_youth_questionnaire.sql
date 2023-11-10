@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.physical_activity_youth_questionnaire

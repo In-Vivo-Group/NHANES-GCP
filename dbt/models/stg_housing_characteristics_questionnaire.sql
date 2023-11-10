@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.housing_characteristics_questionnaire

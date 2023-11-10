@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.dietary_supplement_use_30_day_individual_dietary_supplements_dietary

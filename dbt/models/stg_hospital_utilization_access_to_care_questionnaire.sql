@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.hospital_utilization_access_to_care_questionnaire

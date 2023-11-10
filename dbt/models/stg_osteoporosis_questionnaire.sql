@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.osteoporosis_questionnaire

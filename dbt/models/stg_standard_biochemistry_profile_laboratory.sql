@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.standard_biochemistry_profile_laboratory
