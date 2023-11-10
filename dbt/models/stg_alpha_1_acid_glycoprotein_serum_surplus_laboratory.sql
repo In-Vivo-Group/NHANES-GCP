@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.alpha_1_acid_glycoprotein_serum_surplus_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.arsenic_total_urine_laboratory

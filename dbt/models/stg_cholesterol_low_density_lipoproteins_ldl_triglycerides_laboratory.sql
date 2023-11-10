@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cholesterol_low_density_lipoproteins_ldl_triglycerides_laboratory

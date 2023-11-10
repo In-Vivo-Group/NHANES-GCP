@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cholesterol_high_density_lipoprotein_hdl_laboratory
