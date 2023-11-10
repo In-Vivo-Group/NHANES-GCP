@@ -1,1 +1,0 @@
-SELECT * FROM { source('all_continuous', 'cardiovascular_health_questionnaire') }

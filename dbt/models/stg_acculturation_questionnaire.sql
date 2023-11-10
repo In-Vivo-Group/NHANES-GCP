@@ -1,1 +1,0 @@
-SELECT * FROM { source('all_continuous', 'acculturation_questionnaire') }

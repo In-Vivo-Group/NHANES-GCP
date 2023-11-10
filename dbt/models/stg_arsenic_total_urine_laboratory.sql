@@ -1,1 +1,0 @@
-SELECT * FROM { source('all_continuous', 'arsenic_total_urine_laboratory') }

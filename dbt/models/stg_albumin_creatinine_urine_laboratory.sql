@@ -1,1 +1,0 @@
-SELECT * FROM { source('all_continuous', 'albumin_creatinine_urine_laboratory') }

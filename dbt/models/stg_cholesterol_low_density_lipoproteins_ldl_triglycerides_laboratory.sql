@@ -1,1 +1,0 @@
-SELECT * FROM { source('all_continuous', 'cholesterol_low_density_lipoproteins_ldl_triglycerides_laboratory') }

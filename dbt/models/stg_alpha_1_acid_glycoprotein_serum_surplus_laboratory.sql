@@ -1,1 +1,0 @@
-SELECT * FROM { source('all_continuous', 'alpha_1_acid_glycoprotein_serum_surplus_laboratory') }
