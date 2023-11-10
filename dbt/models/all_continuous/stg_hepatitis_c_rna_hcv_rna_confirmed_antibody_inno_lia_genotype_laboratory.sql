@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.hepatitis_c_rna_hcv_rna_confirmed_antibody_inno_lia_genotype_laboratory

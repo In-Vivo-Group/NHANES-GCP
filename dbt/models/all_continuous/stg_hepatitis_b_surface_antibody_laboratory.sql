@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.hepatitis_b_surface_antibody_laboratory

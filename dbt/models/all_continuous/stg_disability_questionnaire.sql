@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.disability_questionnaire

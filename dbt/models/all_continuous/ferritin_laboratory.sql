@@ -1,0 +1,9 @@
+SELECT
+SEQN as respondent_sequence_number,
+WHEN LBXFER IS NOT NULL THEN LBXFERWHEN LBXFER IS NULL THEN NULL 
+ELSE NULL 
+ END as ferritin_ng_ml,
+WHEN LBDFERSI IS NOT NULL THEN LBDFERSIWHEN LBDFERSI IS NULL THEN NULL 
+ELSE NULL 
+ END as ferritin_ug_l,
+ FROM {{ ref('stg_ferritin_laboratory') }}

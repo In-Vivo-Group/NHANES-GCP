@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.drug_use_questionnaire

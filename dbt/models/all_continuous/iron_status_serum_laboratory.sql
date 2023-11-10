@@ -1,0 +1,30 @@
+SELECT
+SEQN as respondent_sequence_number,
+WHEN LBXIRN IS NOT NULL THEN LBXIRNWHEN LBXIRN IS NULL THEN NULL 
+ELSE NULL 
+ END as iron_frozen_serum_ug_dl,
+WHEN LBDIRNSI IS NOT NULL THEN LBDIRNSIWHEN LBDIRNSI IS NULL THEN NULL 
+ELSE NULL 
+ END as iron_frozen_serum_umol_l,
+WHEN LBXUIB IS NOT NULL THEN LBXUIBWHEN LBXUIB IS NULL THEN NULL 
+ELSE NULL 
+ END as uibc_serum_ug_dl,
+CASE
+        WHEN LBDUIBLC = 0 THEN 'At or above detection limit' 
+WHEN LBDUIBLC = 1 THEN 'Below lower detection limit' 
+WHEN LBDUIBLC IS NULL THEN NULL 
+ELSE NULL 
+ END as uibc_serum_comment_code,
+WHEN LBDUIBSI IS NOT NULL THEN LBDUIBSIWHEN LBDUIBSI IS NULL THEN NULL 
+ELSE NULL 
+ END as uibc_serum_umol_l,
+WHEN LBDTIB IS NOT NULL THEN LBDTIBWHEN LBDTIB IS NULL THEN NULL 
+ELSE NULL 
+ END as total_iron_binding_capacity_tibc_ug_dl,
+WHEN LBDTIBSI IS NOT NULL THEN LBDTIBSIWHEN LBDTIBSI IS NULL THEN NULL 
+ELSE NULL 
+ END as tot_iron_binding_capacity_tibc_umol_l,
+WHEN LBDPCT IS NOT NULL THEN LBDPCTWHEN LBDPCT IS NULL THEN NULL 
+ELSE NULL 
+ END as transferrin_saturation,
+ FROM {{ ref('stg_iron_status_serum_laboratory') }}
