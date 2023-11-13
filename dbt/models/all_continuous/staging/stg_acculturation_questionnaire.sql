@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.acculturation_questionnaire
