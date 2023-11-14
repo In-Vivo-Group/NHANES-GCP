@@ -3,7 +3,7 @@ SEQN as respondent_sequence_number, -- could not identify transformation logic
 
 CASE
 WHEN LBXTFR IS NULL THEN NULL 
-ELSE SAFE_CAST(LBXTFR AS STRING) 
+ELSE SAFE_CAST(LBXTFR AS FLOAT64) 
  END as transferrin_receptor_mg_l, 
 
 CASE

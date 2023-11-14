@@ -587,8 +587,7 @@ ELSE SAFE_CAST(DBD072B AS STRING)
  END as type_of_milk_first_fed_2_milk_DBD072B, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD072C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN '1% fat or low-fat milk (includes 0.5% fat milk or 
-      low-fat milk not further specified),' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD072C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN '1% fat or low-fat milk (includes 0.5% fat milk or low-fat milk not further specified),' -- categorize string values 
 WHEN DBD072C IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD072C AS STRING) 
  END as type_of_milk_first_fed_1_milk_DBD072C, 
@@ -625,15 +624,13 @@ ELSE SAFE_CAST(DBD222B AS STRING)
  END as you_drink_2_fat_milk_DBD222B, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD222C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN '1% fat or low-fat milk (includes 0.5% fat milk or 
-      low-fat milk not further specified),' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD222C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN '1% fat or low-fat milk (includes 0.5% fat milk or low-fat milk not further specified),' -- categorize string values 
 WHEN DBD222C IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD222C AS STRING) 
  END as you_drink_1_fat_milk_DBD222C, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD222D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Skim, nonfat, or 0.5% fat milk (includes liquid or 
-      reconstituted from dry),' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD222D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Skim, nonfat, or 0.5% fat milk (includes liquid or reconstituted from dry),' -- categorize string values 
 WHEN DBD222D IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD222D AS STRING) 
  END as you_drink_fat_free_skim_milk_DBD222D, 

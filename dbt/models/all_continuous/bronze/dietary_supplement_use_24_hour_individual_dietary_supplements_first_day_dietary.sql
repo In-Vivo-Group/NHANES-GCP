@@ -291,12 +291,6 @@ WHEN WTDR2DPP IS NULL THEN NULL
 ELSE SAFE_CAST(WTDR2DPP AS FLOAT64) 
  END as dietary_two_day_sample_weight_WTDR2DPP, 
 
-CASE
-WHEN SAFE_CAST(DSDSUPID AS FLOAT64) = SAFE_CAST(NCHS Supplement ID AS FLOAT64) THEN 'Value was recorded' 
-WHEN DSDSUPID IS NULL THEN NULL 
-ELSE SAFE_CAST(DSDSUPID AS STRING) 
- END as nchs_supplement_id_DSDSUPID, 
-
 start_year,
 end_year,
 last_updated,

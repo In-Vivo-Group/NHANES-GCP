@@ -3,12 +3,12 @@ SEQN as respondent_sequence_number, -- could not identify transformation logic
 
 CASE
 WHEN WTVOC2PP IS NULL THEN NULL 
-ELSE SAFE_CAST(WTVOC2PP AS STRING) 
+ELSE SAFE_CAST(WTVOC2PP AS FLOAT64) 
  END as uvoc2_subsample_weights_pre_pandemic, 
 
 CASE
 WHEN URXMUCA IS NULL THEN NULL 
-ELSE SAFE_CAST(URXMUCA AS STRING) 
+ELSE SAFE_CAST(URXMUCA AS FLOAT64) 
  END as trans_trans_muconic_acid_ng_ml, 
 
 CASE
@@ -20,7 +20,7 @@ ELSE SAFE_CAST(URDMUCLC AS STRING)
 
 CASE
 WHEN URXPHMA IS NULL THEN NULL 
-ELSE SAFE_CAST(URXPHMA AS STRING) 
+ELSE SAFE_CAST(URXPHMA AS FLOAT64) 
  END as phenylmercapturic_acid_ng_ml, 
 
 CASE

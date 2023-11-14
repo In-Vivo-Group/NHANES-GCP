@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN WTSA2YR = 0 THEN NULL --remove no lab specimen samples from data 
+WHEN SAFE_CAST(WTSA2YR AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN NULL --remove no lab specimen samples from data 
 WHEN WTSA2YR IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSA2YR AS STRING) 
  END as subsample_a_weights, 
@@ -20,7 +20,7 @@ ELSE SAFE_CAST(URDUASLC AS STRING)
  END as arsenic_total_urine_comment_code, 
 
 CASE
-WHEN WTSAPRP = 0 THEN NULL --remove no lab specimen samples from data 
+WHEN SAFE_CAST(WTSAPRP AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN NULL --remove no lab specimen samples from data 
 WHEN WTSAPRP IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSAPRP AS STRING) 
  END as subsample_a_weights_pre_pandemic, 

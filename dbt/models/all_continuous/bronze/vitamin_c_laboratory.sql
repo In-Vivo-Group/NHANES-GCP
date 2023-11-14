@@ -3,12 +3,12 @@ SEQN as respondent_sequence_number, -- could not identify transformation logic
 
 CASE
 WHEN LBXVIC IS NULL THEN NULL 
-ELSE SAFE_CAST(LBXVIC AS STRING) 
+ELSE SAFE_CAST(LBXVIC AS FLOAT64) 
  END as vitamin_c_mg_dl, 
 
 CASE
 WHEN LBDVICSI IS NULL THEN NULL 
-ELSE SAFE_CAST(LBDVICSI AS STRING) 
+ELSE SAFE_CAST(LBDVICSI AS FLOAT64) 
  END as vitamin_c_umol_l, 
 
 CASE

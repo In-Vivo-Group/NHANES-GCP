@@ -3,12 +3,12 @@ SEQN as respondent_sequence_number, -- could not identify transformation logic
 
 CASE
 WHEN WTDRD1 IS NULL THEN NULL 
-ELSE SAFE_CAST(WTDRD1 AS STRING) 
+ELSE SAFE_CAST(WTDRD1 AS FLOAT64) 
  END as dietary_day_one_sample_weight, 
 
 CASE
 WHEN WTDR2D IS NULL THEN NULL 
-ELSE SAFE_CAST(WTDR2D AS STRING) 
+ELSE SAFE_CAST(WTDR2D AS FLOAT64) 
  END as dietary_two_day_sample_weight, 
 
 CASE

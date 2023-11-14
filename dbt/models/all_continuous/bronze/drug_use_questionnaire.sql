@@ -50,12 +50,9 @@ ELSE SAFE_CAST(DUQ215U AS STRING)
 CASE
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DUQ217 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Once per month' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DUQ217 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '2-3 times per month' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DUQ217 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '4-8 times per month (about 1-2 times per 
-  week)' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DUQ217 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '9-24 times per month (about 3-6 times per 
-  week)' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DUQ217 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN '25-30 times per month (one or more times 
-  per day)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DUQ217 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '4-8 times per month (about 1-2 times per week)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DUQ217 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '9-24 times per month (about 3-6 times per week)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DUQ217 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN '25-30 times per month (one or more times per day)' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DUQ217 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DUQ217 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DUQ217 IS NULL THEN NULL 

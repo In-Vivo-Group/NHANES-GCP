@@ -1019,15 +1019,9 @@ ELSE SAFE_CAST(MCQ070 AS STRING)
 
 CASE
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(MCQ075 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'little or no psoriasis,' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(MCQ075 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'only a few patches (that could be covered 
-by one or two palms of {your/his/her} 
-hand),' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(MCQ075 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'scattered patches (that could be covered 
-between three and ten palms of {your/ 
-his/her} hand), or' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(MCQ075 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'extensive psoriasis (covering large areas of 
-the body, that would be more than ten 
-palms of {your/his/her} hand)?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(MCQ075 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'only a few patches (that could be covered by one or two palms of {your/his/her} hand),' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(MCQ075 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'scattered patches (that could be covered between three and ten palms of {your/ his/her} hand), or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(MCQ075 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'extensive psoriasis (covering large areas of the body, that would be more than ten palms of {your/his/her} hand)?' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(MCQ075 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(MCQ075 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN MCQ075 IS NULL THEN NULL 

@@ -3,7 +3,7 @@ SEQN as respondent_sequence_number, -- could not identify transformation logic
 
 CASE
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(BMDSTATS AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Complete data for age group' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(BMDSTATS AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Partial:  Only height and weight obtained' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(BMDSTATS AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Partial: Only height and weight obtained' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(BMDSTATS AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Other partial exam' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(BMDSTATS AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'No body measures exam data' -- categorize string values 
 WHEN BMDSTATS IS NULL THEN NULL 
@@ -217,7 +217,7 @@ ELSE SAFE_CAST(BMITHICR AS STRING)
  END as thigh_circumference_comment, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(BMDRECUF AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Difference between recumbent length  and standing height was greater than 2.5 cm' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(BMDRECUF AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Difference between recumbent length and standing height was greater than 2.5 cm' -- categorize string values 
 WHEN BMDRECUF IS NULL THEN NULL 
 ELSE SAFE_CAST(BMDRECUF AS STRING) 
  END as height_length_difference_flagged, 
