@@ -1,134 +1,145 @@
 SELECT
-        SEQN as respondent_sequence_number, -- could not identify transformation logic 
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN SMQ856 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ856 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ856 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ856 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ856 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ856 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ856 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ856 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ856 IS NULL THEN NULL 
-ELSE SMQ856 
+ELSE SAFE_CAST(SMQ856 AS STRING) 
  END as last_7_d_worked_at_job_not_at_home, 
 
 CASE
-            WHEN SMQ858 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ858 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ858 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ858 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ858 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ858 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ858 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ858 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ858 IS NULL THEN NULL 
-ELSE SMQ858 
+ELSE SAFE_CAST(SMQ858 AS STRING) 
  END as last_7_d_at_job_someone_smoked_indoors, 
 
 CASE
-            WHEN SMQ860 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ860 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ860 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ860 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ860 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ860 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ860 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ860 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ860 IS NULL THEN NULL 
-ELSE SMQ860 
+ELSE SAFE_CAST(SMQ860 AS STRING) 
  END as last_7_d_spent_time_in_a_restaurant, 
 
 CASE
-            WHEN SMQ862 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ862 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ862 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ862 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ862 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ862 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ862 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ862 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ862 IS NULL THEN NULL 
-ELSE SMQ862 
+ELSE SAFE_CAST(SMQ862 AS STRING) 
  END as last_7_d_at_rest_someone_smoked_indoors, 
 
--- SMQ864 as SMQ864, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN SMQ866 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ866 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ866 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ866 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ866 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ866 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ866 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ866 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ866 IS NULL THEN NULL 
-ELSE SMQ866 
+ELSE SAFE_CAST(SMQ866 AS STRING) 
  END as last_7_d_spent_time_in_a_bar, 
 
 CASE
-            WHEN SMQ868 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ868 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ868 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ868 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ868 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ868 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ868 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ868 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ868 IS NULL THEN NULL 
-ELSE SMQ868 
+ELSE SAFE_CAST(SMQ868 AS STRING) 
  END as last_7_d_in_bar_someone_smoked_indoors, 
 
 CASE
-            WHEN SMQ870 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ870 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ870 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ870 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ870 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ870 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ870 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ870 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ870 IS NULL THEN NULL 
-ELSE SMQ870 
+ELSE SAFE_CAST(SMQ870 AS STRING) 
  END as last_7_d_rode_in_a_car, 
 
 CASE
-            WHEN SMQ872 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ872 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ872 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ872 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ872 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ872 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ872 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ872 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ872 IS NULL THEN NULL 
-ELSE SMQ872 
+ELSE SAFE_CAST(SMQ872 AS STRING) 
  END as last_7_d_someone_smoked_in_car, 
 
 CASE
-            WHEN SMQ874 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ874 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ874 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ874 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ874 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ874 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ874 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ874 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ874 IS NULL THEN NULL 
-ELSE SMQ874 
+ELSE SAFE_CAST(SMQ874 AS STRING) 
  END as last_7_d_spent_time_in_another_home, 
 
 CASE
-            WHEN SMQ876 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ876 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ876 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ876 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ876 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ876 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ876 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ876 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ876 IS NULL THEN NULL 
-ELSE SMQ876 
+ELSE SAFE_CAST(SMQ876 AS STRING) 
  END as last_7_d_in_home_someone_smoked_indoors, 
 
 CASE
-            WHEN SMQ878 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ878 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ878 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ878 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ878 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ878 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ878 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ878 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ878 IS NULL THEN NULL 
-ELSE SMQ878 
+ELSE SAFE_CAST(SMQ878 AS STRING) 
  END as last_7_d_in_other_indoor_area, 
 
 CASE
-            WHEN SMQ880 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ880 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ880 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ880 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ880 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ880 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ880 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ880 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ880 IS NULL THEN NULL 
-ELSE SMQ880 
+ELSE SAFE_CAST(SMQ880 AS STRING) 
  END as last_7_d_in_other_indoor_someone_smoked, 
 
 CASE
-            WHEN SMQ940 = '1' THEN 'Yes' -- categorize string values 
-WHEN SMQ940 = '2' THEN 'No' -- categorize string values 
-WHEN SMQ940 = '7' THEN 'Refused' -- categorize string values 
-WHEN SMQ940 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ940 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ940 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ940 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ940 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN SMQ940 IS NULL THEN NULL 
-ELSE SMQ940 
+ELSE SAFE_CAST(SMQ940 AS STRING) 
  END as last_7_d_someone_used_e_cigs_indoors, 
 
 CASE
-            WHEN SMAQUEX = 1 THEN 'MEC CAPI Youth (12 - 17 Yrs.)' -- categorize numeric values
-WHEN SMAQUEX = 2 THEN 'Household CAPI Adults (18+ Yrs.)' -- categorize numeric values
-WHEN SMAQUEX = 3 THEN 'Household CAPI Youth (0 - 11 Yrs.)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMAQUEX AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'MEC CAPI Youth (12 - 17 Yrs.)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMAQUEX AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Household CAPI Adults (18+ Yrs.)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMAQUEX AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Household CAPI Youth (0 - 11 Yrs.)' -- categorize numeric values
 WHEN SMAQUEX IS NULL THEN NULL 
-ELSE SMAQUEX 
+ELSE SAFE_CAST(SMAQUEX AS STRING) 
  END as questionnaire_mode_flag, 
 
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
  FROM {{ ref('stg_smoking_secondhand_smoke_exposure_questionnaire') }}
 
-        -- Docs utilized to generate this SQL can be found at https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SMQSHS_J.htm
-        
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SMQSHS_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_SMQSHS.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/SMQSHS_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/SMQSHS_H.htm
+*/

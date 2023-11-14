@@ -1,117 +1,134 @@
 SELECT
-        SEQN as respondent_sequence_number, -- could not identify transformation logic 
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN DPQ010 = 0 THEN 'Not at all' -- categorize numeric values
-WHEN DPQ010 = 1 THEN 'Several days' -- categorize numeric values
-WHEN DPQ010 = 2 THEN 'More than half the days' -- categorize numeric values
-WHEN DPQ010 = 3 THEN 'Nearly every day' -- categorize numeric values
-WHEN DPQ010 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DPQ010 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Not at all' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Several days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'More than half the days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Nearly every day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DPQ010 IS NULL THEN NULL 
-ELSE DPQ010 
+ELSE SAFE_CAST(DPQ010 AS STRING) 
  END as have_little_interest_in_doing_things, 
 
 CASE
-            WHEN DPQ020 = 0 THEN 'Not at all' -- categorize numeric values
-WHEN DPQ020 = 1 THEN 'Several days' -- categorize numeric values
-WHEN DPQ020 = 2 THEN 'More than half the days' -- categorize numeric values
-WHEN DPQ020 = 3 THEN 'Nearly every day' -- categorize numeric values
-WHEN DPQ020 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DPQ020 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Not at all' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Several days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'More than half the days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Nearly every day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DPQ020 IS NULL THEN NULL 
-ELSE DPQ020 
+ELSE SAFE_CAST(DPQ020 AS STRING) 
  END as feeling_down_depressed_or_hopeless, 
 
 CASE
-            WHEN DPQ030 = 0 THEN 'Not at all' -- categorize numeric values
-WHEN DPQ030 = 1 THEN 'Several days' -- categorize numeric values
-WHEN DPQ030 = 2 THEN 'More than half the days' -- categorize numeric values
-WHEN DPQ030 = 3 THEN 'Nearly every day' -- categorize numeric values
-WHEN DPQ030 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DPQ030 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Not at all' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Several days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'More than half the days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Nearly every day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DPQ030 IS NULL THEN NULL 
-ELSE DPQ030 
+ELSE SAFE_CAST(DPQ030 AS STRING) 
  END as trouble_sleeping_or_sleeping_too_much, 
 
 CASE
-            WHEN DPQ040 = 0 THEN 'Not at all' -- categorize numeric values
-WHEN DPQ040 = 1 THEN 'Several days' -- categorize numeric values
-WHEN DPQ040 = 2 THEN 'More than half the days' -- categorize numeric values
-WHEN DPQ040 = 3 THEN 'Nearly every day' -- categorize numeric values
-WHEN DPQ040 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DPQ040 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Not at all' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Several days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'More than half the days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Nearly every day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DPQ040 IS NULL THEN NULL 
-ELSE DPQ040 
+ELSE SAFE_CAST(DPQ040 AS STRING) 
  END as feeling_tired_or_having_little_energy, 
 
 CASE
-            WHEN DPQ050 = 0 THEN 'Not at all' -- categorize numeric values
-WHEN DPQ050 = 1 THEN 'Several days' -- categorize numeric values
-WHEN DPQ050 = 2 THEN 'More than half the days' -- categorize numeric values
-WHEN DPQ050 = 3 THEN 'Nearly every day' -- categorize numeric values
-WHEN DPQ050 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DPQ050 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Not at all' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Several days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'More than half the days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Nearly every day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DPQ050 IS NULL THEN NULL 
-ELSE DPQ050 
+ELSE SAFE_CAST(DPQ050 AS STRING) 
  END as poor_appetite_or_overeating, 
 
 CASE
-            WHEN DPQ060 = 0 THEN 'Not at all' -- categorize numeric values
-WHEN DPQ060 = 1 THEN 'Several days' -- categorize numeric values
-WHEN DPQ060 = 2 THEN 'More than half the days' -- categorize numeric values
-WHEN DPQ060 = 3 THEN 'Nearly every day' -- categorize numeric values
-WHEN DPQ060 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DPQ060 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Not at all' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Several days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'More than half the days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Nearly every day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DPQ060 IS NULL THEN NULL 
-ELSE DPQ060 
+ELSE SAFE_CAST(DPQ060 AS STRING) 
  END as feeling_bad_about_yourself, 
 
 CASE
-            WHEN DPQ070 = 0 THEN 'Not at all' -- categorize numeric values
-WHEN DPQ070 = 1 THEN 'Several days' -- categorize numeric values
-WHEN DPQ070 = 2 THEN 'More than half the days' -- categorize numeric values
-WHEN DPQ070 = 3 THEN 'Nearly every day' -- categorize numeric values
-WHEN DPQ070 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DPQ070 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Not at all' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Several days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'More than half the days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Nearly every day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DPQ070 IS NULL THEN NULL 
-ELSE DPQ070 
+ELSE SAFE_CAST(DPQ070 AS STRING) 
  END as trouble_concentrating_on_things, 
 
 CASE
-            WHEN DPQ080 = 0 THEN 'Not at all' -- categorize numeric values
-WHEN DPQ080 = 1 THEN 'Several days' -- categorize numeric values
-WHEN DPQ080 = 2 THEN 'More than half the days' -- categorize numeric values
-WHEN DPQ080 = 3 THEN 'Nearly every day' -- categorize numeric values
-WHEN DPQ080 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DPQ080 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Not at all' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Several days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'More than half the days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Nearly every day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DPQ080 IS NULL THEN NULL 
-ELSE DPQ080 
+ELSE SAFE_CAST(DPQ080 AS STRING) 
  END as moving_or_speaking_slowly_or_too_fast, 
 
 CASE
-            WHEN DPQ090 = 0 THEN 'Not at all' -- categorize numeric values
-WHEN DPQ090 = 1 THEN 'Several days' -- categorize numeric values
-WHEN DPQ090 = 2 THEN 'More than half the days' -- categorize numeric values
-WHEN DPQ090 = 3 THEN 'Nearly every day' -- categorize numeric values
-WHEN DPQ090 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DPQ090 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Not at all' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Several days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'More than half the days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Nearly every day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DPQ090 IS NULL THEN NULL 
-ELSE DPQ090 
+ELSE SAFE_CAST(DPQ090 AS STRING) 
  END as thought_you_would_be_better_off_dead, 
 
 CASE
-            WHEN DPQ100 = 0 THEN 'Not at all difficult,' -- categorize numeric values
-WHEN DPQ100 = 1 THEN 'Somewhat difficult,' -- categorize numeric values
-WHEN DPQ100 = 2 THEN 'Very difficult,' -- categorize numeric values
-WHEN DPQ100 = 3 THEN 'Extremely difficult' -- categorize numeric values
-WHEN DPQ100 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DPQ100 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Not at all difficult,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Somewhat difficult,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Very difficult,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Extremely difficult' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DPQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DPQ100 IS NULL THEN NULL 
-ELSE DPQ100 
+ELSE SAFE_CAST(DPQ100 AS STRING) 
  END as difficulty_these_problems_have_caused, 
 
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
  FROM {{ ref('stg_mental_health_depression_screener_questionnaire') }}
 
-        -- Docs utilized to generate this SQL can be found at https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DPQ_J.htm
-        
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DPQ_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_DPQ.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/DPQ_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/DPQ_H.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/DPQ_G.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/DPQ_F.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/DPQ_E.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DPQ_D.htm
+*/

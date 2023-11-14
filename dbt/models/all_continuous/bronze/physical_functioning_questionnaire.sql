@@ -1,477 +1,1456 @@
 SELECT
-        SEQN as respondent_sequence_number, -- could not identify transformation logic 
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN PFQ020 = 1 THEN 'Yes' -- categorize numeric values
-WHEN PFQ020 = 2 THEN 'No' -- categorize numeric values
-WHEN PFQ020 = 7 THEN 'Refused' -- categorize numeric values
-WHEN PFQ020 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN PFQ020 IS NULL THEN NULL 
-ELSE PFQ020 
+ELSE SAFE_CAST(PFQ020 AS STRING) 
  END as crawl_walk_run_play_limitations, 
 
 CASE
-            WHEN PFQ030 = 1 THEN 'Yes' -- categorize numeric values
-WHEN PFQ030 = 2 THEN 'No' -- categorize numeric values
-WHEN PFQ030 = 7 THEN 'Refused' -- categorize numeric values
-WHEN PFQ030 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN PFQ030 IS NULL THEN NULL 
-ELSE PFQ030 
+ELSE SAFE_CAST(PFQ030 AS STRING) 
  END as long_term_impairment_health_problem, 
 
--- PFQ032 as PFQ032, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN PFQ033 = '1' THEN 'Yes' -- categorize string values 
-WHEN PFQ033 = '2' THEN 'No' -- categorize string values 
-WHEN PFQ033 = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ033 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ033 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ033 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ033 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ033 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ033 IS NULL THEN NULL 
-ELSE PFQ033 
+ELSE SAFE_CAST(PFQ033 AS STRING) 
  END as impairment_requiring_special_equipment, 
 
--- PFQ035A as PFQ035A, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN PFQ041 = '1' THEN 'Yes' -- categorize string values 
-WHEN PFQ041 = '2' THEN 'No' -- categorize string values 
-WHEN PFQ041 = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ041 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ041 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ041 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ041 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ041 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ041 IS NULL THEN NULL 
-ELSE PFQ041 
+ELSE SAFE_CAST(PFQ041 AS STRING) 
  END as receive_special_ed_or_early_intervention, 
 
 CASE
-            WHEN PFQ049 = '1' THEN 'Yes' -- categorize string values 
-WHEN PFQ049 = '2' THEN 'No' -- categorize string values 
-WHEN PFQ049 = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ049 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ049 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ049 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ049 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ049 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ049 IS NULL THEN NULL 
-ELSE PFQ049 
+ELSE SAFE_CAST(PFQ049 AS STRING) 
  END as limitations_keeping_you_from_working, 
 
 CASE
-            WHEN PFQ051 = '1' THEN 'Yes' -- categorize string values 
-WHEN PFQ051 = '2' THEN 'No' -- categorize string values 
-WHEN PFQ051 = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ051 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ051 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ051 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ051 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ051 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ051 IS NULL THEN NULL 
-ELSE PFQ051 
+ELSE SAFE_CAST(PFQ051 AS STRING) 
  END as limited_in_amount_of_work_you_can_do, 
 
 CASE
-            WHEN PFQ054 = '1' THEN 'Yes' -- categorize string values 
-WHEN PFQ054 = '2' THEN 'No' -- categorize string values 
-WHEN PFQ054 = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ054 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ054 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ054 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ054 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ054 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ054 IS NULL THEN NULL 
-ELSE PFQ054 
+ELSE SAFE_CAST(PFQ054 AS STRING) 
  END as need_special_equipment_to_walk, 
 
 CASE
-            WHEN PFQ057 = '1' THEN 'Yes' -- categorize string values 
-WHEN PFQ057 = '2' THEN 'No' -- categorize string values 
-WHEN PFQ057 = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ057 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ057 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ057 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ057 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ057 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ057 IS NULL THEN NULL 
-ELSE PFQ057 
+ELSE SAFE_CAST(PFQ057 AS STRING) 
  END as experience_confusion_memory_problems, 
 
--- PFQ058 as PFQ058, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN PFQ059 = 1 THEN 'Yes' -- categorize numeric values
-WHEN PFQ059 = 2 THEN 'No' -- categorize numeric values
-WHEN PFQ059 = 7 THEN 'Refused' -- categorize numeric values
-WHEN PFQ059 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ059 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ059 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ059 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ059 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN PFQ059 IS NULL THEN NULL 
-ELSE PFQ059 
+ELSE SAFE_CAST(PFQ059 AS STRING) 
  END as physical_mental_emotional_limitations, 
 
--- PFQ059A as PFQ059A, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN PFQ061A = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061A = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061A = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061A = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061A = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061A = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061A = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061A AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061A AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061A AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061A AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061A AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061A AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061A IS NULL THEN NULL 
-ELSE PFQ061A 
+ELSE SAFE_CAST(PFQ061A AS STRING) 
  END as difficulty_managing_money, 
 
 CASE
-            WHEN PFQ061B = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061B = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061B = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061B = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061B = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061B = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061B = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061B AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061B AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061B AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061B AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061B AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061B AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061B IS NULL THEN NULL 
-ELSE PFQ061B 
+ELSE SAFE_CAST(PFQ061B AS STRING) 
  END as difficulty_walking_for_a_quarter_mile, 
 
 CASE
-            WHEN PFQ061C = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061C = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061C = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061C = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061C = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061C = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061C = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061C AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061C AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061C AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061C AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061C AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061C AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061C AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061C IS NULL THEN NULL 
-ELSE PFQ061C 
+ELSE SAFE_CAST(PFQ061C AS STRING) 
  END as difficulty_walking_up_ten_stairs, 
 
 CASE
-            WHEN PFQ061D = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061D = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061D = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061D = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061D = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061D = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061D = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061D AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061D AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061D AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061D AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061D AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061D AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061D AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061D IS NULL THEN NULL 
-ELSE PFQ061D 
+ELSE SAFE_CAST(PFQ061D AS STRING) 
  END as difficulty_stooping_crouching_kneeling, 
 
 CASE
-            WHEN PFQ061E = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061E = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061E = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061E = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061E = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061E = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061E = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061E AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061E AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061E AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061E AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061E AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061E AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061E AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061E IS NULL THEN NULL 
-ELSE PFQ061E 
+ELSE SAFE_CAST(PFQ061E AS STRING) 
  END as difficulty_lifting_or_carrying, 
 
 CASE
-            WHEN PFQ061F = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061F = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061F = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061F = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061F = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061F = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061F = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061F AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061F AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061F AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061F AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061F AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061F AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061F AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061F IS NULL THEN NULL 
-ELSE PFQ061F 
+ELSE SAFE_CAST(PFQ061F AS STRING) 
  END as difficulty_doing_house_chores, 
 
 CASE
-            WHEN PFQ061G = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061G = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061G = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061G = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061G = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061G = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061G = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061G AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061G AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061G AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061G AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061G AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061G AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061G AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061G IS NULL THEN NULL 
-ELSE PFQ061G 
+ELSE SAFE_CAST(PFQ061G AS STRING) 
  END as difficulty_preparing_meals, 
 
 CASE
-            WHEN PFQ061H = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061H = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061H = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061H = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061H = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061H = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061H = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061H AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061H AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061H AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061H AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061H AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061H AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061H AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061H IS NULL THEN NULL 
-ELSE PFQ061H 
+ELSE SAFE_CAST(PFQ061H AS STRING) 
  END as difficulty_walking_between_rooms, 
 
 CASE
-            WHEN PFQ061I = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061I = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061I = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061I = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061I = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061I = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061I = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061I AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061I AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061I AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061I AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061I AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061I AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061I AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061I IS NULL THEN NULL 
-ELSE PFQ061I 
+ELSE SAFE_CAST(PFQ061I AS STRING) 
  END as difficulty_standingup_from_armless_chair, 
 
 CASE
-            WHEN PFQ061J = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061J = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061J = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061J = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061J = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061J = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061J = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061J AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061J AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061J AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061J AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061J AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061J AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061J AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061J IS NULL THEN NULL 
-ELSE PFQ061J 
+ELSE SAFE_CAST(PFQ061J AS STRING) 
  END as difficulty_getting_in_and_out_of_bed, 
 
 CASE
-            WHEN PFQ061K = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061K = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061K = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061K = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061K = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061K = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061K = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061K AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061K AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061K AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061K AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061K AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061K AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061K AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061K IS NULL THEN NULL 
-ELSE PFQ061K 
+ELSE SAFE_CAST(PFQ061K AS STRING) 
  END as difficulty_using_fork_knife_cup, 
 
 CASE
-            WHEN PFQ061L = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061L = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061L = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061L = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061L = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061L = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061L = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061L AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061L AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061L AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061L AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061L AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061L AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061L AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061L IS NULL THEN NULL 
-ELSE PFQ061L 
+ELSE SAFE_CAST(PFQ061L AS STRING) 
  END as difficulty_dressing_yourself, 
 
 CASE
-            WHEN PFQ061M = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061M = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061M = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061M = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061M = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061M = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061M = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061M AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061M AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061M AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061M AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061M AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061M AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061M AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061M IS NULL THEN NULL 
-ELSE PFQ061M 
+ELSE SAFE_CAST(PFQ061M AS STRING) 
  END as difficulty_standing_for_long_periods, 
 
 CASE
-            WHEN PFQ061N = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061N = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061N = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061N = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061N = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061N = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061N = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061N AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061N AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061N AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061N AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061N AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061N AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061N AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061N IS NULL THEN NULL 
-ELSE PFQ061N 
+ELSE SAFE_CAST(PFQ061N AS STRING) 
  END as difficulty_sitting_for_long_periods, 
 
 CASE
-            WHEN PFQ061O = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061O = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061O = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061O = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061O = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061O = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061O = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061O AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061O AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061O AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061O AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061O AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061O AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061O AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061O IS NULL THEN NULL 
-ELSE PFQ061O 
+ELSE SAFE_CAST(PFQ061O AS STRING) 
  END as difficulty_reaching_up, 
 
 CASE
-            WHEN PFQ061P = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061P = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061P = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061P = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061P = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061P = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061P = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061P AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061P AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061P AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061P AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061P AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061P AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061P AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061P IS NULL THEN NULL 
-ELSE PFQ061P 
+ELSE SAFE_CAST(PFQ061P AS STRING) 
  END as difficulty_grasp_holding_small_objects, 
 
 CASE
-            WHEN PFQ061Q = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061Q = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061Q = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061Q = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061Q = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061Q = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061Q = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061Q AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061Q AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061Q AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061Q AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061Q AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061Q AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061Q AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061Q IS NULL THEN NULL 
-ELSE PFQ061Q 
+ELSE SAFE_CAST(PFQ061Q AS STRING) 
  END as difficulty_going_out_to_movies_events, 
 
 CASE
-            WHEN PFQ061R = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061R = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061R = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061R = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061R = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061R = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061R = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061R AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061R AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061R AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061R AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061R AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061R AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061R AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061R IS NULL THEN NULL 
-ELSE PFQ061R 
+ELSE SAFE_CAST(PFQ061R AS STRING) 
  END as difficulty_attending_social_event, 
 
 CASE
-            WHEN PFQ061S = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061S = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061S = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061S = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061S = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061S = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061S = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061S AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061S AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061S AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061S AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061S AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061S AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061S AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061S IS NULL THEN NULL 
-ELSE PFQ061S 
+ELSE SAFE_CAST(PFQ061S AS STRING) 
  END as difficulty_with_home_leisure_activities, 
 
 CASE
-            WHEN PFQ061T = '1' THEN 'No difficulty' -- categorize string values 
-WHEN PFQ061T = '2' THEN 'Some difficulty' -- categorize string values 
-WHEN PFQ061T = '3' THEN 'Much difficulty' -- categorize string values 
-WHEN PFQ061T = '4' THEN 'Unable to do' -- categorize string values 
-WHEN PFQ061T = '5' THEN 'Do not do this activity' -- categorize string values 
-WHEN PFQ061T = '7' THEN 'Refused' -- categorize string values 
-WHEN PFQ061T = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061T AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061T AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061T AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Much difficulty' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061T AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Unable to do' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061T AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Do not do this activity' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061T AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ061T AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN PFQ061T IS NULL THEN NULL 
-ELSE PFQ061T 
+ELSE SAFE_CAST(PFQ061T AS STRING) 
  END as difficulty_moving_large_objects, 
 
--- PFQ066A as PFQ066A, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN PFQ063A = '10' THEN 'Arthritis/rheumatism' -- categorize string values 
-WHEN PFQ063A = '11' THEN 'Back or neck problem' -- categorize string values 
-WHEN PFQ063A = '12' THEN 'Birth defect' -- categorize string values 
-WHEN PFQ063A = '13' THEN 'Cancer' -- categorize string values 
-WHEN PFQ063A = '14' THEN 'Depression/anxiety/emotional problem' -- categorize string values 
-WHEN PFQ063A = '15' THEN 'Other developmental problem (such as cerebral palsy)' -- categorize string values 
-WHEN PFQ063A = '16' THEN 'Diabetes' -- categorize string values 
-WHEN PFQ063A = '17' THEN 'Fractures, bone/joint injury' -- categorize string values 
-WHEN PFQ063A = '18' THEN 'Hearing problem' -- categorize string values 
-WHEN PFQ063A = '19' THEN 'Heart problem' -- categorize string values 
-WHEN PFQ063A = '20' THEN 'Hypertension/high blood pressure' -- categorize string values 
-WHEN PFQ063A = '21' THEN 'Lung/breathing problem' -- categorize string values 
-WHEN PFQ063A = '22' THEN 'Mental retardation' -- categorize string values 
-WHEN PFQ063A = '23' THEN 'Other injury' -- categorize string values 
-WHEN PFQ063A = '24' THEN 'Senility' -- categorize string values 
-WHEN PFQ063A = '25' THEN 'Stroke problem' -- categorize string values 
-WHEN PFQ063A = '26' THEN 'Vision/problem seeing' -- categorize string values 
-WHEN PFQ063A = '27' THEN 'Weight problem' -- categorize string values 
-WHEN PFQ063A = '28' THEN 'Other impairment/problem' -- categorize string values 
-WHEN PFQ063A = '77' THEN 'Refused' -- categorize string values 
-WHEN PFQ063A = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Arthritis/rheumatism' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'Back or neck problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'Birth defect' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Cancer' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'Depression/anxiety/emotional problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'Other developmental problem (such as cerebral palsy)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'Diabetes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'Fractures, bone/joint injury' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'Hearing problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'Heart problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'Hypertension/high blood pressure' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'Lung/breathing problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'Mental retardation' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'Other injury' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'Senility' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'Stroke problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'Vision/problem seeing' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'Weight problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '28' THEN 'Other impairment/problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN PFQ063A IS NULL THEN NULL 
-ELSE PFQ063A 
+ELSE SAFE_CAST(PFQ063A AS STRING) 
  END as health_problem_causing_difficulty, 
 
 CASE
-            WHEN PFQ063B = '10' THEN 'Arthritis/rheumatism' -- categorize string values 
-WHEN PFQ063B = '11' THEN 'Back or neck problem' -- categorize string values 
-WHEN PFQ063B = '12' THEN 'Birth defect' -- categorize string values 
-WHEN PFQ063B = '13' THEN 'Cancer' -- categorize string values 
-WHEN PFQ063B = '14' THEN 'Depression/anxiety/emotional problem' -- categorize string values 
-WHEN PFQ063B = '15' THEN 'Other developmental problem (such as cerebral palsy)' -- categorize string values 
-WHEN PFQ063B = '16' THEN 'Diabetes' -- categorize string values 
-WHEN PFQ063B = '17' THEN 'Fractures, bone/joint injury' -- categorize string values 
-WHEN PFQ063B = '18' THEN 'Hearing problem' -- categorize string values 
-WHEN PFQ063B = '19' THEN 'Heart problem' -- categorize string values 
-WHEN PFQ063B = '20' THEN 'Hypertension/high blood pressure' -- categorize string values 
-WHEN PFQ063B = '21' THEN 'Lung/breathing problem' -- categorize string values 
-WHEN PFQ063B = '22' THEN 'Mental retardation' -- categorize string values 
-WHEN PFQ063B = '23' THEN 'Other injury' -- categorize string values 
-WHEN PFQ063B = '24' THEN 'Senility' -- categorize string values 
-WHEN PFQ063B = '25' THEN 'Stroke problem' -- categorize string values 
-WHEN PFQ063B = '26' THEN 'Vision/problem seeing' -- categorize string values 
-WHEN PFQ063B = '27' THEN 'Weight problem' -- categorize string values 
-WHEN PFQ063B = '28' THEN 'Other impairment/problem' -- categorize string values 
-WHEN PFQ063B = '77' THEN 'Refused' -- categorize string values 
-WHEN PFQ063B = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Arthritis/rheumatism' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'Back or neck problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'Birth defect' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Cancer' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'Depression/anxiety/emotional problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'Other developmental problem (such as cerebral palsy)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'Diabetes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'Fractures, bone/joint injury' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'Hearing problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'Heart problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'Hypertension/high blood pressure' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'Lung/breathing problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'Mental retardation' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'Other injury' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'Senility' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'Stroke problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'Vision/problem seeing' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'Weight problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '28' THEN 'Other impairment/problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063B AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN PFQ063B IS NULL THEN NULL 
-ELSE PFQ063B 
+ELSE SAFE_CAST(PFQ063B AS STRING) 
  END as health_problem_causing_difficulty_PFQ063B, 
 
 CASE
-            WHEN PFQ063C = '10' THEN 'Arthritis/rheumatism' -- categorize string values 
-WHEN PFQ063C = '11' THEN 'Back or neck problem' -- categorize string values 
-WHEN PFQ063C = '12' THEN 'Birth defect' -- categorize string values 
-WHEN PFQ063C = '13' THEN 'Cancer' -- categorize string values 
-WHEN PFQ063C = '14' THEN 'Depression/anxiety/emotional problem' -- categorize string values 
-WHEN PFQ063C = '15' THEN 'Other developmental problem (such as cerebral palsy)' -- categorize string values 
-WHEN PFQ063C = '16' THEN 'Diabetes' -- categorize string values 
-WHEN PFQ063C = '17' THEN 'Fractures, bone/joint injury' -- categorize string values 
-WHEN PFQ063C = '18' THEN 'Hearing problem' -- categorize string values 
-WHEN PFQ063C = '19' THEN 'Heart problem' -- categorize string values 
-WHEN PFQ063C = '20' THEN 'Hypertension/high blood pressure' -- categorize string values 
-WHEN PFQ063C = '21' THEN 'Lung/breathing problem' -- categorize string values 
-WHEN PFQ063C = '22' THEN 'Mental retardation' -- categorize string values 
-WHEN PFQ063C = '23' THEN 'Other injury' -- categorize string values 
-WHEN PFQ063C = '24' THEN 'Senility' -- categorize string values 
-WHEN PFQ063C = '25' THEN 'Stroke problem' -- categorize string values 
-WHEN PFQ063C = '26' THEN 'Vision/problem seeing' -- categorize string values 
-WHEN PFQ063C = '27' THEN 'Weight problem' -- categorize string values 
-WHEN PFQ063C = '28' THEN 'Other impairment/problem' -- categorize string values 
-WHEN PFQ063C = '77' THEN 'Refused' -- categorize string values 
-WHEN PFQ063C = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Arthritis/rheumatism' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'Back or neck problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'Birth defect' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Cancer' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'Depression/anxiety/emotional problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'Other developmental problem (such as cerebral palsy)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'Diabetes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'Fractures, bone/joint injury' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'Hearing problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'Heart problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'Hypertension/high blood pressure' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'Lung/breathing problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'Mental retardation' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'Other injury' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'Senility' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'Stroke problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'Vision/problem seeing' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'Weight problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '28' THEN 'Other impairment/problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063C AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN PFQ063C IS NULL THEN NULL 
-ELSE PFQ063C 
+ELSE SAFE_CAST(PFQ063C AS STRING) 
  END as health_problem_causing_difficulty_PFQ063C, 
 
 CASE
-            WHEN PFQ063D = '10' THEN 'Arthritis/rheumatism' -- categorize string values 
-WHEN PFQ063D = '11' THEN 'Back or neck problem' -- categorize string values 
-WHEN PFQ063D = '12' THEN 'Birth defect' -- categorize string values 
-WHEN PFQ063D = '13' THEN 'Cancer' -- categorize string values 
-WHEN PFQ063D = '14' THEN 'Depression/anxiety/emotional problem' -- categorize string values 
-WHEN PFQ063D = '15' THEN 'Other developmental problem (such as cerebral palsy)' -- categorize string values 
-WHEN PFQ063D = '16' THEN 'Diabetes' -- categorize string values 
-WHEN PFQ063D = '17' THEN 'Fractures, bone/joint injury' -- categorize string values 
-WHEN PFQ063D = '18' THEN 'Hearing problem' -- categorize string values 
-WHEN PFQ063D = '19' THEN 'Heart problem' -- categorize string values 
-WHEN PFQ063D = '20' THEN 'Hypertension/high blood pressure' -- categorize string values 
-WHEN PFQ063D = '21' THEN 'Lung/breathing problem' -- categorize string values 
-WHEN PFQ063D = '22' THEN 'Mental retardation' -- categorize string values 
-WHEN PFQ063D = '23' THEN 'Other injury' -- categorize string values 
-WHEN PFQ063D = '24' THEN 'Senility' -- categorize string values 
-WHEN PFQ063D = '25' THEN 'Stroke problem' -- categorize string values 
-WHEN PFQ063D = '26' THEN 'Vision/problem seeing' -- categorize string values 
-WHEN PFQ063D = '27' THEN 'Weight problem' -- categorize string values 
-WHEN PFQ063D = '28' THEN 'Other impairment/problem' -- categorize string values 
-WHEN PFQ063D = '77' THEN 'Refused' -- categorize string values 
-WHEN PFQ063D = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Arthritis/rheumatism' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'Back or neck problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'Birth defect' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Cancer' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'Depression/anxiety/emotional problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'Other developmental problem (such as cerebral palsy)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'Diabetes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'Fractures, bone/joint injury' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'Hearing problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'Heart problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'Hypertension/high blood pressure' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'Lung/breathing problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'Mental retardation' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'Other injury' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'Senility' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'Stroke problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'Vision/problem seeing' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'Weight problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '28' THEN 'Other impairment/problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063D AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN PFQ063D IS NULL THEN NULL 
-ELSE PFQ063D 
+ELSE SAFE_CAST(PFQ063D AS STRING) 
  END as health_problem_causing_difficulty_PFQ063D, 
 
 CASE
-            WHEN PFQ063E = '10' THEN 'Arthritis/rheumatism' -- categorize string values 
-WHEN PFQ063E = '11' THEN 'Back or neck problem' -- categorize string values 
-WHEN PFQ063E = '12' THEN 'Birth defect' -- categorize string values 
-WHEN PFQ063E = '13' THEN 'Cancer' -- categorize string values 
-WHEN PFQ063E = '14' THEN 'Depression/anxiety/emotional problem' -- categorize string values 
-WHEN PFQ063E = '15' THEN 'Other developmental problem (such as cerebral palsy)' -- categorize string values 
-WHEN PFQ063E = '16' THEN 'Diabetes' -- categorize string values 
-WHEN PFQ063E = '17' THEN 'Fractures, bone/joint injury' -- categorize string values 
-WHEN PFQ063E = '18' THEN 'Hearing problem' -- categorize string values 
-WHEN PFQ063E = '19' THEN 'Heart problem' -- categorize string values 
-WHEN PFQ063E = '20' THEN 'Hypertension/high blood pressure' -- categorize string values 
-WHEN PFQ063E = '21' THEN 'Lung/breathing problem' -- categorize string values 
-WHEN PFQ063E = '22' THEN 'Mental retardation' -- categorize string values 
-WHEN PFQ063E = '23' THEN 'Other injury' -- categorize string values 
-WHEN PFQ063E = '24' THEN 'Senility' -- categorize string values 
-WHEN PFQ063E = '25' THEN 'Stroke problem' -- categorize string values 
-WHEN PFQ063E = '26' THEN 'Vision/problem seeing' -- categorize string values 
-WHEN PFQ063E = '27' THEN 'Weight problem' -- categorize string values 
-WHEN PFQ063E = '28' THEN 'Other impairment/problem' -- categorize string values 
-WHEN PFQ063E = '77' THEN 'Refused' -- categorize string values 
-WHEN PFQ063E = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Arthritis/rheumatism' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'Back or neck problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'Birth defect' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Cancer' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'Depression/anxiety/emotional problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'Other developmental problem (such as cerebral palsy)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'Diabetes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'Fractures, bone/joint injury' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'Hearing problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'Heart problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'Hypertension/high blood pressure' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'Lung/breathing problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'Mental retardation' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'Other injury' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'Senility' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'Stroke problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'Vision/problem seeing' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'Weight problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '28' THEN 'Other impairment/problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(PFQ063E AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN PFQ063E IS NULL THEN NULL 
-ELSE PFQ063E 
+ELSE SAFE_CAST(PFQ063E AS STRING) 
  END as health_problem_causing_difficulty_PFQ063E, 
 
 CASE
-            WHEN PFQ090 = 1 THEN 'Yes' -- categorize numeric values
-WHEN PFQ090 = 2 THEN 'No' -- categorize numeric values
-WHEN PFQ090 = 7 THEN 'Refused' -- categorize numeric values
-WHEN PFQ090 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN PFQ090 IS NULL THEN NULL 
-ELSE PFQ090 
+ELSE SAFE_CAST(PFQ090 AS STRING) 
  END as require_special_healthcare_equipment, 
 
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ010 IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ010 AS STRING) 
+ END as physical_mental_emotional_limitations_PFQ010, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ015 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ015 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ015 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ015 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ015 IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ015 AS STRING) 
+ END as able_to_take_part_in_most_type_of_play, 
+
+CASE
+WHEN PFD069A IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069A AS STRING) 
+ END as arthritis_or_rheumatism_probl_days, 
+
+CASE
+WHEN PFD069B IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069B AS STRING) 
+ END as back_or_neck_problems_days, 
+
+CASE
+WHEN PFD069C IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069C AS STRING) 
+ END as cancer_condition_days, 
+
+CASE
+WHEN PFD069D IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069D AS STRING) 
+ END as depression_anxiety_emotional_probl_days, 
+
+CASE
+WHEN SAFE_CAST(PFD069E AS FLOAT64) > 19369.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN PFD069E IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069E AS FLOAT64) 
+ END as other_development_problems_days, 
+
+CASE
+WHEN PFD069F IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069F AS FLOAT64) 
+ END as diabetes_condition_days, 
+
+CASE
+WHEN PFD069G IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069G AS FLOAT64) 
+ END as fractures_bone_joint_injury_probl_days, 
+
+CASE
+WHEN PFD069H IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069H AS FLOAT64) 
+ END as hearing_problems_days, 
+
+CASE
+WHEN PFD069I IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069I AS FLOAT64) 
+ END as heart_problems_days, 
+
+CASE
+WHEN PFD069J IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069J AS FLOAT64) 
+ END as hypertension_or_high_blood_pressure_days, 
+
+CASE
+WHEN PFD069K IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069K AS FLOAT64) 
+ END as lung_or_breathing_problems_days, 
+
+CASE
+WHEN PFD069L IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069L AS FLOAT64) 
+ END as mental_retardation_condition_days, 
+
+CASE
+WHEN PFD069M IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069M AS FLOAT64) 
+ END as other_injury_problems_days, 
+
+CASE
+WHEN PFD069N IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069N AS FLOAT64) 
+ END as senility_condition_days, 
+
+CASE
+WHEN PFD069O IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069O AS FLOAT64) 
+ END as stroke_problems_days, 
+
+CASE
+WHEN PFD069P IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069P AS FLOAT64) 
+ END as vision_problems_days, 
+
+CASE
+WHEN PFD069Q IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069Q AS FLOAT64) 
+ END as weight_problems_days, 
+
+CASE
+WHEN PFD069R IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069R AS FLOAT64) 
+ END as other_impairment_problems_days, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD040 IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD040 AS STRING) 
+ END as receive_special_ed_or_early_intervention_PFD040, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ048 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ048 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ048 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ048 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ048 IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ048 AS STRING) 
+ END as limitations_keeping_you_from_working_PFQ048, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ050 IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ050 AS STRING) 
+ END as limited_in_amount_of_work_you_can_do_PFQ050, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ055 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ055 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ055 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ055 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ055 IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ055 AS STRING) 
+ END as need_special_equipment_to_walk_PFQ055, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ056 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ056 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ056 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ056 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ056 IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ056 AS STRING) 
+ END as experience_confusion_memory_problems_PFQ056, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060A IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060A AS STRING) 
+ END as managing_money_difficulty_PFQ060A, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060B IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060B AS STRING) 
+ END as walking_for_a_quarter_mile_difficulty_PFQ060B, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060C IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060C AS STRING) 
+ END as walking_up_ten_steps_difficulty_PFQ060C, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060D IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060D AS STRING) 
+ END as stooping_crouching_kneeling_difficulty_PFQ060D, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060E IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060E AS STRING) 
+ END as lifting_or_carrying_difficulty_PFQ060E, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060F AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060F AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060F AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060F AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060F AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060F AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060F IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060F AS STRING) 
+ END as house_chore_difficulty_PFQ060F, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060G IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060G AS STRING) 
+ END as preparing_meals_difficulty_PFQ060G, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060H IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060H AS STRING) 
+ END as walking_between_rooms_on_same_floor_PFQ060H, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060I IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060I AS STRING) 
+ END as standingup_from_armless_chair_difficulty_PFQ060I, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060J IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060J AS STRING) 
+ END as getting_in_and_out_of_bed_difficulty_PFQ060J, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060K IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060K AS STRING) 
+ END as using_fork_knife_drinking_from_cup_PFQ060K, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060L AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060L AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060L AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060L AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060L AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060L AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060L IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060L AS STRING) 
+ END as dressing_yourself_difficulty_PFQ060L, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060M IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060M AS STRING) 
+ END as standing_for_long_periods_difficulty_PFQ060M, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060N AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060N AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060N AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060N AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060N AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060N AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060N IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060N AS STRING) 
+ END as sitting_for_long_periods_difficulty_PFQ060N, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060O IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060O AS STRING) 
+ END as reaching_up_over_head_difficulty_PFQ060O, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060P AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060P AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060P AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060P AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060P AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060P AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060P IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060P AS STRING) 
+ END as grasp_holding_small_objects_difficulty_PFQ060P, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060Q AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060Q AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060Q AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060Q AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060Q AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060Q AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060Q IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060Q AS STRING) 
+ END as going_out_to_movies_events_difficulty_PFQ060Q, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060R AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060R AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060R AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060R AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060R AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060R AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060R IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060R AS STRING) 
+ END as attending_social_event_difficulty_PFQ060R, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060S AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060S AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060S AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Much difficulty' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060S AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Unable to do' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060S AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ060S AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ060S IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ060S AS STRING) 
+ END as leisure_activity_at_home_difficulty_PFQ060S, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Arthritis/rheumatism' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN 'Back or neck problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(12 AS FLOAT64),0) AS INT64) THEN 'Birth defect' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(13 AS FLOAT64),0) AS INT64) THEN 'Cancer' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(14 AS FLOAT64),0) AS INT64) THEN 'Depression/anxiety/emotional problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(15 AS FLOAT64),0) AS INT64) THEN 'Other developmental problem (such as cerebral palsy)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(16 AS FLOAT64),0) AS INT64) THEN 'Diabetes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(17 AS FLOAT64),0) AS INT64) THEN 'Fractures, bone/joint injury' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(18 AS FLOAT64),0) AS INT64) THEN 'Hearing problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(19 AS FLOAT64),0) AS INT64) THEN 'Heart problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(20 AS FLOAT64),0) AS INT64) THEN 'Hypertension/high blood pressure' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(21 AS FLOAT64),0) AS INT64) THEN 'Lung/breathing problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(22 AS FLOAT64),0) AS INT64) THEN 'Mental retardation' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(23 AS FLOAT64),0) AS INT64) THEN 'Other injury' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(24 AS FLOAT64),0) AS INT64) THEN 'Senility' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(25 AS FLOAT64),0) AS INT64) THEN 'Stroke problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(26 AS FLOAT64),0) AS INT64) THEN 'Vision/problem seeing' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(27 AS FLOAT64),0) AS INT64) THEN 'Weight problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(28 AS FLOAT64),0) AS INT64) THEN 'Other impairment/problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD067A IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD067A AS STRING) 
+ END as health_problems_causing_difficulty_PFD067A, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Arthritis/rheumatism' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN 'Back or neck problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(12 AS FLOAT64),0) AS INT64) THEN 'Birth defect' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(13 AS FLOAT64),0) AS INT64) THEN 'Cancer' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(14 AS FLOAT64),0) AS INT64) THEN 'Depression/anxiety/emotional problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(15 AS FLOAT64),0) AS INT64) THEN 'Other developmental problem (such as cerebral palsy)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(16 AS FLOAT64),0) AS INT64) THEN 'Diabetes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(17 AS FLOAT64),0) AS INT64) THEN 'Fractures, bone/joint injury' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(18 AS FLOAT64),0) AS INT64) THEN 'Hearing problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(19 AS FLOAT64),0) AS INT64) THEN 'Heart problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(20 AS FLOAT64),0) AS INT64) THEN 'Hypertension/high blood pressure' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(21 AS FLOAT64),0) AS INT64) THEN 'Lung/breathing problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(22 AS FLOAT64),0) AS INT64) THEN 'Mental retardation' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(23 AS FLOAT64),0) AS INT64) THEN 'Other injury' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(24 AS FLOAT64),0) AS INT64) THEN 'Senility' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(25 AS FLOAT64),0) AS INT64) THEN 'Stroke problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(26 AS FLOAT64),0) AS INT64) THEN 'Vision/problem seeing' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(27 AS FLOAT64),0) AS INT64) THEN 'Weight problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(28 AS FLOAT64),0) AS INT64) THEN 'Other impairment/problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD067B IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD067B AS STRING) 
+ END as health_problems_causing_difficulty_PFD067B, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Arthritis/rheumatism' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN 'Back or neck problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(12 AS FLOAT64),0) AS INT64) THEN 'Birth defect' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(13 AS FLOAT64),0) AS INT64) THEN 'Cancer' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(14 AS FLOAT64),0) AS INT64) THEN 'Depression/anxiety/emotional problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(15 AS FLOAT64),0) AS INT64) THEN 'Other developmental problem (such as cerebral palsy)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(16 AS FLOAT64),0) AS INT64) THEN 'Diabetes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(17 AS FLOAT64),0) AS INT64) THEN 'Fractures, bone/joint injury' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(18 AS FLOAT64),0) AS INT64) THEN 'Hearing problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(19 AS FLOAT64),0) AS INT64) THEN 'Heart problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(20 AS FLOAT64),0) AS INT64) THEN 'Hypertension/high blood pressure' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(21 AS FLOAT64),0) AS INT64) THEN 'Lung/breathing problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(22 AS FLOAT64),0) AS INT64) THEN 'Mental retardation' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(23 AS FLOAT64),0) AS INT64) THEN 'Other injury' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(24 AS FLOAT64),0) AS INT64) THEN 'Senility' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(25 AS FLOAT64),0) AS INT64) THEN 'Stroke problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(26 AS FLOAT64),0) AS INT64) THEN 'Vision/problem seeing' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(27 AS FLOAT64),0) AS INT64) THEN 'Weight problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(28 AS FLOAT64),0) AS INT64) THEN 'Other impairment/problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD067C IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD067C AS STRING) 
+ END as health_problems_causing_difficulty_PFD067C, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Arthritis/rheumatism' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN 'Back or neck problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(12 AS FLOAT64),0) AS INT64) THEN 'Birth defect' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(13 AS FLOAT64),0) AS INT64) THEN 'Cancer' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(14 AS FLOAT64),0) AS INT64) THEN 'Depression/anxiety/emotional problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(15 AS FLOAT64),0) AS INT64) THEN 'Other developmental problem (such as cerebral palsy)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(16 AS FLOAT64),0) AS INT64) THEN 'Diabetes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(17 AS FLOAT64),0) AS INT64) THEN 'Fractures, bone/joint injury' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(18 AS FLOAT64),0) AS INT64) THEN 'Hearing problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(19 AS FLOAT64),0) AS INT64) THEN 'Heart problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(20 AS FLOAT64),0) AS INT64) THEN 'Hypertension/high blood pressure' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(21 AS FLOAT64),0) AS INT64) THEN 'Lung/breathing problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(22 AS FLOAT64),0) AS INT64) THEN 'Mental retardation' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(23 AS FLOAT64),0) AS INT64) THEN 'Other injury' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(24 AS FLOAT64),0) AS INT64) THEN 'Senility' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(25 AS FLOAT64),0) AS INT64) THEN 'Stroke problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(26 AS FLOAT64),0) AS INT64) THEN 'Vision/problem seeing' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(27 AS FLOAT64),0) AS INT64) THEN 'Weight problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(28 AS FLOAT64),0) AS INT64) THEN 'Other impairment/problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD067D IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD067D AS STRING) 
+ END as health_problems_causing_difficulty_PFD067D, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Arthritis/rheumatism' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN 'Back or neck problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(12 AS FLOAT64),0) AS INT64) THEN 'Birth defect' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(13 AS FLOAT64),0) AS INT64) THEN 'Cancer' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(14 AS FLOAT64),0) AS INT64) THEN 'Depression/anxiety/emotional problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(15 AS FLOAT64),0) AS INT64) THEN 'Other developmental problem (such as cerebral palsy)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(16 AS FLOAT64),0) AS INT64) THEN 'Diabetes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(17 AS FLOAT64),0) AS INT64) THEN 'Fractures, bone/joint injury' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(18 AS FLOAT64),0) AS INT64) THEN 'Hearing problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(19 AS FLOAT64),0) AS INT64) THEN 'Heart problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(20 AS FLOAT64),0) AS INT64) THEN 'Hypertension/high blood pressure' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(21 AS FLOAT64),0) AS INT64) THEN 'Lung/breathing problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(22 AS FLOAT64),0) AS INT64) THEN 'Mental retardation' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(23 AS FLOAT64),0) AS INT64) THEN 'Other injury' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(24 AS FLOAT64),0) AS INT64) THEN 'Senility' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(25 AS FLOAT64),0) AS INT64) THEN 'Stroke problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(26 AS FLOAT64),0) AS INT64) THEN 'Vision/problem seeing' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(27 AS FLOAT64),0) AS INT64) THEN 'Weight problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(28 AS FLOAT64),0) AS INT64) THEN 'Other impairment/problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD067E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD067E IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD067E AS STRING) 
+ END as health_problems_causing_difficulty_PFD067E, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ040 IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ040 AS STRING) 
+ END as receive_special_ed_or_early_intervention_PFQ040, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069AG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069AG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069AG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069AG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069AG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069AG AS STRING) 
+ END as arthritis_or_rheumatism_problems, 
+
+CASE
+WHEN PFD069AQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069AQ AS STRING) 
+ END as number_of_days_weeks_months_years, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069AU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069AU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069AU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069AU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Year' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069AU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069AU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069AU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069AU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069BG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069BG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069BG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069BG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069BG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069BG AS STRING) 
+ END as back_or_neck_problems, 
+
+CASE
+WHEN PFD069BQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069BQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFD069BQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069BU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069BU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069BU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069BU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069BU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069BU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069BU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069BU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFD069BU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069CG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069CG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since Birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069CG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069CG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069CG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069CG AS STRING) 
+ END as cancer_condition_days_PFQ069CG, 
+
+CASE
+WHEN PFQ069CQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069CQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFQ069CQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069CU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069CU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069CU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069CU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069CU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069CU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069CU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069CU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFQ069CU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069DG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069DG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069DG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069DG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069DG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069DG AS STRING) 
+ END as depression_anxiety_emotional_problems, 
+
+CASE
+WHEN PFD069DQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069DQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFD069DQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069DU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069DU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069DU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069DU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069DU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069DU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069DU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069DU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFD069DU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069EG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069EG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069EG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069EG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069EG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069EG AS STRING) 
+ END as other_development_problems, 
+
+CASE
+WHEN PFQ069EQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069EQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFQ069EQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069EU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069EU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069EU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069EU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069EU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069EU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069EU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069EU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFQ069EU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069FG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069FG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069FG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069FG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069FG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069FG AS STRING) 
+ END as diabetes_condition, 
+
+CASE
+WHEN PFQ069FQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069FQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFQ069FQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069FU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069FU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069FU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069FU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069FU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069FU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069FU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069FU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFQ069FU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069GG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069GG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069GG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069GG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069GG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069GG AS STRING) 
+ END as fractures_bone_joint_injury_problems, 
+
+CASE
+WHEN PFQ069GQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069GQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFQ069GQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069GU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069GU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069GU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069GU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069GU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069GU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069GU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069GU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFQ069GU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069HG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069HG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069HG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069HG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069HG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069HG AS STRING) 
+ END as hearing_problems_days_PFQ069HG, 
+
+CASE
+WHEN PFQ069HQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069HQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFQ069HQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069HU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069HU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069HU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069HU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069HU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069HU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069HU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069HU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFQ069HU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069IG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069IG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069IG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069IG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069IG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069IG AS STRING) 
+ END as heart_problems, 
+
+CASE
+WHEN PFD069IQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069IQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFD069IQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069IU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069IU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069IU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069IU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069IU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069IU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069IU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069IU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFD069IU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069JG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069JG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069JG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069JG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069JG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069JG AS STRING) 
+ END as hypertension_or_high_blood_pressure, 
+
+CASE
+WHEN PFD069JQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069JQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFD069JQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069JU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069JU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069JU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069JU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069JU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069JU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069JU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069JU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFD069JU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069KG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069KG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069KG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069KG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069KG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069KG AS STRING) 
+ END as lung_or_breathing_problems, 
+
+CASE
+WHEN PFQ069KQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069KQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFQ069KQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069KU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069KU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069KU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069KU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069KU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069KU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069KU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069KU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFQ069KU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069LG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069LG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069LG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069LG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069LG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069LG AS STRING) 
+ END as mental_retardation_condition, 
+
+CASE
+WHEN PFQ069LQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069LQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFQ069LQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069LU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069LU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069LU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069LU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069LU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069LU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069LU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069LU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFQ069LU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069MG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069MG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069MG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069MG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069MG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069MG AS STRING) 
+ END as other_injury_problems, 
+
+CASE
+WHEN PFQ069MQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069MQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFQ069MQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069MU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069MU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069MU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069MU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069MU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069MU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069MU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069MU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFQ069MU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069NG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069NG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069NG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069NG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069NG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069NG AS STRING) 
+ END as senility_condition, 
+
+CASE
+WHEN PFQ069NQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069NQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFQ069NQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069NU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069NU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069NU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069NU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069NU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069NU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069NU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069NU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFQ069NU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069OG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069OG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069OG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069OG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069OG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069OG AS STRING) 
+ END as stroke_problems, 
+
+CASE
+WHEN PFQ069OQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069OQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFQ069OQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069OU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069OU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069OU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069OU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069OU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ069OU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ069OU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ069OU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFQ069OU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069PG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069PG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069PG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069PG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069PG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069PG AS STRING) 
+ END as vision_problems, 
+
+CASE
+WHEN PFD069PQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069PQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFD069PQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069PU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069PU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069PU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069PU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069PU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069PU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069PU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069PU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFD069PU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069QG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069QG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069QG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069QG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069QG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069QG AS STRING) 
+ END as weight_problems, 
+
+CASE
+WHEN PFD069QQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069QQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFD069QQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069QU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069QU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069QU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069QU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069QU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069QU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069QU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069QU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFD069QU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069RG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enter number' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069RG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Since birth' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069RG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069RG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069RG IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069RG AS STRING) 
+ END as other_impairment_problems, 
+
+CASE
+WHEN PFD069RQ IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069RQ AS STRING) 
+ END as number_of_days_weeks_months_years_PFD069RQ, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069RU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069RU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069RU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069RU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069RU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFD069RU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFD069RU IS NULL THEN NULL 
+ELSE SAFE_CAST(PFD069RU AS STRING) 
+ END as unit_of_measure_da_wk_mo_yr_PFD069RU, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ100 IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ100 AS STRING) 
+ END as special_eating_utensils, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(PFQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN PFQ110 IS NULL THEN NULL 
+ELSE SAFE_CAST(PFQ110 AS STRING) 
+ END as dressing_aids_or_devices, 
+
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
  FROM {{ ref('stg_physical_functioning_questionnaire') }}
 
-        -- Docs utilized to generate this SQL can be found at https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/PFQ_J.htm
-        
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/PFQ_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/PFQ_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/PFQ_H.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/PFQ_G.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/PFQ_F.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/PFQ_E.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/PFQ_D.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2003-2004/PFQ_C.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2001-2002/PFQ_B.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/PFQ.htm
+*/

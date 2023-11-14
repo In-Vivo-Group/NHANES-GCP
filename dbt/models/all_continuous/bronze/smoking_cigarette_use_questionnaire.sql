@@ -1,426 +1,639 @@
 SELECT
-        SEQN as respondent_sequence_number, -- could not identify transformation logic 
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN SMQ020 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ020 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ020 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ020 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ020 IS NULL THEN NULL 
-ELSE SMQ020 
+ELSE SAFE_CAST(SMQ020 AS STRING) 
  END as smoked_at_least_100_cigarettes_in_life, 
 
 CASE
-            WHEN SMD030 IS NULL THEN NULL 
-ELSE SMD030 
+WHEN SMD030 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMD030 AS STRING) 
  END as age_started_smoking_cigarettes_regularly, 
 
 CASE
-            WHEN SMQ040 = 1 THEN 'Every day' -- categorize numeric values
-WHEN SMQ040 = 2 THEN 'Some days' -- categorize numeric values
-WHEN SMQ040 = 3 THEN 'Not at all' -- categorize numeric values
-WHEN SMQ040 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ040 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Every day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Some days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Not at all' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ040 IS NULL THEN NULL 
-ELSE SMQ040 
+ELSE SAFE_CAST(SMQ040 AS STRING) 
  END as do_you_now_smoke_cigarettes, 
 
 CASE
-            WHEN SMQ050Q IS NULL THEN NULL 
-ELSE SMQ050Q 
+WHEN SMQ050Q IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ050Q AS STRING) 
  END as how_long_since_quit_smoking_cigarettes, 
 
 CASE
-            WHEN SMQ050U = 1 THEN 'Days' -- categorize numeric values
-WHEN SMQ050U = 2 THEN 'Weeks' -- categorize numeric values
-WHEN SMQ050U = 3 THEN 'Months' -- categorize numeric values
-WHEN SMQ050U = 4 THEN 'Years' -- categorize numeric values
-WHEN SMQ050U = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ050U = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ050U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ050U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ050U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ050U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ050U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ050U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ050U IS NULL THEN NULL 
-ELSE SMQ050U 
+ELSE SAFE_CAST(SMQ050U AS STRING) 
  END as unit_of_measure_day_week_month_year, 
 
 CASE
-            WHEN SMD057 IS NULL THEN NULL 
-ELSE SMD057 
+WHEN SMD057 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMD057 AS STRING) 
  END as cigarettes_smoked_per_day_when_quit, 
 
 CASE
-            WHEN SMQ078 = '1' THEN 'Within 5 minutes' -- categorize string values 
-WHEN SMQ078 = '2' THEN 'From 6 to 30 minutes' -- categorize string values 
-WHEN SMQ078 = '3' THEN 'From more than 30 minutes to one hour' -- categorize string values 
-WHEN SMQ078 = '4' THEN 'From more than 1 hour to 2 hours' -- categorize string values 
-WHEN SMQ078 = '5' THEN 'From more than 2 hours to 3 hours' -- categorize string values 
-WHEN SMQ078 = '6' THEN 'From more than 3 hours to 4 hours' -- categorize string values 
-WHEN SMQ078 = '7' THEN 'More than 4 hours' -- categorize string values 
-WHEN SMQ078 = '77' THEN 'Refused' -- categorize string values 
-WHEN SMQ078 = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ078 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Within 5 minutes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ078 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'From 6 to 30 minutes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ078 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'From more than 30 minutes to one hour' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ078 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'From more than 1 hour to 2 hours' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ078 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'From more than 2 hours to 3 hours' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ078 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'From more than 3 hours to 4 hours' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ078 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'More than 4 hours' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ078 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ078 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN SMQ078 IS NULL THEN NULL 
-ELSE SMQ078 
+ELSE SAFE_CAST(SMQ078 AS STRING) 
  END as how_soon_after_waking_do_you_smoke, 
 
 CASE
-            WHEN SMD641 IS NULL THEN NULL 
-ELSE SMD641 
+WHEN SMD641 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMD641 AS STRING) 
  END as days_smoked_cigs_during_past_30_days, 
 
 CASE
-            WHEN SMD650 IS NULL THEN NULL 
-ELSE SMD650 
+WHEN SMD650 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMD650 AS STRING) 
  END as avg_cigarettes_day_during_past_30_days, 
 
 CASE
-            WHEN SMD093 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMD093 = 2 THEN 'No' -- categorize numeric values
-WHEN SMD093 = 3 THEN 'No usual brand' -- categorize numeric values
-WHEN SMD093 = 4 THEN 'Rolls own' -- categorize numeric values
-WHEN SMD093 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMD093 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD093 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD093 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD093 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'No usual brand' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD093 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rolls own' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD093 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD093 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMD093 IS NULL THEN NULL 
-ELSE SMD093 
+ELSE SAFE_CAST(SMD093 AS STRING) 
  END as may_i_please_see_the_pack_of_cigarettes, 
 
 CASE
-            WHEN SMDUPCA = 'Cig 12-digit Universal Product Code-UPC' THEN 'Value was recorded' -- categorize string values 
-WHEN SMDUPCA = '* NO MATCH *' THEN 'No match' -- categorize string values 
+WHEN REPLACE(SMDUPCA,'.0','') = 'Cig 12-digit Universal Product Code-UPC' THEN 'Value was recorded' -- categorize string values 
+WHEN REPLACE(SMDUPCA,'.0','') = '* NO MATCH *' THEN 'No match' -- categorize string values 
 WHEN SMDUPCA IS NULL THEN NULL 
-ELSE SMDUPCA 
+ELSE SAFE_CAST(SMDUPCA AS STRING) 
  END as cig_12_digit_universal_product_code_upc, 
 
 CASE
-            WHEN REPLACE(SMD100BR,"'","") = '305S' THEN '305S' -- categorize string values 
-WHEN REPLACE(SMD100BR,"'","") = '305S BLUE' THEN '305S BLUE' -- categorize string values 
-WHEN REPLACE(SMD100BR,"'","") = '305S GOLD' THEN '305S GOLD' -- categorize string values 
-WHEN SMD100BR = 'BASIC' THEN 'BASIC' -- categorize string values 
-WHEN SMD100BR = 'BENSON & HEDGES' THEN 'BENSON & HEDGES' -- categorize string values 
-WHEN SMD100BR = 'BENSON & HEDGES GOLD' THEN 'BENSON & HEDGES GOLD' -- categorize string values 
-WHEN SMD100BR = 'BRONSON' THEN 'BRONSON' -- categorize string values 
-WHEN SMD100BR = 'CAMEL' THEN 'CAMEL' -- categorize string values 
-WHEN REPLACE(SMD100BR,"'","") = 'CAMEL 99S' THEN 'CAMEL 99S' -- categorize string values 
-WHEN REPLACE(SMD100BR,"'","") = 'CAMEL 99S GOLD' THEN 'CAMEL 99S GOLD' -- categorize string values 
-WHEN SMD100BR = 'CAMEL BLUE' THEN 'CAMEL BLUE' -- categorize string values 
-WHEN SMD100BR = 'CAMEL CRUSH' THEN 'CAMEL CRUSH' -- categorize string values 
-WHEN SMD100BR = 'CAMEL CRUSH FRESH' THEN 'CAMEL CRUSH FRESH' -- categorize string values 
-WHEN SMD100BR = 'CAMEL CRUSH SILVER' THEN 'CAMEL CRUSH SILVER' -- categorize string values 
-WHEN SMD100BR = 'CAMEL PLATINUM' THEN 'CAMEL PLATINUM' -- categorize string values 
-WHEN SMD100BR = 'CAMEL TURKISH ROYAL' THEN 'CAMEL TURKISH ROYAL' -- categorize string values 
-WHEN SMD100BR = 'CAPRI INDIGO' THEN 'CAPRI INDIGO' -- categorize string values 
-WHEN SMD100BR = 'CAPRI MAGENTA' THEN 'CAPRI MAGENTA' -- categorize string values 
-WHEN SMD100BR = 'CARNIVAL GREEN' THEN 'CARNIVAL GREEN' -- categorize string values 
-WHEN SMD100BR = 'CLASSIC' THEN 'CLASSIC' -- categorize string values 
-WHEN SMD100BR = 'CLASSIC RED' THEN 'CLASSIC RED' -- categorize string values 
-WHEN SMD100BR = 'COMMONWEALTH' THEN 'COMMONWEALTH' -- categorize string values 
-WHEN SMD100BR = 'CRAVEN A' THEN 'CRAVEN A' -- categorize string values 
-WHEN SMD100BR = 'DECADE' THEN 'DECADE' -- categorize string values 
-WHEN SMD100BR = 'DECADE GOLD' THEN 'DECADE GOLD' -- categorize string values 
-WHEN SMD100BR = 'DORAL' THEN 'DORAL' -- categorize string values 
-WHEN SMD100BR = 'DORAL GOLD' THEN 'DORAL GOLD' -- categorize string values 
-WHEN SMD100BR = 'DORAL RED' THEN 'DORAL RED' -- categorize string values 
-WHEN REPLACE(SMD100BR,"'","") = 'EAGLE 20S' THEN 'EAGLE 20S' -- categorize string values 
-WHEN REPLACE(SMD100BR,"'","") = 'EAGLE 20S GOLD' THEN 'EAGLE 20S GOLD' -- categorize string values 
-WHEN REPLACE(SMD100BR,"'","") = 'EAGLE 20S RED' THEN 'EAGLE 20S RED' -- categorize string values 
-WHEN SMD100BR = 'EDGEFIELD' THEN 'EDGEFIELD' -- categorize string values 
-WHEN SMD100BR = 'EIGHT' THEN 'EIGHT' -- categorize string values 
-WHEN SMD100BR = 'FLAVOR DELUXE' THEN 'FLAVOR DELUXE' -- categorize string values 
-WHEN SMD100BR = 'GOLDEN BAY RED' THEN 'GOLDEN BAY RED' -- categorize string values 
-WHEN SMD100BR = 'HERON' THEN 'HERON' -- categorize string values 
-WHEN SMD100BR = 'KING MOUNTAIN GOLD' THEN 'KING MOUNTAIN GOLD' -- categorize string values 
-WHEN SMD100BR = 'KOOL' THEN 'KOOL' -- categorize string values 
-WHEN SMD100BR = 'KOOL SUPER LONGS' THEN 'KOOL SUPER LONGS' -- categorize string values 
-WHEN SMD100BR = 'L & M' THEN 'L & M' -- categorize string values 
-WHEN SMD100BR = 'L & M BLUE' THEN 'L & M BLUE' -- categorize string values 
-WHEN SMD100BR = 'L & M RED' THEN 'L & M RED' -- categorize string values 
-WHEN SMD100BR = 'LIGGETT SELECT SILVER' THEN 'LIGGETT SELECT SILVER' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO' THEN 'MARLBORO' -- categorize string values 
-WHEN REPLACE(SMD100BR,"'","") = 'MARLBORO 100S' THEN 'MARLBORO 100S' -- categorize string values 
-WHEN REPLACE(SMD100BR,"'","") = 'MARLBORO 25S' THEN 'MARLBORO 25S' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO BLACK' THEN 'MARLBORO BLACK' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO BLEND NO. 27' THEN 'MARLBORO BLEND NO. 27' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO BLUE' THEN 'MARLBORO BLUE' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO EDGE' THEN 'MARLBORO EDGE' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO EDGE BLACK' THEN 'MARLBORO EDGE BLACK' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO EIGHTY-THREES' THEN 'MARLBORO EIGHTY-THREES' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO GOLD' THEN 'MARLBORO GOLD' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO GREEN' THEN 'MARLBORO GREEN' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO MIDNIGHT BLACK' THEN 'MARLBORO MIDNIGHT BLACK' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO NXT BLACK' THEN 'MARLBORO NXT BLACK' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO NXT GREEN' THEN 'MARLBORO NXT GREEN' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO RED' THEN 'MARLBORO RED' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO SILVER' THEN 'MARLBORO SILVER' -- categorize string values 
-WHEN SMD100BR = 'MARLBORO SKYLINE' THEN 'MARLBORO SKYLINE' -- categorize string values 
-WHEN SMD100BR = 'MAVERICK' THEN 'MAVERICK' -- categorize string values 
-WHEN SMD100BR = 'MAVERICK GOLD' THEN 'MAVERICK GOLD' -- categorize string values 
-WHEN SMD100BR = 'MAVERICK RED' THEN 'MAVERICK RED' -- categorize string values 
-WHEN SMD100BR = 'MERIT BLUE' THEN 'MERIT BLUE' -- categorize string values 
-WHEN SMD100BR = 'MISTY GREEN' THEN 'MISTY GREEN' -- categorize string values 
-WHEN SMD100BR = 'MONTEGO' THEN 'MONTEGO' -- categorize string values 
-WHEN SMD100BR = 'NAT SHERMAN NATURALS' THEN 'NAT SHERMAN NATURALS' -- categorize string values 
-WHEN SMD100BR = 'NATURAL AMERICAN SPIRIT' THEN 'NATURAL AMERICAN SPIRIT' -- categorize string values 
-WHEN SMD100BR = 'NATURAL BLEND' THEN 'NATURAL BLEND' -- categorize string values 
-WHEN SMD100BR = 'NEWPORT' THEN 'NEWPORT' -- categorize string values 
-WHEN SMD100BR = 'NEWPORT BLUE' THEN 'NEWPORT BLUE' -- categorize string values 
-WHEN SMD100BR = 'NEWPORT GOLD' THEN 'NEWPORT GOLD' -- categorize string values 
-WHEN SMD100BR = 'OPAL' THEN 'OPAL' -- categorize string values 
-WHEN SMD100BR = 'PALL MALL' THEN 'PALL MALL' -- categorize string values 
-WHEN SMD100BR = 'PALL MALL BLUE' THEN 'PALL MALL BLUE' -- categorize string values 
-WHEN SMD100BR = 'PALL MALL ORANGE' THEN 'PALL MALL ORANGE' -- categorize string values 
-WHEN SMD100BR = 'PALL MALL RED' THEN 'PALL MALL RED' -- categorize string values 
-WHEN SMD100BR = 'PALL MALL WHITE' THEN 'PALL MALL WHITE' -- categorize string values 
-WHEN SMD100BR = 'PARLIAMENT' THEN 'PARLIAMENT' -- categorize string values 
-WHEN SMD100BR = 'PLAYERS CANADIAN' THEN 'PLAYERS CANADIAN' -- categorize string values 
-WHEN SMD100BR = 'PYRAMID GOLD' THEN 'PYRAMID GOLD' -- categorize string values 
-WHEN SMD100BR = 'PYRAMID RED' THEN 'PYRAMID RED' -- categorize string values 
-WHEN SMD100BR = 'QUALITY DELUXE' THEN 'QUALITY DELUXE' -- categorize string values 
-WHEN SMD100BR = 'SALEM' THEN 'SALEM' -- categorize string values 
-WHEN SMD100BR = 'SALEM BLACK' THEN 'SALEM BLACK' -- categorize string values 
-WHEN SMD100BR = 'SALEM GOLD' THEN 'SALEM GOLD' -- categorize string values 
-WHEN SMD100BR = 'SANDIA' THEN 'SANDIA' -- categorize string values 
-WHEN SMD100BR = 'SENECA' THEN 'SENECA' -- categorize string values 
-WHEN SMD100BR = 'SENECA BLUE' THEN 'SENECA BLUE' -- categorize string values 
-WHEN SMD100BR = 'SHERIFF' THEN 'SHERIFF' -- categorize string values 
-WHEN SMD100BR = 'SHERIFF BLUE' THEN 'SHERIFF BLUE' -- categorize string values 
-WHEN REPLACE(SMD100BR,"'","") = 'SHERMANS MCD' THEN 'SHERMANS MCD' -- categorize string values 
-WHEN SMD100BR = 'SHIELD SILVER' THEN 'SHIELD SILVER' -- categorize string values 
-WHEN SMD100BR = 'SILVER CLOUD RED' THEN 'SILVER CLOUD RED' -- categorize string values 
-WHEN SMD100BR = 'SMOKE 1' THEN 'SMOKE 1' -- categorize string values 
-WHEN SMD100BR = 'SMOKIN JOES PURPLE' THEN 'SMOKIN JOES PURPLE' -- categorize string values 
-WHEN SMD100BR = 'SONOMA' THEN 'SONOMA' -- categorize string values 
-WHEN SMD100BR = 'SPORT RED' THEN 'SPORT RED' -- categorize string values 
-WHEN SMD100BR = 'TIMELESS TIME' THEN 'TIMELESS TIME' -- categorize string values 
-WHEN SMD100BR = 'TIMELESS TIME RED' THEN 'TIMELESS TIME RED' -- categorize string values 
-WHEN SMD100BR = 'TRAFFIC' THEN 'TRAFFIC' -- categorize string values 
-WHEN SMD100BR = 'USA' THEN 'USA' -- categorize string values 
-WHEN SMD100BR = 'USA BLUE' THEN 'USA BLUE' -- categorize string values 
-WHEN SMD100BR = 'USA GOLD' THEN 'USA GOLD' -- categorize string values 
-WHEN SMD100BR = 'USA GOLD RED' THEN 'USA GOLD RED' -- categorize string values 
-WHEN SMD100BR = 'VIRGINIA SLIMS' THEN 'VIRGINIA SLIMS' -- categorize string values 
-WHEN SMD100BR = 'VIRGINIA SLIMS GOLD' THEN 'VIRGINIA SLIMS GOLD' -- categorize string values 
-WHEN SMD100BR = 'VIRGINIA SLIMS SUPERSLIMS' THEN 'VIRGINIA SLIMS SUPERSLIMS' -- categorize string values 
-WHEN SMD100BR = 'WAVE' THEN 'WAVE' -- categorize string values 
-WHEN SMD100BR = 'WAVE GREEN' THEN 'WAVE GREEN' -- categorize string values 
-WHEN SMD100BR = 'WILD HORSE GOLD' THEN 'WILD HORSE GOLD' -- categorize string values 
-WHEN SMD100BR = 'WINGS' THEN 'WINGS' -- categorize string values 
-WHEN SMD100BR = 'WINGS GOLD' THEN 'WINGS GOLD' -- categorize string values 
-WHEN SMD100BR = 'WINGS RED' THEN 'WINGS RED' -- categorize string values 
-WHEN SMD100BR = 'WINSTON' THEN 'WINSTON' -- categorize string values 
-WHEN SMD100BR = 'WINSTON RED' THEN 'WINSTON RED' -- categorize string values 
-WHEN SMD100BR = 'XIONGSHI' THEN 'XIONGSHI' -- categorize string values 
-WHEN SMD100BR = '* OTHER BRAND *' THEN 'OTHER BRAND' -- categorize string values 
+WHEN REPLACE(REPLACE(SMD100BR,'.0',''),"'","") = '305S' THEN '305S' -- categorize string values 
+WHEN REPLACE(REPLACE(SMD100BR,'.0',''),"'","") = '305S BLUE' THEN '305S BLUE' -- categorize string values 
+WHEN REPLACE(REPLACE(SMD100BR,'.0',''),"'","") = '305S GOLD' THEN '305S GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'BASIC' THEN 'BASIC' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'BENSON & HEDGES' THEN 'BENSON & HEDGES' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'BENSON & HEDGES GOLD' THEN 'BENSON & HEDGES GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'BRONSON' THEN 'BRONSON' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CAMEL' THEN 'CAMEL' -- categorize string values 
+WHEN REPLACE(REPLACE(SMD100BR,'.0',''),"'","") = 'CAMEL 99S' THEN 'CAMEL 99S' -- categorize string values 
+WHEN REPLACE(REPLACE(SMD100BR,'.0',''),"'","") = 'CAMEL 99S GOLD' THEN 'CAMEL 99S GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CAMEL BLUE' THEN 'CAMEL BLUE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CAMEL CRUSH' THEN 'CAMEL CRUSH' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CAMEL CRUSH FRESH' THEN 'CAMEL CRUSH FRESH' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CAMEL CRUSH SILVER' THEN 'CAMEL CRUSH SILVER' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CAMEL PLATINUM' THEN 'CAMEL PLATINUM' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CAMEL TURKISH ROYAL' THEN 'CAMEL TURKISH ROYAL' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CAPRI INDIGO' THEN 'CAPRI INDIGO' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CAPRI MAGENTA' THEN 'CAPRI MAGENTA' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CARNIVAL GREEN' THEN 'CARNIVAL GREEN' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CLASSIC' THEN 'CLASSIC' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CLASSIC RED' THEN 'CLASSIC RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'COMMONWEALTH' THEN 'COMMONWEALTH' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'CRAVEN A' THEN 'CRAVEN A' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'DECADE' THEN 'DECADE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'DECADE GOLD' THEN 'DECADE GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'DORAL' THEN 'DORAL' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'DORAL GOLD' THEN 'DORAL GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'DORAL RED' THEN 'DORAL RED' -- categorize string values 
+WHEN REPLACE(REPLACE(SMD100BR,'.0',''),"'","") = 'EAGLE 20S' THEN 'EAGLE 20S' -- categorize string values 
+WHEN REPLACE(REPLACE(SMD100BR,'.0',''),"'","") = 'EAGLE 20S GOLD' THEN 'EAGLE 20S GOLD' -- categorize string values 
+WHEN REPLACE(REPLACE(SMD100BR,'.0',''),"'","") = 'EAGLE 20S RED' THEN 'EAGLE 20S RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'EDGEFIELD' THEN 'EDGEFIELD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'EIGHT' THEN 'EIGHT' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'FLAVOR DELUXE' THEN 'FLAVOR DELUXE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'GOLDEN BAY RED' THEN 'GOLDEN BAY RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'HERON' THEN 'HERON' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'KING MOUNTAIN GOLD' THEN 'KING MOUNTAIN GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'KOOL' THEN 'KOOL' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'KOOL SUPER LONGS' THEN 'KOOL SUPER LONGS' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'L & M' THEN 'L & M' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'L & M BLUE' THEN 'L & M BLUE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'L & M RED' THEN 'L & M RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'LIGGETT SELECT SILVER' THEN 'LIGGETT SELECT SILVER' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO' THEN 'MARLBORO' -- categorize string values 
+WHEN REPLACE(REPLACE(SMD100BR,'.0',''),"'","") = 'MARLBORO 100S' THEN 'MARLBORO 100S' -- categorize string values 
+WHEN REPLACE(REPLACE(SMD100BR,'.0',''),"'","") = 'MARLBORO 25S' THEN 'MARLBORO 25S' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO BLACK' THEN 'MARLBORO BLACK' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO BLEND NO. 27' THEN 'MARLBORO BLEND NO. 27' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO BLUE' THEN 'MARLBORO BLUE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO EDGE' THEN 'MARLBORO EDGE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO EDGE BLACK' THEN 'MARLBORO EDGE BLACK' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO EIGHTY-THREES' THEN 'MARLBORO EIGHTY-THREES' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO GOLD' THEN 'MARLBORO GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO GREEN' THEN 'MARLBORO GREEN' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO MIDNIGHT BLACK' THEN 'MARLBORO MIDNIGHT BLACK' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO NXT BLACK' THEN 'MARLBORO NXT BLACK' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO NXT GREEN' THEN 'MARLBORO NXT GREEN' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO RED' THEN 'MARLBORO RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO SILVER' THEN 'MARLBORO SILVER' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MARLBORO SKYLINE' THEN 'MARLBORO SKYLINE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MAVERICK' THEN 'MAVERICK' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MAVERICK GOLD' THEN 'MAVERICK GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MAVERICK RED' THEN 'MAVERICK RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MERIT BLUE' THEN 'MERIT BLUE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MISTY GREEN' THEN 'MISTY GREEN' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'MONTEGO' THEN 'MONTEGO' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'NAT SHERMAN NATURALS' THEN 'NAT SHERMAN NATURALS' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'NATURAL AMERICAN SPIRIT' THEN 'NATURAL AMERICAN SPIRIT' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'NATURAL BLEND' THEN 'NATURAL BLEND' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'NEWPORT' THEN 'NEWPORT' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'NEWPORT BLUE' THEN 'NEWPORT BLUE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'NEWPORT GOLD' THEN 'NEWPORT GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'OPAL' THEN 'OPAL' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'PALL MALL' THEN 'PALL MALL' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'PALL MALL BLUE' THEN 'PALL MALL BLUE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'PALL MALL ORANGE' THEN 'PALL MALL ORANGE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'PALL MALL RED' THEN 'PALL MALL RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'PALL MALL WHITE' THEN 'PALL MALL WHITE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'PARLIAMENT' THEN 'PARLIAMENT' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'PLAYERS CANADIAN' THEN 'PLAYERS CANADIAN' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'PYRAMID GOLD' THEN 'PYRAMID GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'PYRAMID RED' THEN 'PYRAMID RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'QUALITY DELUXE' THEN 'QUALITY DELUXE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SALEM' THEN 'SALEM' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SALEM BLACK' THEN 'SALEM BLACK' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SALEM GOLD' THEN 'SALEM GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SANDIA' THEN 'SANDIA' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SENECA' THEN 'SENECA' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SENECA BLUE' THEN 'SENECA BLUE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SHERIFF' THEN 'SHERIFF' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SHERIFF BLUE' THEN 'SHERIFF BLUE' -- categorize string values 
+WHEN REPLACE(REPLACE(SMD100BR,'.0',''),"'","") = 'SHERMANS MCD' THEN 'SHERMANS MCD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SHIELD SILVER' THEN 'SHIELD SILVER' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SILVER CLOUD RED' THEN 'SILVER CLOUD RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SMOKE 1' THEN 'SMOKE 1' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SMOKIN JOES PURPLE' THEN 'SMOKIN JOES PURPLE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SONOMA' THEN 'SONOMA' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'SPORT RED' THEN 'SPORT RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'TIMELESS TIME' THEN 'TIMELESS TIME' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'TIMELESS TIME RED' THEN 'TIMELESS TIME RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'TRAFFIC' THEN 'TRAFFIC' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'USA' THEN 'USA' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'USA BLUE' THEN 'USA BLUE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'USA GOLD' THEN 'USA GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'USA GOLD RED' THEN 'USA GOLD RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'VIRGINIA SLIMS' THEN 'VIRGINIA SLIMS' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'VIRGINIA SLIMS GOLD' THEN 'VIRGINIA SLIMS GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'VIRGINIA SLIMS SUPERSLIMS' THEN 'VIRGINIA SLIMS SUPERSLIMS' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'WAVE' THEN 'WAVE' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'WAVE GREEN' THEN 'WAVE GREEN' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'WILD HORSE GOLD' THEN 'WILD HORSE GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'WINGS' THEN 'WINGS' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'WINGS GOLD' THEN 'WINGS GOLD' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'WINGS RED' THEN 'WINGS RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'WINSTON' THEN 'WINSTON' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'WINSTON RED' THEN 'WINSTON RED' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = 'XIONGSHI' THEN 'XIONGSHI' -- categorize string values 
+WHEN REPLACE(SMD100BR,'.0','') = '* OTHER BRAND *' THEN 'OTHER BRAND' -- categorize string values 
 WHEN SMD100BR IS NULL THEN NULL 
-ELSE SMD100BR 
+ELSE SAFE_CAST(SMD100BR AS STRING) 
  END as cigarette_brand_sub_brand, 
 
 CASE
-            WHEN SMD100FL = 0 THEN 'Non-filter' -- categorize numeric values
-WHEN SMD100FL = 1 THEN 'Filter' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD100FL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Non-filter' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD100FL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Filter' -- categorize numeric values
 WHEN SMD100FL IS NULL THEN NULL 
-ELSE SMD100FL 
+ELSE SAFE_CAST(SMD100FL AS STRING) 
  END as cigarette_filter_type, 
 
 CASE
-            WHEN SMD100MN = 0 THEN 'Non-menthol' -- categorize numeric values
-WHEN SMD100MN = 1 THEN 'Menthol' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD100MN AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Non-menthol' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD100MN AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Menthol' -- categorize numeric values
 WHEN SMD100MN IS NULL THEN NULL 
-ELSE SMD100MN 
+ELSE SAFE_CAST(SMD100MN AS STRING) 
  END as cigarette_menthol_indicator, 
 
 CASE
-            WHEN SMD100LN = 1 THEN 'Regular (68-72 mm)' -- categorize numeric values
-WHEN SMD100LN = 2 THEN 'King (79-88 mm)' -- categorize numeric values
-WHEN SMD100LN = 3 THEN 'Long (94-101 mm)' -- categorize numeric values
-WHEN SMD100LN = 4 THEN 'Ultra long (110-121 mm)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD100LN AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Regular (68-72 mm)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD100LN AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'King (79-88 mm)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD100LN AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Long (94-101 mm)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMD100LN AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Ultra long (110-121 mm)' -- categorize numeric values
 WHEN SMD100LN IS NULL THEN NULL 
-ELSE SMD100LN 
+ELSE SAFE_CAST(SMD100LN AS STRING) 
  END as cigarette_length, 
 
 CASE
-            WHEN SMD100TR IS NULL THEN NULL 
-ELSE SMD100TR 
+WHEN SMD100TR IS NULL THEN NULL 
+ELSE SAFE_CAST(SMD100TR AS STRING) 
  END as ftc_tar_content, 
 
 CASE
-            WHEN SMD100NI IS NULL THEN NULL 
-ELSE SMD100NI 
+WHEN SMD100NI IS NULL THEN NULL 
+ELSE SAFE_CAST(SMD100NI AS STRING) 
  END as ftc_nicotine_content, 
 
 CASE
-            WHEN SMD100CO IS NULL THEN NULL 
-ELSE SMD100CO 
+WHEN SMD100CO IS NULL THEN NULL 
+ELSE SAFE_CAST(SMD100CO AS STRING) 
  END as ftc_carbon_monoxide_content, 
 
 CASE
-            WHEN SMQ621 = '1' THEN 'I have never smoked, not even a puff' -- categorize string values 
-WHEN SMQ621 = '2' THEN '1 or more puffs but never a whole cigarette' -- categorize string values 
-WHEN SMQ621 = '3' THEN '1 cigarette' -- categorize string values 
-WHEN SMQ621 = '4' THEN '2 to 5 cigarettes' -- categorize string values 
-WHEN SMQ621 = '5' THEN '6 to 15 cigarettes' -- categorize string values 
-WHEN SMQ621 = '6' THEN '16 to 25 cigarettes' -- categorize string values 
-WHEN SMQ621 = '7' THEN '26 to 99 cigarettes' -- categorize string values 
-WHEN SMQ621 = '8' THEN '100 or more cigarettes' -- categorize string values 
-WHEN SMQ621 = '77' THEN 'Refused' -- categorize string values 
-WHEN SMQ621 = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ621 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'I have never smoked, not even a puff' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ621 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '1 or more puffs but never a whole cigarette' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ621 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '1 cigarette' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ621 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '2 to 5 cigarettes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ621 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN '6 to 15 cigarettes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ621 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN '16 to 25 cigarettes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ621 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN '26 to 99 cigarettes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ621 AS FLOAT64),0) AS INT64) AS STRING) = '8' THEN '100 or more cigarettes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ621 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ621 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN SMQ621 IS NULL THEN NULL 
-ELSE SMQ621 
+ELSE SAFE_CAST(SMQ621 AS STRING) 
  END as cigarettes_smoked_in_entire_life, 
 
 CASE
-            WHEN SMD630 IS NULL THEN NULL 
-ELSE SMD630 
+WHEN SMD630 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMD630 AS STRING) 
  END as age_first_smoked_whole_cigarette, 
 
 CASE
-            WHEN SMQ661 = '1' THEN 'Marlboro' -- categorize string values 
-WHEN SMQ661 = '2' THEN 'Camel' -- categorize string values 
-WHEN SMQ661 = '3' THEN 'Newport' -- categorize string values 
-WHEN SMQ661 = '8' THEN 'Other brand' -- categorize string values 
-WHEN SMQ661 = '9' THEN 'No usual brand' -- categorize string values 
-WHEN SMQ661 = '10' THEN 'Hand-rolled cigarettes' -- categorize string values 
-WHEN SMQ661 = '77' THEN 'Refused' -- categorize string values 
-WHEN SMQ661 = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ661 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Marlboro' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ661 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Camel' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ661 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Newport' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ661 AS FLOAT64),0) AS INT64) AS STRING) = '8' THEN 'Other brand' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ661 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'No usual brand' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ661 AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Hand-rolled cigarettes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ661 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ661 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN SMQ661 IS NULL THEN NULL 
-ELSE SMQ661 
+ELSE SAFE_CAST(SMQ661 AS STRING) 
  END as brand_of_cigarettes_smoked_past_30_days, 
 
 CASE
-            WHEN SMQ665A = '1' THEN 'MARLBORO RED' -- categorize string values 
-WHEN SMQ665A = '2' THEN 'MARLBORO RED 83S' -- categorize string values 
-WHEN SMQ665A = '3' THEN 'MARLBORO GOLD' -- categorize string values 
-WHEN SMQ665A = '4' THEN 'MARLBORO GOLD MENTHOL' -- categorize string values 
-WHEN SMQ665A = '5' THEN 'MARLBORO SILVER' -- categorize string values 
-WHEN SMQ665A = '6' THEN 'MARLBORO BLACK' -- categorize string values 
-WHEN SMQ665A = '7' THEN 'MARLBORO MENTHOL' -- categorize string values 
-WHEN SMQ665A = '8' THEN 'OTHER MARLBORO' -- categorize string values 
-WHEN SMQ665A = '77' THEN 'Refused' -- categorize string values 
-WHEN SMQ665A = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'MARLBORO RED' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665A AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'MARLBORO RED 83S' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665A AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'MARLBORO GOLD' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665A AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'MARLBORO GOLD MENTHOL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665A AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'MARLBORO SILVER' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665A AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'MARLBORO BLACK' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665A AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'MARLBORO MENTHOL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665A AS FLOAT64),0) AS INT64) AS STRING) = '8' THEN 'OTHER MARLBORO' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN SMQ665A IS NULL THEN NULL 
-ELSE SMQ665A 
+ELSE SAFE_CAST(SMQ665A AS STRING) 
  END as marlboro_variety, 
 
 CASE
-            WHEN SMQ665B = '1' THEN 'CAMEL' -- categorize string values 
-WHEN SMQ665B = '2' THEN 'CAMEL BLUE' -- categorize string values 
-WHEN SMQ665B = '3' THEN 'CAMEL CRUSH' -- categorize string values 
-WHEN SMQ665B = '4' THEN 'CAMEL CRUSH BOLD' -- categorize string values 
-WHEN SMQ665B = '5' THEN 'CAMEL MENTHOL' -- categorize string values 
-WHEN SMQ665B = '6' THEN 'CAMEL MENTHOL SILVER' -- categorize string values 
-WHEN SMQ665B = '7' THEN 'OTHER CAMEL' -- categorize string values 
-WHEN SMQ665B = '77' THEN 'Refused' -- categorize string values 
-WHEN SMQ665B = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665B AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'CAMEL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'CAMEL BLUE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665B AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'CAMEL CRUSH' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665B AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'CAMEL CRUSH BOLD' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665B AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'CAMEL MENTHOL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665B AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'CAMEL MENTHOL SILVER' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665B AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'OTHER CAMEL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665B AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665B AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN SMQ665B IS NULL THEN NULL 
-ELSE SMQ665B 
+ELSE SAFE_CAST(SMQ665B AS STRING) 
  END as camel_variety, 
 
 CASE
-            WHEN SMQ665C = '1' THEN 'NEWPORT' -- categorize string values 
-WHEN SMQ665C = '2' THEN 'NEWPORT MENTHOL GOLD' -- categorize string values 
-WHEN SMQ665C = '3' THEN 'OTHER NEWPORT' -- categorize string values 
-WHEN SMQ665C = '77' THEN 'Refused' -- categorize string values 
-WHEN SMQ665C = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665C AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'NEWPORT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665C AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'NEWPORT MENTHOL GOLD' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665C AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'OTHER NEWPORT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665C AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665C AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN SMQ665C IS NULL THEN NULL 
-ELSE SMQ665C 
+ELSE SAFE_CAST(SMQ665C AS STRING) 
  END as newport_variety, 
 
 CASE
-            WHEN SMQ665D = '1' THEN 'BASIC' -- categorize string values 
-WHEN SMQ665D = '2' THEN 'DORAL RED 100S' -- categorize string values 
-WHEN SMQ665D = '3' THEN 'DORAL MENTHOL GOLD BOX 100S' -- categorize string values 
-WHEN SMQ665D = '4' THEN 'GPC' -- categorize string values 
-WHEN SMQ665D = '5' THEN 'GPC MENTHOL' -- categorize string values 
-WHEN SMQ665D = '6' THEN 'KOOL BLUE MENTHOL 100S' -- categorize string values 
-WHEN SMQ665D = '7' THEN 'KOOL TRUE MENTHOL' -- categorize string values 
-WHEN SMQ665D = '8' THEN 'VIRGINIA SLIMS' -- categorize string values 
-WHEN SMQ665D = '9' THEN 'OTHER BRAND' -- categorize string values 
-WHEN SMQ665D = '77' THEN 'Refused' -- categorize string values 
-WHEN SMQ665D = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665D AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'BASIC' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665D AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'DORAL RED 100S' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665D AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'DORAL MENTHOL GOLD BOX 100S' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665D AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'GPC' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665D AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'GPC MENTHOL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665D AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'KOOL BLUE MENTHOL 100S' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665D AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'KOOL TRUE MENTHOL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665D AS FLOAT64),0) AS INT64) AS STRING) = '8' THEN 'VIRGINIA SLIMS' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665D AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'OTHER BRAND' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665D AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ665D AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN SMQ665D IS NULL THEN NULL 
-ELSE SMQ665D 
+ELSE SAFE_CAST(SMQ665D AS STRING) 
  END as other_brand, 
 
 CASE
-            WHEN SMQ670 = 1 THEN 'Yes' -- categorize numeric values
-WHEN SMQ670 = 2 THEN 'No' -- categorize numeric values
-WHEN SMQ670 = 7 THEN 'Refused' -- categorize numeric values
-WHEN SMQ670 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ670 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ670 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ670 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ670 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SMQ670 IS NULL THEN NULL 
-ELSE SMQ670 
+ELSE SAFE_CAST(SMQ670 AS STRING) 
  END as tried_to_quit_smoking, 
 
 CASE
-            WHEN SAFE_CAST(SMQ848 AS FLOAT64) > 20.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(SMQ848 AS FLOAT64) > 31.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SMQ848 IS NULL THEN NULL 
-ELSE SMQ848 
+ELSE SAFE_CAST(SMQ848 AS FLOAT64) 
  END as times_stopped_smoking_cigarettes, 
 
 CASE
-            WHEN SAFE_CAST(SMQ852Q AS FLOAT64) > 364.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(SMQ852Q AS FLOAT64) > 375.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SMQ852Q IS NULL THEN NULL 
-ELSE SMQ852Q 
+ELSE SAFE_CAST(SMQ852Q AS FLOAT64) 
  END as how_long_were_you_able_to_stop_smoking, 
 
 CASE
-            WHEN SMQ852U = '1' THEN 'Days' -- categorize string values 
-WHEN SMQ852U = '2' THEN 'Weeks' -- categorize string values 
-WHEN SMQ852U = '3' THEN 'Months' -- categorize string values 
-WHEN SMQ852U = '7' THEN 'Refused' -- categorize string values 
-WHEN SMQ852U = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ852U AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Days' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ852U AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Weeks' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ852U AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ852U AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ852U AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN SMQ852U IS NULL THEN NULL 
-ELSE SMQ852U 
+ELSE SAFE_CAST(SMQ852U AS STRING) 
  END as unit_of_measure_day_week_month_year_SMQ852U, 
 
 CASE
-            WHEN SMQ890 = '1' THEN 'Yes' -- categorize string values 
-WHEN SMQ890 = '2' THEN 'No' -- categorize string values 
-WHEN SMQ890 = '7' THEN 'Refused' -- categorize string values 
-WHEN SMQ890 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ890 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ890 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ890 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ890 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN SMQ890 IS NULL THEN NULL 
-ELSE SMQ890 
+ELSE SAFE_CAST(SMQ890 AS STRING) 
  END as ever_smoked_a_cigar_even_1_time, 
 
 CASE
-            WHEN SAFE_CAST(SMQ895 AS FLOAT64) > 30.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(SMQ895 AS FLOAT64) > 41.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SMQ895 IS NULL THEN NULL 
-ELSE SMQ895 
+ELSE SAFE_CAST(SMQ895 AS FLOAT64) 
  END as how_many_days_smoked_a_cigar, 
 
 CASE
-            WHEN SMQ900 = '1' THEN 'Yes' -- categorize string values 
-WHEN SMQ900 = '2' THEN 'No' -- categorize string values 
-WHEN SMQ900 = '7' THEN 'Refused' -- categorize string values 
-WHEN SMQ900 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ900 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ900 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ900 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ900 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN SMQ900 IS NULL THEN NULL 
-ELSE SMQ900 
+ELSE SAFE_CAST(SMQ900 AS STRING) 
  END as ever_used_an_e_cigarette, 
 
 CASE
-            WHEN SAFE_CAST(SMQ905 AS FLOAT64) > 30.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(SMQ905 AS FLOAT64) > 41.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SMQ905 IS NULL THEN NULL 
-ELSE SMQ905 
+ELSE SAFE_CAST(SMQ905 AS FLOAT64) 
  END as how_many_days_used_an_e_cigarette, 
 
 CASE
-            WHEN SMQ910 = '1' THEN 'Yes' -- categorize string values 
-WHEN SMQ910 = '2' THEN 'No' -- categorize string values 
-WHEN SMQ910 = '7' THEN 'Refused' -- categorize string values 
-WHEN SMQ910 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ910 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ910 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ910 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ910 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN SMQ910 IS NULL THEN NULL 
-ELSE SMQ910 
+ELSE SAFE_CAST(SMQ910 AS STRING) 
  END as ever_used_smokeless_tobacco, 
 
 CASE
-            WHEN SAFE_CAST(SMQ915 AS FLOAT64) > 30.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(SMQ915 AS FLOAT64) > 41.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SMQ915 IS NULL THEN NULL 
-ELSE SMQ915 
+ELSE SAFE_CAST(SMQ915 AS FLOAT64) 
  END as how_many_days_used_smokeless_tobacco, 
 
 CASE
-            WHEN SMAQUEX2 = 1 THEN 'Home Interview (18+ Yrs)' -- categorize numeric values
-WHEN SMAQUEX2 = 2 THEN 'ACASI (12 - 17 Yrs)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMAQUEX2 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Home Interview (18+ Yrs)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMAQUEX2 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'ACASI (12 - 17 Yrs)' -- categorize numeric values
 WHEN SMAQUEX2 IS NULL THEN NULL 
-ELSE SMAQUEX2 
+ELSE SAFE_CAST(SMAQUEX2 AS STRING) 
  END as questionnaire_mode_flag, 
 
+CASE
+WHEN SMD055 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMD055 AS STRING) 
+ END as age_last_smoked_cigarettes_regularly, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ925 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ925 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ925 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ925 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SMQ925 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ925 AS STRING) 
+ END as ever_smoked_a_cigarette_even_1_time, 
+
+CASE
+WHEN SAFE_CAST(SMQ930 AS FLOAT64) > 81.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SMQ930 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ930 AS FLOAT64) 
+ END as age_smoked_first_cigarette, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ935 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Every day' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ935 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some Days' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ935 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Not at all' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ935 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ935 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SMQ935 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ935 AS STRING) 
+ END as do_you_now_smoke_cigarettes_SMQ935, 
+
+CASE
+WHEN SAFE_CAST(SMQ080 AS FLOAT64) > 41.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SMQ080 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ080 AS FLOAT64) 
+ END as days_smoked_cigs_during_past_30_days_SMQ080, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ077 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Within 5 minutes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ077 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'From 6 to 30 minutes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ077 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'From more than 30 minutes to one hour' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ077 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'More than one hour' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ077 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ077 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ077 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ077 AS STRING) 
+ END as how_soon_after_waking_do_you_smoke_SMQ077, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Marlboro' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Camel' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Newport' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Kool' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'Winston' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(6 AS FLOAT64),0) AS INT64) THEN 'Benson and hedges' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Salem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(8 AS FLOAT64),0) AS INT64) THEN 'Some other brand' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ660 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ660 AS STRING) 
+ END as brands_of_cigarettes_smoked_past_mo, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Menthol' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Non-menthol' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ664M IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ664M AS STRING) 
+ END as menthol_or_non_menthol_marlboro, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Menthol' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Non-menthol' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ664C IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ664C AS STRING) 
+ END as menthol_or_non_menthol_camels, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ664W AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Menthol' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ664W AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Non-menthol' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ664W AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ664W AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SMQ664W IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ664W AS STRING) 
+ END as menthol_or_non_menthol_winston, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Menthol' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Non-menthol' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ664B IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ664B AS STRING) 
+ END as menthol_or_non_menthol_bensonhedges, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Menthol' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Non-menthol' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ664O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ664O IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ664O AS STRING) 
+ END as menthol_or_non_menthol_other_brand, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ620 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ620 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ620 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ620 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ620 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ620 AS STRING) 
+ END as ever_tried_cigarette_smoking, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Regulars' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Lights' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Ultralights' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ666M IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ666M AS STRING) 
+ END as regular_light_or_ultralite_marlboro, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Regulars' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Lights' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Ultralights' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ666C IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ666C AS STRING) 
+ END as regular_light_or_ultralite_camels, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Regulars' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Lights' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Ultralights' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ666K IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ666K AS STRING) 
+ END as regular_light_or_ultralite_kools, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ666W AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Regulars' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ666W AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Lights' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ666W AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Ultralights' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ666W AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SMQ666W AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SMQ666W IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ666W AS STRING) 
+ END as regular_light_or_ultralite_winston, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Regulars' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Lights' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Ultralights' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ666B IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ666B AS STRING) 
+ END as regular_light_or_ultralite_bensonhedges, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666S AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Regulars' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666S AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Lights' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666S AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Ultralights' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666S AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666S AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ666S IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ666S AS STRING) 
+ END as regular_light_or_ultralite_salem, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Regular' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Light' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Ultralight' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SMQ666O AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN SMQ666O IS NULL THEN NULL 
+ELSE SAFE_CAST(SMQ666O AS STRING) 
+ END as regular_light_or_ultralite_other_brand, 
+
+CASE
+WHEN SMD070 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMD070 AS STRING) 
+ END as cigarettes_smoked_per_day_now, 
+
+CASE
+WHEN SMD075 IS NULL THEN NULL 
+ELSE SAFE_CAST(SMD075 AS STRING) 
+ END as how_many_years_smoked_this_amount, 
+
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
  FROM {{ ref('stg_smoking_cigarette_use_questionnaire') }}
 
-        -- Docs utilized to generate this SQL can be found at https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SMQ_J.htm
-        
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SMQ_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_SMQ.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/SMQ_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/SMQ_H.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/SMQ_G.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/SMQ_F.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/SMQ_E.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/SMQ_D.htm
+*/

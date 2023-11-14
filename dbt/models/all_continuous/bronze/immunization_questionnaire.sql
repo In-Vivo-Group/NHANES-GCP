@@ -1,89 +1,175 @@
 SELECT
-        SEQN as respondent_sequence_number, -- could not identify transformation logic 
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN IMQ011 = '1' THEN 'Yes, at least 2 doses' -- categorize string values 
-WHEN IMQ011 = '2' THEN 'Less than 2 doses' -- categorize string values 
-WHEN IMQ011 = '3' THEN 'No doses' -- categorize string values 
-WHEN IMQ011 = '7' THEN 'Refused' -- categorize string values 
-WHEN IMQ011 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ011 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes, at least 2 doses' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ011 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Less than 2 doses' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ011 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'No doses' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ011 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ011 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN IMQ011 IS NULL THEN NULL 
-ELSE IMQ011 
+ELSE SAFE_CAST(IMQ011 AS STRING) 
  END as received_hepatitis_a_vaccine, 
 
 CASE
-            WHEN IMQ020 = 1 THEN 'Yes at least 3 doses' -- categorize numeric values
-WHEN IMQ020 = 2 THEN 'Less than 3 doses' -- categorize numeric values
-WHEN IMQ020 = 3 THEN 'No doses' -- categorize numeric values
-WHEN IMQ020 = 7 THEN 'Refused' -- categorize numeric values
-WHEN IMQ020 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes at least 3 doses' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Less than 3 doses' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'No doses' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN IMQ020 IS NULL THEN NULL 
-ELSE IMQ020 
+ELSE SAFE_CAST(IMQ020 AS STRING) 
  END as received_hepatitis_b_3_dose_series, 
 
--- IMQ050 as IMQ050, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN IMQ060 = '1' THEN 'Yes' -- categorize string values 
-WHEN IMQ060 = '2' THEN 'No' -- categorize string values 
-WHEN IMQ060 = '7' THEN 'Refused' -- categorize string values 
-WHEN IMQ060 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ060 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ060 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ060 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ060 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN IMQ060 IS NULL THEN NULL 
-ELSE IMQ060 
+ELSE SAFE_CAST(IMQ060 AS STRING) 
  END as received_hpv_vaccine_females, 
 
 CASE
-            WHEN IMQ070 = '1' THEN 'Yes' -- categorize string values 
-WHEN IMQ070 = '2' THEN 'No' -- categorize string values 
-WHEN IMQ070 = '7' THEN 'Refused' -- categorize string values 
-WHEN IMQ070 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ070 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ070 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ070 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ070 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN IMQ070 IS NULL THEN NULL 
-ELSE IMQ070 
+ELSE SAFE_CAST(IMQ070 AS STRING) 
  END as received_hpv_vaccine_males, 
 
 CASE
-            WHEN IMQ081A = '1' THEN 'CERVARIX' -- categorize string values 
-WHEN IMQ081A = '7' THEN 'Refused' -- categorize string values 
-WHEN IMQ081A = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ081A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'CERVARIX' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ081A AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ081A AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN IMQ081A IS NULL THEN NULL 
-ELSE IMQ081A 
+ELSE SAFE_CAST(IMQ081A AS STRING) 
  END as received_cervarix_females, 
 
 CASE
-            WHEN IMQ081B = '2' THEN 'GARDASIL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ081B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'GARDASIL' -- categorize string values 
 WHEN IMQ081B IS NULL THEN NULL 
-ELSE IMQ081B 
+ELSE SAFE_CAST(IMQ081B AS STRING) 
  END as received_gardasil_females, 
 
 CASE
-            WHEN IMQ081C = '3' THEN 'GARDASIL 9' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ081C AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'GARDASIL 9' -- categorize string values 
 WHEN IMQ081C IS NULL THEN NULL 
-ELSE IMQ081C 
+ELSE SAFE_CAST(IMQ081C AS STRING) 
  END as received_gardasil_9_females, 
 
 CASE
-            WHEN IMQ081D = '4' THEN 'GARDASIL (not sure wich one)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ081D AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'GARDASIL (not sure wich one)' -- categorize string values 
 WHEN IMQ081D IS NULL THEN NULL 
-ELSE IMQ081D 
+ELSE SAFE_CAST(IMQ081D AS STRING) 
  END as received_unknown_gardasil_females, 
 
 CASE
-            WHEN SAFE_CAST(IMQ090 AS FLOAT64) > 57.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(IMQ090 AS FLOAT64) > 68.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN IMQ090 IS NULL THEN NULL 
-ELSE IMQ090 
+ELSE SAFE_CAST(IMQ090 AS FLOAT64) 
  END as age_first_dose_hpv, 
 
 CASE
-            WHEN IMQ100 = '1' THEN '1 Dose' -- categorize string values 
-WHEN IMQ100 = '2' THEN '2 Doses' -- categorize string values 
-WHEN IMQ100 = '3' THEN '3 Doses' -- categorize string values 
-WHEN IMQ100 = '7' THEN 'Refused' -- categorize string values 
-WHEN IMQ100 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ100 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN '1 Dose' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ100 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '2 Doses' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ100 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '3 Doses' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ100 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ100 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN IMQ100 IS NULL THEN NULL 
-ELSE IMQ100 
+ELSE SAFE_CAST(IMQ100 AS STRING) 
  END as received_hpv_of_doses, 
 
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMD080 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Cervarix' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMD080 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Gardasil' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMD080 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Both' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMD080 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMD080 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN IMD080 IS NULL THEN NULL 
+ELSE SAFE_CAST(IMD080 AS STRING) 
+ END as which_hpv_vaccine_received_females, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ040 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ040 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ040 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ040 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN IMQ040 IS NULL THEN NULL 
+ELSE SAFE_CAST(IMQ040 AS STRING) 
+ END as received_hpv_vaccine, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ080 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Cervarix' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ080 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Gardasil' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ080 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Both' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ080 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ080 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN IMQ080 IS NULL THEN NULL 
+ELSE SAFE_CAST(IMQ080 AS STRING) 
+ END as hpv_vaccine_received, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ045 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN '1 Dose' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ045 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '2 Doses' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ045 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '3 Doses' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ045 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMQ045 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN IMQ045 IS NULL THEN NULL 
+ELSE SAFE_CAST(IMQ045 AS STRING) 
+ END as received_hpv_of_doses_IMQ045, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMD010 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes, at least 2 doses' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMD010 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Less than 2 doses' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMD010 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'No doses' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMD010 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(IMD010 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN IMD010 IS NULL THEN NULL 
+ELSE SAFE_CAST(IMD010 AS STRING) 
+ END as received_hepatitis_a_vaccine_IMD010, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN IMQ030 IS NULL THEN NULL 
+ELSE SAFE_CAST(IMQ030 AS STRING) 
+ END as had_pneumonia_vaccination, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes, at least 2 doses' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Less than 2 doses' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'No doses' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(IMQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN IMQ010 IS NULL THEN NULL 
+ELSE SAFE_CAST(IMQ010 AS STRING) 
+ END as received_hepatitis_a_vaccine_series, 
+
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
  FROM {{ ref('stg_immunization_questionnaire') }}
 
-        -- Docs utilized to generate this SQL can be found at https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/IMQ_J.htm
-        
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/IMQ_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_IMQ.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/IMQ_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/IMQ_H.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/IMQ_G.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/IMQ_F.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/IMQ_E.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/IMQ_D.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2003-2004/IMQ_C.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2001-2002/IMQ_B.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/IMQ.htm
+*/

@@ -1,382 +1,821 @@
 SELECT
-        SEQN as respondent_sequence_number, -- could not identify transformation logic 
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN OHQ030 = 1 THEN '6 months or less' -- categorize numeric values
-WHEN OHQ030 = 2 THEN 'More than 6 months, but not more than 1 year ago' -- categorize numeric values
-WHEN OHQ030 = 3 THEN 'More than 1 year, but not more than 2 years ago' -- categorize numeric values
-WHEN OHQ030 = 4 THEN 'More than 2 years, but not more than 3 years ago' -- categorize numeric values
-WHEN OHQ030 = 5 THEN 'More than 3 years, but not more than 5 years ago' -- categorize numeric values
-WHEN OHQ030 = 6 THEN 'More than 5 years ago' -- categorize numeric values
-WHEN OHQ030 = 7 THEN 'Never have been' -- categorize numeric values
-WHEN OHQ030 = 77 THEN 'Refused' -- categorize numeric values
-WHEN OHQ030 = 99 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN '6 months or less' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'More than 6 months, but not more than 1 year ago' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'More than 1 year, but not more than 2 years ago' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'More than 2 years, but not more than 3 years ago' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'More than 3 years, but not more than 5 years ago' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(6 AS FLOAT64),0) AS INT64) THEN 'More than 5 years ago' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Never have been' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OHQ030 IS NULL THEN NULL 
-ELSE OHQ030 
+ELSE SAFE_CAST(OHQ030 AS STRING) 
  END as when_did_you_last_visit_a_dentist, 
 
 CASE
-            WHEN OHQ033 = 1 THEN 'Went in on own for check-up, examination, or cleaning' -- categorize numeric values
-WHEN OHQ033 = 2 THEN 'Was called in by the dentist for check-up, examination, or cleaning' -- categorize numeric values
-WHEN OHQ033 = 3 THEN 'Something was wrong, bothering or hurting {me/SP}' -- categorize numeric values
-WHEN OHQ033 = 4 THEN 'Went for treatment of a condition that dentist discovered at earlier checkup or examination' -- categorize numeric values
-WHEN OHQ033 = 5 THEN 'Other' -- categorize numeric values
-WHEN OHQ033 = 7 THEN 'Refused' -- categorize numeric values
-WHEN OHQ033 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ033 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Went in on own for check-up, examination, or cleaning' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ033 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Was called in by the dentist for check-up, examination, or cleaning' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ033 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Something was wrong, bothering or hurting {me/SP}' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ033 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Went for treatment of a condition that dentist discovered at earlier checkup or examination' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ033 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'Other' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ033 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ033 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OHQ033 IS NULL THEN NULL 
-ELSE OHQ033 
+ELSE SAFE_CAST(OHQ033 AS STRING) 
  END as main_reason_for_last_dental_visit, 
 
 CASE
-            WHEN OHQ770 = '1' THEN 'Yes' -- categorize string values 
-WHEN OHQ770 = '2' THEN 'No' -- categorize string values 
-WHEN OHQ770 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ770 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ770 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ770 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ770 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ770 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ770 IS NULL THEN NULL 
-ELSE OHQ770 
+ELSE SAFE_CAST(OHQ770 AS STRING) 
  END as past_yr_need_dental_but_couldn_t_get_it, 
 
 CASE
-            WHEN OHQ780A = '10' THEN 'Could not afford the cost' -- categorize string values 
-WHEN OHQ780A = '77' THEN 'Refused' -- categorize string values 
-WHEN OHQ780A = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780A AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Could not afford the cost' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN OHQ780A IS NULL THEN NULL 
-ELSE OHQ780A 
+ELSE SAFE_CAST(OHQ780A AS STRING) 
  END as could_not_afford_the_cost, 
 
 CASE
-            WHEN OHQ780B = '11' THEN 'Did not want to spend the money' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780B AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'Did not want to spend the money' -- categorize string values 
 WHEN OHQ780B IS NULL THEN NULL 
-ELSE OHQ780B 
+ELSE SAFE_CAST(OHQ780B AS STRING) 
  END as did_not_want_to_spend_the_money, 
 
 CASE
-            WHEN OHQ780C = '12' THEN 'Insurance did not cover recommended procedure' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'Insurance did not cover recommended procedure' -- categorize string values 
 WHEN OHQ780C IS NULL THEN NULL 
-ELSE OHQ780C 
+ELSE SAFE_CAST(OHQ780C AS STRING) 
  END as insurance_did_not_cover_procedures, 
 
 CASE
-            WHEN OHQ780D = '13' THEN 'Dental office is too far away' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Dental office is too far away' -- categorize string values 
 WHEN OHQ780D IS NULL THEN NULL 
-ELSE OHQ780D 
+ELSE SAFE_CAST(OHQ780D AS STRING) 
  END as dental_office_is_too_far_away, 
 
 CASE
-            WHEN OHQ780E = '14' THEN 'Dental office not open at convenient time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780E AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'Dental office not open at convenient time' -- categorize string values 
 WHEN OHQ780E IS NULL THEN NULL 
-ELSE OHQ780E 
+ELSE SAFE_CAST(OHQ780E AS STRING) 
  END as office_not_open_at_convenient_time, 
 
 CASE
-            WHEN OHQ780F = '15' THEN 'Another dentist recommended not doing it' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780F AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'Another dentist recommended not doing it' -- categorize string values 
 WHEN OHQ780F IS NULL THEN NULL 
-ELSE OHQ780F 
+ELSE SAFE_CAST(OHQ780F AS STRING) 
  END as another_dentist_recommended_not_doing_it, 
 
 CASE
-            WHEN OHQ780G = '16' THEN 'Afraid or do not like dentists' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780G AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'Afraid or do not like dentists' -- categorize string values 
 WHEN OHQ780G IS NULL THEN NULL 
-ELSE OHQ780G 
+ELSE SAFE_CAST(OHQ780G AS STRING) 
  END as afraid_or_do_not_like_dentists, 
 
 CASE
-            WHEN OHQ780H = '17' THEN 'Unable to take time off from work' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780H AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'Unable to take time off from work' -- categorize string values 
 WHEN OHQ780H IS NULL THEN NULL 
-ELSE OHQ780H 
+ELSE SAFE_CAST(OHQ780H AS STRING) 
  END as unable_to_take_time_off_from_work, 
 
 CASE
-            WHEN OHQ780I = '18' THEN 'Too busy' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780I AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'Too busy' -- categorize string values 
 WHEN OHQ780I IS NULL THEN NULL 
-ELSE OHQ780I 
+ELSE SAFE_CAST(OHQ780I AS STRING) 
  END as too_busy, 
 
 CASE
-            WHEN OHQ780J = '19' THEN 'I did not think anything serious was wrong - expected dental problems to go away' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780J AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'I did not think anything serious was wrong - expected dental problems to go away' -- categorize string values 
 WHEN OHQ780J IS NULL THEN NULL 
-ELSE OHQ780J 
+ELSE SAFE_CAST(OHQ780J AS STRING) 
  END as expected_dental_problems_to_go_away, 
 
 CASE
-            WHEN OHQ780K = '20' THEN 'Other' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ780K AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'Other' -- categorize string values 
 WHEN OHQ780K IS NULL THEN NULL 
-ELSE OHQ780K 
+ELSE SAFE_CAST(OHQ780K AS STRING) 
  END as other_reason_could_not_get_dental_care, 
 
--- OHQ550 as OHQ550, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN OHQ555G = '1' THEN 'Enter age' -- categorize string values 
-WHEN OHQ555G = '2' THEN 'Has not started brushing teeth' -- categorize string values 
-WHEN OHQ555G = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ555G = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ555G AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Enter age' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ555G AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Has not started brushing teeth' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ555G AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ555G AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ555G IS NULL THEN NULL 
-ELSE OHQ555G 
+ELSE SAFE_CAST(OHQ555G AS STRING) 
  END as age_started_brushing_teeth, 
 
 CASE
-            WHEN SAFE_CAST(OHQ555Q AS FLOAT64) > 54.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OHQ555Q AS FLOAT64) > 65.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OHQ555Q IS NULL THEN NULL 
-ELSE OHQ555Q 
+ELSE SAFE_CAST(OHQ555Q AS FLOAT64) 
  END as age_started_brushing_teeth_OHQ555Q, 
 
 CASE
-            WHEN OHQ555U = '1' THEN 'Months' -- categorize string values 
-WHEN OHQ555U = '2' THEN 'Years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ555U AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ555U AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Years' -- categorize string values 
 WHEN OHQ555U IS NULL THEN NULL 
-ELSE OHQ555U 
+ELSE SAFE_CAST(OHQ555U AS STRING) 
  END as age_started_brushing_teeth_OHQ555U, 
 
 CASE
-            WHEN OHQ560G = '1' THEN 'Enter age' -- categorize string values 
-WHEN OHQ560G = '2' THEN 'Has not started brushing teeth' -- categorize string values 
-WHEN OHQ560G = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ560G = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ560G AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Enter age' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ560G AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Has not started brushing teeth' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ560G AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ560G AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ560G IS NULL THEN NULL 
-ELSE OHQ560G 
+ELSE SAFE_CAST(OHQ560G AS STRING) 
  END as age_started_using_toothpaste, 
 
 CASE
-            WHEN SAFE_CAST(OHQ560Q AS FLOAT64) > 66.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OHQ560Q AS FLOAT64) > 77.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OHQ560Q IS NULL THEN NULL 
-ELSE OHQ560Q 
+ELSE SAFE_CAST(OHQ560Q AS FLOAT64) 
  END as age_started_using_toothpaste_OHQ560Q, 
 
 CASE
-            WHEN OHQ560U = '1' THEN 'Months' -- categorize string values 
-WHEN OHQ560U = '2' THEN 'Years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ560U AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ560U AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Years' -- categorize string values 
 WHEN OHQ560U IS NULL THEN NULL 
-ELSE OHQ560U 
+ELSE SAFE_CAST(OHQ560U AS STRING) 
  END as age_started_using_toothpaste_OHQ560U, 
 
 CASE
-            WHEN OHQ566 = '1' THEN 'Yes' -- categorize string values 
-WHEN OHQ566 = '2' THEN 'No' -- categorize string values 
-WHEN OHQ566 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ566 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ566 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ566 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ566 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ566 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ566 IS NULL THEN NULL 
-ELSE OHQ566 
+ELSE SAFE_CAST(OHQ566 AS STRING) 
  END as received_rx_fluoride_drops_or_tablets, 
 
 CASE
-            WHEN SAFE_CAST(OHQ571Q AS FLOAT64) > 36.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OHQ571Q AS FLOAT64) > 47.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OHQ571Q IS NULL THEN NULL 
-ELSE OHQ571Q 
+ELSE SAFE_CAST(OHQ571Q AS FLOAT64) 
  END as age_started_taking_prescription_fluoride, 
 
 CASE
-            WHEN OHQ571U = '1' THEN 'Month' -- categorize string values 
-WHEN OHQ571U = '2' THEN 'Years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ571U AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Month' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ571U AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Years' -- categorize string values 
 WHEN OHQ571U IS NULL THEN NULL 
-ELSE OHQ571U 
+ELSE SAFE_CAST(OHQ571U AS STRING) 
  END as age_started_taking_prescription_fluoride_OHQ571U, 
 
 CASE
-            WHEN OHQ576G = '1' THEN 'Age' -- categorize string values 
-WHEN OHQ576G = '2' THEN 'Still taking fluoride drops or tablets' -- categorize string values 
-WHEN OHQ576G = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ576G = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ576G AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Age' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ576G AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Still taking fluoride drops or tablets' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ576G AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ576G AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ576G IS NULL THEN NULL 
-ELSE OHQ576G 
+ELSE SAFE_CAST(OHQ576G AS STRING) 
  END as age_stopped_taking_prescription_fluoride, 
 
 CASE
-            WHEN SAFE_CAST(OHQ576Q AS FLOAT64) > 78.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OHQ576Q AS FLOAT64) > 89.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OHQ576Q IS NULL THEN NULL 
-ELSE OHQ576Q 
+ELSE SAFE_CAST(OHQ576Q AS FLOAT64) 
  END as age_stopped_taking_prescription_fluoride_OHQ576Q, 
 
 CASE
-            WHEN OHQ576U = '1' THEN 'Months' -- categorize string values 
-WHEN OHQ576U = '2' THEN 'Years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ576U AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ576U AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Years' -- categorize string values 
 WHEN OHQ576U IS NULL THEN NULL 
-ELSE OHQ576U 
+ELSE SAFE_CAST(OHQ576U AS STRING) 
  END as age_stopped_taking_prescription_fluoride_OHQ576U, 
 
--- OHQ592 as OHQ592, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN OHQ610 = '1' THEN 'Yes' -- categorize string values 
-WHEN OHQ610 = '2' THEN 'No' -- categorize string values 
-WHEN OHQ610 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ610 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ610 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ610 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ610 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ610 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ610 IS NULL THEN NULL 
-ELSE OHQ610 
+ELSE SAFE_CAST(OHQ610 AS STRING) 
  END as told_benefits_of_giving_up_cigarettes, 
 
 CASE
-            WHEN OHQ612 = '1' THEN 'Yes' -- categorize string values 
-WHEN OHQ612 = '2' THEN 'No' -- categorize string values 
-WHEN OHQ612 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ612 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ612 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ612 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ612 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ612 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ612 IS NULL THEN NULL 
-ELSE OHQ612 
+ELSE SAFE_CAST(OHQ612 AS STRING) 
  END as told_benefits_of_checking_blood_sugar, 
 
 CASE
-            WHEN OHQ614 = '1' THEN 'Yes' -- categorize string values 
-WHEN OHQ614 = '2' THEN 'No' -- categorize string values 
-WHEN OHQ614 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ614 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ614 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ614 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ614 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ614 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ614 IS NULL THEN NULL 
-ELSE OHQ614 
+ELSE SAFE_CAST(OHQ614 AS STRING) 
  END as told_importance_of_checking_for_cancer, 
 
--- OHQ616 as OHQ616, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN OHQ620 = '1' THEN 'Very often' -- categorize string values 
-WHEN OHQ620 = '2' THEN 'Fairly often' -- categorize string values 
-WHEN OHQ620 = '3' THEN 'Occasionally' -- categorize string values 
-WHEN OHQ620 = '4' THEN 'Hardly ever, or' -- categorize string values 
-WHEN OHQ620 = '5' THEN 'Never?' -- categorize string values 
-WHEN OHQ620 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ620 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ620 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Very often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ620 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Fairly often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ620 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Occasionally' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ620 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Hardly ever, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ620 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ620 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ620 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ620 IS NULL THEN NULL 
-ELSE OHQ620 
+ELSE SAFE_CAST(OHQ620 AS STRING) 
  END as how_often_last_yr_had_aching_in_mouth, 
 
 CASE
-            WHEN OHQ640 = '1' THEN 'Very often' -- categorize string values 
-WHEN OHQ640 = '2' THEN 'Fairly often' -- categorize string values 
-WHEN OHQ640 = '3' THEN 'Occasionally' -- categorize string values 
-WHEN OHQ640 = '4' THEN 'Hardly ever, or' -- categorize string values 
-WHEN OHQ640 = '5' THEN 'Never?' -- categorize string values 
-WHEN OHQ640 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ640 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ640 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Very often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ640 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Fairly often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ640 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Occasionally' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ640 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Hardly ever, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ640 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ640 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ640 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ640 IS NULL THEN NULL 
-ELSE OHQ640 
+ELSE SAFE_CAST(OHQ640 AS STRING) 
  END as last_yr_had_diff_w_job_because_of_mouth, 
 
 CASE
-            WHEN OHQ680 = '1' THEN 'Very often' -- categorize string values 
-WHEN OHQ680 = '2' THEN 'Fairly often' -- categorize string values 
-WHEN OHQ680 = '3' THEN 'Occasionally' -- categorize string values 
-WHEN OHQ680 = '4' THEN 'Hardly ever, or' -- categorize string values 
-WHEN OHQ680 = '5' THEN 'Never?' -- categorize string values 
-WHEN OHQ680 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ680 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ680 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Very often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ680 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Fairly often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ680 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Occasionally' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ680 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Hardly ever, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ680 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ680 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ680 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ680 IS NULL THEN NULL 
-ELSE OHQ680 
+ELSE SAFE_CAST(OHQ680 AS STRING) 
  END as last_yr_embarrassed_because_of_mouth, 
 
 CASE
-            WHEN OHQ835 = '1' THEN 'Yes' -- categorize string values 
-WHEN OHQ835 = '2' THEN 'No' -- categorize string values 
-WHEN OHQ835 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ835 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ835 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ835 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ835 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ835 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ835 IS NULL THEN NULL 
-ELSE OHQ835 
+ELSE SAFE_CAST(OHQ835 AS STRING) 
  END as do_you_think_you_might_have_gum_disease, 
 
 CASE
-            WHEN OHQ845 = '1' THEN 'Excellent' -- categorize string values 
-WHEN OHQ845 = '2' THEN 'Very good' -- categorize string values 
-WHEN OHQ845 = '3' THEN 'Good' -- categorize string values 
-WHEN OHQ845 = '4' THEN 'Fair' -- categorize string values 
-WHEN OHQ845 = '5' THEN 'Poor' -- categorize string values 
-WHEN OHQ845 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ845 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ845 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Excellent' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ845 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Very good' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ845 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Good' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ845 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Fair' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ845 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Poor' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ845 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ845 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ845 IS NULL THEN NULL 
-ELSE OHQ845 
+ELSE SAFE_CAST(OHQ845 AS STRING) 
  END as rate_the_health_of_your_teeth_and_gums, 
 
--- OHQ846 as OHQ846, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN OHQ848G = '1' THEN 'Enter number' -- categorize string values 
-WHEN OHQ848G = '2' THEN 'Child does not brush yet' -- categorize string values 
-WHEN OHQ848G = '3' THEN 'Does not brush every day' -- categorize string values 
-WHEN OHQ848G = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ848G = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848G AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Enter number' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848G AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Child does not brush yet' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848G AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Does not brush every day' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848G AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848G AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ848G IS NULL THEN NULL 
-ELSE OHQ848G 
+ELSE SAFE_CAST(OHQ848G AS STRING) 
  END as times_you_brush_your_teeth_in_1_day, 
 
 CASE
-            WHEN OHQ848Q = '1' THEN '1 time' -- categorize string values 
-WHEN OHQ848Q = '2' THEN '2 times' -- categorize string values 
-WHEN OHQ848Q = '3' THEN '3 times' -- categorize string values 
-WHEN OHQ848Q = '4' THEN '4 times' -- categorize string values 
-WHEN OHQ848Q = '5' THEN '5 times' -- categorize string values 
-WHEN OHQ848Q = '6' THEN '6 times' -- categorize string values 
-WHEN OHQ848Q = '7' THEN '7 times' -- categorize string values 
-WHEN OHQ848Q = '8' THEN '8 times' -- categorize string values 
-WHEN OHQ848Q = '9' THEN '9 or more times' -- categorize string values 
-WHEN OHQ848Q = '77' THEN 'Refused' -- categorize string values 
-WHEN OHQ848Q = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848Q AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN '1 time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848Q AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '2 times' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848Q AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '3 times' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848Q AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '4 times' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848Q AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN '5 times' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848Q AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN '6 times' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848Q AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN '7 times' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848Q AS FLOAT64),0) AS INT64) AS STRING) = '8' THEN '8 times' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848Q AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN '9 or more times' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848Q AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ848Q AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN OHQ848Q IS NULL THEN NULL 
-ELSE OHQ848Q 
+ELSE SAFE_CAST(OHQ848Q AS STRING) 
  END as times_you_brush_your_teeth_in_1_day_OHQ848Q, 
 
 CASE
-            WHEN OHQ849 = '1' THEN 'Full load' -- categorize string values 
-WHEN OHQ849 = '2' THEN 'Half load' -- categorize string values 
-WHEN OHQ849 = '3' THEN 'Pea size' -- categorize string values 
-WHEN OHQ849 = '4' THEN 'Smear' -- categorize string values 
-WHEN OHQ849 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ849 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ849 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Full load' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ849 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Half load' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ849 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Pea size' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ849 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Smear' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ849 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ849 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ849 IS NULL THEN NULL 
-ELSE OHQ849 
+ELSE SAFE_CAST(OHQ849 AS STRING) 
  END as how_much_toothpaste_do_you_use, 
 
 CASE
-            WHEN OHQ850 = '1' THEN 'Yes' -- categorize string values 
-WHEN OHQ850 = '2' THEN 'No' -- categorize string values 
-WHEN OHQ850 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ850 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ850 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ850 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ850 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ850 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ850 IS NULL THEN NULL 
-ELSE OHQ850 
+ELSE SAFE_CAST(OHQ850 AS STRING) 
  END as ever_had_treatment_for_gum_disease, 
 
 CASE
-            WHEN OHQ860 = '1' THEN 'Yes' -- categorize string values 
-WHEN OHQ860 = '2' THEN 'No' -- categorize string values 
-WHEN OHQ860 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ860 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ860 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ860 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ860 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ860 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ860 IS NULL THEN NULL 
-ELSE OHQ860 
+ELSE SAFE_CAST(OHQ860 AS STRING) 
  END as ever_been_told_of_bone_loss_around_teeth, 
 
 CASE
-            WHEN SAFE_CAST(OHQ870 AS FLOAT64) > 9.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OHQ870 AS FLOAT64) > 20.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OHQ870 IS NULL THEN NULL 
-ELSE OHQ870 
+ELSE SAFE_CAST(OHQ870 AS FLOAT64) 
  END as how_many_days_use_dental_floss_device, 
 
 CASE
-            WHEN OHQ880 = '1' THEN 'Yes' -- categorize string values 
-WHEN OHQ880 = '2' THEN 'No' -- categorize string values 
-WHEN OHQ880 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ880 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ880 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ880 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ880 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ880 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ880 IS NULL THEN NULL 
-ELSE OHQ880 
+ELSE SAFE_CAST(OHQ880 AS STRING) 
  END as oral_cancer_exam_where_dr_pulls_tonge, 
 
 CASE
-            WHEN OHQ895 = '1' THEN 'Within past year' -- categorize string values 
-WHEN OHQ895 = '2' THEN 'Between 1 and 3 years ago' -- categorize string values 
-WHEN OHQ895 = '3' THEN 'Over 3 years ago' -- categorize string values 
-WHEN OHQ895 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ895 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ895 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Within past year' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ895 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Between 1 and 3 years ago' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ895 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Over 3 years ago' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ895 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ895 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ895 IS NULL THEN NULL 
-ELSE OHQ895 
+ELSE SAFE_CAST(OHQ895 AS STRING) 
  END as when_did_you_have_oral_mouth_cancer_exam, 
 
 CASE
-            WHEN OHQ900 = '1' THEN 'Doctor/physician' -- categorize string values 
-WHEN OHQ900 = '2' THEN 'Nurse/nurse practitioner' -- categorize string values 
-WHEN OHQ900 = '3' THEN 'Dentist (include oral surgeons)' -- categorize string values 
-WHEN OHQ900 = '4' THEN 'Dental Hygienist' -- categorize string values 
-WHEN OHQ900 = '5' THEN 'Other' -- categorize string values 
-WHEN OHQ900 = '7' THEN 'Refused' -- categorize string values 
-WHEN OHQ900 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ900 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Doctor/physician' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ900 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Nurse/nurse practitioner' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ900 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Dentist (include oral surgeons)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ900 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Dental Hygienist' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ900 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Other' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ900 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ900 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OHQ900 IS NULL THEN NULL 
-ELSE OHQ900 
+ELSE SAFE_CAST(OHQ900 AS STRING) 
  END as what_type_of_prof_performed_oral_exam, 
 
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ565 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ565 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ565 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ565 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHQ565 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ565 AS STRING) 
+ END as ever_given_prescription_fluoride_drops, 
+
+CASE
+WHEN SAFE_CAST(OHQ570Q AS FLOAT64) > 35.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN OHQ570Q IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ570Q AS FLOAT64) 
+ END as age_started_prescription_fluoride_drops, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ570U AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ570U AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Years' -- categorize string values 
+WHEN OHQ570U IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ570U AS STRING) 
+ END as age_started_prescription_fluoride_drops_OHQ570U, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ575G AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Enter age' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ575G AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Still taking fluoride drops' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ575G AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ575G AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHQ575G IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ575G AS STRING) 
+ END as age_stopped_prescription_fluoride_drops, 
+
+CASE
+WHEN SAFE_CAST(OHQ575Q AS FLOAT64) > 41.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN OHQ575Q IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ575Q AS FLOAT64) 
+ END as age_stopped_prescription_fluoride_drops_OHQ575Q, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ575U AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ575U AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Years' -- categorize string values 
+WHEN OHQ575U IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ575U AS STRING) 
+ END as age_stopped_prescription_fluoride_drops_OHQ575U, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ580 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ580 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ580 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ580 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHQ580 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ580 AS STRING) 
+ END as ever_given_prescription_fluoride_tablets, 
+
+CASE
+WHEN SAFE_CAST(OHQ585Q AS FLOAT64) > 51.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN OHQ585Q IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ585Q AS FLOAT64) 
+ END as age_started_prescription_fluoride_tablet, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ585U AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ585U AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Years' -- categorize string values 
+WHEN OHQ585U IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ585U AS STRING) 
+ END as age_started_prescription_fluoride_tablet_OHQ585U, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ590G AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Enter age' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ590G AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Still taking fluoride tablets' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ590G AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ590G AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHQ590G IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ590G AS STRING) 
+ END as age_stopped_prescription_fluoride_tablet, 
+
+CASE
+WHEN SAFE_CAST(OHQ590Q AS FLOAT64) > 41.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN OHQ590Q IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ590Q AS FLOAT64) 
+ END as age_stopped_prescription_fluoride_tablet_OHQ590Q, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ590U AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ590U AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Years' -- categorize string values 
+WHEN OHQ590U IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ590U AS STRING) 
+ END as age_stopped_prescription_fluoride_tablet_OHQ590U, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ855 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ855 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ855 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ855 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHQ855 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ855 AS STRING) 
+ END as any_teeth_became_loose_without_an_injury, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ865 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ865 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ865 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ865 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHQ865 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ865 AS STRING) 
+ END as noticed_a_tooth_that_doesn_t_look_right, 
+
+CASE
+WHEN SAFE_CAST(OHQ875 AS FLOAT64) > 18.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN OHQ875 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ875 AS FLOAT64) 
+ END as days_used_mouthwash_for_dental_problem, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ885 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ885 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ885 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ885 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHQ885 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ885 AS STRING) 
+ END as oral_cancer_exam_where_dr_feels_neck, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ011 AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'Excellent' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ011 AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'Very good' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ011 AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Good' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ011 AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'Fair' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ011 AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'Poor' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ011 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ011 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN OHQ011 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ011 AS STRING) 
+ END as condition_of_teeth, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ630 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Very often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ630 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Fairly often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ630 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Occasionally' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ630 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Hardly ever' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ630 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ630 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ630 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHQ630 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ630 AS STRING) 
+ END as how_often_felt_bad_because_of_mouth, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ650 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Very often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ650 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Fairly often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ650 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Occasionally' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ650 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Hardly ever' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ650 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ650 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ650 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHQ650 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ650 AS STRING) 
+ END as last_yr_taste_affected_because_of_mouth, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ660 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Very often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ660 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Fairly often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ660 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Occasionally' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ660 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Hardly ever' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ660 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ660 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ660 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHQ660 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ660 AS STRING) 
+ END as last_yr_avoid_some_food_because_of_mouth, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ670 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Very often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ670 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Fairly often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ670 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Occasionally' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ670 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Hardly ever' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ670 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ670 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ670 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHQ670 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ670 AS STRING) 
+ END as last_yr_couldn_t_eat_because_of_mouth, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ095 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Too little' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ095 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Too much' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ095 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'DOESNT NOTICE IT' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ095 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ095 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ095 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ095 AS STRING) 
+ END as amount_of_saliva_in_mouth, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ115 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ115 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ115 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ115 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ115 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ115 AS STRING) 
+ END as mouth_feel_dry_when_eating_meal, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD691 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD691 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD691 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD691 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHD691 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHD691 AS STRING) 
+ END as need_any_teeth_filled_or_replaced, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD700 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD700 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD700 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD700 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHD700 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHD700 AS STRING) 
+ END as do_you_or_sp_need_teeth_pulled, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD711A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Pain' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD711A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD711A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN OHD711A IS NULL THEN NULL 
+ELSE SAFE_CAST(OHD711A AS STRING) 
+ END as need_teeth_pulled_because_of_pain, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD711B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Cavities' -- categorize string values 
+WHEN OHD711B IS NULL THEN NULL 
+ELSE SAFE_CAST(OHD711B AS STRING) 
+ END as need_teeth_pulled_because_of_cavities, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD711C AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Broken or missed fillings' -- categorize string values 
+WHEN OHD711C IS NULL THEN NULL 
+ELSE SAFE_CAST(OHD711C AS STRING) 
+ END as need_teeth_pulled_because_of_lost_fillin, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD711D AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Gum problems or bleeding gums' -- categorize string values 
+WHEN OHD711D IS NULL THEN NULL 
+ELSE SAFE_CAST(OHD711D AS STRING) 
+ END as need_teeth_pulled_because_of_gum_probs, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD711E AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Appearance' -- categorize string values 
+WHEN OHD711E IS NULL THEN NULL 
+ELSE SAFE_CAST(OHD711E AS STRING) 
+ END as need_teeth_pulled_because_of_appearance, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD711G AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Other' -- categorize string values 
+WHEN OHD711G IS NULL THEN NULL 
+ELSE SAFE_CAST(OHD711G AS STRING) 
+ END as need_teeth_pulled_because_of_other, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD721 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD721 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD721 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD721 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHD721 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHD721 AS STRING) 
+ END as do_you_or_sp_need_dentures_made, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD730 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD730 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD730 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD730 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHD730 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHD730 AS STRING) 
+ END as do_you_or_sp_need_gum_treatment, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD740 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD740 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD740 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD740 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHD740 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHD740 AS STRING) 
+ END as do_you_or_sp_need_relief_of_pain, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD750 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD750 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD750 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHD750 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHD750 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHD750 AS STRING) 
+ END as do_you_or_sp_need_teeth_cleaned, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ760 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Within the past year (1 to 12 months ago)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ760 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Within the past 3 years (more than 1 year, to 3 years)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ760 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'More than 3 years ago' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ760 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ760 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHQ760 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OHQ760 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ760 AS STRING) 
+ END as how_long_since_had_teeth_cleaned, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very good,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Good,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Fair, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Poor?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ010 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ010 AS STRING) 
+ END as general_condition_of_mouth_and_teeth, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Very often,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Sometimes,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'Seldom, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(6 AS FLOAT64),0) AS INT64) THEN 'Never?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ020 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ020 AS STRING) 
+ END as limit_foods_because_of_teeth_problems, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ040 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ040 AS STRING) 
+ END as routine_checkups_over_past_3_yrs, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN '2 or more times a year' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Once a year' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Less than once a year' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Whenever needed, no regular schedule' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ050 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ050 AS STRING) 
+ END as routine_checkups_frequency_past_3_yrs, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ060 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ060 AS STRING) 
+ END as regular_dentist_lab_you_visit_for_care, 
+
+CASE
+WHEN OHQ070Q IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ070Q AS STRING) 
+ END as how_long_use_this_dentist_lab_as_regular, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ070U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Days' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ070U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ070U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Months' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ070U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Years' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ070U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ070U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ070U IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ070U AS STRING) 
+ END as unit_of_measure_days_wks_mos_yrs, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ085 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ085 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ085 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ085 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ085 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ085 AS STRING) 
+ END as sip_liquids_to_aid_swallowing_foods, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ105 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ105 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ105 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ105 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ105 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ105 AS STRING) 
+ END as difficulties_swallowing_foods, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ080 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ080 AS STRING) 
+ END as sip_liquids_to_aid_swallowing_foods_OHQ080, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Too little' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Too much' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Doesnt notice it' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ090 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ090 AS STRING) 
+ END as amount_of_saliva_in_mouth_OHQ090, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ100 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ100 AS STRING) 
+ END as difficulties_swallowing_foods_OHQ100, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OHQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OHQ110 IS NULL THEN NULL 
+ELSE SAFE_CAST(OHQ110 AS STRING) 
+ END as mouth_feel_dry_when_eating_meal_OHQ110, 
+
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
  FROM {{ ref('stg_oral_health_questionnaire') }}
 
-        -- Docs utilized to generate this SQL can be found at https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/OHQ_J.htm
-        
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/OHQ_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_OHQ.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/OHQ_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/OHQ_H.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/OHQ_G.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/OHQ_F.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/OHQ_E.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/OHQ_D.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2003-2004/OHQ_C.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2001-2002/OHQ_B.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/OHQ.htm
+*/

@@ -1,913 +1,1385 @@
 SELECT
-        SEQN as respondent_sequence_number, -- could not identify transformation logic 
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN OSQ010A = 1 THEN 'Yes' -- categorize numeric values
-WHEN OSQ010A = 2 THEN 'No' -- categorize numeric values
-WHEN OSQ010A = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ010A = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ010A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ010A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ010A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ010A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ010A IS NULL THEN NULL 
-ELSE OSQ010A 
+ELSE SAFE_CAST(OSQ010A AS STRING) 
  END as broken_or_fractured_a_hip, 
 
 CASE
-            WHEN OSQ010B = 1 THEN 'Yes' -- categorize numeric values
-WHEN OSQ010B = 2 THEN 'No' -- categorize numeric values
-WHEN OSQ010B = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ010B = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ010B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ010B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ010B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ010B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ010B IS NULL THEN NULL 
-ELSE OSQ010B 
+ELSE SAFE_CAST(OSQ010B AS STRING) 
  END as broken_or_fractured_a_wrist, 
 
 CASE
-            WHEN OSQ010C = 1 THEN 'Yes' -- categorize numeric values
-WHEN OSQ010C = 2 THEN 'No' -- categorize numeric values
-WHEN OSQ010C = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ010C = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ010C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ010C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ010C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ010C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ010C IS NULL THEN NULL 
-ELSE OSQ010C 
+ELSE SAFE_CAST(OSQ010C AS STRING) 
  END as broken_or_fractured_spine, 
 
 CASE
-            WHEN OSQ020A = 1 THEN '1' -- categorize numeric values
-WHEN OSQ020A = 2 THEN '2' -- categorize numeric values
-WHEN OSQ020A = 3 THEN '3' -- categorize numeric values
-WHEN OSQ020A = 7777 THEN 'Refused' -- categorize numeric values
-WHEN OSQ020A = 9999 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN '1' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '2' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN '3' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7777 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9999 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ020A IS NULL THEN NULL 
-ELSE OSQ020A 
+ELSE SAFE_CAST(OSQ020A AS STRING) 
  END as times_broken_fractured_hip, 
 
 CASE
-            WHEN OSQ020B = 1 THEN '1' -- categorize numeric values
-WHEN OSQ020B = 2 THEN '2' -- categorize numeric values
-WHEN OSQ020B = 3 THEN '3' -- categorize numeric values
-WHEN OSQ020B = 4 THEN '4' -- categorize numeric values
-WHEN OSQ020B = 5 THEN '5' -- categorize numeric values
-WHEN OSQ020B = 7777 THEN 'Refused' -- categorize numeric values
-WHEN OSQ020B = 9999 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN '1' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '2' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN '3' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN '4' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN '5' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7777 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9999 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ020B IS NULL THEN NULL 
-ELSE OSQ020B 
+ELSE SAFE_CAST(OSQ020B AS STRING) 
  END as times_broken_fractured_wrist, 
 
 CASE
-            WHEN OSQ020C = 1 THEN '1' -- categorize numeric values
-WHEN OSQ020C = 2 THEN '2' -- categorize numeric values
-WHEN OSQ020C = 3 THEN '3' -- categorize numeric values
-WHEN OSQ020C = 4 THEN '4' -- categorize numeric values
-WHEN OSQ020C = 5 THEN '5' -- categorize numeric values
-WHEN OSQ020C = 7777 THEN 'Refused' -- categorize numeric values
-WHEN OSQ020C = 9999 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN '1' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '2' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN '3' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN '4' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN '5' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7777 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ020C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9999 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ020C IS NULL THEN NULL 
-ELSE OSQ020C 
+ELSE SAFE_CAST(OSQ020C AS STRING) 
  END as times_broken_fractured_spine, 
 
--- OSQ025 as OSQ025, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN OSD030AA IS NULL THEN NULL 
-ELSE OSD030AA 
+WHEN OSD030AA IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030AA AS STRING) 
  END as age_when_fractured_hip_1st_time, 
 
 CASE
-            WHEN OSQ040AA = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040AA = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040AA = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040AA = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040AA IS NULL THEN NULL 
-ELSE OSQ040AA 
+ELSE SAFE_CAST(OSQ040AA AS STRING) 
  END as under_over_50_when_fracd_hip_1st_time, 
 
 CASE
-            WHEN OSD050AA = 1 THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
-WHEN OSD050AA = 2 THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
-WHEN OSD050AA = 3 THEN 'A car accident or other severe trauma' -- categorize numeric values
-WHEN OSD050AA = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSD050AA = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trauma' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSD050AA IS NULL THEN NULL 
-ELSE OSD050AA 
+ELSE SAFE_CAST(OSD050AA AS STRING) 
  END as reason_hip_fracture_occurred_1st_time, 
 
 CASE
-            WHEN OSD030AB IS NULL THEN NULL 
-ELSE OSD030AB 
+WHEN OSD030AB IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030AB AS STRING) 
  END as age_when_fractured_hip_2nd_time, 
 
 CASE
-            WHEN OSQ040AB = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040AB = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040AB = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040AB = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040AB IS NULL THEN NULL 
-ELSE OSQ040AB 
+ELSE SAFE_CAST(OSQ040AB AS STRING) 
  END as under_over_50_when_fracd_hip_2nd_time, 
 
 CASE
-            WHEN OSD050AB = 1 THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
-WHEN OSD050AB = 2 THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
-WHEN OSD050AB = 3 THEN 'A car accident or other severe trauma' -- categorize numeric values
-WHEN OSD050AB = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSD050AB = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trauma' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSD050AB IS NULL THEN NULL 
-ELSE OSD050AB 
+ELSE SAFE_CAST(OSD050AB AS STRING) 
  END as reason_hip_fracture_occurred_2nd_time, 
 
 CASE
-            WHEN OSD030AC = 65 THEN '65' -- categorize numeric values
-WHEN OSD030AC = 80 THEN '80 or older' -- categorize numeric values
-WHEN OSD030AC = 77777 THEN 'Refused' -- categorize numeric values
-WHEN OSD030AC = 99999 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(65 AS FLOAT64),0) AS INT64) THEN '65' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(80 AS FLOAT64),0) AS INT64) THEN '80 or older' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77777 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99999 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSD030AC IS NULL THEN NULL 
-ELSE OSD030AC 
+ELSE SAFE_CAST(OSD030AC AS STRING) 
  END as age_when_fractured_hip_3rd_time, 
 
 CASE
-            WHEN OSQ040AC = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040AC = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040AC = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040AC = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040AC IS NULL THEN NULL 
-ELSE OSQ040AC 
+ELSE SAFE_CAST(OSQ040AC AS STRING) 
  END as under_over_50_when_fracd_hip_3rd_time, 
 
 CASE
-            WHEN OSD050AC = 1 THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
-WHEN OSD050AC = 2 THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
-WHEN OSD050AC = 3 THEN 'A car accident or other severe trauma' -- categorize numeric values
-WHEN OSD050AC = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSD050AC = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trauma' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050AC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSD050AC IS NULL THEN NULL 
-ELSE OSD050AC 
+ELSE SAFE_CAST(OSD050AC AS STRING) 
  END as reason_hip_fracture_occurred_3rd_time, 
 
 CASE
-            WHEN OSD030BA IS NULL THEN NULL 
-ELSE OSD030BA 
+WHEN OSD030BA IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030BA AS STRING) 
  END as age_when_fractured_wrist_1st_time, 
 
 CASE
-            WHEN OSQ040BA = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040BA = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040BA = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040BA = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040BA IS NULL THEN NULL 
-ELSE OSQ040BA 
+ELSE SAFE_CAST(OSQ040BA AS STRING) 
  END as under_over_50_when_fracd_wrist_1st_time, 
 
 CASE
-            WHEN OSD050BA = 1 THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
-WHEN OSD050BA = 2 THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
-WHEN OSD050BA = 3 THEN 'A car accident or other severe trauma' -- categorize numeric values
-WHEN OSD050BA = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSD050BA = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trauma' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSD050BA IS NULL THEN NULL 
-ELSE OSD050BA 
+ELSE SAFE_CAST(OSD050BA AS STRING) 
  END as reason_wrist_fracture_occurred_1st_time, 
 
 CASE
-            WHEN OSD030BB IS NULL THEN NULL 
-ELSE OSD030BB 
+WHEN OSD030BB IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030BB AS STRING) 
  END as age_when_fractured_wrist_2nd_time, 
 
 CASE
-            WHEN OSQ040BB = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040BB = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040BB = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040BB = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040BB IS NULL THEN NULL 
-ELSE OSQ040BB 
+ELSE SAFE_CAST(OSQ040BB AS STRING) 
  END as under_over_50_when_fracd_wrist_2nd_time, 
 
 CASE
-            WHEN OSD050BB = 1 THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
-WHEN OSD050BB = 2 THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
-WHEN OSD050BB = 3 THEN 'A car accident or other severe trauma' -- categorize numeric values
-WHEN OSD050BB = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSD050BB = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trauma' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSD050BB IS NULL THEN NULL 
-ELSE OSD050BB 
+ELSE SAFE_CAST(OSD050BB AS STRING) 
  END as reason_wrist_fracture_occurred_2nd_time, 
 
 CASE
-            WHEN OSD030BC IS NULL THEN NULL 
-ELSE OSD030BC 
+WHEN OSD030BC IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030BC AS STRING) 
  END as age_when_fractured_wrist_3rd_time, 
 
 CASE
-            WHEN OSQ040BC = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040BC = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040BC = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040BC = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040BC IS NULL THEN NULL 
-ELSE OSQ040BC 
+ELSE SAFE_CAST(OSQ040BC AS STRING) 
  END as under_over_50_when_fracd_wrist_3rd_time, 
 
 CASE
-            WHEN OSD050BC = 1 THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
-WHEN OSD050BC = 2 THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
-WHEN OSD050BC = 3 THEN 'A car accident or other severe trauma' -- categorize numeric values
-WHEN OSD050BC = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSD050BC = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trauma' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSD050BC IS NULL THEN NULL 
-ELSE OSD050BC 
+ELSE SAFE_CAST(OSD050BC AS STRING) 
  END as reason_wrist_fracture_occurred_3rd_time, 
 
 CASE
-            WHEN OSD030BD IS NULL THEN NULL 
-ELSE OSD030BD 
+WHEN OSD030BD IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030BD AS STRING) 
  END as age_when_fractured_wrist_4th_time, 
 
 CASE
-            WHEN OSQ040BD = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040BD = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040BD = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040BD = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040BD IS NULL THEN NULL 
-ELSE OSQ040BD 
+ELSE SAFE_CAST(OSQ040BD AS STRING) 
  END as under_over_50_when_fracd_wrist_4th_time, 
 
 CASE
-            WHEN OSD050BD = 1 THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
-WHEN OSD050BD = 2 THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
-WHEN OSD050BD = 3 THEN 'A car accident or other severe trama?' -- categorize numeric values
-WHEN OSD050BD = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSD050BD = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trama?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSD050BD IS NULL THEN NULL 
-ELSE OSD050BD 
+ELSE SAFE_CAST(OSD050BD AS STRING) 
  END as reason_wrist_fracture_occurred_4th_time, 
 
 CASE
-            WHEN OSD030BE IS NULL THEN NULL 
-ELSE OSD030BE 
+WHEN OSD030BE IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030BE AS STRING) 
  END as age_when_fractured_wrist_5th_time, 
 
 CASE
-            WHEN OSQ040BE = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040BE = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040BE = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040BE = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040BE IS NULL THEN NULL 
-ELSE OSQ040BE 
+ELSE SAFE_CAST(OSQ040BE AS STRING) 
  END as under_over_50_when_fracd_wrist_5th_time, 
 
 CASE
-            WHEN OSD050BE = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
-WHEN OSD050BE = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs or...' -- categorize string values 
-WHEN OSD050BE = '3' THEN 'A car accident or other severe trama?' -- categorize string values 
-WHEN OSD050BE = '7' THEN 'Refused' -- categorize string values 
-WHEN OSD050BE = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BE AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BE AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs or...' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BE AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A car accident or other severe trama?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BE AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BE AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSD050BE IS NULL THEN NULL 
-ELSE OSD050BE 
+ELSE SAFE_CAST(OSD050BE AS STRING) 
  END as reason_wrist_fracture_occurred_5th_time, 
 
 CASE
-            WHEN OSD030CA IS NULL THEN NULL 
-ELSE OSD030CA 
+WHEN OSD030CA IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030CA AS STRING) 
  END as age_when_fractured_spine_1st_time, 
 
 CASE
-            WHEN OSQ040CA = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040CA = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040CA = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040CA = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040CA IS NULL THEN NULL 
-ELSE OSQ040CA 
+ELSE SAFE_CAST(OSQ040CA AS STRING) 
  END as under_over_50_when_fracd_spine_1st_time, 
 
 CASE
-            WHEN OSD050CA = 1 THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
-WHEN OSD050CA = 2 THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
-WHEN OSD050CA = 3 THEN 'A car accident or other severe trauma' -- categorize numeric values
-WHEN OSD050CA = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSD050CA = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trauma' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSD050CA IS NULL THEN NULL 
-ELSE OSD050CA 
+ELSE SAFE_CAST(OSD050CA AS STRING) 
  END as reason_spine_fracture_occurred_1st_time, 
 
 CASE
-            WHEN OSD030CB IS NULL THEN NULL 
-ELSE OSD030CB 
+WHEN OSD030CB IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030CB AS STRING) 
  END as age_when_fractured_spine_2nd_time, 
 
 CASE
-            WHEN OSQ040CB = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040CB = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040CB = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040CB = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040CB IS NULL THEN NULL 
-ELSE OSQ040CB 
+ELSE SAFE_CAST(OSQ040CB AS STRING) 
  END as under_over_50_when_fracd_spine_2nd_time, 
 
 CASE
-            WHEN OSD050CB = 1 THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
-WHEN OSD050CB = 2 THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
-WHEN OSD050CB = 3 THEN 'A car accident or other severe trauma' -- categorize numeric values
-WHEN OSD050CB = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSD050CB = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trauma' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD050CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSD050CB IS NULL THEN NULL 
-ELSE OSD050CB 
+ELSE SAFE_CAST(OSD050CB AS STRING) 
  END as reason_spine_fracture_occurred_2nd_time, 
 
 CASE
-            WHEN OSD030CC IS NULL THEN NULL 
-ELSE OSD030CC 
+WHEN OSD030CC IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030CC AS STRING) 
  END as age_when_fractured_spine_3rd_time, 
 
 CASE
-            WHEN OSQ040CC = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040CC = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040CC = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040CC = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040CC IS NULL THEN NULL 
-ELSE OSQ040CC 
+ELSE SAFE_CAST(OSQ040CC AS STRING) 
  END as under_over_50_when_fracd_spine_3rd_time, 
 
 CASE
-            WHEN OSD050CC = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
-WHEN OSD050CC = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs or...' -- categorize string values 
-WHEN OSD050CC = '3' THEN 'A car accident or other severe trama?' -- categorize string values 
-WHEN OSD050CC = '7' THEN 'Refused' -- categorize string values 
-WHEN OSD050CC = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CC AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CC AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs or...' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CC AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A car accident or other severe trama?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CC AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CC AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSD050CC IS NULL THEN NULL 
-ELSE OSD050CC 
+ELSE SAFE_CAST(OSD050CC AS STRING) 
  END as reason_spine_fracture_occurred_3rd_time, 
 
 CASE
-            WHEN OSD030CD IS NULL THEN NULL 
-ELSE OSD030CD 
+WHEN OSD030CD IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030CD AS STRING) 
  END as age_when_fractured_spine_4th_time, 
 
 CASE
-            WHEN OSQ040CD = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040CD = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040CD = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040CD = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040CD IS NULL THEN NULL 
-ELSE OSQ040CD 
+ELSE SAFE_CAST(OSQ040CD AS STRING) 
  END as under_over_50_when_fracd_spine_4th_time, 
 
 CASE
-            WHEN OSD050CD = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
-WHEN OSD050CD = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs or...' -- categorize string values 
-WHEN OSD050CD = '3' THEN 'A car accident or other severe trama?' -- categorize string values 
-WHEN OSD050CD = '7' THEN 'Refused' -- categorize string values 
-WHEN OSD050CD = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CD AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CD AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs or...' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CD AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A car accident or other severe trama?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CD AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CD AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSD050CD IS NULL THEN NULL 
-ELSE OSD050CD 
+ELSE SAFE_CAST(OSD050CD AS STRING) 
  END as reason_spine_fracture_occurred_4th_time, 
 
 CASE
-            WHEN OSD030CE = 58 THEN '58' -- categorize numeric values
-WHEN OSD030CE = 80 THEN '80 or older' -- categorize numeric values
-WHEN OSD030CE = 77777 THEN 'Refused' -- categorize numeric values
-WHEN OSD030CE = 99999 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(58 AS FLOAT64),0) AS INT64) THEN '58' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(80 AS FLOAT64),0) AS INT64) THEN '80 or older' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77777 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99999 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSD030CE IS NULL THEN NULL 
-ELSE OSD030CE 
+ELSE SAFE_CAST(OSD030CE AS STRING) 
  END as age_when_fractured_spine_5th_time, 
 
 CASE
-            WHEN OSQ040CE = 1 THEN 'Under 50 years old, or' -- categorize numeric values
-WHEN OSQ040CE = 2 THEN '50 years old or older?' -- categorize numeric values
-WHEN OSQ040CE = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ040CE = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ040CE IS NULL THEN NULL 
-ELSE OSQ040CE 
+ELSE SAFE_CAST(OSQ040CE AS STRING) 
  END as under_over_50_when_fracd_spine_5th_time, 
 
 CASE
-            WHEN OSD050CE = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
-WHEN OSD050CE = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs or...' -- categorize string values 
-WHEN OSD050CE = '3' THEN 'A car accident or other severe trama?' -- categorize string values 
-WHEN OSD050CE = '7' THEN 'Refused' -- categorize string values 
-WHEN OSD050CE = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CE AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CE AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs or...' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CE AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A car accident or other severe trama?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CE AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CE AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSD050CE IS NULL THEN NULL 
-ELSE OSD050CE 
+ELSE SAFE_CAST(OSD050CE AS STRING) 
  END as reason_spine_fracture_occurred_5th_time, 
 
 CASE
-            WHEN OSQ080 = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ080 = '2' THEN 'No' -- categorize string values 
-WHEN OSQ080 = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ080 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ080 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ080 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ080 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ080 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ080 IS NULL THEN NULL 
-ELSE OSQ080 
+ELSE SAFE_CAST(OSQ080 AS STRING) 
  END as doctor_ever_told_any_other_fractures, 
 
 CASE
-            WHEN OSQ090A = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ090A = '2' THEN 'No' -- categorize string values 
-WHEN OSQ090A = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ090A = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090A AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090A AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090A AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ090A IS NULL THEN NULL 
-ELSE OSQ090A 
+ELSE SAFE_CAST(OSQ090A AS STRING) 
  END as fracture_result_of_severe_trauma, 
 
 CASE
-            WHEN OSQ100A = '10' THEN 'HEAD/FACE' -- categorize string values 
-WHEN OSQ100A = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
-WHEN OSQ100A = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
-WHEN OSQ100A = '13' THEN 'ELBOW' -- categorize string values 
-WHEN OSQ100A = '14' THEN 'HAND' -- categorize string values 
-WHEN OSQ100A = '15' THEN 'FINGERS' -- categorize string values 
-WHEN OSQ100A = '16' THEN 'SHOULDER' -- categorize string values 
-WHEN OSQ100A = '17' THEN 'COLLAR BONE' -- categorize string values 
-WHEN OSQ100A = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
-WHEN OSQ100A = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
-WHEN OSQ100A = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
-WHEN OSQ100A = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
-WHEN OSQ100A = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
-WHEN OSQ100A = '23' THEN 'ANKLE' -- categorize string values 
-WHEN OSQ100A = '24' THEN 'HEEL' -- categorize string values 
-WHEN OSQ100A = '25' THEN 'FOOT' -- categorize string values 
-WHEN OSQ100A = '26' THEN 'TOES' -- categorize string values 
-WHEN OSQ100A = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
-WHEN OSQ100A = '77' THEN 'Refused' -- categorize string values 
-WHEN OSQ100A = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'HEAD/FACE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'ELBOW' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'HAND' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'FINGERS' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'SHOULDER' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'COLLAR BONE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'ANKLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'HEEL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'FOOT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'TOES' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN OSQ100A IS NULL THEN NULL 
-ELSE OSQ100A 
+ELSE SAFE_CAST(OSQ100A AS STRING) 
  END as where_fracture_occurred, 
 
 CASE
-            WHEN SAFE_CAST(OSD110A AS FLOAT64) > 79.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OSD110A AS FLOAT64) > 90.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OSD110A IS NULL THEN NULL 
-ELSE OSD110A 
+ELSE SAFE_CAST(OSD110A AS FLOAT64) 
  END as how_old_when_fracture_occurred, 
 
 CASE
-            WHEN OSQ120A = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ120A = '2' THEN 'No' -- categorize string values 
-WHEN OSQ120A = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ120A = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120A AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120A AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120A AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ120A IS NULL THEN NULL 
-ELSE OSQ120A 
+ELSE SAFE_CAST(OSQ120A AS STRING) 
  END as any_other_fractures, 
 
 CASE
-            WHEN OSQ090B = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ090B = '2' THEN 'No' -- categorize string values 
-WHEN OSQ090B = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ090B = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090B AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090B AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090B AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ090B IS NULL THEN NULL 
-ELSE OSQ090B 
+ELSE SAFE_CAST(OSQ090B AS STRING) 
  END as fracture_result_of_severe_trauma_OSQ090B, 
 
 CASE
-            WHEN OSQ100B = '10' THEN 'HEAD/FACE' -- categorize string values 
-WHEN OSQ100B = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
-WHEN OSQ100B = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
-WHEN OSQ100B = '13' THEN 'ELBOW' -- categorize string values 
-WHEN OSQ100B = '14' THEN 'HAND' -- categorize string values 
-WHEN OSQ100B = '15' THEN 'FINGERS' -- categorize string values 
-WHEN OSQ100B = '16' THEN 'SHOULDER' -- categorize string values 
-WHEN OSQ100B = '17' THEN 'COLLAR BONE' -- categorize string values 
-WHEN OSQ100B = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
-WHEN OSQ100B = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
-WHEN OSQ100B = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
-WHEN OSQ100B = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
-WHEN OSQ100B = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
-WHEN OSQ100B = '23' THEN 'ANKLE' -- categorize string values 
-WHEN OSQ100B = '24' THEN 'HEEL' -- categorize string values 
-WHEN OSQ100B = '25' THEN 'FOOT' -- categorize string values 
-WHEN OSQ100B = '26' THEN 'TOES' -- categorize string values 
-WHEN OSQ100B = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
-WHEN OSQ100B = '77' THEN 'Refused' -- categorize string values 
-WHEN OSQ100B = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'HEAD/FACE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'ELBOW' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'HAND' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'FINGERS' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'SHOULDER' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'COLLAR BONE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'ANKLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'HEEL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'FOOT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'TOES' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100B AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN OSQ100B IS NULL THEN NULL 
-ELSE OSQ100B 
+ELSE SAFE_CAST(OSQ100B AS STRING) 
  END as where_fracture_occurred_OSQ100B, 
 
 CASE
-            WHEN SAFE_CAST(OSD110B AS FLOAT64) > 78.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OSD110B AS FLOAT64) > 89.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OSD110B IS NULL THEN NULL 
-ELSE OSD110B 
+ELSE SAFE_CAST(OSD110B AS FLOAT64) 
  END as how_old_when_fracture_occurred_OSD110B, 
 
 CASE
-            WHEN OSQ120B = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ120B = '2' THEN 'No' -- categorize string values 
-WHEN OSQ120B = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ120B = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120B AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120B AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120B AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ120B IS NULL THEN NULL 
-ELSE OSQ120B 
+ELSE SAFE_CAST(OSQ120B AS STRING) 
  END as any_other_fractures_OSQ120B, 
 
 CASE
-            WHEN OSQ090C = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ090C = '2' THEN 'No' -- categorize string values 
-WHEN OSQ090C = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ090C = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090C AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090C AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090C AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090C AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ090C IS NULL THEN NULL 
-ELSE OSQ090C 
+ELSE SAFE_CAST(OSQ090C AS STRING) 
  END as fracture_result_of_severe_trauma_OSQ090C, 
 
 CASE
-            WHEN OSQ100C = '10' THEN 'HEAD/FACE' -- categorize string values 
-WHEN OSQ100C = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
-WHEN OSQ100C = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
-WHEN OSQ100C = '13' THEN 'ELBOW' -- categorize string values 
-WHEN OSQ100C = '14' THEN 'HAND' -- categorize string values 
-WHEN OSQ100C = '15' THEN 'FINGERS' -- categorize string values 
-WHEN OSQ100C = '16' THEN 'SHOULDER' -- categorize string values 
-WHEN OSQ100C = '17' THEN 'COLLAR BONE' -- categorize string values 
-WHEN OSQ100C = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
-WHEN OSQ100C = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
-WHEN OSQ100C = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
-WHEN OSQ100C = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
-WHEN OSQ100C = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
-WHEN OSQ100C = '23' THEN 'ANKLE' -- categorize string values 
-WHEN OSQ100C = '24' THEN 'HEEL' -- categorize string values 
-WHEN OSQ100C = '25' THEN 'FOOT' -- categorize string values 
-WHEN OSQ100C = '26' THEN 'TOES' -- categorize string values 
-WHEN OSQ100C = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
-WHEN OSQ100C = '77' THEN 'Refused' -- categorize string values 
-WHEN OSQ100C = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'HEAD/FACE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'ELBOW' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'HAND' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'FINGERS' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'SHOULDER' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'COLLAR BONE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'ANKLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'HEEL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'FOOT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'TOES' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100C AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN OSQ100C IS NULL THEN NULL 
-ELSE OSQ100C 
+ELSE SAFE_CAST(OSQ100C AS STRING) 
  END as where_fracture_occurred_OSQ100C, 
 
 CASE
-            WHEN SAFE_CAST(OSD110C AS FLOAT64) > 67.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OSD110C AS FLOAT64) > 78.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OSD110C IS NULL THEN NULL 
-ELSE OSD110C 
+ELSE SAFE_CAST(OSD110C AS FLOAT64) 
  END as how_old_when_fracture_occurred_OSD110C, 
 
 CASE
-            WHEN OSQ120C = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ120C = '2' THEN 'No' -- categorize string values 
-WHEN OSQ120C = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ120C = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120C AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120C AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120C AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120C AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ120C IS NULL THEN NULL 
-ELSE OSQ120C 
+ELSE SAFE_CAST(OSQ120C AS STRING) 
  END as any_other_fractures_OSQ120C, 
 
 CASE
-            WHEN OSQ090D = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ090D = '2' THEN 'No' -- categorize string values 
-WHEN OSQ090D = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ090D = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090D AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090D AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090D AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090D AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ090D IS NULL THEN NULL 
-ELSE OSQ090D 
+ELSE SAFE_CAST(OSQ090D AS STRING) 
  END as fracture_result_of_severe_trauma_OSQ090D, 
 
 CASE
-            WHEN OSQ100D = '10' THEN 'HEAD/FACE' -- categorize string values 
-WHEN OSQ100D = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
-WHEN OSQ100D = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
-WHEN OSQ100D = '13' THEN 'ELBOW' -- categorize string values 
-WHEN OSQ100D = '14' THEN 'HAND' -- categorize string values 
-WHEN OSQ100D = '15' THEN 'FINGERS' -- categorize string values 
-WHEN OSQ100D = '16' THEN 'SHOULDER' -- categorize string values 
-WHEN OSQ100D = '17' THEN 'COLLAR BONE' -- categorize string values 
-WHEN OSQ100D = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
-WHEN OSQ100D = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
-WHEN OSQ100D = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
-WHEN OSQ100D = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
-WHEN OSQ100D = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
-WHEN OSQ100D = '23' THEN 'ANKLE' -- categorize string values 
-WHEN OSQ100D = '24' THEN 'HEEL' -- categorize string values 
-WHEN OSQ100D = '25' THEN 'FOOT' -- categorize string values 
-WHEN OSQ100D = '26' THEN 'TOES' -- categorize string values 
-WHEN OSQ100D = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
-WHEN OSQ100D = '77' THEN 'Refused' -- categorize string values 
-WHEN OSQ100D = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'HEAD/FACE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'ELBOW' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'HAND' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'FINGERS' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'SHOULDER' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'COLLAR BONE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'ANKLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'HEEL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'FOOT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'TOES' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100D AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN OSQ100D IS NULL THEN NULL 
-ELSE OSQ100D 
+ELSE SAFE_CAST(OSQ100D AS STRING) 
  END as where_fracture_occurred_OSQ100D, 
 
 CASE
-            WHEN SAFE_CAST(OSD110D AS FLOAT64) > 68.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OSD110D AS FLOAT64) > 79.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OSD110D IS NULL THEN NULL 
-ELSE OSD110D 
+ELSE SAFE_CAST(OSD110D AS FLOAT64) 
  END as how_old_when_fracture_occurred_OSD110D, 
 
 CASE
-            WHEN OSQ120D = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ120D = '2' THEN 'No' -- categorize string values 
-WHEN OSQ120D = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ120D = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120D AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120D AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120D AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120D AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ120D IS NULL THEN NULL 
-ELSE OSQ120D 
+ELSE SAFE_CAST(OSQ120D AS STRING) 
  END as any_other_fractures_OSQ120D, 
 
 CASE
-            WHEN OSQ090E = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ090E = '2' THEN 'No' -- categorize string values 
-WHEN OSQ090E = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ090E = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090E AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090E AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090E AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090E AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ090E IS NULL THEN NULL 
-ELSE OSQ090E 
+ELSE SAFE_CAST(OSQ090E AS STRING) 
  END as fracture_result_of_severe_trauma_OSQ090E, 
 
 CASE
-            WHEN OSQ100E = '10' THEN 'HEAD/FACE' -- categorize string values 
-WHEN OSQ100E = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
-WHEN OSQ100E = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
-WHEN OSQ100E = '13' THEN 'ELBOW' -- categorize string values 
-WHEN OSQ100E = '14' THEN 'HAND' -- categorize string values 
-WHEN OSQ100E = '15' THEN 'FINGERS' -- categorize string values 
-WHEN OSQ100E = '16' THEN 'SHOULDER' -- categorize string values 
-WHEN OSQ100E = '17' THEN 'COLLAR BONE' -- categorize string values 
-WHEN OSQ100E = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
-WHEN OSQ100E = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
-WHEN OSQ100E = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
-WHEN OSQ100E = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
-WHEN OSQ100E = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
-WHEN OSQ100E = '23' THEN 'ANKLE' -- categorize string values 
-WHEN OSQ100E = '24' THEN 'HEEL' -- categorize string values 
-WHEN OSQ100E = '25' THEN 'FOOT' -- categorize string values 
-WHEN OSQ100E = '26' THEN 'TOES' -- categorize string values 
-WHEN OSQ100E = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
-WHEN OSQ100E = '77' THEN 'Refused' -- categorize string values 
-WHEN OSQ100E = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'HEAD/FACE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'ELBOW' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'HAND' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'FINGERS' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'SHOULDER' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'COLLAR BONE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'ANKLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'HEEL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'FOOT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'TOES' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100E AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN OSQ100E IS NULL THEN NULL 
-ELSE OSQ100E 
+ELSE SAFE_CAST(OSQ100E AS STRING) 
  END as where_fracture_occurred_OSQ100E, 
 
 CASE
-            WHEN SAFE_CAST(OSD110E AS FLOAT64) > 34.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OSD110E AS FLOAT64) > 45.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OSD110E IS NULL THEN NULL 
-ELSE OSD110E 
+ELSE SAFE_CAST(OSD110E AS FLOAT64) 
  END as how_old_when_fracture_occurred_OSD110E, 
 
 CASE
-            WHEN OSQ120E = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ120E = '2' THEN 'No' -- categorize string values 
-WHEN OSQ120E = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ120E = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120E AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120E AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120E AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120E AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ120E IS NULL THEN NULL 
-ELSE OSQ120E 
+ELSE SAFE_CAST(OSQ120E AS STRING) 
  END as any_other_fractures_OSQ120E, 
 
 CASE
-            WHEN OSQ090F = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ090F = '2' THEN 'No' -- categorize string values 
-WHEN OSQ090F = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ090F = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090F AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090F AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090F AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090F AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ090F IS NULL THEN NULL 
-ELSE OSQ090F 
+ELSE SAFE_CAST(OSQ090F AS STRING) 
  END as fracture_result_of_severe_trauma_OSQ090F, 
 
 CASE
-            WHEN OSQ100F = '10' THEN 'HEAD/FACE' -- categorize string values 
-WHEN OSQ100F = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
-WHEN OSQ100F = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
-WHEN OSQ100F = '13' THEN 'ELBOW' -- categorize string values 
-WHEN OSQ100F = '14' THEN 'HAND' -- categorize string values 
-WHEN OSQ100F = '15' THEN 'FINGERS' -- categorize string values 
-WHEN OSQ100F = '16' THEN 'SHOULDER' -- categorize string values 
-WHEN OSQ100F = '17' THEN 'COLLAR BONE' -- categorize string values 
-WHEN OSQ100F = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
-WHEN OSQ100F = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
-WHEN OSQ100F = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
-WHEN OSQ100F = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
-WHEN OSQ100F = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
-WHEN OSQ100F = '23' THEN 'ANKLE' -- categorize string values 
-WHEN OSQ100F = '24' THEN 'HEEL' -- categorize string values 
-WHEN OSQ100F = '25' THEN 'FOOT' -- categorize string values 
-WHEN OSQ100F = '26' THEN 'TOES' -- categorize string values 
-WHEN OSQ100F = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
-WHEN OSQ100F = '77' THEN 'Refused' -- categorize string values 
-WHEN OSQ100F = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'HEAD/FACE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'ELBOW' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'HAND' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'FINGERS' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'SHOULDER' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'COLLAR BONE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'ANKLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'HEEL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'FOOT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'TOES' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100F AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN OSQ100F IS NULL THEN NULL 
-ELSE OSQ100F 
+ELSE SAFE_CAST(OSQ100F AS STRING) 
  END as where_fracture_occurred_OSQ100F, 
 
 CASE
-            WHEN SAFE_CAST(OSD110F AS FLOAT64) > 55.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OSD110F AS FLOAT64) > 66.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OSD110F IS NULL THEN NULL 
-ELSE OSD110F 
+ELSE SAFE_CAST(OSD110F AS FLOAT64) 
  END as how_old_when_fracture_occurred_OSD110F, 
 
 CASE
-            WHEN OSQ120F = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ120F = '2' THEN 'No' -- categorize string values 
-WHEN OSQ120F = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ120F = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120F AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120F AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120F AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120F AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ120F IS NULL THEN NULL 
-ELSE OSQ120F 
+ELSE SAFE_CAST(OSQ120F AS STRING) 
  END as any_other_fractures_OSQ120F, 
 
 CASE
-            WHEN OSQ090G = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ090G = '2' THEN 'No' -- categorize string values 
-WHEN OSQ090G = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ090G = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090G AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090G AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090G AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090G AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ090G IS NULL THEN NULL 
-ELSE OSQ090G 
+ELSE SAFE_CAST(OSQ090G AS STRING) 
  END as fracture_result_of_severe_trauma_OSQ090G, 
 
 CASE
-            WHEN OSQ120G = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ120G = '2' THEN 'No' -- categorize string values 
-WHEN OSQ120G = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ120G = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120G AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120G AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120G AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120G AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ120G IS NULL THEN NULL 
-ELSE OSQ120G 
+ELSE SAFE_CAST(OSQ120G AS STRING) 
  END as any_other_fractures_OSQ120G, 
 
 CASE
-            WHEN OSQ090H = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ090H = '2' THEN 'No' -- categorize string values 
-WHEN OSQ090H = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ090H = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090H AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090H AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090H AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090H AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ090H IS NULL THEN NULL 
-ELSE OSQ090H 
+ELSE SAFE_CAST(OSQ090H AS STRING) 
  END as fracture_result_of_severe_trauma_OSQ090H, 
 
 CASE
-            WHEN OSQ120H = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ120H = '2' THEN 'No' -- categorize string values 
-WHEN OSQ120H = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ120H = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120H AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120H AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120H AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120H AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ120H IS NULL THEN NULL 
-ELSE OSQ120H 
+ELSE SAFE_CAST(OSQ120H AS STRING) 
  END as any_other_fractures_OSQ120H, 
 
 CASE
-            WHEN OSQ090I = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ090I = '2' THEN 'No' -- categorize string values 
-WHEN OSQ090I = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ090I = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090I AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090I AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090I AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090I AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ090I IS NULL THEN NULL 
-ELSE OSQ090I 
+ELSE SAFE_CAST(OSQ090I AS STRING) 
  END as fracture_result_of_severe_trauma_OSQ090I, 
 
 CASE
-            WHEN OSQ120I = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ120I = '2' THEN 'No' -- categorize string values 
-WHEN OSQ120I = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ120I = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120I AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120I AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120I AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120I AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ120I IS NULL THEN NULL 
-ELSE OSQ120I 
+ELSE SAFE_CAST(OSQ120I AS STRING) 
  END as any_other_fractures_OSQ120I, 
 
 CASE
-            WHEN OSQ090J = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ090J = '2' THEN 'No' -- categorize string values 
-WHEN OSQ090J = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ090J = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090J AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090J AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090J AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ090J AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ090J IS NULL THEN NULL 
-ELSE OSQ090J 
+ELSE SAFE_CAST(OSQ090J AS STRING) 
  END as fracture_result_of_severe_trauma_OSQ090J, 
 
 CASE
-            WHEN OSQ100J = '10' THEN 'HEAD/FACE' -- categorize string values 
-WHEN OSQ100J = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
-WHEN OSQ100J = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
-WHEN OSQ100J = '13' THEN 'ELBOW' -- categorize string values 
-WHEN OSQ100J = '14' THEN 'HAND' -- categorize string values 
-WHEN OSQ100J = '15' THEN 'FINGERS' -- categorize string values 
-WHEN OSQ100J = '16' THEN 'SHOULDER' -- categorize string values 
-WHEN OSQ100J = '17' THEN 'COLLAR BONE' -- categorize string values 
-WHEN OSQ100J = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
-WHEN OSQ100J = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
-WHEN OSQ100J = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
-WHEN OSQ100J = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
-WHEN OSQ100J = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
-WHEN OSQ100J = '23' THEN 'ANKLE' -- categorize string values 
-WHEN OSQ100J = '24' THEN 'HEEL' -- categorize string values 
-WHEN OSQ100J = '25' THEN 'FOOT' -- categorize string values 
-WHEN OSQ100J = '26' THEN 'TOES' -- categorize string values 
-WHEN OSQ100J = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
-WHEN OSQ100J = '77' THEN 'Refused' -- categorize string values 
-WHEN OSQ100J = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'HEAD/FACE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'ELBOW' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'HAND' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'FINGERS' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'SHOULDER' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'COLLAR BONE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'ANKLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'HEEL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'FOOT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'TOES' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100J AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN OSQ100J IS NULL THEN NULL 
-ELSE OSQ100J 
+ELSE SAFE_CAST(OSQ100J AS STRING) 
  END as where_fracture_occurred_OSQ100J, 
 
 CASE
-            WHEN OSD110J = '80' THEN '80 or older' -- categorize string values 
-WHEN OSD110J = '777' THEN 'Refused' -- categorize string values 
-WHEN OSD110J = '999' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD110J AS FLOAT64),0) AS INT64) AS STRING) = '80' THEN '80 or older' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD110J AS FLOAT64),0) AS INT64) AS STRING) = '777' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD110J AS FLOAT64),0) AS INT64) AS STRING) = '999' THEN 'Dont know' -- categorize string values 
 WHEN OSD110J IS NULL THEN NULL 
-ELSE OSD110J 
+ELSE SAFE_CAST(OSD110J AS STRING) 
  END as how_old_when_fracture_occurred_OSD110J, 
 
 CASE
-            WHEN OSQ120J = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ120J = '2' THEN 'No' -- categorize string values 
-WHEN OSQ120J = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ120J = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120J AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120J AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120J AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ120J AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ120J IS NULL THEN NULL 
-ELSE OSQ120J 
+ELSE SAFE_CAST(OSQ120J AS STRING) 
  END as any_other_fractures_OSQ120J, 
 
--- OSQ129 as OSQ129, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN OSQ060 = 1 THEN 'Yes' -- categorize numeric values
-WHEN OSQ060 = 2 THEN 'No' -- categorize numeric values
-WHEN OSQ060 = 7 THEN 'Refused' -- categorize numeric values
-WHEN OSQ060 = 9 THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN OSQ060 IS NULL THEN NULL 
-ELSE OSQ060 
+ELSE SAFE_CAST(OSQ060 AS STRING) 
  END as ever_told_had_osteoporosis_brittle_bones, 
 
 CASE
-            WHEN OSQ072 = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ072 = '2' THEN 'No' -- categorize string values 
-WHEN OSQ072 = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ072 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ072 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ072 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ072 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ072 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ072 IS NULL THEN NULL 
-ELSE OSQ072 
+ELSE SAFE_CAST(OSQ072 AS STRING) 
  END as doctor_prescribe_rx_for_osteoporosis, 
 
 CASE
-            WHEN OSQ130 = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ130 = '2' THEN 'No' -- categorize string values 
-WHEN OSQ130 = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ130 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ130 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ130 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ130 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ130 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ130 IS NULL THEN NULL 
-ELSE OSQ130 
+ELSE SAFE_CAST(OSQ130 AS STRING) 
  END as ever_taken_prednisone_or_cortisone_daily, 
 
 CASE
-            WHEN SAFE_CAST(OSQ140Q AS FLOAT64) > 42.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OSQ140Q AS FLOAT64) > 53.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OSQ140Q IS NULL THEN NULL 
-ELSE OSQ140Q 
+ELSE SAFE_CAST(OSQ140Q AS FLOAT64) 
  END as how_long_used_prednisone_or_cortisone, 
 
 CASE
-            WHEN OSQ140U = '1' THEN 'Month' -- categorize string values 
-WHEN OSQ140U = '2' THEN 'Year' -- categorize string values 
-WHEN OSQ140U = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ140U = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ140U AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Month' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ140U AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Year' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ140U AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ140U AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ140U IS NULL THEN NULL 
-ELSE OSQ140U 
+ELSE SAFE_CAST(OSQ140U AS STRING) 
  END as how_long_used_prednisone_or_cortisone_OSQ140U, 
 
 CASE
-            WHEN OSQ150 = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ150 = '2' THEN 'No' -- categorize string values 
-WHEN OSQ150 = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ150 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ150 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ150 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ150 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ150 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ150 IS NULL THEN NULL 
-ELSE OSQ150 
+ELSE SAFE_CAST(OSQ150 AS STRING) 
  END as parents_ever_told_had_osteoporosis, 
 
 CASE
-            WHEN OSQ160A = '1' THEN 'Mother' -- categorize string values 
-WHEN OSQ160A = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ160A = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ160A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Mother' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ160A AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ160A AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ160A IS NULL THEN NULL 
-ELSE OSQ160A 
+ELSE SAFE_CAST(OSQ160A AS STRING) 
  END as mother_was_told_had_osteoporosis, 
 
 CASE
-            WHEN OSQ160B = '2' THEN 'Father' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ160B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Father' -- categorize string values 
 WHEN OSQ160B IS NULL THEN NULL 
-ELSE OSQ160B 
+ELSE SAFE_CAST(OSQ160B AS STRING) 
  END as father_was_told_had_osteoporosis, 
 
 CASE
-            WHEN OSQ170 = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ170 = '2' THEN 'No' -- categorize string values 
-WHEN OSQ170 = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ170 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ170 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ170 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ170 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ170 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ170 IS NULL THEN NULL 
-ELSE OSQ170 
+ELSE SAFE_CAST(OSQ170 AS STRING) 
  END as did_mother_ever_fracture_hip, 
 
 CASE
-            WHEN SAFE_CAST(OSQ180 AS FLOAT64) > 103.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OSQ180 AS FLOAT64) > 114.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OSQ180 IS NULL THEN NULL 
-ELSE OSQ180 
+ELSE SAFE_CAST(OSQ180 AS FLOAT64) 
  END as how_old_mother_when_fractured_hip, 
 
 CASE
-            WHEN OSQ190 = '1' THEN 'under 50 years or' -- categorize string values 
-WHEN OSQ190 = '2' THEN '50 years or older?' -- categorize string values 
-WHEN OSQ190 = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ190 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ190 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'under 50 years or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ190 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '50 years or older?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ190 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ190 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ190 IS NULL THEN NULL 
-ELSE OSQ190 
+ELSE SAFE_CAST(OSQ190 AS STRING) 
  END as over_or_under_50_years_old, 
 
 CASE
-            WHEN OSQ200 = '1' THEN 'Yes' -- categorize string values 
-WHEN OSQ200 = '2' THEN 'No' -- categorize string values 
-WHEN OSQ200 = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ200 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ200 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ200 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ200 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ200 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ200 IS NULL THEN NULL 
-ELSE OSQ200 
+ELSE SAFE_CAST(OSQ200 AS STRING) 
  END as did_father_ever_fracture_hip, 
 
 CASE
-            WHEN SAFE_CAST(OSQ210 AS FLOAT64) > 99.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(OSQ210 AS FLOAT64) > 110.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN OSQ210 IS NULL THEN NULL 
-ELSE OSQ210 
+ELSE SAFE_CAST(OSQ210 AS FLOAT64) 
  END as how_old_father_when_fractured_hip, 
 
 CASE
-            WHEN OSQ220 = '1' THEN 'Under 50 years old, or' -- categorize string values 
-WHEN OSQ220 = '2' THEN '50 years old or older?' -- categorize string values 
-WHEN OSQ220 = '7' THEN 'Refused' -- categorize string values 
-WHEN OSQ220 = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ220 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Under 50 years old, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ220 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '50 years old or older?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ220 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ220 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN OSQ220 IS NULL THEN NULL 
-ELSE OSQ220 
+ELSE SAFE_CAST(OSQ220 AS STRING) 
  END as over_or_under_50_years_old_OSQ220, 
 
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BF AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(57 AS FLOAT64),0) AS INT64) THEN '57' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BF AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(80 AS FLOAT64),0) AS INT64) THEN '80 or older' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BF AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77777 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BF AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99999 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSD030BF IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030BF AS STRING) 
+ END as age_when_fractured_wrist_6th_time, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BF AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BF AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BF AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BF AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ040BF IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ040BF AS STRING) 
+ END as under_over_50_when_fracd_wrist_6th_time, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(18 AS FLOAT64),0) AS INT64) THEN '18' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(80 AS FLOAT64),0) AS INT64) THEN '80 or older' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77777 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99999 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSD030BG IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030BG AS STRING) 
+ END as age_when_fractured_wrist_7th_time, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BG AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ040BG IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ040BG AS STRING) 
+ END as under_over_50_when_fracd_wrist_7th_time, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BH AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(20 AS FLOAT64),0) AS INT64) THEN '20' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BH AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(80 AS FLOAT64),0) AS INT64) THEN '80 or older' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BH AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77777 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BH AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99999 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSD030BH IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030BH AS STRING) 
+ END as age_when_fractured_wrist_8th_time, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BH AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BH AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BH AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BH AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ040BH IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ040BH AS STRING) 
+ END as under_over_50_when_fracd_wrist_8th_time, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(23 AS FLOAT64),0) AS INT64) THEN '23' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(80 AS FLOAT64),0) AS INT64) THEN '80 or older' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77777 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99999 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSD030BI IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030BI AS STRING) 
+ END as age_when_fractured_wrist_9th_time, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ040BI IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ040BI AS STRING) 
+ END as under_over_50_when_fracd_wrist_9th_time, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BJ AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(30 AS FLOAT64),0) AS INT64) THEN '30' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BJ AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(80 AS FLOAT64),0) AS INT64) THEN '80 or older' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BJ AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77777 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSD030BJ AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99999 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSD030BJ IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030BJ AS STRING) 
+ END as age_when_fractured_wrist_10th_time, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BJ AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Under 50 years old, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BJ AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '50 years old or older?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BJ AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ040BJ AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ040BJ IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ040BJ AS STRING) 
+ END as under_over_50_when_fracd_wrist_10th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'HEAD/FACE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'ELBOW' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'HAND' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'FINGERS' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'SHOULDER' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'COLLAR BONE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'ANKLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'HEEL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'FOOT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'TOES' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100G AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN OSQ100G IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ100G AS STRING) 
+ END as where_fracture_occurred_OSQ100G, 
+
+CASE
+WHEN SAFE_CAST(OSD110G AS FLOAT64) > 38.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN OSD110G IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD110G AS FLOAT64) 
+ END as how_old_when_fracture_occurred_OSD110G, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ070 IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ070 AS STRING) 
+ END as ever_treated_for_osteoporosis, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030AD AS FLOAT64),0) AS INT64) AS STRING) = '73' THEN '73' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030AD AS FLOAT64),0) AS INT64) AS STRING) = '80' THEN '80 or older' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030AD AS FLOAT64),0) AS INT64) AS STRING) = '77777' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030AD AS FLOAT64),0) AS INT64) AS STRING) = '99999' THEN 'Dont know' -- categorize string values 
+WHEN OSD030AD IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030AD AS STRING) 
+ END as age_when_fractured_hip_4th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040AD AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Under 50 years old, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040AD AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '50 years old or older?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040AD AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040AD AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSQ040AD IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ040AD AS STRING) 
+ END as under_over_50_when_fracd_hip_4th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050AD AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050AD AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050AD AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A car accident or other severe trauma' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050AD AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050AD AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSD050AD IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD050AD AS STRING) 
+ END as reason_hip_fracture_occurred_4th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030AE AS FLOAT64),0) AS INT64) AS STRING) = '74' THEN '74' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030AE AS FLOAT64),0) AS INT64) AS STRING) = '80' THEN '80 or older' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030AE AS FLOAT64),0) AS INT64) AS STRING) = '77777' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030AE AS FLOAT64),0) AS INT64) AS STRING) = '99999' THEN 'Dont know' -- categorize string values 
+WHEN OSD030AE IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030AE AS STRING) 
+ END as age_when_fractured_hip_5th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040AE AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Under 50 years old, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040AE AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '50 years old or older?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040AE AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040AE AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSQ040AE IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ040AE AS STRING) 
+ END as under_over_50_when_fracd_hip_5th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050AE AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050AE AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050AE AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A car accident or other severe trauma' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050AE AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050AE AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSD050AE IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD050AE AS STRING) 
+ END as reason_hip_fracture_occurred_5th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'HEAD/FACE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'ELBOW' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'HAND' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'FINGERS' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'SHOULDER' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'COLLAR BONE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'ANKLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'HEEL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'FOOT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'TOES' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100H AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN OSQ100H IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ100H AS STRING) 
+ END as where_fracture_occurred_OSQ100H, 
+
+CASE
+WHEN SAFE_CAST(OSD110H AS FLOAT64) > 73.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN OSD110H IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD110H AS FLOAT64) 
+ END as how_old_when_fracture_occurred_OSD110H, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BF AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BF AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BF AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A car accident or other severe trauma' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BF AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BF AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSD050BF IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD050BF AS STRING) 
+ END as reason_wrist_fracture_occurred_6th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BG AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BG AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BG AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A car accident or other severe trauma' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BG AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050BG AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSD050BG IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD050BG AS STRING) 
+ END as reason_wrist_fracture_occurred_7th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CF AS FLOAT64),0) AS INT64) AS STRING) = '44' THEN '44' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CF AS FLOAT64),0) AS INT64) AS STRING) = '85' THEN '85 or older' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CF AS FLOAT64),0) AS INT64) AS STRING) = '77777' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CF AS FLOAT64),0) AS INT64) AS STRING) = '99999' THEN 'Dont know' -- categorize string values 
+WHEN OSD030CF IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030CF AS STRING) 
+ END as age_when_fractured_spine_6th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CF AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Under 50 years old, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CF AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '50 years old or older?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CF AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CF AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSQ040CF IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ040CF AS STRING) 
+ END as under_over_50_when_fracd_spine_6th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CF AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CF AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CF AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A car accident or other severe trauma' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CF AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CF AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSD050CF IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD050CF AS STRING) 
+ END as reason_spine_fracture_occurred_6th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CG AS FLOAT64),0) AS INT64) AS STRING) = '45' THEN '45' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CG AS FLOAT64),0) AS INT64) AS STRING) = '85' THEN '85 or older' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CG AS FLOAT64),0) AS INT64) AS STRING) = '77777' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CG AS FLOAT64),0) AS INT64) AS STRING) = '99999' THEN 'Dont know' -- categorize string values 
+WHEN OSD030CG IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030CG AS STRING) 
+ END as age_when_fractured_spine_7th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CG AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Under 50 years old, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CG AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '50 years old or older?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CG AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CG AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSQ040CG IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ040CG AS STRING) 
+ END as under_over_50_when_fracd_spine_7th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CH AS FLOAT64),0) AS INT64) AS STRING) = '46' THEN '46' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CH AS FLOAT64),0) AS INT64) AS STRING) = '85' THEN '85 or older' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CH AS FLOAT64),0) AS INT64) AS STRING) = '77777' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CH AS FLOAT64),0) AS INT64) AS STRING) = '99999' THEN 'Dont know' -- categorize string values 
+WHEN OSD030CH IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030CH AS STRING) 
+ END as age_when_fractured_spine_8th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CH AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Under 50 years old, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CH AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '50 years old or older?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CH AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CH AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSQ040CH IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ040CH AS STRING) 
+ END as under_over_50_when_fracd_spine_8th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CI AS FLOAT64),0) AS INT64) AS STRING) = '47' THEN '47' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CI AS FLOAT64),0) AS INT64) AS STRING) = '85' THEN '85 or older' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CI AS FLOAT64),0) AS INT64) AS STRING) = '77777' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CI AS FLOAT64),0) AS INT64) AS STRING) = '99999' THEN 'Dont know' -- categorize string values 
+WHEN OSD030CI IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030CI AS STRING) 
+ END as age_when_fractured_spine_9th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CI AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Under 50 years old, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CI AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '50 years old or older?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CI AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CI AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSQ040CI IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ040CI AS STRING) 
+ END as under_over_50_when_fracd_spine_9th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CJ AS FLOAT64),0) AS INT64) AS STRING) = '48' THEN '48' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CJ AS FLOAT64),0) AS INT64) AS STRING) = '85' THEN '85 or older' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CJ AS FLOAT64),0) AS INT64) AS STRING) = '77777' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD030CJ AS FLOAT64),0) AS INT64) AS STRING) = '99999' THEN 'Dont know' -- categorize string values 
+WHEN OSD030CJ IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD030CJ AS STRING) 
+ END as age_when_fractured_spine_10th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CJ AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Under 50 years old, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CJ AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '50 years old or older?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CJ AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ040CJ AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSQ040CJ IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ040CJ AS STRING) 
+ END as under_over_50_when_fracd_spine_10th_time, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'HEAD/FACE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'UPPER ARM (HUMERUS)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'LOWER ARM BETWEEN WRIST AND ELBOW (DO NOT INCLUDE WRIST)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'ELBOW' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'HAND' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'FINGERS' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'SHOULDER' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'COLLAR BONE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'RIBS (EITHER SIDE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'PELVIS (NOT HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '20' THEN 'UPPER LEG (THIGH EXCLUDING HIP)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '21' THEN 'LOWER LEG (BETWEEN ANKLE AND KNEE)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '22' THEN 'KNEE (PATELLA)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '23' THEN 'ANKLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '24' THEN 'HEEL' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '25' THEN 'FOOT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '26' THEN 'TOES' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '27' THEN 'OTHER (DO NOT SPECIFY)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSQ100I AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN OSQ100I IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ100I AS STRING) 
+ END as where_fracture_occurred_OSQ100I, 
+
+CASE
+WHEN SAFE_CAST(OSD110I AS FLOAT64) > 46.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN OSD110I IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD110I AS FLOAT64) 
+ END as how_old_when_fracture_occurred_OSD110I, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CJ AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CJ AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CJ AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A car accident or other severe trauma' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CJ AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OSD050CJ AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN OSD050CJ IS NULL THEN NULL 
+ELSE SAFE_CAST(OSD050CJ AS STRING) 
+ END as reason_spine_fracture_occurred_10th_time, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trama' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050AA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ050AA IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ050AA AS STRING) 
+ END as reason_hip_fracture_occurred_1st_time_OSQ050AA, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, suck as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trama' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050AB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ050AB IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ050AB AS STRING) 
+ END as reason_hip_fracture_occurred_2nd_time_OSQ050AB, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trama' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ050BA IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ050BA AS STRING) 
+ END as reason_wrist_fracture_occurred_1st_time_OSQ050BA, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trama' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ050BB IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ050BB AS STRING) 
+ END as reason_wrist_fracture_occurred_2nd_time_OSQ050BB, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trama' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ050BC IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ050BC AS STRING) 
+ END as reason_wrist_fracture_occurred_3rd_time_OSQ050BC, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trama' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050BD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ050BD IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ050BD AS STRING) 
+ END as reason_wrist_fracture_occurred_4th_time_OSQ050BD, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trama' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050CA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ050CA IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ050CA AS STRING) 
+ END as reason_spine_fracture_occurred_1st_time_OSQ050CA, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'A fall from standing height or less, for example, tripped, slipped, fell out of bed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A hard fall, such as falling off a ladder or step stool, down stairs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'A car accident or other severe trama' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(OSQ050CB AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN OSQ050CB IS NULL THEN NULL 
+ELSE SAFE_CAST(OSQ050CB AS STRING) 
+ END as reason_spine_fracture_occurred_2nd_time_OSQ050CB, 
+
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
  FROM {{ ref('stg_osteoporosis_questionnaire') }}
 
-        -- Docs utilized to generate this SQL can be found at https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/OSQ_J.htm
-        
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/OSQ_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_OSQ.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/OSQ_H.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/OSQ_F.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/OSQ_E.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/OSQ_D.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2003-2004/OSQ_C.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2001-2002/OSQ_B.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/OSQ.htm
+*/

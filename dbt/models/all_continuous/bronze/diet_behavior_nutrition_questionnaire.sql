@@ -1,374 +1,1390 @@
 SELECT
-        SEQN as respondent_sequence_number, -- could not identify transformation logic 
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN SAFE_CAST(DBQ010 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
-WHEN SAFE_CAST(DBQ010 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
-WHEN SAFE_CAST(DBQ010 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
-WHEN SAFE_CAST(DBQ010 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DBQ010 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ010 AS STRING) 
  END as ever_breastfed_or_fed_breastmilk, 
 
 CASE
-            WHEN DBD030 IS NULL THEN NULL 
+WHEN DBD030 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD030 AS STRING) 
  END as age_stopped_breastfeeding_days, 
 
 CASE
-            WHEN SAFE_CAST(DBD041 AS FLOAT64) > 367.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(DBD041 AS FLOAT64) > 376.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN DBD041 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD041 AS FLOAT64) 
  END as age_first_fed_formula_days, 
 
 CASE
-            WHEN DBD050 IS NULL THEN NULL 
+WHEN DBD050 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD050 AS FLOAT64) 
  END as age_stopped_receiving_formula_days, 
 
 CASE
-            WHEN SAFE_CAST(DBD055 AS FLOAT64) > 732.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(DBD055 AS FLOAT64) > 741.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN DBD055 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD055 AS FLOAT64) 
  END as age_started_other_food_beverage, 
 
 CASE
-            WHEN SAFE_CAST(DBD061 AS FLOAT64) > 1097.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(DBD061 AS FLOAT64) > 1106.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN DBD061 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD061 AS FLOAT64) 
  END as age_first_fed_milk_days, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ073A,'.0','') AS INT64) AS STRING) = '10' THEN 'Whole or regular milk' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ073A,'.0','') AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ073A,'.0','') AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ073A AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Whole or regular milk' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ073A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ073A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN DBQ073A IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ073A AS STRING) 
  END as type_of_milk_first_fed_whole_milk, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ073B,'.0','') AS INT64) AS STRING) = '11' THEN '2% fat or reduced-fat milk' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ073B AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN '2% fat or reduced-fat milk' -- categorize string values 
 WHEN DBQ073B IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ073B AS STRING) 
  END as type_of_milk_first_fed_2_milk, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ073C,'.0','') AS INT64) AS STRING) = '12' THEN '1% fat or low-fat milk (includes 0.5% fat milk or low-fat milk not further specified),' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ073C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN '1% fat or low-fat milk (includes 0.5% fat milk or low-fat milk not further specified),' -- categorize string values 
 WHEN DBQ073C IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ073C AS STRING) 
  END as type_of_milk_first_fed_1_milk, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ073D,'.0','') AS INT64) AS STRING) = '13' THEN 'fat-free, skim or nonfat milk, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ073D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'fat-free, skim or nonfat milk, or' -- categorize string values 
 WHEN DBQ073D IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ073D AS STRING) 
  END as type_of_milk_first_fed_fat_free_milk, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ073E,'.0','') AS INT64) AS STRING) = '14' THEN 'soy milk, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ073E AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'soy milk, or' -- categorize string values 
 WHEN DBQ073E IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ073E AS STRING) 
  END as type_of_milk_first_fed_soy_milk, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ073U,'.0','') AS INT64) AS STRING) = '30' THEN 'Another type?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ073U AS FLOAT64),0) AS INT64) AS STRING) = '30' THEN 'Another type?' -- categorize string values 
 WHEN DBQ073U IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ073U AS STRING) 
  END as type_of_milk_first_fed_other, 
 
--- DBD085 as DBD085, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ700,'.0','') AS INT64) AS STRING) = '1' THEN 'Excellent' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ700,'.0','') AS INT64) AS STRING) = '2' THEN 'Very good' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ700,'.0','') AS INT64) AS STRING) = '3' THEN 'Good' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ700,'.0','') AS INT64) AS STRING) = '4' THEN 'Fair' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ700,'.0','') AS INT64) AS STRING) = '5' THEN 'Poor' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ700,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ700,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ700 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Excellent' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ700 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Very good' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ700 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Good' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ700 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Fair' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ700 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Poor' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ700 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ700 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ700 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ700 AS STRING) 
  END as how_healthy_is_the_diet, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ197,'.0','') AS INT64) AS STRING) = '0' THEN 'Never' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ197,'.0','') AS INT64) AS STRING) = '1' THEN 'Rarely-less than once a week' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ197,'.0','') AS INT64) AS STRING) = '2' THEN 'Sometimes-once a week or more, but less than once a day, or' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ197,'.0','') AS INT64) AS STRING) = '3' THEN 'Often-once a day or more?' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ197,'.0','') AS INT64) AS STRING) = '4' THEN 'Varied' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ197,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ197,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ197 AS FLOAT64),0) AS INT64) AS STRING) = '0' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ197 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Rarely-less than once a week' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ197 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes-once a week or more, but less than once a day, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ197 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Often-once a day or more?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ197 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Varied' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ197 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ197 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ197 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ197 AS STRING) 
  END as past_30_day_milk_product_consumption, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ223A,'.0','') AS INT64) AS STRING) = '10' THEN 'Whole or regular,' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ223A,'.0','') AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ223A,'.0','') AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ223A AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Whole or regular,' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ223A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ223A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN DBQ223A IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ223A AS STRING) 
  END as you_drink_whole_or_regular_milk, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ223B,'.0','') AS INT64) AS STRING) = '11' THEN '2% fat or reduced-fat milk,' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ223B AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN '2% fat or reduced-fat milk,' -- categorize string values 
 WHEN DBQ223B IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ223B AS STRING) 
  END as you_drink_2_fat_milk, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ223C,'.0','') AS INT64) AS STRING) = '12' THEN '1% fat or low-fat milk (includes 0.5% fat milk or low-fat milk not further specified),' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ223C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN '1% fat or low-fat milk (includes 0.5% fat milk or low-fat milk not further specified),' -- categorize string values 
 WHEN DBQ223C IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ223C AS STRING) 
  END as you_drink_1_fat_milk, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ223D,'.0','') AS INT64) AS STRING) = '13' THEN 'Skim, nonfat, or 0.5% fat milk (includes liquid or reconstituted from dry),' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ223D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Skim, nonfat, or 0.5% fat milk (includes liquid or reconstituted from dry),' -- categorize string values 
 WHEN DBQ223D IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ223D AS STRING) 
  END as you_drink_fat_free_skim_milk, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ223E,'.0','') AS INT64) AS STRING) = '14' THEN 'soy milk, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ223E AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'soy milk, or' -- categorize string values 
 WHEN DBQ223E IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ223E AS STRING) 
  END as you_drink_soy_milk, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ223U,'.0','') AS INT64) AS STRING) = '30' THEN 'Another type?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ223U AS FLOAT64),0) AS INT64) AS STRING) = '30' THEN 'Another type?' -- categorize string values 
 WHEN DBQ223U IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ223U AS STRING) 
  END as you_drink_another_type_of_milk, 
 
--- DBD225 as DBD225, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ229,'.0','') AS INT64) AS STRING) = '1' THEN '{Ive/Hes/Shes} been a regular milk drinker for most or all of {my/his/her} life, including {my/his/her} childhood' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ229,'.0','') AS INT64) AS STRING) = '2' THEN '{Ive/Hes/Shes} never been a regular milk drinker;' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ229,'.0','') AS INT64) AS STRING) = '3' THEN '{My/His/Her} milk drinking has varied over {my/his/her} life-sometimes {Ive/hes/shes} been a regular milk drinker' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ229,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ229,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ229 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN '{Ive/Hes/Shes} been a regular milk drinker for most or all of {my/his/her} life, including {my/his/her} childhood' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ229 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '{Ive/Hes/Shes} never been a regular milk drinker;' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ229 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '{My/His/Her} milk drinking has varied over {my/his/her} life-sometimes {Ive/hes/shes} been a regular milk drinker' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ229 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ229 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ229 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ229 AS STRING) 
  END as regular_milk_use_5_times_per_week, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235A,'.0','') AS INT64) AS STRING) = '0' THEN 'Never' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235A,'.0','') AS INT64) AS STRING) = '1' THEN 'Rarely-less than once a week' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235A,'.0','') AS INT64) AS STRING) = '2' THEN 'Sometimes-once a week or more, but less than once a day' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235A,'.0','') AS INT64) AS STRING) = '3' THEN 'Often-once a day or more' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235A,'.0','') AS INT64) AS STRING) = '4' THEN 'Varied' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235A,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235A,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235A AS FLOAT64),0) AS INT64) AS STRING) = '0' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Rarely-less than once a week' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235A AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes-once a week or more, but less than once a day' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235A AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Often-once a day or more' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235A AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Varied' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235A AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235A AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ235A IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ235A AS STRING) 
  END as how_often_drank_milk_age_5_12, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235B,'.0','') AS INT64) AS STRING) = '0' THEN 'Never' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235B,'.0','') AS INT64) AS STRING) = '1' THEN 'Rarely-less than once a week' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235B,'.0','') AS INT64) AS STRING) = '2' THEN 'Sometimes-once a week or more, but less than once a day' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235B,'.0','') AS INT64) AS STRING) = '3' THEN 'Often-once a day or more' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235B,'.0','') AS INT64) AS STRING) = '4' THEN 'Varied' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235B,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235B,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235B AS FLOAT64),0) AS INT64) AS STRING) = '0' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235B AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Rarely-less than once a week' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes-once a week or more, but less than once a day' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235B AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Often-once a day or more' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235B AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Varied' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235B AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235B AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ235B IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ235B AS STRING) 
  END as how_often_drank_milk_age_13_17, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235C,'.0','') AS INT64) AS STRING) = '0' THEN 'Never' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235C,'.0','') AS INT64) AS STRING) = '1' THEN 'Rarely-less than once a week' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235C,'.0','') AS INT64) AS STRING) = '2' THEN 'Sometimes-once a week or more, but less than once a day' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235C,'.0','') AS INT64) AS STRING) = '3' THEN 'Often-once a day or more' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235C,'.0','') AS INT64) AS STRING) = '4' THEN 'Varied' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235C,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ235C,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235C AS FLOAT64),0) AS INT64) AS STRING) = '0' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235C AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Rarely-less than once a week' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235C AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes-once a week or more, but less than once a day' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235C AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Often-once a day or more' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235C AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Varied' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235C AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ235C AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ235C IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ235C AS STRING) 
  END as how_often_drank_milk_age_18_35, 
 
--- DBD265A as DBD265A, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ301,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ301,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ301,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ301,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ301 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ301 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ301 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ301 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ301 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ301 AS STRING) 
  END as community_government_meals_delivered, 
 
 CASE
-            WHEN SAFE_CAST(DBQ330 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
-WHEN SAFE_CAST(DBQ330 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
-WHEN SAFE_CAST(DBQ330 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
-WHEN SAFE_CAST(DBQ330 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DBQ330 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ330 AS STRING) 
  END as eat_meals_at_community_senior_center, 
 
--- DBD355 as DBD355, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN SAFE_CAST(DBQ360 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
-WHEN SAFE_CAST(DBQ360 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
-WHEN SAFE_CAST(DBQ360 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
-WHEN SAFE_CAST(DBQ360 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ360 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ360 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ360 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ360 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DBQ360 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ360 AS STRING) 
  END as attend_kindergarten_thru_high_school, 
 
 CASE
-            WHEN SAFE_CAST(DBQ370 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
-WHEN SAFE_CAST(DBQ370 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
-WHEN SAFE_CAST(DBQ370 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
-WHEN SAFE_CAST(DBQ370 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ370 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ370 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ370 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ370 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DBQ370 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ370 AS STRING) 
  END as school_serves_school_lunches, 
 
 CASE
-            WHEN DBD381 IS NULL THEN NULL 
+WHEN DBD381 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD381 AS STRING) 
  END as of_times_week_get_school_lunch, 
 
 CASE
-            WHEN SAFE_CAST(DBQ390 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Free' -- categorize numeric values
-WHEN SAFE_CAST(DBQ390 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'Reduced price' -- categorize numeric values
-WHEN SAFE_CAST(DBQ390 AS FLOAT64) = SAFE_CAST(3 AS FLOAT64) THEN 'Full price' -- categorize numeric values
-WHEN SAFE_CAST(DBQ390 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
-WHEN SAFE_CAST(DBQ390 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ390 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Free' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ390 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Reduced price' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ390 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Full price' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ390 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ390 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DBQ390 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ390 AS STRING) 
  END as school_lunch_free_reduced_or_full_price, 
 
 CASE
-            WHEN SAFE_CAST(DBQ400 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
-WHEN SAFE_CAST(DBQ400 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
-WHEN SAFE_CAST(DBQ400 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
-WHEN SAFE_CAST(DBQ400 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN DBQ400 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ400 AS STRING) 
  END as school_serve_complete_breakfast_each_day, 
 
 CASE
-            WHEN DBD411 IS NULL THEN NULL 
+WHEN DBD411 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD411 AS STRING) 
  END as of_times_week_get_school_breakfast, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ421,'.0','') AS INT64) AS STRING) = '1' THEN 'Free' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ421,'.0','') AS INT64) AS STRING) = '2' THEN 'Reduced price' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ421,'.0','') AS INT64) AS STRING) = '3' THEN 'Full price' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ421,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ421,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ421 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Free' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ421 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Reduced price' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ421 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Full price' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ421 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ421 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ421 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ421 AS STRING) 
  END as school_breakfast_free_reduced_full_price, 
 
--- DBQ422 as DBQ422, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ424,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ424,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ424,'.0','') AS INT64) AS STRING) = '3' THEN 'Did not attend summer program' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ424,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ424,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ424 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ424 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ424 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Did not attend summer program' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ424 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ424 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ424 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ424 AS STRING) 
  END as summer_program_meal_free_reduced_price, 
 
 CASE
-            WHEN SAFE_CAST(DBD895 AS FLOAT64) > 23.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(DBD895 AS FLOAT64) > 32.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN DBD895 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD895 AS FLOAT64) 
  END as of_meals_not_home_prepared, 
 
 CASE
-            WHEN SAFE_CAST(DBD900 AS FLOAT64) > 23.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(DBD900 AS FLOAT64) > 32.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN DBD900 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD900 AS FLOAT64) 
  END as of_meals_from_fast_food_or_pizza_place, 
 
 CASE
-            WHEN SAFE_CAST(DBD905 AS FLOAT64) > 92.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(DBD905 AS FLOAT64) > 101.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN DBD905 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD905 AS FLOAT64) 
  END as of_ready_to_eat_foods_in_past_30_days, 
 
 CASE
-            WHEN SAFE_CAST(DBD910 AS FLOAT64) > 92.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN SAFE_CAST(DBD910 AS FLOAT64) > 101.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN DBD910 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBD910 AS FLOAT64) 
  END as of_frozen_meals_pizza_in_past_30_days, 
 
--- DBQ715A as DBQ715A, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(CBQ596,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(CBQ596,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(CBQ596,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(CBQ596,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ596 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ596 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ596 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ596 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN CBQ596 IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ596 AS STRING) 
  END as heard_of_my_plate, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(CBQ606,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(CBQ606,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(CBQ606,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(CBQ606,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ606 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ606 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ606 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ606 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN CBQ606 IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ606 AS STRING) 
  END as looked_up_my_plate_on_internet, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(CBQ611,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(CBQ611,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(CBQ611,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(CBQ611,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ611 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ611 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ611 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ611 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN CBQ611 IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ611 AS STRING) 
  END as tried_my_plate_plan, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ930,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ930,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ930,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ930,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ930 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ930 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ930 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ930 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ930 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ930 AS STRING) 
  END as main_meal_planner_preparer, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ935,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ935,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ935,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ935,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ935 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ935 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ935 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ935 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ935 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ935 AS STRING) 
  END as shared_meal_planning_preparing_duty, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ940,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ940,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ940,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ940,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ940 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ940 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ940 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ940 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ940 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ940 AS STRING) 
  END as main_food_shopper, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ945,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ945,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ945,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(DBQ945,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ945 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ945 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ945 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ945 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN DBQ945 IS NULL THEN NULL 
 ELSE SAFE_CAST(DBQ945 AS STRING) 
  END as shared_food_shopping_duty, 
 
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ505 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ505 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ505 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ505 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ505 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ505 AS STRING) 
+ END as eat_at_fast_food_pizza_places, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ535 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ535 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ535 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ535 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ535 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ535 AS STRING) 
+ END as saw_nutrition_info_on_fast_food_menu, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ540 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ540 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ540 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ540 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ540 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ540 AS STRING) 
+ END as used_nutrition_info_to_choose_fast_foods, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ545 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ545 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ545 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ545 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ545 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ545 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ545 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ545 AS STRING) 
+ END as would_use_fast_food_nutrition_info, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ550 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ550 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ550 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ550 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ550 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ550 AS STRING) 
+ END as eat_at_restaurants_w_waiter, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ552 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ552 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ552 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ552 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ552 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ552 AS STRING) 
+ END as is_it_a_chain_restaurant, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ580 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ580 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ580 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ580 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ580 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ580 AS STRING) 
+ END as saw_nutrition_info_on_restaurant_menu, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ585 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ585 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ585 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ585 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ585 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ585 AS STRING) 
+ END as used_nutrition_info_in_restaurant, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ590 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ590 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ590 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ590 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ590 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ590 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ590 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ590 AS STRING) 
+ END as would_use_restaurant_nutrition_info, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ595 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ595 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ595 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ595 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ595 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ595 AS STRING) 
+ END as heard_of_mypyramid, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ600 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ600 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ600 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ600 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ600 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ600 AS STRING) 
+ END as heard_of_food_pyramid, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ605 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ605 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ605 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ605 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ605 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ605 AS STRING) 
+ END as looked_up_mypyramid_on_internet, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ610 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ610 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ610 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ610 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN CBQ610 IS NULL THEN NULL 
+ELSE SAFE_CAST(CBQ610 AS STRING) 
+ END as tried_mypyramid_plan, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ915 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ915 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ915 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ915 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ915 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ915 AS STRING) 
+ END as self_perceived_vegetarian, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ920 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ920 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ920 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ920 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ920 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ920 AS STRING) 
+ END as having_food_allergies, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ925A AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Wheat' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ925A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'REFUSED' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ925A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'DONT KNOW' -- categorize string values 
+WHEN DBQ925A IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ925A AS STRING) 
+ END as allergic_to_wheat, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ925B AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN 'Cows milk' -- categorize string values 
+WHEN DBQ925B IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ925B AS STRING) 
+ END as allergic_to_cow_s_milk, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ925C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN 'Eggs' -- categorize string values 
+WHEN DBQ925C IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ925C AS STRING) 
+ END as allergic_to_eggs, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ925D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Fish' -- categorize string values 
+WHEN DBQ925D IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ925D AS STRING) 
+ END as allergic_to_fish, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ925E AS FLOAT64),0) AS INT64) AS STRING) = '14' THEN 'Shellfish (shrimp, crab, or lobster)' -- categorize string values 
+WHEN DBQ925E IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ925E AS STRING) 
+ END as allergic_to_shellfish, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ925F AS FLOAT64),0) AS INT64) AS STRING) = '15' THEN 'Corn' -- categorize string values 
+WHEN DBQ925F IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ925F AS STRING) 
+ END as allergic_to_corn, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ925G AS FLOAT64),0) AS INT64) AS STRING) = '16' THEN 'Peanut' -- categorize string values 
+WHEN DBQ925G IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ925G AS STRING) 
+ END as allergic_to_peanut, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ925H AS FLOAT64),0) AS INT64) AS STRING) = '17' THEN 'Other nuts' -- categorize string values 
+WHEN DBQ925H IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ925H AS STRING) 
+ END as allergic_to_other_nuts, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ925I AS FLOAT64),0) AS INT64) AS STRING) = '18' THEN 'Soy products' -- categorize string values 
+WHEN DBQ925I IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ925I AS STRING) 
+ END as allergic_to_soy_products, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ925J AS FLOAT64),0) AS INT64) AS STRING) = '19' THEN 'Other' -- categorize string values 
+WHEN DBQ925J IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ925J AS STRING) 
+ END as allergic_to_other_foods, 
+
+CASE
+WHEN DBD020 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD020 AS STRING) 
+ END as age_started_eating_other_foods_days, 
+
+CASE
+WHEN DBD040 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD040 AS STRING) 
+ END as age_first_fed_formula_daily_days, 
+
+CASE
+WHEN DBD060 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD060 AS STRING) 
+ END as age_first_fed_milk_daily_basis_days, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD072A AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Whole or regular milk' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD072A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD072A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN DBD072A IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD072A AS STRING) 
+ END as type_of_milk_first_fed_whole_milk_DBD072A, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD072B AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN '2% fat or reduced-fat milk' -- categorize string values 
+WHEN DBD072B IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD072B AS STRING) 
+ END as type_of_milk_first_fed_2_milk_DBD072B, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD072C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN '1% fat or low-fat milk (includes 0.5% fat milk or 
+      low-fat milk not further specified),' -- categorize string values 
+WHEN DBD072C IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD072C AS STRING) 
+ END as type_of_milk_first_fed_1_milk_DBD072C, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD072D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'fat-free, skim or nonfat milk, or' -- categorize string values 
+WHEN DBD072D IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD072D AS STRING) 
+ END as type_of_milk_first_fed_fat_free_milk_DBD072D, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD072U AS FLOAT64),0) AS INT64) AS STRING) = '30' THEN 'Another type?' -- categorize string values 
+WHEN DBD072U IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD072U AS STRING) 
+ END as type_of_milk_first_fed_other_DBD072U, 
+
+CASE
+WHEN DBD080 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD080 AS STRING) 
+ END as age_started_eating_solid_foods_days, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD222A AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Whole or regular,' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD222A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD222A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN DBD222A IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD222A AS STRING) 
+ END as you_drink_whole_or_regular_milk_DBD222A, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD222B AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN '2% fat or reduced-fat milk,' -- categorize string values 
+WHEN DBD222B IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD222B AS STRING) 
+ END as you_drink_2_fat_milk_DBD222B, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD222C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN '1% fat or low-fat milk (includes 0.5% fat milk or 
+      low-fat milk not further specified),' -- categorize string values 
+WHEN DBD222C IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD222C AS STRING) 
+ END as you_drink_1_fat_milk_DBD222C, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD222D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Skim, nonfat, or 0.5% fat milk (includes liquid or 
+      reconstituted from dry),' -- categorize string values 
+WHEN DBD222D IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD222D AS STRING) 
+ END as you_drink_fat_free_skim_milk_DBD222D, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD222U AS FLOAT64),0) AS INT64) AS STRING) = '30' THEN 'Another type?' -- categorize string values 
+WHEN DBD222U IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD222U AS STRING) 
+ END as you_drink_another_type_of_milk_DBD222U, 
+
+CASE
+WHEN SAFE_CAST(DBD091 AS FLOAT64) > 32.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN DBD091 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD091 AS FLOAT64) 
+ END as of_times_wk_eat_meals_not_from_a_home, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ720 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ720 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ720 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ720 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ720 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ720 AS STRING) 
+ END as heard_of_dietary_guidelines, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ730 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ730 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ730 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ730 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ730 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ730 AS STRING) 
+ END as heard_of_food_guide_pyramid, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ740 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ740 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ740 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ740 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ740 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ740 AS STRING) 
+ END as heard_about_5_a_day_program, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'never seen' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN DBQ750 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ750 AS STRING) 
+ END as use_nutrition_facts_panel_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'never seen' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN DBQ760 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ760 AS STRING) 
+ END as use_ingredients_list_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'never seen' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN DBQ770 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ770 AS STRING) 
+ END as use_serving_size_info_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'never seen' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN DBQ780 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ780 AS STRING) 
+ END as use_health_claims_on_food_packages, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ790 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ790 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ790 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ790 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ790 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ790 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ790 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ790 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ790 AS STRING) 
+ END as check_calories_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ800 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ800 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ800 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ800 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ800 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ800 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ800 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ800 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ800 AS STRING) 
+ END as check_calories_from_fat_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ810 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ810 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ810 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ810 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ810 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ810 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ810 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ810 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ810 AS STRING) 
+ END as check_total_fat_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ820 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ820 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ820 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ820 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ820 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ820 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ820 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ820 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ820 AS STRING) 
+ END as check_trans_fat_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ830 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ830 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ830 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ830 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ830 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ830 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ830 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ830 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ830 AS STRING) 
+ END as check_saturated_fat_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ840 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ840 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ840 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ840 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ840 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ840 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ840 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ840 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ840 AS STRING) 
+ END as check_cholesterol_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ850 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ850 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ850 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ850 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ850 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ850 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ850 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ850 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ850 AS STRING) 
+ END as check_sodium_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ860 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ860 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ860 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ860 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ860 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ860 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ860 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ860 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ860 AS STRING) 
+ END as check_carbohydrates_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ870 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ870 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ870 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ870 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ870 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ870 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ870 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ870 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ870 AS STRING) 
+ END as check_fiber_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ880 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ880 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ880 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ880 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ880 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ880 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ880 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ880 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ880 AS STRING) 
+ END as check_sugars_on_food_label, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ890 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Strongly agree' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ890 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Somewhat agree' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ890 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'neither agree or disagree' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ890 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Somewhat disagree' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ890 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Strongly disagree' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ890 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ890 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBQ890 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ890 AS STRING) 
+ END as are_people_born_to_be_fat_thin, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ071A AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Whole or regular,' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ071A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ071A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN DBQ071A IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ071A AS STRING) 
+ END as type_of_milk_first_fed_whole_milk_DBQ071A, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ071B AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN '2% fat milk (includes "low fat milk" not further specified),' -- categorize string values 
+WHEN DBQ071B IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ071B AS STRING) 
+ END as type_of_milk_first_fed_2_milk_DBQ071B, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ071C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN '1% fat milk,' -- categorize string values 
+WHEN DBQ071C IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ071C AS STRING) 
+ END as type_of_milk_first_fed_1_milk_DBQ071C, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ071D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Skim, nonfat, or 0.5% fat milk (includes liquid or reconstituted from dry)' -- categorize string values 
+WHEN DBQ071D IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ071D AS STRING) 
+ END as type_of_milk_first_fed_skim_nonfat, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ071U AS FLOAT64),0) AS INT64) AS STRING) = '30' THEN 'Another type?' -- categorize string values 
+WHEN DBQ071U IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ071U AS STRING) 
+ END as type_of_milk_first_fed_other_DBQ071U, 
+
+CASE
+WHEN DBD090 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD090 AS STRING) 
+ END as of_times_week_eat_restaurant_food, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD197 AS FLOAT64),0) AS INT64) AS STRING) = '0' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD197 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Rarely-less than once a week' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD197 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes-once a week or more, but less than once a day, or' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD197 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Often-once a day or more?' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD197 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Varied' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD197 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD197 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN DBD197 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD197 AS STRING) 
+ END as past_30_day_milk_product_consumption_DBD197, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ221A AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Whole or regular,' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ221A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ221A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN DBQ221A IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ221A AS STRING) 
+ END as you_drink_whole_or_regular_milk_DBQ221A, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ221B AS FLOAT64),0) AS INT64) AS STRING) = '11' THEN '2% fat milk (includes "low fat milk" not further specified),' -- categorize string values 
+WHEN DBQ221B IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ221B AS STRING) 
+ END as you_drink_2_fat_milk_DBQ221B, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ221C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN '1% fat milk,' -- categorize string values 
+WHEN DBQ221C IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ221C AS STRING) 
+ END as you_drink_1_fat_milk_DBQ221C, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ221D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Skim, nonfat, or 0.5% fat milk (includes liquid or reconstituted from dry), or' -- categorize string values 
+WHEN DBQ221D IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ221D AS STRING) 
+ END as you_drink_skim_nonfat_or_5_milk, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBQ221U AS FLOAT64),0) AS INT64) AS STRING) = '30' THEN 'Another type?' -- categorize string values 
+WHEN DBQ221U IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ221U AS STRING) 
+ END as you_drink_another_type_of_milk_DBQ221U, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD071A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Whole or regular,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD071A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD071A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD071A IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD071A AS STRING) 
+ END as type_of_milk_first_fed_whole_milk_DBD071A, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD071B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN '2% fat milk (includes "low fat milk" not further specified),' -- categorize numeric values
+WHEN DBD071B IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD071B AS STRING) 
+ END as type_of_milk_first_fed_2_milk_DBD071B, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD071C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN '1% fat milk,' -- categorize string values 
+WHEN DBD071C IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD071C AS STRING) 
+ END as type_of_milk_first_fed_1_milk_DBD071C, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD071D AS FLOAT64),0) AS INT64) AS STRING) = '13' THEN 'Skim, nonfat, or 0.5% fat milk (includes liquid or reconstituted from dry)' -- categorize string values 
+WHEN DBD071D IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD071D AS STRING) 
+ END as type_of_milk_first_fed_skim_nonfat_DBD071D, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD071U AS FLOAT64),0) AS INT64) AS STRING) = '30' THEN 'Another type?' -- categorize string values 
+WHEN DBD071U IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD071U AS STRING) 
+ END as type_of_milk_first_fed_other_DBD071U, 
+
+CASE
+WHEN DBD102 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD102 AS STRING) 
+ END as times_month_eat_dark_green_vegetables, 
+
+CASE
+WHEN DBD103 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD103 AS STRING) 
+ END as times_month_eat_cooked_dried_beans_peas, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD196 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD196 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'rarely-less than once a week' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD196 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes-once a week or more, but less than once a day, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD196 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often-once a day or more?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD196 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Varied' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD196 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD196 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD196 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD196 AS STRING) 
+ END as past_30_day_milk_product_consumption_DBD196, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD221A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Whole or regular,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD221A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD221A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD221A IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD221A AS STRING) 
+ END as you_drink_whole_or_regular_milk_DBD221A, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD221B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN '2% fat milk (includes "low fat milk" not further specified),' -- categorize numeric values
+WHEN DBD221B IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD221B AS STRING) 
+ END as you_drink_2_fat_milk_DBD221B, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(DBD221C AS FLOAT64),0) AS INT64) AS STRING) = '12' THEN '1% fat milk,' -- categorize string values 
+WHEN DBD221C IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD221C AS STRING) 
+ END as you_drink_1_fat_milk_DBD221C, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD221D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(13 AS FLOAT64),0) AS INT64) THEN 'Skim, nonfat, or 0.5% fat milk (includes liquid or reconstituted from dry), or' -- categorize numeric values
+WHEN DBD221D IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD221D AS STRING) 
+ END as you_drink_skim_nonfat_or_5_milk_DBD221D, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD221U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(30 AS FLOAT64),0) AS INT64) THEN 'Another type?' -- categorize numeric values
+WHEN DBD221U IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD221U AS STRING) 
+ END as you_drink_another_type_of_milk_DBD221U, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD229 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN '{Ive/Hes/Shes} been a regular milk drinker for most or all of {my/his/her} life, including {my/his/her} childhood' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD229 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '{Ive/Hes/Shes} never been a regular milk drinker;' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD229 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN '{My/His/Her} milk drinking has varied over {my/his/her} life-sometimes {Ive/hes/shes} been a regular milk drinker' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD229 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD229 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD229 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD229 AS STRING) 
+ END as regular_milk_drinker_DBD229, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235AE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235AE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely-less than once a week' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235AE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes-once a week or more, but less than once a day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235AE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often-once a day or more' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235AE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Varied' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235AE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235AE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD235AE IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD235AE AS STRING) 
+ END as how_often_drank_milk_age_5_12_DBD235AE, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235BE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235BE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely-less than once a week' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235BE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes-once a week or more, but less than once a day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235BE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often-once a day or more' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235BE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Varied' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235BE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235BE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD235BE IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD235BE AS STRING) 
+ END as how_often_drank_milk_age_13_17_DBD235BE, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely-less than once a week' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes-once a week or more, but less than once a day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often-once a day or more' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Varied' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235CE AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD235CE IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD235CE AS STRING) 
+ END as how_often_drank_milk_age_18_35_DBD235CE, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD301 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD301 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD301 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD301 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD301 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD301 AS STRING) 
+ END as community_government_meals_delivered_DBD301, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD421 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Free' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD421 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Reduced price' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD421 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Full price' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD421 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD421 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD421 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD421 AS STRING) 
+ END as school_breakfast_free_reduced_full_price_DBD421, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ070A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Whole or regular,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ070A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ070A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBQ070A IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ070A AS STRING) 
+ END as type_of_milk_first_fed_whole_milk_DBQ070A, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ070B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN '2% fat milk (includes "low fat milk" not further specified),' -- categorize numeric values
+WHEN DBQ070B IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ070B AS STRING) 
+ END as type_of_milk_first_fed_2_milk_DBQ070B, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ070C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(12 AS FLOAT64),0) AS INT64) THEN '1% fat milk,' -- categorize numeric values
+WHEN DBQ070C IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ070C AS STRING) 
+ END as type_of_milk_first_fed_1_milk_DBQ070C, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ070D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(13 AS FLOAT64),0) AS INT64) THEN 'Skim, nonfat, or 0.5% fat milk (includes liquid or reconstituted from dry)' -- categorize numeric values
+WHEN DBQ070D IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ070D AS STRING) 
+ END as type_of_milk_first_fed_skim_nonfat_DBQ070D, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD070J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(19 AS FLOAT64),0) AS INT64) THEN 'Another type?' -- categorize numeric values
+WHEN DBD070J IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD070J AS STRING) 
+ END as type_of_milk_first_fed_other_DBD070J, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ095 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Ordinary salt [includes regular iodized salt, sea salt and seasoning salts made with regular salt],' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ095 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Lite salt, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ095 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Salt substitute' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ095 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Doesnt use or add salt products at the table' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ095 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ095 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBQ095 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ095 AS STRING) 
+ END as type_of_salt_used_at_table, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Occasionaly, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Very often?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBQ100 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ100 AS STRING) 
+ END as how_often_add_salt_to_food_at_table, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBQ110 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ110 AS STRING) 
+ END as ever_eat_poultry, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ120 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ120 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely or seldom' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ120 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes or occasionally,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ120 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often or very often,or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ120 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Always?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ120 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ120 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBQ120 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ120 AS STRING) 
+ END as when_eat_poultry_how_often_eat_skin, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBQ130 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ130 AS STRING) 
+ END as ever_eat_beef_pork_lab_or_veal, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely or seldom,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes or occasionally,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often or very often, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Always?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBQ140 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ140 AS STRING) 
+ END as when_eating_meat_ever_eat_visible_fat, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD195 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD195 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely-less than once a week' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD195 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes-once a week or more, but less than once a day, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD195 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often-once a day or more?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD195 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Varied' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD195 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD195 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD195 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD195 AS STRING) 
+ END as past_30_day_milk_product_consumption_DBD195, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ220A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Whole or regular,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ220A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ220A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBQ220A IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ220A AS STRING) 
+ END as you_drink_whole_or_regular_milk_DBQ220A, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ220B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN '2% fat milk (includes "low fat milk" not further specified),' -- categorize numeric values
+WHEN DBQ220B IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ220B AS STRING) 
+ END as you_drink_2_fat_milk_DBQ220B, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ220C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(12 AS FLOAT64),0) AS INT64) THEN '1% fat milk,' -- categorize numeric values
+WHEN DBQ220C IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ220C AS STRING) 
+ END as you_drink_1_fat_milk_DBQ220C, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ220D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(13 AS FLOAT64),0) AS INT64) THEN 'Skim, nonfat, or 0.5% fat milk (includes liquid or reconstituted from dry), or' -- categorize numeric values
+WHEN DBQ220D IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ220D AS STRING) 
+ END as you_drink_skim_nonfat_or_5_milk_DBQ220D, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD220J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(19 AS FLOAT64),0) AS INT64) THEN 'Another type?' -- categorize numeric values
+WHEN DBD220J IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD220J AS STRING) 
+ END as you_drink_another_type_of_milk_DBD220J, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely-less than once a week' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes-once a week or more, but less than once a day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often-once a day or more' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Varied' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD235A IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD235A AS STRING) 
+ END as how_often_drank_milk_age_5_12_DBD235A, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely-less than once a week' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes-once a week or more, but less than once a day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often-once a day or more' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Varied' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD235B IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD235B AS STRING) 
+ END as how_often_drank_milk_age_13_17_DBD235B, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely-less than once a week' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes-once a week or more, but less than once a day' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often-once a day or more' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Varied' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD235C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD235C IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD235C AS STRING) 
+ END as how_often_drank_milk_age_18_35_DBD235C, 
+
+CASE
+WHEN ALD240 IS NULL THEN NULL 
+ELSE SAFE_CAST(ALD240 AS STRING) 
+ END as how_often_drink_beer_per_month, 
+
+CASE
+WHEN ALD250 IS NULL THEN NULL 
+ELSE SAFE_CAST(ALD250 AS STRING) 
+ END as how_often_drink_wine_per_month, 
+
+CASE
+WHEN ALD260 IS NULL THEN NULL 
+ELSE SAFE_CAST(ALD260 AS STRING) 
+ END as how_often_drink_hard_liquor_per_month, 
+
+CASE
+WHEN DBD270A IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD270A AS STRING) 
+ END as helping_of_protein_food_eaten_day, 
+
+CASE
+WHEN DBD270B IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD270B AS STRING) 
+ END as helping_of_milk_dairy_foods_eaten_day, 
+
+CASE
+WHEN DBD270C IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD270C AS STRING) 
+ END as helping_of_fruit_fruit_juices_eaten_day, 
+
+CASE
+WHEN DBD270D IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD270D AS STRING) 
+ END as helping_of_vegetables_eaten_day, 
+
+CASE
+WHEN DBD270E IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD270E AS STRING) 
+ END as helping_of_breads_grain_foods_eaten_day, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBQ300 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ300 AS STRING) 
+ END as community_government_meals_delivered_DBQ300, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD360 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD360 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD360 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD360 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD360 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD360 AS STRING) 
+ END as attend_kindergarten_thru_high_school_DBD360, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD370 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD370 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD370 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD370 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD370 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD370 AS STRING) 
+ END as school_serves_school_lunches_DBD370, 
+
+CASE
+WHEN DBD380 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD380 AS STRING) 
+ END as of_times_week_get_school_lunch_DBD380, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBD400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBD400 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD400 AS STRING) 
+ END as school_serve_complete_breakfast_each_day_DBD400, 
+
+CASE
+WHEN DBD410 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBD410 AS STRING) 
+ END as of_times_week_get_school_breakfast_DBD410, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ420 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Free' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ420 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Reduced price' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ420 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Full price' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ420 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ420 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN DBQ420 IS NULL THEN NULL 
+ELSE SAFE_CAST(DBQ420 AS STRING) 
+ END as school_breakfast_free_reduced_full_price_DBQ420, 
+
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
  FROM {{ ref('stg_diet_behavior_nutrition_questionnaire') }}
 
-        -- Docs utilized to generate this SQL can be found at https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DBQ_J.htm
-        
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DBQ_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_DBQ.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/DBQ_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/DBQ_H.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/DBQ_G.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/DBQ_F.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/DBQ_E.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DBQ_D.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2003-2004/DBQ_C.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2001-2002/DBQ_B.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/DBQ.htm
+*/

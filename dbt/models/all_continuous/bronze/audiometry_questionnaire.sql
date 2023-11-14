@@ -1,535 +1,855 @@
 SELECT
-        SEQN as respondent_sequence_number, -- could not identify transformation logic 
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ054,'.0','') AS INT64) AS STRING) = '1' THEN 'Excellent' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ054,'.0','') AS INT64) AS STRING) = '2' THEN 'Good' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ054,'.0','') AS INT64) AS STRING) = '3' THEN 'A little trouble' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ054,'.0','') AS INT64) AS STRING) = '4' THEN 'Moderate hearing trouble' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ054,'.0','') AS INT64) AS STRING) = '5' THEN 'A lot of trouble' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ054,'.0','') AS INT64) AS STRING) = '6' THEN 'Deaf' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ054,'.0','') AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ054,'.0','') AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ054 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Excellent' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ054 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Good' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ054 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A little trouble' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ054 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Moderate hearing trouble' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ054 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'A lot of trouble' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ054 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'Deaf' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ054 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ054 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN AUQ054 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ054 AS STRING) 
  END as general_condition_of_hearing, 
 
--- AUQ055 as AUQ055, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ060,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ060,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ060,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ060,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ060 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ060 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ060 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ060 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ060 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ060 AS STRING) 
  END as hear_a_whisper_from_across_a_quiet_room, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ070,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ070,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ070,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ070,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ070 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ070 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ070 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ070 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ070 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ070 AS STRING) 
  END as hear_normal_voice_across_a_quiet_room, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ080,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ080,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ080,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ080,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ080 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ080 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ080 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ080 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ080 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ080 AS STRING) 
  END as hear_a_shout_from_across_a_quiet_room, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ090,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ090,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ090,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ090,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ090 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ090 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ090 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ090 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ090 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ090 AS STRING) 
  END as hear_if_spoken_loudly_to_in_better_ear, 
 
--- AUQ395 as AUQ395, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ400,'.0','') AS INT64) AS STRING) = '1' THEN 'Before age 1 year old' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ400,'.0','') AS INT64) AS STRING) = '2' THEN 'Between 2 and 5 years old' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ400,'.0','') AS INT64) AS STRING) = '3' THEN 'Between 6 and 19 years old' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ400,'.0','') AS INT64) AS STRING) = '4' THEN 'Between 20 and 39 years old' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ400,'.0','') AS INT64) AS STRING) = '5' THEN 'Between 40 and 59 years old' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ400,'.0','') AS INT64) AS STRING) = '6' THEN 'Between 60 and 69 years old' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ400,'.0','') AS INT64) AS STRING) = '7' THEN '70 years and older' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ400,'.0','') AS INT64) AS STRING) = '8' THEN 'No hearing loss' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ400,'.0','') AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ400,'.0','') AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ400 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Before age 1 year old' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ400 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Between 2 and 5 years old' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ400 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Between 6 and 19 years old' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ400 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Between 20 and 39 years old' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ400 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Between 40 and 59 years old' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ400 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'Between 60 and 69 years old' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ400 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN '70 years and older' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ400 AS FLOAT64),0) AS INT64) AS STRING) = '8' THEN 'No hearing loss' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ400 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ400 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN AUQ400 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ400 AS STRING) 
  END as when_began_to_have_hearing_loss, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ410A,'.0','') AS INT64) AS STRING) = '1' THEN 'Genetic/Hereditary causes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ410A,'.0','') AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ410A,'.0','') AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ410A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Genetic/Hereditary causes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ410A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ410A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN AUQ410A IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ410A AS STRING) 
  END as cause_of_hearing_loss_genetic_hereditary, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ410B,'.0','') AS INT64) AS STRING) = '2' THEN 'Ear infections (including fluid in ears)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ410B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Ear infections (including fluid in ears)' -- categorize string values 
 WHEN AUQ410B IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ410B AS STRING) 
  END as cause_of_hearing_loss_ear_infections, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ410C,'.0','') AS INT64) AS STRING) = '3' THEN 'Ear diseases (Otosclerosis, Menieres, Tumor)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ410C AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Ear diseases (Otosclerosis, Menieres, Tumor)' -- categorize string values 
 WHEN AUQ410C IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ410C AS STRING) 
  END as cause_of_hearing_loss_ear_diseases, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ410D,'.0','') AS INT64) AS STRING) = '4' THEN 'Illness/Infections (Measles, Meningitis, Mumps)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ410D AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Illness/Infections (Measles, Meningitis, Mumps)' -- categorize string values 
 WHEN AUQ410D IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ410D AS STRING) 
  END as cause_of_hearing_loss_illness_infections, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ410E,'.0','') AS INT64) AS STRING) = '5' THEN 'Drugs/Medications' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ410E AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Drugs/Medications' -- categorize string values 
 WHEN AUQ410E IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ410E AS STRING) 
  END as cause_of_hearing_loss_drugs_medications, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ410F,'.0','') AS INT64) AS STRING) = '6' THEN 'Head or neck injury/trauma' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ410F AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'Head or neck injury/trauma' -- categorize string values 
 WHEN AUQ410F IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ410F AS STRING) 
  END as cause_of_hearing_loss_head_neck_injury, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ410G,'.0','') AS INT64) AS STRING) = '7' THEN 'Loud brief explosive noise/sounds' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ410G AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Loud brief explosive noise/sounds' -- categorize string values 
 WHEN AUQ410G IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ410G AS STRING) 
  END as cause_of_hearing_loss_loud_brief_noise, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ410H,'.0','') AS INT64) AS STRING) = '8' THEN 'Noise exposure, long-term (machinery, etc.)' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ410H AS FLOAT64),0) AS INT64) AS STRING) = '8' THEN 'Noise exposure, long-term (machinery, etc.)' -- categorize string values 
 WHEN AUQ410H IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ410H AS STRING) 
  END as cause_of_hearing_loss_long_term_noise, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ410I,'.0','') AS INT64) AS STRING) = '9' THEN 'Aging, getting older' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ410I AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Aging, getting older' -- categorize string values 
 WHEN AUQ410I IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ410I AS STRING) 
  END as cause_of_hearing_loss_aging, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ410J,'.0','') AS INT64) AS STRING) = '10' THEN 'Other causes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ410J AS FLOAT64),0) AS INT64) AS STRING) = '10' THEN 'Other causes' -- categorize string values 
 WHEN AUQ410J IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ410J AS STRING) 
  END as cause_of_hearing_loss_others, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ156,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ156,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ156,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ156,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ156 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ156 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ156 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ156 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ156 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ156 AS STRING) 
  END as ever_used_assistive_listening_devices, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ420,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ420,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ420,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ420,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ420 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ420 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ420 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ420 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ420 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ420 AS STRING) 
  END as ever_had_ear_infections_or_earaches, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ430,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ430,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ430,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ430,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ430 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ430 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ430 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ430 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ430 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ430 AS STRING) 
  END as ever_had_3_or_more_ear_infections, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ139,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ139,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ139,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ139,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ139 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ139 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ139 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ139 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ139 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ139 AS STRING) 
  END as ever_had_tube_placed_in_ear, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ144,'.0','') AS INT64) AS STRING) = '1' THEN 'Less than a year ago' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ144,'.0','') AS INT64) AS STRING) = '2' THEN '1 year to 4 years ago' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ144,'.0','') AS INT64) AS STRING) = '3' THEN '5 to 9 years ago' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ144,'.0','') AS INT64) AS STRING) = '4' THEN 'Ten or more years ago' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ144,'.0','') AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ144,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ144,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ144 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Less than a year ago' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ144 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '1 year to 4 years ago' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ144 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '5 to 9 years ago' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ144 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Ten or more years ago' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ144 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ144 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ144 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ144 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ144 AS STRING) 
  END as last_time_hearing_tested_by_specialist, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ147,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ147,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ147,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ147,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ147 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ147 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ147 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ147 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ147 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ147 AS STRING) 
  END as now_use_hearing_aid_amplifier_implant, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ149A,'.0','') AS INT64) AS STRING) = '1' THEN 'A hearing aid' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ149A,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ149A,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ149A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'A hearing aid' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ149A AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ149A AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ149A IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ149A AS STRING) 
  END as now_use_a_hearing_aid, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ149B,'.0','') AS INT64) AS STRING) = '2' THEN 'A personal sound amplifier' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ149B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'A personal sound amplifier' -- categorize string values 
 WHEN AUQ149B IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ149B AS STRING) 
  END as now_use_a_personal_sound_amplifier, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ149C,'.0','') AS INT64) AS STRING) = '3' THEN 'A Cochlear implant' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ149C AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A Cochlear implant' -- categorize string values 
 WHEN AUQ149C IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ149C AS STRING) 
  END as now_have_a_cochlear_implant, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ153,'.0','') AS INT64) AS STRING) = '1' THEN 'Less than 1 hour a day' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ153,'.0','') AS INT64) AS STRING) = '2' THEN '1 to 3 hours a day' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ153,'.0','') AS INT64) AS STRING) = '3' THEN '4 to 7 hours a day' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ153,'.0','') AS INT64) AS STRING) = '4' THEN '8 or more hours per day' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ153,'.0','') AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ153,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ153,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ153 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Less than 1 hour a day' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ153 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '1 to 3 hours a day' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ153 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '4 to 7 hours a day' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ153 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '8 or more hours per day' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ153 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ153 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ153 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ153 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ153 AS STRING) 
  END as past_2_weeks_how_often_worn_hearing_aid, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ630,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ630,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ630,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ630,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ630 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ630 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ630 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ630 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ630 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ630 AS STRING) 
  END as ever_worn_hearing_aid_amplifier_implant, 
 
--- AUQ435 as AUQ435, -- not included in table but included in docs without transformation logic 
-
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ440,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ440,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ440,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ440,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ440 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ440 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ440 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ440 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ440 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ440 AS STRING) 
  END as ever_had_special_ed_early_intervention, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ450A,'.0','') AS INT64) AS STRING) = '1' THEN 'Speech-language' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ450A,'.0','') AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ450A,'.0','') AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ450A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Speech-language' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ450A AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ450A AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN AUQ450A IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ450A AS STRING) 
  END as had_service_for_speech_language, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ450B,'.0','') AS INT64) AS STRING) = '2' THEN 'Reading' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ450B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Reading' -- categorize string values 
 WHEN AUQ450B IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ450B AS STRING) 
  END as had_service_for_reading, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ450C,'.0','') AS INT64) AS STRING) = '3' THEN 'Hearing or listening skills' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ450C AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Hearing or listening skills' -- categorize string values 
 WHEN AUQ450C IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ450C AS STRING) 
  END as had_service_for_hearing_listening_skills, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ450D,'.0','') AS INT64) AS STRING) = '4' THEN 'Intellectual disability' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ450D AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Intellectual disability' -- categorize string values 
 WHEN AUQ450D IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ450D AS STRING) 
  END as had_service_for_intellectual_disability, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ450E,'.0','') AS INT64) AS STRING) = '5' THEN 'Movement or mobility difficulties' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ450E AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Movement or mobility difficulties' -- categorize string values 
 WHEN AUQ450E IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ450E AS STRING) 
  END as had_service_for_movement_mobility_issues, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ450F,'.0','') AS INT64) AS STRING) = '6' THEN 'Other developmental or disability problems' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ450F AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'Other developmental or disability problems' -- categorize string values 
 WHEN AUQ450F IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ450F AS STRING) 
  END as had_service_for_other_disabilities, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ460,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ460,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ460,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ460,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ460 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ460 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ460 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ460 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ460 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ460 AS STRING) 
  END as exposed_to_very_loud_noise_10_hrs_wk, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ470,'.0','') AS INT64) AS STRING) = '1' THEN 'Less than 1 year' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ470,'.0','') AS INT64) AS STRING) = '2' THEN '1 to 2 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ470,'.0','') AS INT64) AS STRING) = '3' THEN '3 to 4 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ470,'.0','') AS INT64) AS STRING) = '4' THEN '5 or more years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ470,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ470,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ470 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Less than 1 year' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ470 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '1 to 2 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ470 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '3 to 4 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ470 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '5 or more years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ470 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ470 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ470 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ470 AS STRING) 
  END as how_long_exposed_to_loud_noise_10_hrs_wk, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ101,'.0','') AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ101,'.0','') AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ101,'.0','') AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ101,'.0','') AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ101,'.0','') AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ101,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ101,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ101 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ101 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ101 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ101 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ101 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ101 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ101 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ101 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ101 AS STRING) 
  END as difficult_to_follow_conversation_w_noise, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ110,'.0','') AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ110,'.0','') AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ110,'.0','') AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ110,'.0','') AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ110,'.0','') AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ110,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ110,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ110 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ110 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ110 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ110 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ110 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ110 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ110 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ110 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ110 AS STRING) 
  END as hearing_causes_frustration_when_talking, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ480,'.0','') AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ480,'.0','') AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ480,'.0','') AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ480,'.0','') AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ480,'.0','') AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ480,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ480,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ480 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ480 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ480 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ480 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ480 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ480 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ480 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ480 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ480 AS STRING) 
  END as avoid_groups_limit_social_life, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ490,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ490,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ490,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ490,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ490 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ490 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ490 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ490 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ490 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ490 AS STRING) 
  END as problem_with_dizziness_lightheadedness, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ191,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ191,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ191,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ191,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ191 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ191 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ191 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ191 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ191 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ191 AS STRING) 
  END as ears_ringing_buzzing_past_year, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ250,'.0','') AS INT64) AS STRING) = '1' THEN 'Less than three months' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ250,'.0','') AS INT64) AS STRING) = '2' THEN 'Three months to a year' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ250,'.0','') AS INT64) AS STRING) = '3' THEN '1 to 4 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ250,'.0','') AS INT64) AS STRING) = '4' THEN '5 to 9 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ250,'.0','') AS INT64) AS STRING) = '5' THEN 'Ten or more years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ250,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ250,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ250 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Less than three months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ250 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Three months to a year' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ250 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '1 to 4 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ250 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '5 to 9 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ250 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Ten or more years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ250 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ250 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ250 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ250 AS STRING) 
  END as how_long_bothered_by_ringing_buzzing, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ255,'.0','') AS INT64) AS STRING) = '1' THEN 'Almost always' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ255,'.0','') AS INT64) AS STRING) = '2' THEN 'At least once a day' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ255,'.0','') AS INT64) AS STRING) = '3' THEN 'At least once a week' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ255,'.0','') AS INT64) AS STRING) = '4' THEN 'At least once a month' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ255,'.0','') AS INT64) AS STRING) = '5' THEN 'Less frequently than once a month' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ255,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ255,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ255 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Almost always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ255 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'At least once a day' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ255 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'At least once a week' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ255 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'At least once a month' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ255 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Less frequently than once a month' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ255 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ255 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ255 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ255 AS STRING) 
  END as in_past_yr_how_often_had_ringing_roaring, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ260,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ260,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ260,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ260,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ260 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ260 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ260 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ260 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ260 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ260 AS STRING) 
  END as bothered_by_ringing_after_loud_sounds, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ270,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ270,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ270,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ270,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ270 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ270 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ270 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ270 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ270 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ270 AS STRING) 
  END as bothered_by_ringing_when_going_to_sleep, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ280,'.0','') AS INT64) AS STRING) = '1' THEN 'No problem' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ280,'.0','') AS INT64) AS STRING) = '2' THEN 'A small problem' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ280,'.0','') AS INT64) AS STRING) = '3' THEN 'A moderate problem' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ280,'.0','') AS INT64) AS STRING) = '4' THEN 'A big problem' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ280,'.0','') AS INT64) AS STRING) = '5' THEN 'A very big problem' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ280,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ280,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ280 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'No problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ280 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'A small problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ280 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A moderate problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ280 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'A big problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ280 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'A very big problem' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ280 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ280 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ280 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ280 AS STRING) 
  END as how_much_of_a_problem_is_ringing, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ500,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ500,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ500,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ500,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ500 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ500 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ500 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ500 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ500 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ500 AS STRING) 
  END as discussed_ringing_with_doctor, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ300,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ300,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ300,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ300,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ300 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ300 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ300 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ300 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ300 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ300 AS STRING) 
  END as ever_used_firearms_for_any_reason, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ310,'.0','') AS INT64) AS STRING) = '1' THEN '1 to less than 100 rounds' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ310,'.0','') AS INT64) AS STRING) = '2' THEN '100 to less than 1000 rounds' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ310,'.0','') AS INT64) AS STRING) = '3' THEN '1000 to less than 10,000 rounds' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ310,'.0','') AS INT64) AS STRING) = '4' THEN '10,000 to less than 50,000 rounds' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ310,'.0','') AS INT64) AS STRING) = '5' THEN '50,000 rounds or more' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ310,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ310,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ310 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN '1 to less than 100 rounds' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ310 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '100 to less than 1000 rounds' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ310 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '1000 to less than 10,000 rounds' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ310 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '10,000 to less than 50,000 rounds' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ310 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN '50,000 rounds or more' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ310 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ310 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ310 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ310 AS STRING) 
  END as how_many_total_rounds_ever_fired, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ320,'.0','') AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ320,'.0','') AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ320,'.0','') AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ320,'.0','') AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ320,'.0','') AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ320,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ320,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ320 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ320 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ320 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ320 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ320 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ320 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ320 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ320 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ320 AS STRING) 
  END as wear_hearing_protection_when_shooting, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ330,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ330,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ330,'.0','') AS INT64) AS STRING) = '3' THEN 'Never worked' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ330,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ330,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ330 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ330 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ330 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Never worked' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ330 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ330 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ330 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ330 AS STRING) 
  END as ever_had_job_exposure_to_loud_noise, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ340,'.0','') AS INT64) AS STRING) = '1' THEN 'Less than 3 months' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ340,'.0','') AS INT64) AS STRING) = '2' THEN '3 to 11 months' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ340,'.0','') AS INT64) AS STRING) = '3' THEN '1 to 2 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ340,'.0','') AS INT64) AS STRING) = '4' THEN '3 to 4 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ340,'.0','') AS INT64) AS STRING) = '5' THEN '5 to 9 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ340,'.0','') AS INT64) AS STRING) = '6' THEN '10 to 14 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ340,'.0','') AS INT64) AS STRING) = '7' THEN '15 or more years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ340,'.0','') AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ340,'.0','') AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ340 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Less than 3 months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ340 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '3 to 11 months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ340 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '1 to 2 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ340 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '3 to 4 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ340 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN '5 to 9 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ340 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN '10 to 14 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ340 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN '15 or more years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ340 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ340 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN AUQ340 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ340 AS STRING) 
  END as how_long_exposed_to_loud_noise_at_work, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ350,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ350,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ350,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ350,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ350 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ350 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ350 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ350 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ350 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ350 AS STRING) 
  END as ever_exposed_to_very_loud_noise_at_work, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ360,'.0','') AS INT64) AS STRING) = '1' THEN 'Less than 3 months' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ360,'.0','') AS INT64) AS STRING) = '2' THEN '3 to 11 months' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ360,'.0','') AS INT64) AS STRING) = '3' THEN '1 to 2 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ360,'.0','') AS INT64) AS STRING) = '4' THEN '3 to 4 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ360,'.0','') AS INT64) AS STRING) = '5' THEN '5 to 9 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ360,'.0','') AS INT64) AS STRING) = '6' THEN '10 to 14 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ360,'.0','') AS INT64) AS STRING) = '7' THEN '15 or more years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ360,'.0','') AS INT64) AS STRING) = '8' THEN 'Not exposed' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ360,'.0','') AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ360,'.0','') AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ360 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Less than 3 months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ360 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '3 to 11 months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ360 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '1 to 2 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ360 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '3 to 4 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ360 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN '5 to 9 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ360 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN '10 to 14 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ360 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN '15 or more years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ360 AS FLOAT64),0) AS INT64) AS STRING) = '8' THEN 'Not exposed' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ360 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ360 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN AUQ360 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ360 AS STRING) 
  END as how_long_exposed_to_very_loud_noise, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ370,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ370,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ370,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ370,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ370 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ370 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ370 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ370 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ370 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ370 AS STRING) 
  END as had_off_work_exposure_to_loud_noise, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ510,'.0','') AS INT64) AS STRING) = '1' THEN 'Less than 1 year' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ510,'.0','') AS INT64) AS STRING) = '2' THEN '1 to 2 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ510,'.0','') AS INT64) AS STRING) = '3' THEN '3 to 4 years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ510,'.0','') AS INT64) AS STRING) = '4' THEN '5 or more years' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ510,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ510,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ510 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Less than 1 year' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ510 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '1 to 2 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ510 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '3 to 4 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ510 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '5 or more years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ510 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ510 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN AUQ510 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ510 AS STRING) 
  END as how_long_exposed_to_loud_noise_10_hrs_wk_AUQ510, 
 
 CASE
-            WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ380,'.0','') AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ380,'.0','') AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ380,'.0','') AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ380,'.0','') AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ380,'.0','') AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ380,'.0','') AS INT64) AS STRING) = '6' THEN 'No noise exposure past 12 months' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ380,'.0','') AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
-WHEN SAFE_CAST(SAFE_CAST(REPLACE(AUQ380,'.0','') AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ380 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ380 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ380 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ380 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ380 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ380 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'No noise exposure past 12 months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ380 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ380 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
 WHEN AUQ380 IS NULL THEN NULL 
 ELSE SAFE_CAST(AUQ380 AS STRING) 
  END as past_year_worn_hearing_protection, 
 
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ100 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ100 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ100 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ100 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ100 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ100 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ100 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ100 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ100 AS STRING) 
+ END as difficult_follow_conversation_if_noise, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ136 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ136 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ136 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ136 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ136 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ136 AS STRING) 
+ END as ever_had_3_or_more_ear_infections_AUQ136, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ138 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ138 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ138 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ138 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ138 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ138 AS STRING) 
+ END as ever_had_tube_placed_in_ear_AUQ138, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ146 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ146 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ146 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ146 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ146 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ146 AS STRING) 
+ END as ever_worn_hearing_aid_cochlear_implant, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUD148 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Hearing aid' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUD148 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Cochlear implant' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUD148 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Both hearing aid and cochlear implant' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUD148 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUD148 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUD148 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUD148 AS STRING) 
+ END as hearing_aid_or_cochlear_implant, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ152 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ152 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ152 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ152 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ152 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ152 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ152 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ152 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ152 AS STRING) 
+ END as past_year_how_often_worn_hearing_aid, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ154 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ154 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ154 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ154 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ154 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ154 AS STRING) 
+ END as ever_used_assistive_listening_devices_AUQ154, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ331 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ331 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ331 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Never worked' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ331 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ331 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ331 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ331 AS STRING) 
+ END as ever_had_a_job_exposure_to_loud_noise, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ361 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Less than 3 months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ361 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '3 to 11 months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ361 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '1 to 2 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ361 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '3 to 4 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ361 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN '5 to 9 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ361 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN '10 to14 years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ361 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN '15 or more years' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ361 AS FLOAT64),0) AS INT64) AS STRING) = '8' THEN 'Not exposed' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ361 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ361 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN AUQ361 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ361 AS STRING) 
+ END as how_long_exposed_to_very_loud_noise_AUQ361, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ381 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ381 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Usually' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ381 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'About half the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ381 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Seldom' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ381 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ381 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'No noise exposure past 12 months' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ381 AS FLOAT64),0) AS INT64) AS STRING) = '77' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ381 AS FLOAT64),0) AS INT64) AS STRING) = '99' THEN 'Dont know' -- categorize string values 
+WHEN AUQ381 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ381 AS STRING) 
+ END as past_year_worn_hearing_protection_AUQ381, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ131 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'EXCELLENT' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ131 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'GOOD' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ131 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'A LITTLE TROUBLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ131 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'MODERATE HEARING TROUBLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ131 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'A LOT OF TROUBLE' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ131 AS FLOAT64),0) AS INT64) AS STRING) = '6' THEN 'DEAF' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ131 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ131 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ131 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ131 AS STRING) 
+ END as general_condition_of_hearing_AUQ131, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ141 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Less than a year ago' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ141 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '1 year to 4 years ago' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ141 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '5 to 9 years ago' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ141 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Ten or more years ago' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ141 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ141 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ141 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ141 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ141 AS STRING) 
+ END as last_time_had_hearing_tested, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ150 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ150 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ150 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ150 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN AUQ150 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ150 AS STRING) 
+ END as ever_worn_a_hearing_aid, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ171 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ171 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ171 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ171 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ171 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ171 AS STRING) 
+ END as worn_hearing_aid_5_hours_a_week, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ185 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ185 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ185 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ185 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ185 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ185 AS STRING) 
+ END as ever_used_assistive_listening_devices_AUQ185, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ211 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ211 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ211 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ211 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ211 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ211 AS STRING) 
+ END as ever_used_firearms, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ290 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ290 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ290 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ290 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ290 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ290 AS STRING) 
+ END as ever_had_job_exposure_to_loud_noise_AUQ290, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ231 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ231 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ231 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ231 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ231 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ231 AS STRING) 
+ END as ever_had_non_job_exposure_to_loud_noise, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ241 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Most of the time' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ241 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ241 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Rarely/seldom' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ241 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ241 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(AUQ241 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN AUQ241 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ241 AS STRING) 
+ END as how_often_wear_hearing_protection, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Good' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Little trouble' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Lot of trouble' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Deaf' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN AUQ130 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ130 AS STRING) 
+ END as general_condition_of_hearing_AUQ130, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Less than 1 year ago' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '1 year to 4 years ago' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'More than 4 years ago' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN AUQ140 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ140 AS STRING) 
+ END as when_was_hearing_last_tested, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN AUQ160 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ160 AS STRING) 
+ END as now_wearing_a_hearing_aid, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ170 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ170 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ170 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ170 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN AUQ170 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ170 AS STRING) 
+ END as worn_hearing_aid_in_past_12_months, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Almost always,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'At least once a day,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'At least once a week,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'At least once a month, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'Less frequently than once a month?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN AUQ180 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ180 AS STRING) 
+ END as how_often_wear_hearing_aid_in_past_year, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ190 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ190 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ190 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ190 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN AUQ190 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ190 AS STRING) 
+ END as ears_ringing_roaring_buzzing_past_year_AUQ190, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Almost always,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'At least once a day,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'At least once a week,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'At least once a month, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'Less frequently than once a month?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN AUQ200 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ200 AS STRING) 
+ END as how_often_ringing_roaring_buzzing, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ210 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ210 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ210 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ210 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN AUQ210 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ210 AS STRING) 
+ END as firearm_noise_exposure_outside_work, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ220 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ220 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ220 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ220 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN AUQ220 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ220 AS STRING) 
+ END as use_ear_protection_around_firearm_noise, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ230 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ230 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ230 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ230 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN AUQ230 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ230 AS STRING) 
+ END as loud_noise_exposure_outside_work, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ240 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ240 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ240 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(AUQ240 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN AUQ240 IS NULL THEN NULL 
+ELSE SAFE_CAST(AUQ240 AS STRING) 
+ END as use_ear_protection_around_loud_noise, 
+
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
  FROM {{ ref('stg_audiometry_questionnaire') }}
 
-        -- Docs utilized to generate this SQL can be found at https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/AUQ_J.htm
-        
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/AUQ_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_AUQ.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/AUQ_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/AUQ_G.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/AUQ_F.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/AUQ_E.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/AUQ_D.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2003-2004/AUQ_C.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2001-2002/AUQ_B.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/AUQ.htm
+*/

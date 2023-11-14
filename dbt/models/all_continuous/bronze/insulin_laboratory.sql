@@ -1,29 +1,57 @@
 SELECT
-        SEQN as respondent_sequence_number, -- could not identify transformation logic 
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN WTSAF2YR IS NULL THEN NULL 
-ELSE WTSAF2YR 
+WHEN WTSAF2YR IS NULL THEN NULL 
+ELSE SAFE_CAST(WTSAF2YR AS STRING) 
  END as fasting_subsample_2_year_mec_weight, 
 
 CASE
-            WHEN LBXIN IS NULL THEN NULL 
-ELSE LBXIN 
+WHEN LBXIN IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXIN AS STRING) 
  END as insulin_uu_ml, 
 
 CASE
-            WHEN LBDINSI IS NULL THEN NULL 
-ELSE LBDINSI 
+WHEN LBDINSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDINSI AS STRING) 
  END as insulin_pmol_l, 
 
 CASE
-            WHEN LBDINLC = 0 THEN 'Detectable result' -- categorize numeric values
-WHEN LBDINLC = 1 THEN 'Below detectable limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDINLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Detectable result' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDINLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below detectable limit' -- categorize numeric values
 WHEN LBDINLC IS NULL THEN NULL 
-ELSE LBDINLC 
+ELSE SAFE_CAST(LBDINLC AS STRING) 
  END as insulin_comment_code, 
 
+CASE
+WHEN WTSAFPRP IS NULL THEN NULL 
+ELSE SAFE_CAST(WTSAFPRP AS STRING) 
+ END as fasting_subsample_weight, 
+
+CASE
+WHEN PHAFSTHR IS NULL THEN NULL 
+ELSE SAFE_CAST(PHAFSTHR AS STRING) 
+ END as total_length_of_food_fast_hours, 
+
+CASE
+WHEN PHAFSTMN IS NULL THEN NULL 
+ELSE SAFE_CAST(PHAFSTMN AS STRING) 
+ END as total_length_of_food_fast_minutes, 
+
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
  FROM {{ ref('stg_insulin_laboratory') }}
 
-        -- Docs utilized to generate this SQL can be found at https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/INS_J.htm
-        
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/INS_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_INS.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/INS_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/INS_H.htm
+*/
