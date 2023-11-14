@@ -31,7 +31,7 @@ WHEN FSD032C IS NULL THEN NULL
 ELSE FSD032C 
  END as hh_couldn_t_afford_balanced_meals, 
 
-FSQBOX1 as FSQBOX1, -- could not automatically decode name of variable or transformation logic 
+-- FSQBOX1 as FSQBOX1, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN FSD041 = '1' THEN 'Yes' -- categorize string values 
@@ -79,7 +79,7 @@ WHEN FSD081 IS NULL THEN NULL
 ELSE FSD081 
  END as hh_lost_weight_no_money_for_food, 
 
-FSQBOX2 as FSQBOX2, -- could not automatically decode name of variable or transformation logic 
+-- FSQBOX2 as FSQBOX2, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN FSD092 = '1' THEN 'Yes' -- categorize string values 
@@ -100,7 +100,7 @@ WHEN FSD102 IS NULL THEN NULL
 ELSE FSD102 
  END as hh_how_often_adults_not_eat_for_day, 
 
-FSQBOX3 as FSQBOX3, -- could not automatically decode name of variable or transformation logic 
+-- FSQBOX3 as FSQBOX3, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN FSD032D = '1' THEN 'Often true' -- categorize string values 
@@ -132,7 +132,7 @@ WHEN FSD032F IS NULL THEN NULL
 ELSE FSD032F 
  END as hh_child_not_eating_enough, 
 
-FSQBOX4 as FSQBOX4, -- could not automatically decode name of variable or transformation logic 
+-- FSQBOX4 as FSQBOX4, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN FSD111 = '1' THEN 'Yes' -- categorize string values 
@@ -300,7 +300,7 @@ WHEN FSQ865 IS NULL THEN NULL
 ELSE FSQ865 
  END as hh_fs_benefit_amount_will_receive, 
 
-FSQBOX5 as FSQBOX5, -- could not automatically decode name of variable or transformation logic 
+-- FSQBOX5 as FSQBOX5, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN FSQ162 = '1' THEN 'Yes' -- categorize string values 
@@ -326,7 +326,7 @@ WHEN FSD760N IS NULL THEN NULL
 ELSE FSD760N 
  END as hh_wic_benefit_no_people_received, 
 
-FSQBOX6 as FSQBOX6, -- could not automatically decode name of variable or transformation logic 
+-- FSQBOX6 as FSQBOX6, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN FSQ653 = '1' THEN 'Yes' -- categorize string values 
@@ -385,7 +385,7 @@ WHEN FSQ695 IS NULL THEN NULL
 ELSE FSQ695 
  END as ch_wic_benefit_starting_month_of_preg, 
 
-FSQBOX7 as FSQBOX7, -- could not automatically decode name of variable or transformation logic 
+-- FSQBOX7 as FSQBOX7, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN FSD652ZW = '1' THEN 'Yes' -- categorize string values 
@@ -412,7 +412,7 @@ WHEN FSD652CW IS NULL THEN NULL
 ELSE FSD652CW 
  END as wm_wic_benefit_receive_post_partum, 
 
-FSQBOX8 as FSQBOX8, -- could not automatically decode name of variable or transformation logic 
+-- FSQBOX8 as FSQBOX8, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN FSD660ZW = '1' THEN 'Yes' -- categorize string values 

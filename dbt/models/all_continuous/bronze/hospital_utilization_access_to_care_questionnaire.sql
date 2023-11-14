@@ -13,7 +13,7 @@ WHEN HUQ010 IS NULL THEN NULL
 ELSE HUQ010 
  END as general_health_condition, 
 
-HUQ015 as HUQ015, -- could not automatically decode name of variable or transformation logic 
+-- HUQ015 as HUQ015, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN HUQ020 = 1 THEN 'Better,' -- categorize numeric values
@@ -99,7 +99,7 @@ WHEN HUD080 IS NULL THEN NULL
 ELSE HUD080 
  END as times_overnite_hospital_patient_last_yr, 
 
-HUQ085 as HUQ085, -- could not automatically decode name of variable or transformation logic 
+-- HUQ085 as HUQ085, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN HUQ090 = 1 THEN 'Yes' -- categorize numeric values

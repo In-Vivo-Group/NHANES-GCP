@@ -36,7 +36,7 @@ CASE
 ELSE WHD050 
  END as self_reported_weight_1_yr_ago_pounds, 
 
-WHQ055 as WHQ055, -- could not automatically decode name of variable or transformation logic 
+-- WHQ055 as WHQ055, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN WHQ060 = 1 THEN 'Yes' -- categorize numeric values
@@ -194,21 +194,21 @@ WHEN WHQ225 IS NULL THEN NULL
 ELSE WHQ225 
  END as times_lost_10_lbs_or_more_to_lose_weight, 
 
-WHQ105 as WHQ105, -- could not automatically decode name of variable or transformation logic 
+-- WHQ105 as WHQ105, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN WHD110 IS NULL THEN NULL 
 ELSE WHD110 
  END as self_reported_weight_10_yrs_ago_pounds, 
 
-WHQ115A as WHQ115A, -- could not automatically decode name of variable or transformation logic 
+-- WHQ115A as WHQ115A, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN WHD120 IS NULL THEN NULL 
 ELSE WHD120 
  END as self_reported_weight_age_25_pounds, 
 
-WHQ125 as WHQ125, -- could not automatically decode name of variable or transformation logic 
+-- WHQ125 as WHQ125, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN WHD130 IS NULL THEN NULL 

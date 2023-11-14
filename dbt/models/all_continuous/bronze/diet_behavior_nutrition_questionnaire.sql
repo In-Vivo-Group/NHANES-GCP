@@ -76,7 +76,7 @@ WHEN DBQ073U IS NULL THEN NULL
 ELSE DBQ073U 
  END as type_of_milk_first_fed_other, 
 
-DBD085 as DBD085, -- could not automatically decode name of variable or transformation logic 
+-- DBD085 as DBD085, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN DBQ700 = '1' THEN 'Excellent' -- categorize string values 
@@ -140,7 +140,7 @@ WHEN DBQ223U IS NULL THEN NULL
 ELSE DBQ223U 
  END as you_drink_another_type_of_milk, 
 
-DBD225 as DBD225, -- could not automatically decode name of variable or transformation logic 
+-- DBD225 as DBD225, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN DBQ229 = '1' THEN '{Ive/Hes/Shes} been a regular milk drinker for most or all of {my/his/her} life, including {my/his/her} childhood' -- categorize string values 
@@ -188,7 +188,7 @@ WHEN DBQ235C IS NULL THEN NULL
 ELSE DBQ235C 
  END as how_often_drank_milk_age_18_35, 
 
-DBD265A as DBD265A, -- could not automatically decode name of variable or transformation logic 
+-- DBD265A as DBD265A, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN DBQ301 = '1' THEN 'Yes' -- categorize string values 
@@ -208,7 +208,7 @@ WHEN DBQ330 IS NULL THEN NULL
 ELSE DBQ330 
  END as eat_meals_at_community_senior_center, 
 
-DBD355 as DBD355, -- could not automatically decode name of variable or transformation logic 
+-- DBD355 as DBD355, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN DBQ360 = 1 THEN 'Yes' -- categorize numeric values
@@ -267,7 +267,7 @@ WHEN DBQ421 IS NULL THEN NULL
 ELSE DBQ421 
  END as school_breakfast_free_reduced_full_price, 
 
-DBQ422 as DBQ422, -- could not automatically decode name of variable or transformation logic 
+-- DBQ422 as DBQ422, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN DBQ424 = '1' THEN 'Yes' -- categorize string values 
@@ -303,7 +303,7 @@ WHEN DBD910 IS NULL THEN NULL
 ELSE DBD910 
  END as of_frozen_meals_pizza_in_past_30_days, 
 
-DBQ715A as DBQ715A, -- could not automatically decode name of variable or transformation logic 
+-- DBQ715A as DBQ715A, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN CBQ596 = '1' THEN 'Yes' -- categorize string values 

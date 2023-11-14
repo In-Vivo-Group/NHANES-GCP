@@ -367,7 +367,7 @@ WHEN MCQ510F IS NULL THEN NULL
 ELSE MCQ510F 
  END as liver_condition_other_liver_disease, 
 
-MCQ515 as MCQ515, -- could not automatically decode name of variable or transformation logic 
+-- MCQ515 as MCQ515, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN MCQ520 = '1' THEN 'Yes' -- categorize string values 

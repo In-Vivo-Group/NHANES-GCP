@@ -325,7 +325,7 @@ WHEN CBQ915 IS NULL THEN NULL
 ELSE CBQ915 
  END as use_percent_daily_value_or_nutrients, 
 
-CBQ920 as CBQ920, -- could not automatically decode name of variable or transformation logic 
+-- CBQ920 as CBQ920, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN CBQ925 = 1 THEN '5 % of the calories in one serving come from Vit A' -- categorize numeric values
@@ -389,7 +389,7 @@ WHEN CBQ950 IS NULL THEN NULL
 ELSE CBQ950 
  END as use_second_column_on_food_label, 
 
-CBQ708 as CBQ708, -- could not automatically decode name of variable or transformation logic 
+-- CBQ708 as CBQ708, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN CBQ738A = 1 THEN 'To watch my weight and/or lose weight' -- categorize numeric values
@@ -465,7 +465,7 @@ WHEN CBQ738CD IS NULL THEN NULL
 ELSE CBQ738CD 
  END as check_label_for_other_reasons, 
 
-CBQ751 as CBQ751, -- could not automatically decode name of variable or transformation logic 
+-- CBQ751 as CBQ751, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN CBQ698A = 1 THEN 'I dont have time' -- categorize numeric values

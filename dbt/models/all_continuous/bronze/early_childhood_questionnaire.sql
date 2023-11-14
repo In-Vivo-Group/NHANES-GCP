@@ -25,7 +25,7 @@ CASE
 ELSE ECD070B 
  END as weight_at_birth_ounces, 
 
-ECQ075 as ECQ075, -- could not automatically decode name of variable or transformation logic 
+-- ECQ075 as ECQ075, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN ECQ080 = 1 THEN 'More than 5-1/2 lbs. (2500 g), or' -- categorize numeric values
@@ -45,7 +45,7 @@ WHEN ECQ090 IS NULL THEN NULL
 ELSE ECQ090 
  END as weight_more_less_than_9_0_lbs, 
 
-ECQ095 as ECQ095, -- could not automatically decode name of variable or transformation logic 
+-- ECQ095 as ECQ095, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN WHQ030E = '1' THEN 'Overweight' -- categorize string values 

@@ -37,7 +37,7 @@ WHEN SMQ862 IS NULL THEN NULL
 ELSE SMQ862 
  END as last_7_d_at_rest_someone_smoked_indoors, 
 
-SMQ864 as SMQ864, -- could not automatically decode name of variable or transformation logic 
+-- SMQ864 as SMQ864, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN SMQ866 = 1 THEN 'Yes' -- categorize numeric values

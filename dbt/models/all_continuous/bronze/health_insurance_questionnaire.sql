@@ -72,9 +72,9 @@ WHEN HIQ031AA IS NULL THEN NULL
 ELSE HIQ031AA 
  END as no_coverage_of_any_type, 
 
-HIQ065 as HIQ065, -- could not automatically decode name of variable or transformation logic 
+-- HIQ065 as HIQ065, -- not included in table but included in docs without transformation logic 
 
-HIQ259 as HIQ259, -- could not automatically decode name of variable or transformation logic 
+-- HIQ259 as HIQ259, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN HIQ260 = '1' THEN 'Yes' -- categorize string values 
@@ -92,7 +92,7 @@ WHEN HIQ105 IS NULL THEN NULL
 ELSE HIQ105 
  END as insurance_card_available_or_not, 
 
-HIQ269 as HIQ269, -- could not automatically decode name of variable or transformation logic 
+-- HIQ269 as HIQ269, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN HIQ270 = '1' THEN 'Yes' -- categorize string values 

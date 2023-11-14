@@ -29,7 +29,7 @@ WHEN CDQ003 IS NULL THEN NULL
 ELSE CDQ003 
  END as during_an_ordinary_pace_on_level_ground, 
 
-CDQ003A as CDQ003A, -- could not automatically decode name of variable or transformation logic 
+-- CDQ003A as CDQ003A, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN CDQ004 = 1 THEN 'Stop or slow down' -- categorize numeric values

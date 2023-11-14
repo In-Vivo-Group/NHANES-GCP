@@ -1,7 +1,7 @@
 SELECT
         SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
-ACQBOX1 as ACQBOX1, -- could not automatically decode name of variable or transformation logic 
+-- ACQBOX1 as ACQBOX1, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN ACD011A = '1' THEN 'English' -- categorize string values 

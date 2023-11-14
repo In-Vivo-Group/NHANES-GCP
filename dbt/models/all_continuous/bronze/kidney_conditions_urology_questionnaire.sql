@@ -119,7 +119,7 @@ WHEN KIQ470 IS NULL THEN NULL
 ELSE KIQ470 
  END as how_frequently_does_this_occur_KIQ470, 
 
-KIQ048A as KIQ048A, -- could not automatically decode name of variable or transformation logic 
+-- KIQ048A as KIQ048A, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN KIQ050 = 1 THEN 'Not at all' -- categorize numeric values

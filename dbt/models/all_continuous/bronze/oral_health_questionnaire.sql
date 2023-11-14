@@ -104,7 +104,7 @@ WHEN OHQ780K IS NULL THEN NULL
 ELSE OHQ780K 
  END as other_reason_could_not_get_dental_care, 
 
-OHQ550 as OHQ550, -- could not automatically decode name of variable or transformation logic 
+-- OHQ550 as OHQ550, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN OHQ555G = '1' THEN 'Enter age' -- categorize string values 
@@ -194,7 +194,7 @@ WHEN OHQ576U IS NULL THEN NULL
 ELSE OHQ576U 
  END as age_stopped_taking_prescription_fluoride_OHQ576U, 
 
-OHQ592 as OHQ592, -- could not automatically decode name of variable or transformation logic 
+-- OHQ592 as OHQ592, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN OHQ610 = '1' THEN 'Yes' -- categorize string values 
@@ -223,7 +223,7 @@ WHEN OHQ614 IS NULL THEN NULL
 ELSE OHQ614 
  END as told_importance_of_checking_for_cancer, 
 
-OHQ616 as OHQ616, -- could not automatically decode name of variable or transformation logic 
+-- OHQ616 as OHQ616, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN OHQ620 = '1' THEN 'Very often' -- categorize string values 
@@ -282,7 +282,7 @@ WHEN OHQ845 IS NULL THEN NULL
 ELSE OHQ845 
  END as rate_the_health_of_your_teeth_and_gums, 
 
-OHQ846 as OHQ846, -- could not automatically decode name of variable or transformation logic 
+-- OHQ846 as OHQ846, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN OHQ848G = '1' THEN 'Enter number' -- categorize string values 

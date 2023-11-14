@@ -14,7 +14,7 @@ WHEN AUQ054 IS NULL THEN NULL
 ELSE AUQ054 
  END as general_condition_of_hearing, 
 
-AUQ055 as AUQ055, -- could not automatically decode name of variable or transformation logic 
+-- AUQ055 as AUQ055, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN AUQ060 = '1' THEN 'Yes' -- categorize string values 
@@ -52,7 +52,7 @@ WHEN AUQ090 IS NULL THEN NULL
 ELSE AUQ090 
  END as hear_if_spoken_loudly_to_in_better_ear, 
 
-AUQ395 as AUQ395, -- could not automatically decode name of variable or transformation logic 
+-- AUQ395 as AUQ395, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN AUQ400 = '1' THEN 'Before age 1 year old' -- categorize string values 
@@ -229,7 +229,7 @@ WHEN AUQ630 IS NULL THEN NULL
 ELSE AUQ630 
  END as ever_worn_hearing_aid_amplifier_implant, 
 
-AUQ435 as AUQ435, -- could not automatically decode name of variable or transformation logic 
+-- AUQ435 as AUQ435, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN AUQ440 = '1' THEN 'Yes' -- categorize string values 

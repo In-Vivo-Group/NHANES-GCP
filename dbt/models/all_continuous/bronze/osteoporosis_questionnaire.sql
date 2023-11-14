@@ -62,7 +62,7 @@ WHEN OSQ020C IS NULL THEN NULL
 ELSE OSQ020C 
  END as times_broken_fractured_spine, 
 
-OSQ025 as OSQ025, -- could not automatically decode name of variable or transformation logic 
+-- OSQ025 as OSQ025, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN OSD030AA IS NULL THEN NULL 
@@ -792,7 +792,7 @@ WHEN OSQ120J IS NULL THEN NULL
 ELSE OSQ120J 
  END as any_other_fractures_OSQ120J, 
 
-OSQ129 as OSQ129, -- could not automatically decode name of variable or transformation logic 
+-- OSQ129 as OSQ129, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN OSQ060 = 1 THEN 'Yes' -- categorize numeric values

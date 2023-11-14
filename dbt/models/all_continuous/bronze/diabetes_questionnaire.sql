@@ -17,7 +17,7 @@ WHEN DID040 IS NULL THEN NULL
 ELSE DID040 
  END as age_when_first_told_you_had_diabetes, 
 
-DIQ159 as DIQ159, -- could not automatically decode name of variable or transformation logic 
+-- DIQ159 as DIQ159, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN DIQ160 = '1' THEN 'Yes' -- categorize string values 
@@ -59,7 +59,7 @@ WHEN DIQ060U IS NULL THEN NULL
 ELSE DIQ060U 
  END as unit_of_measure_month_year, 
 
-DIQ065 as DIQ065, -- could not automatically decode name of variable or transformation logic 
+-- DIQ065 as DIQ065, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN DIQ070 = 1 THEN 'Yes' -- categorize numeric values
@@ -70,7 +70,7 @@ WHEN DIQ070 IS NULL THEN NULL
 ELSE DIQ070 
  END as take_diabetic_pills_to_lower_blood_sugar, 
 
-DIQ229 as DIQ229, -- could not automatically decode name of variable or transformation logic 
+-- DIQ229 as DIQ229, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN DIQ230 = '1' THEN '1 year ago or less' -- categorize string values 
@@ -142,7 +142,7 @@ WHEN DIQ291 IS NULL THEN NULL
 ELSE DIQ291 
  END as what_does_dr_say_a1c_should_be, 
 
-DIQ295 as DIQ295, -- could not automatically decode name of variable or transformation logic 
+-- DIQ295 as DIQ295, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN SAFE_CAST(DIQ300S AS FLOAT64) > 212.0 THEN NULL -- remove missing, dont know, categories in float field  

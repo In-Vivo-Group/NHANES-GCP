@@ -21,7 +21,7 @@ WHEN IMQ020 IS NULL THEN NULL
 ELSE IMQ020 
  END as received_hepatitis_b_3_dose_series, 
 
-IMQ050 as IMQ050, -- could not automatically decode name of variable or transformation logic 
+-- IMQ050 as IMQ050, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN IMQ060 = '1' THEN 'Yes' -- categorize string values 

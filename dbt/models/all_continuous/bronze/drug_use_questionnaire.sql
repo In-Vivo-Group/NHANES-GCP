@@ -316,7 +316,7 @@ WHEN DUQ420 IS NULL THEN NULL
 ELSE DUQ420 
  END as how_often_did_you_inject_drugs, 
 
-DUQ426 as DUQ426, -- could not automatically decode name of variable or transformation logic 
+-- DUQ426 as DUQ426, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN DUQ430 = 1 THEN 'Yes' -- categorize numeric values

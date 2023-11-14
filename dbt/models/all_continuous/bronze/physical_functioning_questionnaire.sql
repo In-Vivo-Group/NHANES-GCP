@@ -19,7 +19,7 @@ WHEN PFQ030 IS NULL THEN NULL
 ELSE PFQ030 
  END as long_term_impairment_health_problem, 
 
-PFQ032 as PFQ032, -- could not automatically decode name of variable or transformation logic 
+-- PFQ032 as PFQ032, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN PFQ033 = '1' THEN 'Yes' -- categorize string values 
@@ -30,7 +30,7 @@ WHEN PFQ033 IS NULL THEN NULL
 ELSE PFQ033 
  END as impairment_requiring_special_equipment, 
 
-PFQ035A as PFQ035A, -- could not automatically decode name of variable or transformation logic 
+-- PFQ035A as PFQ035A, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN PFQ041 = '1' THEN 'Yes' -- categorize string values 
@@ -77,7 +77,7 @@ WHEN PFQ057 IS NULL THEN NULL
 ELSE PFQ057 
  END as experience_confusion_memory_problems, 
 
-PFQ058 as PFQ058, -- could not automatically decode name of variable or transformation logic 
+-- PFQ058 as PFQ058, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN PFQ059 = 1 THEN 'Yes' -- categorize numeric values
@@ -88,7 +88,7 @@ WHEN PFQ059 IS NULL THEN NULL
 ELSE PFQ059 
  END as physical_mental_emotional_limitations, 
 
-PFQ059A as PFQ059A, -- could not automatically decode name of variable or transformation logic 
+-- PFQ059A as PFQ059A, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN PFQ061A = '1' THEN 'No difficulty' -- categorize string values 
@@ -330,7 +330,7 @@ WHEN PFQ061T IS NULL THEN NULL
 ELSE PFQ061T 
  END as difficulty_moving_large_objects, 
 
-PFQ066A as PFQ066A, -- could not automatically decode name of variable or transformation logic 
+-- PFQ066A as PFQ066A, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN PFQ063A = '10' THEN 'Arthritis/rheumatism' -- categorize string values 

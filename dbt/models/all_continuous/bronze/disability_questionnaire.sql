@@ -55,7 +55,7 @@ WHEN DLQ080 IS NULL THEN NULL
 ELSE DLQ080 
  END as have_difficulty_doing_errands_alone, 
 
-DLQ090 as DLQ090, -- could not automatically decode name of variable or transformation logic 
+-- DLQ090 as DLQ090, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN DLQ100 = 1 THEN 'Daily' -- categorize numeric values
@@ -78,7 +78,7 @@ WHEN DLQ110 IS NULL THEN NULL
 ELSE DLQ110 
  END as take_medication_for_these_feelings, 
 
-DLQ120 as DLQ120, -- could not automatically decode name of variable or transformation logic 
+-- DLQ120 as DLQ120, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN DLQ130 = 1 THEN 'A little' -- categorize numeric values
@@ -111,7 +111,7 @@ WHEN DLQ150 IS NULL THEN NULL
 ELSE DLQ150 
  END as take_medication_for_depression, 
 
-DLQ160 as DLQ160, -- could not automatically decode name of variable or transformation logic 
+-- DLQ160 as DLQ160, -- not included in table but included in docs without transformation logic 
 
 CASE
             WHEN DLQ170 = 1 THEN 'A little' -- categorize numeric values
