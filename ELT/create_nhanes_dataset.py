@@ -1,5 +1,6 @@
 import re
 import time
+import warnings
 
 import duckdb
 import numpy as np
@@ -9,6 +10,14 @@ import pandas_gbq
 from utils import generate_filename, update_bq_table
 
 bucket_name = "nhanes_clean"
+
+duckdb.sql("SET s3_endpoint='storage.googleapis.com';")
+duckdb.sql(
+    "SET s3_access_key_id='GOOG1EZGBE6DO24OS6PEJSWUOH2YQZKJWY4V4WLC2AQKBCYBQZMNEG5D5EPG3';"
+)
+duckdb.sql("SET s3_secret_access_key='TA4xqtilvq6cEuYIwDUfMPT9GATQHKbe0OEHdN09';")
+
+warnings.simplefilter(action="ignore", category=FutureWarning)
 
 ### GET METADATA DATAFRAME
 metadata_df = pd.read_gbq(
@@ -59,16 +68,28 @@ for data_file_name, page_component in file_subset_df.sort_values(
             data_file_name.lower() + " " + page_component.lower(), ""
         )
 
-        df = duckdb.read_parquet(
-            f"s3://{bucket_name}/all-continuous-nhanes/data/{alias}*.parquet",
-            union_by_name=True,
-            filename=True,
-        ).to_df()
+        try:
+            df = duckdb.read_parquet(
+                f"s3://{bucket_name}/all-continuous-nhanes/data/{alias}*.parquet",
+                union_by_name=True,
+                filename=True,
+            ).to_df()
+        except Exception as ex:
+            print(f"{ex} for {alias}, skipping")
+            continue
 
-        df["survey"] = data_file_name
-        df["survey_type"] = page_component
         if "SEQN" in df.columns:
             df["SEQN"] = df["SEQN"].astype("Int64")
+
+        for column in df.columns:
+            if column not in ["filename", "SEQN"]:
+                try:
+                    df[column] = pd.to_numeric(df[column], errors="coerce")
+                except Exception as ex:
+                    print(f"{ex} for {column} in {alias}")
+                    pass
+
+        df = df.copy()
 
         df["filename_only"] = df["filename"].apply(lambda x: x.split("/")[-1])
 
@@ -85,18 +106,21 @@ for data_file_name, page_component in file_subset_df.sort_values(
 
         df.drop(["filename_only"], axis=1, inplace=True)
 
-        try:
-            str_df = df.select_dtypes([object])
-            str_df = str_df.stack().str.decode("utf-8").unstack()
+        #         try:
+        #             str_df = df.select_dtypes([object])
+        #             str_df = str_df.stack().str.decode("utf-8").unstack()
 
-            for col in str_df.columns:
-                if col not in metadata_cols and col != "filename":
-                    df[col] = str_df[col]
-        except Exception as ex:
-            print(ex)
-            print(
-                f"Unable to convert data types from bytes to string for: {data_file_name} - {page_component}"
-            )
+        #             for col in str_df.columns:
+        #                 if col not in metadata_cols and col != "filename":
+        #                     df[col] = str_df[col]
+        #         except Exception as ex:
+        #             print(ex)
+        #             print(
+        #                 f"Unable to convert data types from bytes to string for: {data_file_name} - {page_component}"
+        #             )
+
+        df["survey"] = data_file_name
+        df["survey_type"] = page_component
 
         update_bq_table(
             df,
