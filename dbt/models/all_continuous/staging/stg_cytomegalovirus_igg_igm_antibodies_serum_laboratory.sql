@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cytomegalovirus_igg_igm_antibodies_serum_laboratory

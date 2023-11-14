@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.smoking_household_smokers_questionnaire

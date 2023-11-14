@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.plasma_fasting_glucose_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.nhanes_file_metadata

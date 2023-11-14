@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.audiometry_acoustic_reflex_examination

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.ethylene_oxide_laboratory
