@@ -3,12 +3,12 @@ SELECT
 
 CASE
             WHEN LBXTC IS NULL THEN NULL 
-ELSE LBXTC 
+ELSE SAFE_CAST(LBXTC AS STRING) 
  END as total_cholesterol_mg_dl, 
 
 CASE
             WHEN LBDTCSI IS NULL THEN NULL 
-ELSE LBDTCSI 
+ELSE SAFE_CAST(LBDTCSI AS STRING) 
  END as total_cholesterol_mmol_l, 
 
  FROM {{ ref('stg_cholesterol_total_laboratory') }}

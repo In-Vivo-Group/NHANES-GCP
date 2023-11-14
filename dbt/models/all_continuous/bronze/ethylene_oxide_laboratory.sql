@@ -3,19 +3,19 @@ SELECT
 
 CASE
             WHEN WTSA2YR IS NULL THEN NULL 
-ELSE WTSA2YR 
+ELSE SAFE_CAST(WTSA2YR AS STRING) 
  END as subsample_a_weights, 
 
 CASE
             WHEN LBXEOA IS NULL THEN NULL 
-ELSE LBXEOA 
+ELSE SAFE_CAST(LBXEOA AS STRING) 
  END as ethylene_oxide_pmol_g_hb, 
 
 CASE
-            WHEN LBDEOALC = 0 THEN 'detectable result' -- categorize numeric values
-WHEN LBDEOALC = 1 THEN 'below detectable limit' -- categorize numeric values
+            WHEN SAFE_CAST(LBDEOALC AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN 'detectable result' -- categorize numeric values
+WHEN SAFE_CAST(LBDEOALC AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'below detectable limit' -- categorize numeric values
 WHEN LBDEOALC IS NULL THEN NULL 
-ELSE LBDEOALC 
+ELSE SAFE_CAST(LBDEOALC AS STRING) 
  END as ethylene_oxide_comment_code, 
 
  FROM {{ ref('stg_ethylene_oxide_laboratory') }}

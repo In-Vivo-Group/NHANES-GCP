@@ -3,12 +3,12 @@ SELECT
 
 CASE
             WHEN LBXFER IS NULL THEN NULL 
-ELSE LBXFER 
+ELSE SAFE_CAST(LBXFER AS STRING) 
  END as ferritin_ng_ml, 
 
 CASE
             WHEN LBDFERSI IS NULL THEN NULL 
-ELSE LBDFERSI 
+ELSE SAFE_CAST(LBDFERSI AS STRING) 
  END as ferritin_ug_l, 
 
  FROM {{ ref('stg_ferritin_laboratory') }}

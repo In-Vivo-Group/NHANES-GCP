@@ -3,26 +3,26 @@ SELECT
 
 CASE
             WHEN LBXCOT IS NULL THEN NULL 
-ELSE LBXCOT 
+ELSE SAFE_CAST(LBXCOT AS FLOAT64) 
  END as cotinine_serum_ng_ml, 
 
 CASE
-            WHEN LBDCOTLC = 0 THEN 'At or above the detection limit' -- categorize numeric values
-WHEN LBDCOTLC = 1 THEN 'Below lower detection limit' -- categorize numeric values
+            WHEN SAFE_CAST(LBDCOTLC AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(LBDCOTLC AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Below lower detection limit' -- categorize numeric values
 WHEN LBDCOTLC IS NULL THEN NULL 
-ELSE LBDCOTLC 
+ELSE SAFE_CAST(LBDCOTLC AS STRING) 
  END as cotinine_serum_comment_code, 
 
 CASE
             WHEN LBXHCT IS NULL THEN NULL 
-ELSE LBXHCT 
+ELSE SAFE_CAST(LBXHCT AS STRING) 
  END as hydroxycotinine_serum_ng_ml, 
 
 CASE
-            WHEN LBDHCTLC = 0 THEN 'At or above detection limit' -- categorize numeric values
-WHEN LBDHCTLC = 1 THEN 'Below lower detection limit' -- categorize numeric values
+            WHEN SAFE_CAST(LBDHCTLC AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN 'At or above detection limit' -- categorize numeric values
+WHEN SAFE_CAST(LBDHCTLC AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Below lower detection limit' -- categorize numeric values
 WHEN LBDHCTLC IS NULL THEN NULL 
-ELSE LBDHCTLC 
+ELSE SAFE_CAST(LBDHCTLC AS STRING) 
  END as hydroxycotinine_serum_comment_code, 
 
  FROM {{ ref('stg_cotinine_and_hydroxycotinine_serum_laboratory') }}

@@ -2,125 +2,125 @@ SELECT
         SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN DLQ010 = 1 THEN 'Yes' -- categorize numeric values
-WHEN DLQ010 = 2 THEN 'No' -- categorize numeric values
-WHEN DLQ010 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DLQ010 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(DLQ010 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(DLQ010 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(DLQ010 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(DLQ010 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN DLQ010 IS NULL THEN NULL 
-ELSE DLQ010 
+ELSE SAFE_CAST(DLQ010 AS STRING) 
  END as have_serious_difficulty_hearing, 
 
 CASE
-            WHEN DLQ020 = 1 THEN 'Yes' -- categorize numeric values
-WHEN DLQ020 = 2 THEN 'No' -- categorize numeric values
-WHEN DLQ020 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DLQ020 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(DLQ020 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(DLQ020 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(DLQ020 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(DLQ020 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN DLQ020 IS NULL THEN NULL 
-ELSE DLQ020 
+ELSE SAFE_CAST(DLQ020 AS STRING) 
  END as have_serious_difficulty_seeing, 
 
 CASE
-            WHEN DLQ040 = 1 THEN 'Yes' -- categorize numeric values
-WHEN DLQ040 = 2 THEN 'No' -- categorize numeric values
-WHEN DLQ040 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DLQ040 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(DLQ040 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(DLQ040 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(DLQ040 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(DLQ040 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN DLQ040 IS NULL THEN NULL 
-ELSE DLQ040 
+ELSE SAFE_CAST(DLQ040 AS STRING) 
  END as have_serious_difficulty_concentrating, 
 
 CASE
-            WHEN DLQ050 = 1 THEN 'Yes' -- categorize numeric values
-WHEN DLQ050 = 2 THEN 'No' -- categorize numeric values
-WHEN DLQ050 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DLQ050 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(DLQ050 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(DLQ050 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(DLQ050 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(DLQ050 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN DLQ050 IS NULL THEN NULL 
-ELSE DLQ050 
+ELSE SAFE_CAST(DLQ050 AS STRING) 
  END as have_serious_difficulty_walking, 
 
 CASE
-            WHEN DLQ060 = 1 THEN 'Yes' -- categorize numeric values
-WHEN DLQ060 = 2 THEN 'No' -- categorize numeric values
-WHEN DLQ060 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DLQ060 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(DLQ060 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(DLQ060 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(DLQ060 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(DLQ060 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN DLQ060 IS NULL THEN NULL 
-ELSE DLQ060 
+ELSE SAFE_CAST(DLQ060 AS STRING) 
  END as have_difficulty_dressing_or_bathing, 
 
 CASE
-            WHEN DLQ080 = 1 THEN 'Yes' -- categorize numeric values
-WHEN DLQ080 = 2 THEN 'No' -- categorize numeric values
-WHEN DLQ080 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DLQ080 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(DLQ080 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(DLQ080 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(DLQ080 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(DLQ080 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN DLQ080 IS NULL THEN NULL 
-ELSE DLQ080 
+ELSE SAFE_CAST(DLQ080 AS STRING) 
  END as have_difficulty_doing_errands_alone, 
 
 -- DLQ090 as DLQ090, -- not included in table but included in docs without transformation logic 
 
 CASE
-            WHEN DLQ100 = 1 THEN 'Daily' -- categorize numeric values
-WHEN DLQ100 = 2 THEN 'Weekly' -- categorize numeric values
-WHEN DLQ100 = 3 THEN 'Monthly' -- categorize numeric values
-WHEN DLQ100 = 4 THEN 'A few times a year' -- categorize numeric values
-WHEN DLQ100 = 5 THEN 'Never' -- categorize numeric values
-WHEN DLQ100 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DLQ100 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(DLQ100 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Daily' -- categorize numeric values
+WHEN SAFE_CAST(DLQ100 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'Weekly' -- categorize numeric values
+WHEN SAFE_CAST(DLQ100 AS FLOAT64) = SAFE_CAST(3 AS FLOAT64) THEN 'Monthly' -- categorize numeric values
+WHEN SAFE_CAST(DLQ100 AS FLOAT64) = SAFE_CAST(4 AS FLOAT64) THEN 'A few times a year' -- categorize numeric values
+WHEN SAFE_CAST(DLQ100 AS FLOAT64) = SAFE_CAST(5 AS FLOAT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(DLQ100 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(DLQ100 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN DLQ100 IS NULL THEN NULL 
-ELSE DLQ100 
+ELSE SAFE_CAST(DLQ100 AS STRING) 
  END as how_often_do_you_feel_worried_or_anxious, 
 
 CASE
-            WHEN DLQ110 = 1 THEN 'Yes' -- categorize numeric values
-WHEN DLQ110 = 2 THEN 'No' -- categorize numeric values
-WHEN DLQ110 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DLQ110 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(DLQ110 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(DLQ110 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(DLQ110 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(DLQ110 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN DLQ110 IS NULL THEN NULL 
-ELSE DLQ110 
+ELSE SAFE_CAST(DLQ110 AS STRING) 
  END as take_medication_for_these_feelings, 
 
 -- DLQ120 as DLQ120, -- not included in table but included in docs without transformation logic 
 
 CASE
-            WHEN DLQ130 = 1 THEN 'A little' -- categorize numeric values
-WHEN DLQ130 = 2 THEN 'A lot' -- categorize numeric values
-WHEN DLQ130 = 3 THEN 'Somewhere in between a little and a lot' -- categorize numeric values
-WHEN DLQ130 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DLQ130 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(DLQ130 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'A little' -- categorize numeric values
+WHEN SAFE_CAST(DLQ130 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'A lot' -- categorize numeric values
+WHEN SAFE_CAST(DLQ130 AS FLOAT64) = SAFE_CAST(3 AS FLOAT64) THEN 'Somewhere in between a little and a lot' -- categorize numeric values
+WHEN SAFE_CAST(DLQ130 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(DLQ130 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN DLQ130 IS NULL THEN NULL 
-ELSE DLQ130 
+ELSE SAFE_CAST(DLQ130 AS STRING) 
  END as how_worried_or_anxious_were_you, 
 
 CASE
-            WHEN DLQ140 = 1 THEN 'Daily' -- categorize numeric values
-WHEN DLQ140 = 2 THEN 'Weekly' -- categorize numeric values
-WHEN DLQ140 = 3 THEN 'Monthly' -- categorize numeric values
-WHEN DLQ140 = 4 THEN 'A few times a year' -- categorize numeric values
-WHEN DLQ140 = 5 THEN 'Never' -- categorize numeric values
-WHEN DLQ140 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DLQ140 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(DLQ140 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Daily' -- categorize numeric values
+WHEN SAFE_CAST(DLQ140 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'Weekly' -- categorize numeric values
+WHEN SAFE_CAST(DLQ140 AS FLOAT64) = SAFE_CAST(3 AS FLOAT64) THEN 'Monthly' -- categorize numeric values
+WHEN SAFE_CAST(DLQ140 AS FLOAT64) = SAFE_CAST(4 AS FLOAT64) THEN 'A few times a year' -- categorize numeric values
+WHEN SAFE_CAST(DLQ140 AS FLOAT64) = SAFE_CAST(5 AS FLOAT64) THEN 'Never' -- categorize numeric values
+WHEN SAFE_CAST(DLQ140 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(DLQ140 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN DLQ140 IS NULL THEN NULL 
-ELSE DLQ140 
+ELSE SAFE_CAST(DLQ140 AS STRING) 
  END as how_often_do_you_feel_depressed, 
 
 CASE
-            WHEN DLQ150 = 1 THEN 'Yes' -- categorize numeric values
-WHEN DLQ150 = 2 THEN 'No' -- categorize numeric values
-WHEN DLQ150 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DLQ150 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(DLQ150 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(DLQ150 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(DLQ150 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(DLQ150 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN DLQ150 IS NULL THEN NULL 
-ELSE DLQ150 
+ELSE SAFE_CAST(DLQ150 AS STRING) 
  END as take_medication_for_depression, 
 
 -- DLQ160 as DLQ160, -- not included in table but included in docs without transformation logic 
 
 CASE
-            WHEN DLQ170 = 1 THEN 'A little' -- categorize numeric values
-WHEN DLQ170 = 2 THEN 'A lot' -- categorize numeric values
-WHEN DLQ170 = 3 THEN 'Somewhere in between a little and a lot' -- categorize numeric values
-WHEN DLQ170 = 7 THEN 'Refused' -- categorize numeric values
-WHEN DLQ170 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(DLQ170 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'A little' -- categorize numeric values
+WHEN SAFE_CAST(DLQ170 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'A lot' -- categorize numeric values
+WHEN SAFE_CAST(DLQ170 AS FLOAT64) = SAFE_CAST(3 AS FLOAT64) THEN 'Somewhere in between a little and a lot' -- categorize numeric values
+WHEN SAFE_CAST(DLQ170 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(DLQ170 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN DLQ170 IS NULL THEN NULL 
-ELSE DLQ170 
+ELSE SAFE_CAST(DLQ170 AS STRING) 
  END as how_depressed_did_you_feel, 
 
  FROM {{ ref('stg_disability_questionnaire') }}

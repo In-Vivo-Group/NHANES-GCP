@@ -3,7 +3,7 @@ SELECT
 
 CASE
             WHEN LBXGH IS NULL THEN NULL 
-ELSE LBXGH 
+ELSE SAFE_CAST(LBXGH AS STRING) 
  END as glycohemoglobin, 
 
  FROM {{ ref('stg_glycohemoglobin_laboratory') }}

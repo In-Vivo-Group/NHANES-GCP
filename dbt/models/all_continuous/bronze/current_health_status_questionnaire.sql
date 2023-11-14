@@ -2,86 +2,86 @@ SELECT
         SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN HSD010 = 1 THEN 'Excellent' -- categorize numeric values
-WHEN HSD010 = 2 THEN 'Very good,' -- categorize numeric values
-WHEN HSD010 = 3 THEN 'Good,' -- categorize numeric values
-WHEN HSD010 = 4 THEN 'Fair, or' -- categorize numeric values
-WHEN HSD010 = 5 THEN 'Poor?' -- categorize numeric values
-WHEN HSD010 = 7 THEN 'Refused' -- categorize numeric values
-WHEN HSD010 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(HSD010 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Excellent' -- categorize numeric values
+WHEN SAFE_CAST(HSD010 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'Very good,' -- categorize numeric values
+WHEN SAFE_CAST(HSD010 AS FLOAT64) = SAFE_CAST(3 AS FLOAT64) THEN 'Good,' -- categorize numeric values
+WHEN SAFE_CAST(HSD010 AS FLOAT64) = SAFE_CAST(4 AS FLOAT64) THEN 'Fair, or' -- categorize numeric values
+WHEN SAFE_CAST(HSD010 AS FLOAT64) = SAFE_CAST(5 AS FLOAT64) THEN 'Poor?' -- categorize numeric values
+WHEN SAFE_CAST(HSD010 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(HSD010 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN HSD010 IS NULL THEN NULL 
-ELSE HSD010 
+ELSE SAFE_CAST(HSD010 AS STRING) 
  END as general_health_condition, 
 
 CASE
-            WHEN HSQ500 = 1 THEN 'Yes' -- categorize numeric values
-WHEN HSQ500 = 2 THEN 'No' -- categorize numeric values
-WHEN HSQ500 = 7 THEN 'Refused' -- categorize numeric values
-WHEN HSQ500 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(HSQ500 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(HSQ500 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(HSQ500 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(HSQ500 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN HSQ500 IS NULL THEN NULL 
-ELSE HSQ500 
+ELSE SAFE_CAST(HSQ500 AS STRING) 
  END as sp_have_head_cold_or_chest_cold, 
 
 CASE
-            WHEN HSQ510 = 1 THEN 'Yes' -- categorize numeric values
-WHEN HSQ510 = 2 THEN 'No' -- categorize numeric values
-WHEN HSQ510 = 7 THEN 'Refused' -- categorize numeric values
-WHEN HSQ510 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(HSQ510 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(HSQ510 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(HSQ510 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(HSQ510 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN HSQ510 IS NULL THEN NULL 
-ELSE HSQ510 
+ELSE SAFE_CAST(HSQ510 AS STRING) 
  END as sp_have_stomach_or_intestinal_illness, 
 
 CASE
-            WHEN HSQ520 = 1 THEN 'Yes' -- categorize numeric values
-WHEN HSQ520 = 2 THEN 'No' -- categorize numeric values
-WHEN HSQ520 = 7 THEN 'Refused' -- categorize numeric values
-WHEN HSQ520 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(HSQ520 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(HSQ520 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(HSQ520 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(HSQ520 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN HSQ520 IS NULL THEN NULL 
-ELSE HSQ520 
+ELSE SAFE_CAST(HSQ520 AS STRING) 
  END as sp_have_flu_pneumonia_ear_infection, 
 
 CASE
-            WHEN HSQ571 = '1' THEN 'Yes' -- categorize string values 
-WHEN HSQ571 = '2' THEN 'No' -- categorize string values 
-WHEN HSQ571 = '7' THEN 'Refused' -- categorize string values 
-WHEN HSQ571 = '9' THEN 'Dont know' -- categorize string values 
+            WHEN SAFE_CAST(SAFE_CAST(REPLACE(HSQ571,'.0','') AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(REPLACE(HSQ571,'.0','') AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(REPLACE(HSQ571,'.0','') AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(REPLACE(HSQ571,'.0','') AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
 WHEN HSQ571 IS NULL THEN NULL 
-ELSE HSQ571 
+ELSE SAFE_CAST(HSQ571 AS STRING) 
  END as sp_donated_blood_in_past_12_months, 
 
 CASE
-            WHEN HSQ580 = 1 THEN '1' -- categorize numeric values
-WHEN HSQ580 = 2 THEN '2' -- categorize numeric values
-WHEN HSQ580 = 3 THEN '3' -- categorize numeric values
-WHEN HSQ580 = 4 THEN '4' -- categorize numeric values
-WHEN HSQ580 = 5 THEN '5' -- categorize numeric values
-WHEN HSQ580 = 6 THEN '6' -- categorize numeric values
-WHEN HSQ580 = 7 THEN '7' -- categorize numeric values
-WHEN HSQ580 = 8 THEN '8' -- categorize numeric values
-WHEN HSQ580 = 9 THEN '9' -- categorize numeric values
-WHEN HSQ580 = 10 THEN '10' -- categorize numeric values
-WHEN HSQ580 = 11 THEN '11' -- categorize numeric values
-WHEN HSQ580 = 12 THEN '12' -- categorize numeric values
-WHEN HSQ580 = 77 THEN 'Refused' -- categorize numeric values
-WHEN HSQ580 = 99 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN '1' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN '2' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(3 AS FLOAT64) THEN '3' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(4 AS FLOAT64) THEN '4' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(5 AS FLOAT64) THEN '5' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(6 AS FLOAT64) THEN '6' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN '7' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(8 AS FLOAT64) THEN '8' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN '9' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(10 AS FLOAT64) THEN '10' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(11 AS FLOAT64) THEN '11' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(12 AS FLOAT64) THEN '12' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(77 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(HSQ580 AS FLOAT64) = SAFE_CAST(99 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN HSQ580 IS NULL THEN NULL 
-ELSE HSQ580 
+ELSE SAFE_CAST(HSQ580 AS STRING) 
  END as how_long_ago_was_last_blood_donation, 
 
 CASE
-            WHEN HSQ590 = 1 THEN 'Yes' -- categorize numeric values
-WHEN HSQ590 = 2 THEN 'No' -- categorize numeric values
-WHEN HSQ590 = 7 THEN 'Refused' -- categorize numeric values
-WHEN HSQ590 = 9 THEN 'Dont know' -- categorize numeric values
+            WHEN SAFE_CAST(HSQ590 AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(HSQ590 AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(HSQ590 AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(HSQ590 AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN 'Dont know' -- categorize numeric values
 WHEN HSQ590 IS NULL THEN NULL 
-ELSE HSQ590 
+ELSE SAFE_CAST(HSQ590 AS STRING) 
  END as blood_ever_tested_for_hiv_virus, 
 
 CASE
-            WHEN HSAQUEX = 1 THEN 'Dietary Recall Component -- B(1-11)' -- categorize numeric values
-WHEN HSAQUEX = 2 THEN 'MEC CAPI Questionnaire -- B(12-150)' -- categorize numeric values
+            WHEN SAFE_CAST(HSAQUEX AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Dietary Recall Component -- B(1-11)' -- categorize numeric values
+WHEN SAFE_CAST(HSAQUEX AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'MEC CAPI Questionnaire -- B(12-150)' -- categorize numeric values
 WHEN HSAQUEX IS NULL THEN NULL 
-ELSE HSAQUEX 
+ELSE SAFE_CAST(HSAQUEX AS STRING) 
  END as source_of_health_status_data, 
 
  FROM {{ ref('stg_current_health_status_questionnaire') }}

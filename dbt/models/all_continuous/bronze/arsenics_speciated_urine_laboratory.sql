@@ -4,79 +4,79 @@ SELECT
 CASE
             WHEN WTSA2YR = 0 THEN NULL --remove no lab specimen samples from data 
 WHEN WTSA2YR IS NULL THEN NULL 
-ELSE WTSA2YR 
+ELSE SAFE_CAST(WTSA2YR AS STRING) 
  END as subsample_a_weights, 
 
 CASE
             WHEN URXUAS3 IS NULL THEN NULL 
-ELSE URXUAS3 
+ELSE SAFE_CAST(URXUAS3 AS STRING) 
  END as urinary_arsenous_acid_ug_l, 
 
 CASE
-            WHEN URDUA3LC = 0 THEN 'At or above the detection limit' -- categorize numeric values
-WHEN URDUA3LC = 1 THEN 'Below lower detection limit' -- categorize numeric values
+            WHEN SAFE_CAST(URDUA3LC AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(URDUA3LC AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Below lower detection limit' -- categorize numeric values
 WHEN URDUA3LC IS NULL THEN NULL 
-ELSE URDUA3LC 
+ELSE SAFE_CAST(URDUA3LC AS STRING) 
  END as urinary_arsenous_acid_comment_code, 
 
 CASE
             WHEN URXUAS5 IS NULL THEN NULL 
-ELSE URXUAS5 
+ELSE SAFE_CAST(URXUAS5 AS STRING) 
  END as urinary_arsenic_acid_ug_l, 
 
 CASE
-            WHEN URDUA5LC = 0 THEN 'At or above the detection limit' -- categorize numeric values
-WHEN URDUA5LC = 1 THEN 'Below lower detection limit' -- categorize numeric values
+            WHEN SAFE_CAST(URDUA5LC AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(URDUA5LC AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Below lower detection limit' -- categorize numeric values
 WHEN URDUA5LC IS NULL THEN NULL 
-ELSE URDUA5LC 
+ELSE SAFE_CAST(URDUA5LC AS STRING) 
  END as urinary_arsenic_acid_comment_code, 
 
 CASE
             WHEN URXUAB IS NULL THEN NULL 
-ELSE URXUAB 
+ELSE SAFE_CAST(URXUAB AS STRING) 
  END as urinary_arsenobetaine_ug_l, 
 
 CASE
-            WHEN URDUABLC = 0 THEN 'At or above the detection limit' -- categorize numeric values
-WHEN URDUABLC = 1 THEN 'Below lower detection limit' -- categorize numeric values
+            WHEN SAFE_CAST(URDUABLC AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(URDUABLC AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Below lower detection limit' -- categorize numeric values
 WHEN URDUABLC IS NULL THEN NULL 
-ELSE URDUABLC 
+ELSE SAFE_CAST(URDUABLC AS STRING) 
  END as urinary_arsenobetaine_comment_code, 
 
 CASE
             WHEN URXUAC IS NULL THEN NULL 
-ELSE URXUAC 
+ELSE SAFE_CAST(URXUAC AS STRING) 
  END as urinary_arsenocholine_ug_l, 
 
 CASE
-            WHEN URDUACLC = 0 THEN 'At or above the detection limit' -- categorize numeric values
-WHEN URDUACLC = 1 THEN 'Below lower detection limit' -- categorize numeric values
+            WHEN SAFE_CAST(URDUACLC AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(URDUACLC AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Below lower detection limit' -- categorize numeric values
 WHEN URDUACLC IS NULL THEN NULL 
-ELSE URDUACLC 
+ELSE SAFE_CAST(URDUACLC AS STRING) 
  END as urinary_arsenocholine_comment_code, 
 
 CASE
             WHEN URXUDMA IS NULL THEN NULL 
-ELSE URXUDMA 
+ELSE SAFE_CAST(URXUDMA AS STRING) 
  END as urinary_dimethylarsinic_acid_ug_l, 
 
 CASE
-            WHEN URDUDALC = 0 THEN 'At or above the detection limlt' -- categorize numeric values
-WHEN URDUDALC = 1 THEN 'Below lower detection limit' -- categorize numeric values
+            WHEN SAFE_CAST(URDUDALC AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN 'At or above the detection limlt' -- categorize numeric values
+WHEN SAFE_CAST(URDUDALC AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Below lower detection limit' -- categorize numeric values
 WHEN URDUDALC IS NULL THEN NULL 
-ELSE URDUDALC 
+ELSE SAFE_CAST(URDUDALC AS STRING) 
  END as urinary_dimethylarsinic_acid_comment, 
 
 CASE
             WHEN URXUMMA IS NULL THEN NULL 
-ELSE URXUMMA 
+ELSE SAFE_CAST(URXUMMA AS STRING) 
  END as urinary_monomethylarsonic_acid_ug_l, 
 
 CASE
-            WHEN URDUMMAL = 0 THEN 'At or above the detection limit' -- categorize numeric values
-WHEN URDUMMAL = 1 THEN 'below lower detection limit' -- categorize numeric values
+            WHEN SAFE_CAST(URDUMMAL AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(URDUMMAL AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'below lower detection limit' -- categorize numeric values
 WHEN URDUMMAL IS NULL THEN NULL 
-ELSE URDUMMAL 
+ELSE SAFE_CAST(URDUMMAL AS STRING) 
  END as urinary_monomethylarsonic_acid_comment, 
 
  FROM {{ ref('stg_arsenics_speciated_urine_laboratory') }}

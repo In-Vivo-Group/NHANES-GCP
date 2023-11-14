@@ -2,19 +2,19 @@ SELECT
         SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN SAFE_CAST(WTFOL2YR AS FLOAT64) > 903457.15327 THEN NULL -- remove missing, dont know, categories in float field  
+            WHEN SAFE_CAST(WTFOL2YR AS FLOAT64) > 903459.15327 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN WTFOL2YR IS NULL THEN NULL 
-ELSE WTFOL2YR 
+ELSE SAFE_CAST(WTFOL2YR AS FLOAT64) 
  END as folate_and_folate_forms_weight, 
 
 CASE
             WHEN LBDRFO IS NULL THEN NULL 
-ELSE LBDRFO 
+ELSE SAFE_CAST(LBDRFO AS FLOAT64) 
  END as rbc_folate_ng_ml, 
 
 CASE
             WHEN LBDRFOSI IS NULL THEN NULL 
-ELSE LBDRFOSI 
+ELSE SAFE_CAST(LBDRFOSI AS FLOAT64) 
  END as rbc_folate_nmol_l, 
 
  FROM {{ ref('stg_folate_rbc_laboratory') }}

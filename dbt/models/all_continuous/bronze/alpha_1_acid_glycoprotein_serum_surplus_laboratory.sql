@@ -3,12 +3,12 @@ SELECT
 
 CASE
             WHEN WTSSGP2Y IS NULL THEN NULL 
-ELSE WTSSGP2Y 
+ELSE SAFE_CAST(WTSSGP2Y AS FLOAT64) 
  END as surplus_specimen_agp_2_year_weights, 
 
 CASE
             WHEN SSAGP IS NULL THEN NULL 
-ELSE SSAGP 
+ELSE SAFE_CAST(SSAGP AS FLOAT64) 
  END as alpha_1_acid_glycoprotein_g_l, 
 
  FROM {{ ref('stg_alpha_1_acid_glycoprotein_serum_surplus_laboratory') }}

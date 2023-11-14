@@ -4,19 +4,19 @@ SELECT
 CASE
             WHEN WTSAPRP = 0 THEN NULL --remove no lab specimen samples from data 
 WHEN WTSAPRP IS NULL THEN NULL 
-ELSE WTSAPRP 
+ELSE SAFE_CAST(WTSAPRP AS STRING) 
  END as subsample_a_weights_pre_pandemic, 
 
 CASE
             WHEN URXUCM IS NULL THEN NULL 
-ELSE URXUCM 
+ELSE SAFE_CAST(URXUCM AS STRING) 
  END as chromium_urine_ug_l, 
 
 CASE
-            WHEN URDUCMLC = 0 THEN 'At or above detection limit' -- categorize numeric values
-WHEN URDUCMLC = 1 THEN 'below lower detection limit' -- categorize numeric values
+            WHEN SAFE_CAST(URDUCMLC AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN 'At or above detection limit' -- categorize numeric values
+WHEN SAFE_CAST(URDUCMLC AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'below lower detection limit' -- categorize numeric values
 WHEN URDUCMLC IS NULL THEN NULL 
-ELSE URDUCMLC 
+ELSE SAFE_CAST(URDUCMLC AS STRING) 
  END as chromium_urine_comment_code, 
 
  FROM {{ ref('stg_chromium_urine_laboratory') }}

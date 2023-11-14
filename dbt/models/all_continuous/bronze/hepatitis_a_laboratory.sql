@@ -2,11 +2,11 @@ SELECT
         SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-            WHEN LBXHA = 1 THEN 'Positive' -- categorize numeric values
-WHEN LBXHA = 2 THEN 'Negative' -- categorize numeric values
-WHEN LBXHA = 3 THEN 'Indeterminate' -- categorize numeric values
+            WHEN SAFE_CAST(LBXHA AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Positive' -- categorize numeric values
+WHEN SAFE_CAST(LBXHA AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'Negative' -- categorize numeric values
+WHEN SAFE_CAST(LBXHA AS FLOAT64) = SAFE_CAST(3 AS FLOAT64) THEN 'Indeterminate' -- categorize numeric values
 WHEN LBXHA IS NULL THEN NULL 
-ELSE LBXHA 
+ELSE SAFE_CAST(LBXHA AS STRING) 
  END as hepatitis_a_antibody, 
 
  FROM {{ ref('stg_hepatitis_a_laboratory') }}

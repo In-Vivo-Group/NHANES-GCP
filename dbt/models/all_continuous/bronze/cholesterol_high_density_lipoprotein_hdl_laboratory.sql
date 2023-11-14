@@ -3,12 +3,12 @@ SELECT
 
 CASE
             WHEN LBDHDD IS NULL THEN NULL 
-ELSE LBDHDD 
+ELSE SAFE_CAST(LBDHDD AS STRING) 
  END as direct_hdl_cholesterol_mg_dl, 
 
 CASE
             WHEN LBDHDDSI IS NULL THEN NULL 
-ELSE LBDHDDSI 
+ELSE SAFE_CAST(LBDHDDSI AS STRING) 
  END as direct_hdl_cholesterol_mmol_l, 
 
  FROM {{ ref('stg_cholesterol_high_density_lipoprotein_hdl_laboratory') }}
