@@ -8,7 +8,9 @@ from bs4 import BeautifulSoup
 from utils import (generate_filename, scrape_nhanes_table, update_bq_table,
                    upload_blob_from_string)
 
-bucket_name = "nhanes"
+bucket_name = "nhanes_clean"
+
+print("Starting to scrape NHANES metadata")
 
 ### VISIT TOP-LEVEL PAGE AND RETRIEVE DATASET INFORMATION
 response = requests.get(f"https://wwwn.cdc.gov/nchs/nhanes/default.aspx")
@@ -34,6 +36,7 @@ dfs = []
 
 base_url = "https://wwwn.cdc.gov"
 
+print("Dataset information scraped. Beginning metadata downloads")
 
 ### LOOP THROUGH DATASETS AND DOWNLOAD METADATA FROM HTML TABLES
 for nhanes_id in ids:
@@ -50,12 +53,12 @@ for nhanes_id in ids:
             url = base_url + li.a["href"]
             dataset = nhanes_id.replace("nav-group-", "")
             r = requests.get(url, timeout=20)
-            soup = BeautifulSoup(r.text)
+            soup = BeautifulSoup(r.text,"lxml")
             df = scrape_nhanes_table(soup, component_text)
 
             columns = df.columns.tolist()
-            df["page_component"] = component_text
-            df["dataset"] = dataset
+            df["page_component"] = component_text.strip()
+            df["dataset"] = dataset.strip()
             df["last_updated"] = datetime.datetime.utcnow()
 
             if "years" in columns:
@@ -82,6 +85,8 @@ for nhanes_id in ids:
                     df["gcs_doc_filename"] = (
                         df["data_file_name"]
                         + " "
+                        + df["page_component"]
+                        + " "
                         + df["dataset"].astype(str)
                         + " "
                         + df["start_year"].astype(str)
@@ -91,6 +96,8 @@ for nhanes_id in ids:
                     ).apply(lambda x: generate_filename(x, extension=".html"))
                     df["gcs_data_filename"] = (
                         df["data_file_name"]
+                        + " "
+                        + df["page_component"]
                         + " "
                         + df["dataset"].astype(str)
                         + " "
@@ -102,6 +109,8 @@ for nhanes_id in ids:
                 else:
                     df["gcs_doc_filename"] = (
                         df["data_file_name"]
+                        + " "
+                        + df["page_component"]
                         + " "
                         + df["dataset"].astype(str)
                         + " Documentation"
@@ -120,7 +129,7 @@ update_bq_table(
     yearly_df,
     alias,
     dataset="nhanes",
-    bucket="nhanes",
+    bucket=bucket_name,
     truncate=True,
     max_error=0,
     schema=None,
