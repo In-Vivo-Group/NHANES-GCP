@@ -2,10 +2,12 @@ import datetime
 import time
 from urllib.parse import urlparse
 
+import numpy as np
 import pandas as pd
 import pandas_gbq
 import requests
 from bs4 import BeautifulSoup
+
 from utils import (generate_filename, scrape_nhanes_table, update_bq_table,
                    upload_blob_from_string)
 
@@ -49,6 +51,19 @@ for index, row in df.iterrows():
     ):
         try:
             data_file_df = pd.read_sas(row["data_file_url"])
+
+            try:
+                data_file_df.astype(np.float64)
+            except Exception as ex1:
+                for column in data_file_df.columns.tolist():
+                    try:
+                        data_file_df[column] = data_file_df[column].astype(float)
+                    except Exception as ex2:
+                        print(
+                            f"Unable to cast {column} from {row['data_file_url']} as float"
+                        )
+                        continue
+
             data_file_df.to_parquet(
                 f"gs://{bucket_name}/{row['dataset']}/data/{row['gcs_data_filename'].replace('.XPT','.parquet')}"
             )
