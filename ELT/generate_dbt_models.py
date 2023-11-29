@@ -285,7 +285,7 @@ def generate_variable_definitions(data_df, table_schema, table_name, column_type
                                             output_data_type = "STRING"
                                 elif "No Lab Specimen" in value:
                                     sql_case_statement += f"WHEN SAFE_CAST({variable_name} AS FLOAT64) = SAFE_CAST({code} AS FLOAT64) THEN NULL --remove no lab specimen samples from data \n"
-                                    output_data_type = "STRING"
+                                    output_data_type = "FLOAT"
                                 else:
                                     sql_case_statement += (
                                         f"WHEN {variable_name} IS NULL THEN NULL \n"
