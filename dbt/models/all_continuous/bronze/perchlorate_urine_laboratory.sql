@@ -2,17 +2,17 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN WTSC2YR IS NULL THEN NULL 
+    WHEN WTSC2YR IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSC2YR AS FLOAT64) 
  END as environmental_c_2_year_weights, 
 
 CASE
-WHEN URXUP8 IS NULL THEN NULL 
+    WHEN URXUP8 IS NULL THEN NULL 
 ELSE SAFE_CAST(URXUP8 AS FLOAT64) 
  END as perchlorate_urine_ng_ml, 
 
 CASE
-WHEN URXUCR IS NULL THEN NULL 
+    WHEN URXUCR IS NULL THEN NULL 
 ELSE SAFE_CAST(URXUCR AS FLOAT64) 
  END as creatinine_urine_mg_dl, 
 

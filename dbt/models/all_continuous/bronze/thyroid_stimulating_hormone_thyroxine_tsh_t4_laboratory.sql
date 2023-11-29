@@ -2,27 +2,27 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN WTSTH2YR IS NULL THEN NULL 
+    WHEN WTSTH2YR IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSTH2YR AS FLOAT64) 
  END as thyroid_hormones_subsample_2_yr_mec_wgt, 
 
 CASE
-WHEN WTSTH4YR IS NULL THEN NULL 
+    WHEN WTSTH4YR IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSTH4YR AS FLOAT64) 
  END as thyroid_hormones_subsample_4_yr_mec_wgt, 
 
 CASE
-WHEN LBXT4 IS NULL THEN NULL 
+    WHEN LBXT4 IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXT4 AS FLOAT64) 
  END as thyroxine_t4_ug_dl, 
 
 CASE
-WHEN LBDT4SI IS NULL THEN NULL 
+    WHEN LBDT4SI IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDT4SI AS FLOAT64) 
  END as thyroxine_t4_nmol_l, 
 
 CASE
-WHEN LBXTSH IS NULL THEN NULL 
+    WHEN LBXTSH IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXTSH AS FLOAT64) 
  END as thyroid_stim_hormone_tsh_uiu_ml, 
 

@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN REPLACE(SLQ300,'.0','') = 'Usual sleep time on weekdays or workdays' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(SLQ300,'.0','') = 'Usual sleep time on weekdays or workdays' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(SLQ300,'.0','') = '77777' THEN 'Refused' -- categorize string values 
 WHEN REPLACE(SLQ300,'.0','') = '99999' THEN 'Dont know' -- categorize string values 
 WHEN SLQ300 IS NULL THEN NULL 
@@ -10,7 +10,7 @@ ELSE SAFE_CAST(SLQ300 AS STRING)
  END as usual_sleep_time_on_weekdays_or_workdays, 
 
 CASE
-WHEN REPLACE(SLQ310,'.0','') = 'Usual wake time on weekdays or workdays' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(SLQ310,'.0','') = 'Usual wake time on weekdays or workdays' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(SLQ310,'.0','') = '77777' THEN 'Refused' -- categorize string values 
 WHEN REPLACE(SLQ310,'.0','') = '99999' THEN 'Dont know' -- categorize string values 
 WHEN SLQ310 IS NULL THEN NULL 
@@ -18,13 +18,13 @@ ELSE SAFE_CAST(SLQ310 AS STRING)
  END as usual_wake_time_on_weekdays_or_workdays, 
 
 CASE
-WHEN SAFE_CAST(SLD012 AS FLOAT64) > 24.5 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SLD012 AS FLOAT64) > 24.5 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SLD012 IS NULL THEN NULL 
 ELSE SAFE_CAST(SLD012 AS FLOAT64) 
  END as sleep_hours_weekdays_or_workdays, 
 
 CASE
-WHEN REPLACE(SLQ320,'.0','') = 'Usual sleep time on weekends' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(SLQ320,'.0','') = 'Usual sleep time on weekends' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(SLQ320,'.0','') = '77777' THEN 'Refused' -- categorize string values 
 WHEN REPLACE(SLQ320,'.0','') = '99999' THEN 'Dont know' -- categorize string values 
 WHEN SLQ320 IS NULL THEN NULL 
@@ -32,7 +32,7 @@ ELSE SAFE_CAST(SLQ320 AS STRING)
  END as usual_sleep_time_on_weekends, 
 
 CASE
-WHEN REPLACE(SLQ330,'.0','') = 'Usual wake time on weekends' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(SLQ330,'.0','') = 'Usual wake time on weekends' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(SLQ330,'.0','') = '77777' THEN 'Refused' -- categorize string values 
 WHEN REPLACE(SLQ330,'.0','') = '99999' THEN 'Dont know' -- categorize string values 
 WHEN SLQ330 IS NULL THEN NULL 
@@ -40,13 +40,13 @@ ELSE SAFE_CAST(SLQ330 AS STRING)
  END as usual_wake_time_on_weekends, 
 
 CASE
-WHEN SAFE_CAST(SLD013 AS FLOAT64) > 24.5 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SLD013 AS FLOAT64) > 24.5 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SLD013 IS NULL THEN NULL 
 ELSE SAFE_CAST(SLD013 AS FLOAT64) 
  END as sleep_hours_weekends, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely - 1-2 nights a week' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Occasionally - 3-4 nights a week' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Frequently - 5 or more nights a week' -- categorize numeric values
@@ -57,7 +57,7 @@ ELSE SAFE_CAST(SLQ030 AS STRING)
  END as how_often_do_you_snore, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely - 1-2 nights a week' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Occasionally - 3-4 nights a week' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Frequently - 5 or more nights a week' -- categorize numeric values
@@ -68,7 +68,7 @@ ELSE SAFE_CAST(SLQ040 AS STRING)
  END as how_often_do_you_snort_or_stop_breathing, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ050 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -77,7 +77,7 @@ ELSE SAFE_CAST(SLQ050 AS STRING)
  END as ever_told_doctor_had_trouble_sleeping, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ120 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ120 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ120 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely - 1 time a month' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ120 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes - 2-4 times a month' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ120 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often- 5-15 times a month' -- categorize numeric values
@@ -89,12 +89,12 @@ ELSE SAFE_CAST(SLQ120 AS STRING)
  END as how_often_feel_overly_sleepy_during_day, 
 
 CASE
-WHEN SLD010H IS NULL THEN NULL 
+    WHEN SLD010H IS NULL THEN NULL 
 ELSE SAFE_CAST(SLD010H AS FLOAT64) 
  END as how_much_sleep_do_you_get_hours, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -103,12 +103,12 @@ ELSE SAFE_CAST(SLQ060 AS STRING)
  END as ever_told_by_doctor_have_sleep_disorder, 
 
 CASE
-WHEN SLD020M IS NULL THEN NULL 
+    WHEN SLD020M IS NULL THEN NULL 
 ELSE SAFE_CAST(SLD020M AS FLOAT64) 
  END as how_long_to_fall_asleep_minutes, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ070A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Sleep Apnea' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ070A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Sleep Apnea' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ070A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ070A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SLQ070A IS NULL THEN NULL 
@@ -116,25 +116,25 @@ ELSE SAFE_CAST(SLQ070A AS STRING)
  END as sleep_disorder_sleep_apnea, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ070B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Insomnia' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ070B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Insomnia' -- categorize numeric values
 WHEN SLQ070B IS NULL THEN NULL 
 ELSE SAFE_CAST(SLQ070B AS STRING) 
  END as sleep_disorder_insomnia, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ070C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Restless Legs' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ070C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Restless Legs' -- categorize numeric values
 WHEN SLQ070C IS NULL THEN NULL 
 ELSE SAFE_CAST(SLQ070C AS STRING) 
  END as sleep_disorder_restless_legs, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ070D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Other' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ070D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Other' -- categorize numeric values
 WHEN SLQ070D IS NULL THEN NULL 
 ELSE SAFE_CAST(SLQ070D AS STRING) 
  END as sleep_disorder_other, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely (1 time a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes (2-4 times a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ080 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often (5-15 times a month)' -- categorize numeric values
@@ -146,7 +146,7 @@ ELSE SAFE_CAST(SLQ080 AS STRING)
  END as how_often_have_trouble_falling_asleep, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely (1 time a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes (2-4 times a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often (5-15 times a month)' -- categorize numeric values
@@ -158,7 +158,7 @@ ELSE SAFE_CAST(SLQ090 AS STRING)
  END as how_often_wake_up_during_night, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely (1 time a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes (2-4 times a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ100 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often (5-15 times a month)' -- categorize numeric values
@@ -170,7 +170,7 @@ ELSE SAFE_CAST(SLQ100 AS STRING)
  END as how_often_wake_up_too_early_in_morning, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely (1 time a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes (2-4 times a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ110 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often (5-15 times a month)' -- categorize numeric values
@@ -182,7 +182,7 @@ ELSE SAFE_CAST(SLQ110 AS STRING)
  END as how_often_feel_unrested_during_the_day, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely (1 time a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes (2-4 times a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ130 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often (5-15 times a month)' -- categorize numeric values
@@ -194,7 +194,7 @@ ELSE SAFE_CAST(SLQ130 AS STRING)
  END as how_often_did_you_not_get_enough_sleep, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely (1 time a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes (2-4 times a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ140 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often (5-15 times a month)' -- categorize numeric values
@@ -206,7 +206,7 @@ ELSE SAFE_CAST(SLQ140 AS STRING)
  END as how_often_take_pills_to_help_you_sleep, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ150 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ150 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ150 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely (1 time a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ150 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes (2-4 times a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ150 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often (5-15 times a month)' -- categorize numeric values
@@ -218,7 +218,7 @@ ELSE SAFE_CAST(SLQ150 AS STRING)
  END as how_often_have_leg_jerks_while_sleeping, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Rarely (1 time a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes (2-4 times a month)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Often (5-15 times a month)' -- categorize numeric values
@@ -230,7 +230,7 @@ ELSE SAFE_CAST(SLQ160 AS STRING)
  END as how_often_have_legs_cramp_while_sleeping, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ170 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ170 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ170 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ170 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Yes, a little difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ170 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Yes, moderate difficulty' -- categorize numeric values
@@ -242,7 +242,7 @@ ELSE SAFE_CAST(SLQ170 AS STRING)
  END as difficulty_concentrating_when_tired, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Yes, a little difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Yes, moderate difficulty' -- categorize numeric values
@@ -254,7 +254,7 @@ ELSE SAFE_CAST(SLQ180 AS STRING)
  END as difficulty_remembering_when_tired, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ190 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ190 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ190 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ190 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Yes, a little difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ190 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Yes, moderate difficulty' -- categorize numeric values
@@ -266,7 +266,7 @@ ELSE SAFE_CAST(SLQ190 AS STRING)
  END as difficulty_eating_when_tired, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Yes, a little difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Yes, moderate difficulty' -- categorize numeric values
@@ -278,7 +278,7 @@ ELSE SAFE_CAST(SLQ200 AS STRING)
  END as difficulty_with_a_hobby_when_tired, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ210 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ210 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ210 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ210 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Yes, a little difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ210 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Yes, moderate difficulty' -- categorize numeric values
@@ -290,7 +290,7 @@ ELSE SAFE_CAST(SLQ210 AS STRING)
  END as difficulty_getting_things_done, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ220 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ220 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ220 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ220 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Yes, a little difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ220 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Yes, moderate difficulty' -- categorize numeric values
@@ -302,7 +302,7 @@ ELSE SAFE_CAST(SLQ220 AS STRING)
  END as difficulty_with_finance_when_tired, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ230 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ230 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ230 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ230 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Yes, a little difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ230 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Yes, moderate difficulty' -- categorize numeric values
@@ -314,7 +314,7 @@ ELSE SAFE_CAST(SLQ230 AS STRING)
  END as difficulty_at_work_because_tired, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ240 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ240 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Dont do this activity for other reasons' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ240 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ240 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Yes, a little difficulty' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SLQ240 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Yes, moderate difficulty' -- categorize numeric values

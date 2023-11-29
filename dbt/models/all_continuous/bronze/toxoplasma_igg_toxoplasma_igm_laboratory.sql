@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXTO1 IS NULL THEN NULL 
+    WHEN LBXTO1 IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXTO1 AS FLOAT64) 
  END as toxoplasma_igg, 
 
 CASE
-WHEN LBXTO2 IS NULL THEN NULL 
+    WHEN LBXTO2 IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXTO2 AS FLOAT64) 
  END as toxoplasma_igm, 
 

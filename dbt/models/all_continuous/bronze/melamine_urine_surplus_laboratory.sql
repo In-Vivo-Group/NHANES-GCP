@@ -2,17 +2,17 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN WTSBMEL IS NULL THEN NULL 
+    WHEN WTSBMEL IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSBMEL AS FLOAT64) 
  END as melamine_subsample_weight, 
 
 CASE
-WHEN SSMEL IS NULL THEN NULL 
+    WHEN SSMEL IS NULL THEN NULL 
 ELSE SAFE_CAST(SSMEL AS FLOAT64) 
  END as melamine, 
 
 CASE
-WHEN SSCYA IS NULL THEN NULL 
+    WHEN SSCYA IS NULL THEN NULL 
 ELSE SAFE_CAST(SSCYA AS FLOAT64) 
  END as cyanuric_acid, 
 

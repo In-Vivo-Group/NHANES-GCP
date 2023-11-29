@@ -2,17 +2,17 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN WTSAF2YR IS NULL THEN NULL 
+    WHEN WTSAF2YR IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSAF2YR AS FLOAT64) 
  END as fasting_subsample_2_year_mec_weight, 
 
 CASE
-WHEN LBXAPB IS NULL THEN NULL 
+    WHEN LBXAPB IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXAPB AS FLOAT64) 
  END as apolipoprotein_b_mg_dl, 
 
 CASE
-WHEN LBDAPBSI IS NULL THEN NULL 
+    WHEN LBDAPBSI IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDAPBSI AS FLOAT64) 
  END as apolipoprotein_b_g_l, 
 

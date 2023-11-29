@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -11,7 +11,7 @@ ELSE SAFE_CAST(RXD300 AS STRING)
  END as drugs_over_counter_taken_regularly, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD310 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Aspirin - also buffered aspirin products such as Anacin, Bayer, Bufferin, Midol, Ascripton, Ecotrin, Pabrin and Alka Seltzer' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD310 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Aspirin - also buffered aspirin products such as Anacin, Bayer, Bufferin, Midol, Ascripton, Ecotrin, Pabrin and Alka Seltzer' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD310 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN 'Tylenol - also other acetaminophen products, including sinus products such as Anacin-3, Dristan AF, and Comtrex' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD310 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(12 AS FLOAT64),0) AS INT64) THEN 'Ibuprofen - also Advil, Nuprin, Motrin IB (including cold and sinus products containing ibuprofen)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD310 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(13 AS FLOAT64),0) AS INT64) THEN 'Excedrin' -- categorize numeric values
@@ -29,12 +29,12 @@ ELSE SAFE_CAST(RXD310 AS STRING)
  END as product_taken, 
 
 CASE
-WHEN RXD320 IS NULL THEN NULL 
+    WHEN RXD320 IS NULL THEN NULL 
 ELSE SAFE_CAST(RXD320 AS FLOAT64) 
  END as years_taking_product_every_day, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -43,12 +43,12 @@ ELSE SAFE_CAST(RXD330 AS STRING)
  END as currently_taking_product_every_day, 
 
 CASE
-WHEN RXD331Q IS NULL THEN NULL 
+    WHEN RXD331Q IS NULL THEN NULL 
 ELSE SAFE_CAST(RXD331Q AS FLOAT64) 
  END as of_pills_doses_taken_day, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD331U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Pills' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD331U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Pills' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD331U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Doses' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD331U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXD331U AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -57,14 +57,14 @@ ELSE SAFE_CAST(RXD331U AS STRING)
  END as unit_of_measure_pills_doses, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(RXQ355 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Container seen' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(RXQ355 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Container seen' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(RXQ355 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Container not seen' -- categorize string values 
 WHEN RXQ355 IS NULL THEN NULL 
 ELSE SAFE_CAST(RXQ355 AS STRING) 
  END as container_seen_by_interviewer, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(RXQ360G AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Enter strength' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(RXQ360G AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Enter strength' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(RXQ360G AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Information not on bottle/container' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(RXQ360G AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Multiple ingredient product' -- categorize string values 
 WHEN RXQ360G IS NULL THEN NULL 
@@ -72,13 +72,13 @@ ELSE SAFE_CAST(RXQ360G AS STRING)
  END as strength_of_product, 
 
 CASE
-WHEN SAFE_CAST(RXQ360Q AS FLOAT64) > 811.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(RXQ360Q AS FLOAT64) > 811.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN RXQ360Q IS NULL THEN NULL 
 ELSE SAFE_CAST(RXQ360Q AS FLOAT64) 
  END as quantity_of_strength, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(RXQ360U AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Microgram (mcg)' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(RXQ360U AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Microgram (mcg)' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(RXQ360U AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Milligram (mg)' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(RXQ360U AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Gram (g)' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(RXQ360U AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Microgram/Milliliter' -- categorize string values 
@@ -92,7 +92,7 @@ ELSE SAFE_CAST(RXQ360U AS STRING)
  END as unit_of_strength_on_bottle, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ300 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -101,7 +101,7 @@ ELSE SAFE_CAST(RXQ300 AS STRING)
  END as drugs_over_counter_taken_regularly_RXQ300, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ310 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Aspirin - also buffered aspirin products such as Anacin, Bayer, Bufferin, Midol, Ascripton, Ecotrin, Pabrin and Alka Seltzer' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ310 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Aspirin - also buffered aspirin products such as Anacin, Bayer, Bufferin, Midol, Ascripton, Ecotrin, Pabrin and Alka Seltzer' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ310 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN 'Tylenol - also other acetaminophen products, including sinus products such as Anacin-3, Dristan AF, and Comtrex' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ310 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(12 AS FLOAT64),0) AS INT64) THEN 'Ibuprofen - also, Advil, Nuprin, Motrin IB (including cold and sinus products containing ibuprofen)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ310 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(13 AS FLOAT64),0) AS INT64) THEN 'Excedrin' -- categorize numeric values
@@ -119,7 +119,7 @@ ELSE SAFE_CAST(RXQ310 AS STRING)
  END as product_taken_RXQ310, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(RXQ330 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values

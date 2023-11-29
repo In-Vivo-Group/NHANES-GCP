@@ -2,17 +2,17 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXTFR IS NULL THEN NULL 
+    WHEN LBXTFR IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXTFR AS FLOAT64) 
  END as transferrin_receptor_mg_l, 
 
 CASE
-WHEN LBDFER IS NULL THEN NULL 
+    WHEN LBDFER IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDFER AS FLOAT64) 
  END as ferritin_ng_ml, 
 
 CASE
-WHEN LBDFERSI IS NULL THEN NULL 
+    WHEN LBDFERSI IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDFERSI AS FLOAT64) 
  END as ferritin_in_si_unit_ug_l, 
 

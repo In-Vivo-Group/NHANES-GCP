@@ -2,17 +2,17 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN WTSSGL2Y IS NULL THEN NULL 
+    WHEN WTSSGL2Y IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSSGL2Y AS FLOAT64) 
  END as surplus_specimen_glyp_15_16_2_yr_weights, 
 
 CASE
-WHEN SSGLYP IS NULL THEN NULL 
+    WHEN SSGLYP IS NULL THEN NULL 
 ELSE SAFE_CAST(SSGLYP AS FLOAT64) 
  END as glyphosate_ng_ml, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SSGLYPL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SSGLYPL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SSGLYPL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
 WHEN SSGLYPL IS NULL THEN NULL 
 ELSE SAFE_CAST(SSGLYPL AS STRING) 

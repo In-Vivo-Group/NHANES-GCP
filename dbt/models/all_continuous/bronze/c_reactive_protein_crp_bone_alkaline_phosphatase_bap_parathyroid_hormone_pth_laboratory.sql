@@ -2,17 +2,17 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXCRP IS NULL THEN NULL 
+    WHEN LBXCRP IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXCRP AS FLOAT64) 
  END as c_reactive_protein_mg_dl, 
 
 CASE
-WHEN LBXBAP IS NULL THEN NULL 
+    WHEN LBXBAP IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXBAP AS FLOAT64) 
  END as bone_alkaline_phosphotase_ug_l, 
 
 CASE
-WHEN LBXPT21 IS NULL THEN NULL 
+    WHEN LBXPT21 IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXPT21 AS FLOAT64) 
  END as parathyroid_hormone_elecys_method_pg_ml, 
 

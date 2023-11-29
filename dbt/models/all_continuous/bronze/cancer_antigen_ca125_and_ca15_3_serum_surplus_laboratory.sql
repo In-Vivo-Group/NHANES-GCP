@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN SSCA125 IS NULL THEN NULL 
+    WHEN SSCA125 IS NULL THEN NULL 
 ELSE SAFE_CAST(SSCA125 AS FLOAT64) 
  END as cancer_antigen_125_u_ml, 
 
 CASE
-WHEN SSCA153 IS NULL THEN NULL 
+    WHEN SSCA153 IS NULL THEN NULL 
 ELSE SAFE_CAST(SSCA153 AS FLOAT64) 
  END as cancer_antigen_15_3_mu_ml, 
 

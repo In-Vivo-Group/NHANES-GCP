@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXTST IS NULL THEN NULL 
+    WHEN LBXTST IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXTST AS FLOAT64) 
  END as testosterone_total_ng_dl, 
 

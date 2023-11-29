@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN SSCYPC IS NULL THEN NULL 
+    WHEN SSCYPC IS NULL THEN NULL 
 ELSE SAFE_CAST(SSCYPC AS FLOAT64) 
  END as cystatin_c_mg_l, 
 
 CASE
-WHEN WTSCY4YR IS NULL THEN NULL 
+    WHEN WTSCY4YR IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSCY4YR AS FLOAT64) 
  END as surplus_sera_cystatin_99_02_weights, 
 

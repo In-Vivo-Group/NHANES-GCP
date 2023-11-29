@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN URXOAV IS NULL THEN NULL 
+    WHEN URXOAV IS NULL THEN NULL 
 ELSE SAFE_CAST(URXOAV AS FLOAT64) 
  END as urine_osmolality_mosm_kg, 
 

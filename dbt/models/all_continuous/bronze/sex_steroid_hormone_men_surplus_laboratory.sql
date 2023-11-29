@@ -2,22 +2,22 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN SSTESTO IS NULL THEN NULL 
+    WHEN SSTESTO IS NULL THEN NULL 
 ELSE SAFE_CAST(SSTESTO AS FLOAT64) 
  END as testosterone_ng_ml, 
 
 CASE
-WHEN SSSHBG IS NULL THEN NULL 
+    WHEN SSSHBG IS NULL THEN NULL 
 ELSE SAFE_CAST(SSSHBG AS FLOAT64) 
  END as sex_hormone_binding_globulin_nmol_l, 
 
 CASE
-WHEN SSSE2 IS NULL THEN NULL 
+    WHEN SSSE2 IS NULL THEN NULL 
 ELSE SAFE_CAST(SSSE2 AS FLOAT64) 
  END as estradiol_pg_ml, 
 
 CASE
-WHEN SS3ADLG IS NULL THEN NULL 
+    WHEN SS3ADLG IS NULL THEN NULL 
 ELSE SAFE_CAST(SS3ADLG AS FLOAT64) 
  END as androstanedione_glucuronide_ng_ml, 
 

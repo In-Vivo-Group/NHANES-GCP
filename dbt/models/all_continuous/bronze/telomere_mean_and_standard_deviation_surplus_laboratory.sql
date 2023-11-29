@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN TELOMEAN IS NULL THEN NULL 
+    WHEN TELOMEAN IS NULL THEN NULL 
 ELSE SAFE_CAST(TELOMEAN AS FLOAT64) 
  END as mean_t_s_ratio, 
 
 CASE
-WHEN TELOSTD IS NULL THEN NULL 
+    WHEN TELOSTD IS NULL THEN NULL 
 ELSE SAFE_CAST(TELOSTD AS FLOAT64) 
  END as asso_std_dev_of_mean_t_s_ratio, 
 

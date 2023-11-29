@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN SSAMH IS NULL THEN NULL 
+    WHEN SSAMH IS NULL THEN NULL 
 ELSE SAFE_CAST(SSAMH AS FLOAT64) 
  END as anti_mullerian_hormone_ng_ml, 
 
 CASE
-WHEN SSINHBIN IS NULL THEN NULL 
+    WHEN SSINHBIN IS NULL THEN NULL 
 ELSE SAFE_CAST(SSINHBIN AS FLOAT64) 
  END as inhibin_b_pg_ml, 
 

@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXGH IS NULL THEN NULL 
+    WHEN LBXGH IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXGH AS FLOAT64) 
  END as glycohemoglobin, 
 

@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXFER IS NULL THEN NULL 
+    WHEN LBXFER IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXFER AS FLOAT64) 
  END as ferritin_ng_ml, 
 
 CASE
-WHEN LBDFERSI IS NULL THEN NULL 
+    WHEN LBDFERSI IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDFERSI AS FLOAT64) 
  END as ferritin_ug_l, 
 

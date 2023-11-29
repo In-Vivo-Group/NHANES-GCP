@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXCOT IS NULL THEN NULL 
+    WHEN LBXCOT IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXCOT AS FLOAT64) 
  END as cotinine_ng_ml, 
 

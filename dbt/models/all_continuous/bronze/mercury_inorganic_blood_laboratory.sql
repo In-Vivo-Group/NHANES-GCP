@@ -2,17 +2,17 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXIHG IS NULL THEN NULL 
+    WHEN LBXIHG IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXIHG AS FLOAT64) 
  END as mercury_inorganic_ug_l, 
 
 CASE
-WHEN LBDIHGSI IS NULL THEN NULL 
+    WHEN LBDIHGSI IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDIHGSI AS FLOAT64) 
  END as mercury_inorganic_umol_l, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDIHGLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDIHGLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDIHGLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
 WHEN LBDIHGLC IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDIHGLC AS STRING) 

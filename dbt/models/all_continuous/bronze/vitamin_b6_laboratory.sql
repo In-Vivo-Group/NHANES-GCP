@@ -2,17 +2,17 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBX4PA IS NULL THEN NULL 
+    WHEN LBX4PA IS NULL THEN NULL 
 ELSE SAFE_CAST(LBX4PA AS FLOAT64) 
  END as lab_4_pyridoxic_acid_nmol_l, 
 
 CASE
-WHEN LBXPLP IS NULL THEN NULL 
+    WHEN LBXPLP IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXPLP AS FLOAT64) 
  END as pyridoxal_5_phosphate_nmol_l, 
 
 CASE
-WHEN LBXVB6 IS NULL THEN NULL 
+    WHEN LBXVB6 IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXVB6 AS FLOAT64) 
  END as vitamin_b6_pyridoxal_5_phosphate_nmol_l, 
 

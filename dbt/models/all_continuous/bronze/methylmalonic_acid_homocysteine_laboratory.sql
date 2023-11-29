@@ -2,13 +2,13 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXHCY IS NULL THEN NULL 
+    WHEN LBXHCY IS NULL THEN NULL 
 WHEN LBXHCY IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXHCY AS FLOAT64) 
  END as homocysteine_umol_l, 
 
 CASE
-WHEN LBXMMA IS NULL THEN NULL 
+    WHEN LBXMMA IS NULL THEN NULL 
 WHEN LBXMMA IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXMMA AS FLOAT64) 
  END as methylmalonic_acid_umol_l, 

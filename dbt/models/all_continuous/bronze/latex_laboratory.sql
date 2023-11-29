@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXLA IS NULL THEN NULL 
+    WHEN LBXLA IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXLA AS FLOAT64) 
  END as latex_iu_ml, 
 
 CASE
-WHEN LBXLACL IS NULL THEN NULL 
+    WHEN LBXLACL IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXLACL AS FLOAT64) 
  END as latex_class, 
 

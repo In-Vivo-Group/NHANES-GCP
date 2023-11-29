@@ -2,22 +2,22 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LB2DAY IS NULL THEN NULL 
+    WHEN LB2DAY IS NULL THEN NULL 
 ELSE SAFE_CAST(LB2DAY AS FLOAT64) 
  END as days_betwen_first_and_second_exams, 
 
 CASE
-WHEN LB2P1 IS NULL THEN NULL 
+    WHEN LB2P1 IS NULL THEN NULL 
 ELSE SAFE_CAST(LB2P1 AS FLOAT64) 
  END as psa_total_ng_ml, 
 
 CASE
-WHEN LB2P2 IS NULL THEN NULL 
+    WHEN LB2P2 IS NULL THEN NULL 
 ELSE SAFE_CAST(LB2P2 AS FLOAT64) 
  END as psa_free_ng_ml, 
 
 CASE
-WHEN LB2P3 IS NULL THEN NULL 
+    WHEN LB2P3 IS NULL THEN NULL 
 ELSE SAFE_CAST(LB2P3 AS FLOAT64) 
  END as prostate_specific_antigen_ratio, 
 

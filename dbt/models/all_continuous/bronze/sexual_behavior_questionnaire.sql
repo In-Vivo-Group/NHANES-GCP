@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXD021 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXD021 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXD021 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXD021 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXD021 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -11,7 +11,7 @@ ELSE SAFE_CAST(SXD021 AS STRING)
  END as ever_had_vaginal_anal_or_oral_sex_b, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ800 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ800 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ800 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ800 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ800 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -20,7 +20,7 @@ ELSE SAFE_CAST(SXQ800 AS STRING)
  END as ever_had_vaginal_sex_with_a_woman_m, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ803 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ803 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ803 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ803 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ803 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -29,7 +29,7 @@ ELSE SAFE_CAST(SXQ803 AS STRING)
  END as ever_performed_oral_sex_on_a_woman_m, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ806 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ806 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ806 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ806 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ806 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -38,7 +38,7 @@ ELSE SAFE_CAST(SXQ806 AS STRING)
  END as ever_had_anal_sex_with_a_woman_m, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ809 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ809 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ809 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ809 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ809 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -47,7 +47,7 @@ ELSE SAFE_CAST(SXQ809 AS STRING)
  END as ever_had_any_sex_w_man_anal_oral_m, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ700 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ700 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ700 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ700 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ700 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -56,7 +56,7 @@ ELSE SAFE_CAST(SXQ700 AS STRING)
  END as ever_had_vaginal_sex_with_a_man_f, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ703 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ703 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ703 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ703 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ703 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -65,7 +65,7 @@ ELSE SAFE_CAST(SXQ703 AS STRING)
  END as ever_performed_oral_sex_on_a_man_f, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ706 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ706 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ706 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ706 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ706 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -74,7 +74,7 @@ ELSE SAFE_CAST(SXQ706 AS STRING)
  END as ever_had_anal_sex_with_a_man_f, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ709 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ709 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ709 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ709 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ709 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -83,81 +83,81 @@ ELSE SAFE_CAST(SXQ709 AS STRING)
  END as ever_had_any_kind_of_sex_w_woman_f, 
 
 CASE
-WHEN SXD031 IS NULL THEN NULL 
+    WHEN SXD031 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXD031 AS FLOAT64) 
  END as how_old_when_first_had_sex_b, 
 
 CASE
-WHEN SXD171 IS NULL THEN NULL 
+    WHEN SXD171 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXD171 AS FLOAT64) 
  END as female_sex_partners_lifetime_m, 
 
 CASE
-WHEN SAFE_CAST(SXD510 AS FLOAT64) > 56.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXD510 AS FLOAT64) > 56.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXD510 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXD510 AS FLOAT64) 
  END as female_sex_partners_year_m, 
 
 CASE
-WHEN SAFE_CAST(SXQ824 AS FLOAT64) > 110.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXQ824 AS FLOAT64) > 110.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXQ824 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ824 AS FLOAT64) 
  END as female_vaginal_sex_partners_life_m, 
 
 CASE
-WHEN SAFE_CAST(SXQ827 AS FLOAT64) > 91.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXQ827 AS FLOAT64) > 91.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXQ827 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ827 AS FLOAT64) 
  END as female_vaginal_sex_partners_year_m, 
 
 CASE
-WHEN SAFE_CAST(SXD633 AS FLOAT64) > 61.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXD633 AS FLOAT64) > 61.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXD633 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXD633 AS FLOAT64) 
  END as age_first_performed_oral_sex_w_woman_b, 
 
 CASE
-WHEN SAFE_CAST(SXQ636 AS FLOAT64) > 96.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXQ636 AS FLOAT64) > 96.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXQ636 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ636 AS FLOAT64) 
  END as female_performed_oral_sex_lifetime_b, 
 
 CASE
-WHEN SAFE_CAST(SXQ639 AS FLOAT64) > 34.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXQ639 AS FLOAT64) > 34.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXQ639 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ639 AS FLOAT64) 
  END as female_performed_oral_sex_year_b, 
 
 CASE
-WHEN SAFE_CAST(SXD642 AS FLOAT64) > 14621.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXD642 AS FLOAT64) > 14621.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXD642 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXD642 AS FLOAT64) 
  END as performed_oral_sex_new_female_days_b, 
 
 CASE
-WHEN SXQ410 IS NULL THEN NULL 
+    WHEN SXQ410 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ410 AS FLOAT64) 
  END as men_anal_oral_sex_partners_lifetime_m, 
 
 CASE
-WHEN SXQ550 IS NULL THEN NULL 
+    WHEN SXQ550 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ550 AS FLOAT64) 
  END as men_anal_oral_sex_partners_year_m, 
 
 CASE
-WHEN SAFE_CAST(SXQ836 AS FLOAT64) > 61.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXQ836 AS FLOAT64) > 61.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXQ836 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ836 AS FLOAT64) 
  END as men_anal_sex_partners_lifetime_m, 
 
 CASE
-WHEN SAFE_CAST(SXQ841 AS FLOAT64) > 36.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXQ841 AS FLOAT64) > 36.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXQ841 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ841 AS FLOAT64) 
  END as men_anal_sex_partners_year_m, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ853 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ853 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ853 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ853 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ853 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -166,31 +166,31 @@ ELSE SAFE_CAST(SXQ853 AS STRING)
  END as ever_performed_oral_sex_on_a_man_m, 
 
 CASE
-WHEN SAFE_CAST(SXD621 AS FLOAT64) > 70.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXD621 AS FLOAT64) > 70.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXD621 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXD621 AS FLOAT64) 
  END as how_old_when_first_had_oral_sex_b, 
 
 CASE
-WHEN SAFE_CAST(SXQ624 AS FLOAT64) > 106.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXQ624 AS FLOAT64) > 106.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXQ624 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ624 AS FLOAT64) 
  END as male_oral_sex_partners_lifetime_b, 
 
 CASE
-WHEN SAFE_CAST(SXQ627 AS FLOAT64) > 41.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXQ627 AS FLOAT64) > 41.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXQ627 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ627 AS FLOAT64) 
  END as male_oral_sex_partners_year_b, 
 
 CASE
-WHEN SAFE_CAST(SXD630 AS FLOAT64) > 15352.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXD630 AS FLOAT64) > 15352.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXD630 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXD630 AS FLOAT64) 
  END as last_perform_oral_sex_new_male_days_b, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ645 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Never' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ645 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Never' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ645 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Rarely' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ645 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Usually' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ645 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Always' -- categorize string values 
@@ -202,7 +202,7 @@ ELSE SAFE_CAST(SXQ645 AS STRING)
  END as use_protection_when_perform_oral_sex_b, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ648 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ648 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ648 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ648 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ648 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -211,7 +211,7 @@ ELSE SAFE_CAST(SXQ648 AS STRING)
  END as had_sex_with_new_partner_year_b, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ610 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ610 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ610 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Once' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ610 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '2-11 times' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ610 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN '12-51 times' -- categorize numeric values
@@ -225,7 +225,7 @@ ELSE SAFE_CAST(SXQ610 AS STRING)
  END as times_had_vaginal_or_anal_sex_year_b, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ251 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ251 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ251 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Less than half of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ251 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'About half of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ251 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not always, but more than half of the time' -- categorize numeric values
@@ -237,51 +237,51 @@ ELSE SAFE_CAST(SXQ251 AS STRING)
  END as times_had_sex_without_condom_year_b, 
 
 CASE
-WHEN SXQ590 IS NULL THEN NULL 
+    WHEN SXQ590 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ590 AS FLOAT64) 
  END as sex_partners_5_years_older_year_b, 
 
 CASE
-WHEN SXQ600 IS NULL THEN NULL 
+    WHEN SXQ600 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ600 AS FLOAT64) 
  END as sex_partners_5_years_younger_year_b, 
 
 CASE
-WHEN SAFE_CAST(SXD101 AS FLOAT64) > 98.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXD101 AS FLOAT64) > 98.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXD101 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXD101 AS FLOAT64) 
  END as male_sex_partners_lifetime_f, 
 
 CASE
-WHEN SAFE_CAST(SXD450 AS FLOAT64) > 41.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXD450 AS FLOAT64) > 41.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXD450 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXD450 AS FLOAT64) 
  END as male_sex_partners_year_f, 
 
 CASE
-WHEN SAFE_CAST(SXQ724 AS FLOAT64) > 91.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXQ724 AS FLOAT64) > 91.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXQ724 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ724 AS FLOAT64) 
  END as male_vaginal_sex_partners_lifetime_f, 
 
 CASE
-WHEN SAFE_CAST(SXQ727 AS FLOAT64) > 41.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXQ727 AS FLOAT64) > 41.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXQ727 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ727 AS FLOAT64) 
  END as male_vaginal_sex_partners_year_f, 
 
 CASE
-WHEN SXQ130 IS NULL THEN NULL 
+    WHEN SXQ130 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ130 AS FLOAT64) 
  END as female_sex_partners_lifetime_f, 
 
 CASE
-WHEN SXQ490 IS NULL THEN NULL 
+    WHEN SXQ490 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ490 AS FLOAT64) 
  END as female_sex_partners_year_f, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ741 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ741 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ741 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ741 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ741 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -290,7 +290,7 @@ ELSE SAFE_CAST(SXQ741 AS STRING)
  END as ever_performed_oral_sex_on_a_woman_f, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ753 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ753 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ753 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ753 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ753 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -299,7 +299,7 @@ ELSE SAFE_CAST(SXQ753 AS STRING)
  END as ever_told_by_md_you_had_hpv_f, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ260 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ260 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ260 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ260 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ260 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -308,7 +308,7 @@ ELSE SAFE_CAST(SXQ260 AS STRING)
  END as md_ever_told_you_had_genital_herpes_b, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ265 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ265 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ265 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ265 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ265 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -317,13 +317,13 @@ ELSE SAFE_CAST(SXQ265 AS STRING)
  END as md_ever_told_you_had_genital_warts_b, 
 
 CASE
-WHEN SAFE_CAST(SXQ267 AS FLOAT64) > 69.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(SXQ267 AS FLOAT64) > 69.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN SXQ267 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ267 AS FLOAT64) 
  END as age_when_told_you_had_genital_warts_b, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ270 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ270 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ270 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ270 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ270 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -332,7 +332,7 @@ ELSE SAFE_CAST(SXQ270 AS STRING)
  END as md_ever_told_you_had_gonorrhea_b, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ272 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ272 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ272 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ272 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ272 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -341,7 +341,7 @@ ELSE SAFE_CAST(SXQ272 AS STRING)
  END as md_ever_told_you_had_chlamydia_b, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ280 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Circumcised' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ280 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Circumcised' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ280 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Uncircumcised' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ280 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ280 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -350,7 +350,7 @@ ELSE SAFE_CAST(SXQ280 AS STRING)
  END as circumcised_or_uncircumcised_m, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ295 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Lesbian or Gay' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ295 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Lesbian or Gay' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ295 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Straight, that is, not lesbian or gay' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ295 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Bisexual' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ295 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Something else' -- categorize string values 
@@ -362,7 +362,7 @@ ELSE SAFE_CAST(SXQ295 AS STRING)
  END as describe_sexual_identity_f, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ296 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Gay' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ296 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Gay' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ296 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Straight that is not gay' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ296 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Bisexual' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(SXQ296 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Something else' -- categorize string values 
@@ -374,7 +374,7 @@ ELSE SAFE_CAST(SXQ296 AS STRING)
  END as describe_sexual_identity_m, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ292 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Heterosexual or straight (attracted to women)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ292 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Heterosexual or straight (attracted to women)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ292 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Homosexual or gay (attracted to men)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ292 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Bisexual (attracted to men and women)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ292 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Something else' -- categorize numeric values
@@ -386,7 +386,7 @@ ELSE SAFE_CAST(SXQ292 AS STRING)
  END as describe_sexual_orientation_male, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ294 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Heterosexual or straight (attracted to men)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ294 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Heterosexual or straight (attracted to men)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ294 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Homosexual or lesbian (attracted to women)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ294 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Bisexual (attracted to men and women)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ294 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Something else' -- categorize numeric values
@@ -398,7 +398,7 @@ ELSE SAFE_CAST(SXQ294 AS STRING)
  END as describe_sexual_orientation_female, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SXAISC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Complete' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SXAISC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Complete' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXAISC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Partial' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXAISC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Not done' -- categorize numeric values
 WHEN SXAISC IS NULL THEN NULL 
@@ -406,61 +406,61 @@ ELSE SAFE_CAST(SXAISC AS STRING)
  END as interview_status_code, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ021 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ021 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ021 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ021 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ021 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN SXQ021 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ021 AS STRING) 
- END as ever_had_vaginal_anal_or_oral_sex_SXQ021, 
+ END as ever_had_vaginal_anal_or_oral_sex, 
 
 CASE
-WHEN SXQ101 IS NULL THEN NULL 
+    WHEN SXQ101 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ101 AS FLOAT64) 
- END as male_sex_partners_lifetime_SXQ101, 
+ END as male_sex_partners_lifetime, 
 
 CASE
-WHEN SXQ350 IS NULL THEN NULL 
+    WHEN SXQ350 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ350 AS FLOAT64) 
- END as male_oral_sex_partners_lifetime_SXQ350, 
+ END as male_oral_sex_partners_lifetime, 
 
 CASE
-WHEN SXQ400 IS NULL THEN NULL 
+    WHEN SXQ400 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ400 AS FLOAT64) 
  END as female_oral_sex_partners_lifetime, 
 
 CASE
-WHEN SXQ430 IS NULL THEN NULL 
+    WHEN SXQ430 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ430 AS FLOAT64) 
  END as male_oral_sex_partners_lifetime_SXQ430, 
 
 CASE
-WHEN SXQ450 IS NULL THEN NULL 
+    WHEN SXQ450 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ450 AS FLOAT64) 
- END as male_sex_partners_year_SXQ450, 
+ END as male_sex_partners_year, 
 
 CASE
-WHEN SXQ470 IS NULL THEN NULL 
+    WHEN SXQ470 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ470 AS FLOAT64) 
- END as male_oral_sex_partners_year_SXQ470, 
+ END as male_oral_sex_partners_year, 
 
 CASE
-WHEN SXQ510 IS NULL THEN NULL 
+    WHEN SXQ510 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ510 AS FLOAT64) 
- END as female_sex_partners_year_SXQ510, 
+ END as female_sex_partners_year, 
 
 CASE
-WHEN SXQ530 IS NULL THEN NULL 
+    WHEN SXQ530 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ530 AS FLOAT64) 
  END as female_oral_sex_partners_year, 
 
 CASE
-WHEN SXQ570 IS NULL THEN NULL 
+    WHEN SXQ570 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ570 AS FLOAT64) 
  END as male_oral_sex_partners_year_SXQ570, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(SXQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -469,62 +469,62 @@ ELSE SAFE_CAST(SXQ020 AS STRING)
  END as ever_had_sexual_intercourse, 
 
 CASE
-WHEN SXD030 IS NULL THEN NULL 
+    WHEN SXD030 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXD030 AS FLOAT64) 
  END as age_when_first_had_sexual_intercourse, 
 
 CASE
-WHEN SXQ100 IS NULL THEN NULL 
+    WHEN SXQ100 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ100 AS FLOAT64) 
  END as men_sex_intercourse_partners_life, 
 
 CASE
-WHEN SXQ120 IS NULL THEN NULL 
+    WHEN SXQ120 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ120 AS FLOAT64) 
  END as men_sex_intercourse_partners_year, 
 
 CASE
-WHEN SXQ150 IS NULL THEN NULL 
+    WHEN SXQ150 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ150 AS FLOAT64) 
  END as women_sex_intercourse_partners_year, 
 
 CASE
-WHEN SXQ170 IS NULL THEN NULL 
+    WHEN SXQ170 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ170 AS FLOAT64) 
- END as women_sex_intercourse_partners_life_SXQ170, 
+ END as women_sex_intercourse_partners_life, 
 
 CASE
-WHEN SXQ190 IS NULL THEN NULL 
+    WHEN SXQ190 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ190 AS FLOAT64) 
  END as women_sex_intercourse_partners_year_SXQ190, 
 
 CASE
-WHEN SXQ200 IS NULL THEN NULL 
+    WHEN SXQ200 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ200 AS FLOAT64) 
  END as men_sex_intercourse_partners_lifetime, 
 
 CASE
-WHEN SXQ220 IS NULL THEN NULL 
+    WHEN SXQ220 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ220 AS FLOAT64) 
  END as men_sex_intercourse_partners_year_SXQ220, 
 
 CASE
-WHEN SXQ241 IS NULL THEN NULL 
+    WHEN SXQ241 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ241 AS FLOAT64) 
  END as sexual_intercourse_partners_past_mo, 
 
 CASE
-WHEN SXQ250 IS NULL THEN NULL 
+    WHEN SXQ250 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ250 AS FLOAT64) 
  END as times_had_sex_without_condom_past_mo, 
 
 CASE
-WHEN SXD240 IS NULL THEN NULL 
+    WHEN SXD240 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXD240 AS FLOAT64) 
  END as sexual_intercourse_partners_past_mo_SXD240, 
 
 CASE
-WHEN SXQ240 IS NULL THEN NULL 
+    WHEN SXQ240 IS NULL THEN NULL 
 ELSE SAFE_CAST(SXQ240 AS FLOAT64) 
  END as sexual_intercourse_partners_past_mo_SXQ240, 
 

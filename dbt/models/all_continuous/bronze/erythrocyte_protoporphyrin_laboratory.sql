@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXEPP IS NULL THEN NULL 
+    WHEN LBXEPP IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXEPP AS FLOAT64) 
  END as protoporphyrin_ug_dl_rbc, 
 
 CASE
-WHEN LBDEPPSI IS NULL THEN NULL 
+    WHEN LBDEPPSI IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDEPPSI AS FLOAT64) 
  END as protoporphyrin_umol_l_rbc, 
 

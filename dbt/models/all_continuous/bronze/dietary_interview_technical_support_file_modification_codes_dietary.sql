@@ -1,11 +1,11 @@
 SELECT
 CASE
-WHEN DRXMC IS NULL THEN NULL 
+    WHEN DRXMC IS NULL THEN NULL 
 ELSE SAFE_CAST(DRXMC AS FLOAT64) 
  END as modification_code, 
 
 CASE
-WHEN REPLACE(DRXMCD,'.0','') = 'Modification Code Description' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(DRXMCD,'.0','') = 'Modification Code Description' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(DRXMCD,'.0','') = '' THEN '' -- categorize string values 
 ELSE SAFE_CAST(DRXMCD AS STRING) 
  END as modification_code_description, 

@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN SAMPLEID IS NULL THEN NULL 
+    WHEN SAMPLEID IS NULL THEN NULL 
 ELSE SAFE_CAST(SAMPLEID AS FLOAT64) 
  END as pool_identification_number, 
 
 CASE
-WHEN WTSB2YRA IS NULL THEN NULL 
+    WHEN WTSB2YRA IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSB2YRA AS FLOAT64) 
  END as adjusted_subsample_weight, 
 

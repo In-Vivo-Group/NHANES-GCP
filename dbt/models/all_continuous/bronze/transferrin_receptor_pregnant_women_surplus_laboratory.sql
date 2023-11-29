@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN SSTFR IS NULL THEN NULL 
+    WHEN SSTFR IS NULL THEN NULL 
 ELSE SAFE_CAST(SSTFR AS FLOAT64) 
  END as serum_transferrin_receptor_mg_l, 
 
 CASE
-WHEN SSFER IS NULL THEN NULL 
+    WHEN SSFER IS NULL THEN NULL 
 ELSE SAFE_CAST(SSFER AS FLOAT64) 
  END as serum_ferritin_ng_ml, 
 

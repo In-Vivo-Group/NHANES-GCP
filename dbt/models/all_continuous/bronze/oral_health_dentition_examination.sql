@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHDEXSTS AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Complete' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHDEXSTS AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Complete' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHDEXSTS AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Partial' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHDEXSTS AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Not Done' -- categorize string values 
 WHEN OHDEXSTS IS NULL THEN NULL 
@@ -10,7 +10,7 @@ ELSE SAFE_CAST(OHDEXSTS AS STRING)
  END as overall_oral_health_exam_status, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHDDESTS AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Complete' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHDDESTS AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Complete' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHDDESTS AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Partial' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHDDESTS AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Not Done' -- categorize string values 
 WHEN OHDDESTS IS NULL THEN NULL 
@@ -18,14 +18,14 @@ ELSE SAFE_CAST(OHDDESTS AS STRING)
  END as dentition_status_code, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXIMP AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXIMP AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXIMP AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN OHXIMP IS NULL THEN NULL 
 ELSE SAFE_CAST(OHXIMP AS STRING) 
  END as dental_implant_yes_no, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX01TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX01TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX01TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX01TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX01TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -36,7 +36,7 @@ ELSE SAFE_CAST(OHX01TC AS STRING)
  END as tooth_count_1, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX02TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX02TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX02TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX02TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX02TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -47,7 +47,7 @@ ELSE SAFE_CAST(OHX02TC AS STRING)
  END as tooth_count_2, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX03TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX03TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX03TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX03TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX03TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -58,7 +58,7 @@ ELSE SAFE_CAST(OHX03TC AS STRING)
  END as tooth_count_3, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX04TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX04TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX04TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX04TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX04TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -69,7 +69,7 @@ ELSE SAFE_CAST(OHX04TC AS STRING)
  END as tooth_count_4, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX05TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX05TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX05TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX05TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX05TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -80,7 +80,7 @@ ELSE SAFE_CAST(OHX05TC AS STRING)
  END as tooth_count_5, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX06TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX06TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX06TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX06TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX06TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -91,7 +91,7 @@ ELSE SAFE_CAST(OHX06TC AS STRING)
  END as tooth_count_6, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -102,7 +102,7 @@ ELSE SAFE_CAST(OHX07TC AS STRING)
  END as tooth_count_7, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -113,7 +113,7 @@ ELSE SAFE_CAST(OHX08TC AS STRING)
  END as tooth_count_8, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -124,7 +124,7 @@ ELSE SAFE_CAST(OHX09TC AS STRING)
  END as tooth_count_9, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -135,7 +135,7 @@ ELSE SAFE_CAST(OHX10TC AS STRING)
  END as tooth_count_10, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX11TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX11TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX11TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX11TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX11TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -146,7 +146,7 @@ ELSE SAFE_CAST(OHX11TC AS STRING)
  END as tooth_count_11, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX12TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX12TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX12TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX12TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX12TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -157,7 +157,7 @@ ELSE SAFE_CAST(OHX12TC AS STRING)
  END as tooth_count_12, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX13TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX13TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX13TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX13TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX13TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -168,7 +168,7 @@ ELSE SAFE_CAST(OHX13TC AS STRING)
  END as tooth_count_13, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX14TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX14TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX14TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX14TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX14TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -179,7 +179,7 @@ ELSE SAFE_CAST(OHX14TC AS STRING)
  END as tooth_count_14, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX15TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX15TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX15TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX15TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX15TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -190,7 +190,7 @@ ELSE SAFE_CAST(OHX15TC AS STRING)
  END as tooth_count_15, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX16TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX16TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX16TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX16TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX16TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -201,7 +201,7 @@ ELSE SAFE_CAST(OHX16TC AS STRING)
  END as tooth_count_16, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX17TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX17TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX17TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX17TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX17TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -212,7 +212,7 @@ ELSE SAFE_CAST(OHX17TC AS STRING)
  END as tooth_count_17, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX18TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX18TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX18TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX18TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX18TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -223,7 +223,7 @@ ELSE SAFE_CAST(OHX18TC AS STRING)
  END as tooth_count_18, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX19TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX19TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX19TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX19TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX19TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -234,7 +234,7 @@ ELSE SAFE_CAST(OHX19TC AS STRING)
  END as tooth_count_19, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX20TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX20TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX20TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX20TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX20TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -245,7 +245,7 @@ ELSE SAFE_CAST(OHX20TC AS STRING)
  END as tooth_count_20, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX21TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX21TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX21TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX21TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX21TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -256,7 +256,7 @@ ELSE SAFE_CAST(OHX21TC AS STRING)
  END as tooth_count_21, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX22TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX22TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX22TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX22TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX22TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -267,7 +267,7 @@ ELSE SAFE_CAST(OHX22TC AS STRING)
  END as tooth_count_22, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -278,7 +278,7 @@ ELSE SAFE_CAST(OHX23TC AS STRING)
  END as tooth_count_23, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -289,7 +289,7 @@ ELSE SAFE_CAST(OHX24TC AS STRING)
  END as tooth_count_24, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -300,7 +300,7 @@ ELSE SAFE_CAST(OHX25TC AS STRING)
  END as tooth_count_25, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -311,7 +311,7 @@ ELSE SAFE_CAST(OHX26TC AS STRING)
  END as tooth_count_26, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX27TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX27TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX27TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX27TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX27TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -322,7 +322,7 @@ ELSE SAFE_CAST(OHX27TC AS STRING)
  END as tooth_count_27, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX28TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX28TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX28TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX28TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX28TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -333,7 +333,7 @@ ELSE SAFE_CAST(OHX28TC AS STRING)
  END as tooth_count_28, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX29TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX29TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX29TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX29TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX29TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -344,7 +344,7 @@ ELSE SAFE_CAST(OHX29TC AS STRING)
  END as tooth_count_29, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX30TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX30TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX30TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX30TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX30TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -355,7 +355,7 @@ ELSE SAFE_CAST(OHX30TC AS STRING)
  END as tooth_count_30, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX31TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX31TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX31TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX31TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX31TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -366,7 +366,7 @@ ELSE SAFE_CAST(OHX31TC AS STRING)
  END as tooth_count_31, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX32TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX32TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous) present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX32TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth present' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX32TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Dental implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX32TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Tooth not present' -- categorize numeric values
@@ -377,7 +377,7 @@ ELSE SAFE_CAST(OHX32TC AS STRING)
  END as tooth_count_32, 
 
 CASE
-WHEN REPLACE(OHX02CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX02CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX02CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX02CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX02CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -398,7 +398,7 @@ ELSE SAFE_CAST(OHX02CTC AS STRING)
  END as coronal_caries_tooth_count_2, 
 
 CASE
-WHEN REPLACE(OHX03CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX03CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX03CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX03CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX03CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -419,7 +419,7 @@ ELSE SAFE_CAST(OHX03CTC AS STRING)
  END as coronal_caries_tooth_count_3, 
 
 CASE
-WHEN REPLACE(OHX04CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX04CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX04CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX04CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX04CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -440,7 +440,7 @@ ELSE SAFE_CAST(OHX04CTC AS STRING)
  END as coronal_caries_tooth_count_4, 
 
 CASE
-WHEN REPLACE(OHX05CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX05CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX05CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX05CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX05CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -461,7 +461,7 @@ ELSE SAFE_CAST(OHX05CTC AS STRING)
  END as coronal_caries_tooth_count_5, 
 
 CASE
-WHEN REPLACE(OHX06CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX06CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX06CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX06CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX06CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -482,7 +482,7 @@ ELSE SAFE_CAST(OHX06CTC AS STRING)
  END as coronal_caries_tooth_count_6, 
 
 CASE
-WHEN REPLACE(OHX07CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX07CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX07CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX07CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX07CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -503,7 +503,7 @@ ELSE SAFE_CAST(OHX07CTC AS STRING)
  END as coronal_caries_tooth_count_7, 
 
 CASE
-WHEN REPLACE(OHX08CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX08CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX08CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX08CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX08CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -524,7 +524,7 @@ ELSE SAFE_CAST(OHX08CTC AS STRING)
  END as coronal_caries_tooth_count_8, 
 
 CASE
-WHEN REPLACE(OHX09CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX09CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX09CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX09CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX09CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -545,7 +545,7 @@ ELSE SAFE_CAST(OHX09CTC AS STRING)
  END as coronal_caries_tooth_count_9, 
 
 CASE
-WHEN REPLACE(OHX10CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX10CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX10CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX10CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX10CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -566,7 +566,7 @@ ELSE SAFE_CAST(OHX10CTC AS STRING)
  END as coronal_caries_tooth_count_10, 
 
 CASE
-WHEN REPLACE(OHX11CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX11CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX11CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX11CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX11CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -587,7 +587,7 @@ ELSE SAFE_CAST(OHX11CTC AS STRING)
  END as coronal_caries_tooth_count_11, 
 
 CASE
-WHEN REPLACE(OHX12CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX12CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX12CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX12CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX12CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -608,7 +608,7 @@ ELSE SAFE_CAST(OHX12CTC AS STRING)
  END as coronal_caries_tooth_count_12, 
 
 CASE
-WHEN REPLACE(OHX13CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX13CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX13CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX13CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX13CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -629,7 +629,7 @@ ELSE SAFE_CAST(OHX13CTC AS STRING)
  END as coronal_caries_tooth_count_13, 
 
 CASE
-WHEN REPLACE(OHX14CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX14CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX14CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX14CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX14CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -650,7 +650,7 @@ ELSE SAFE_CAST(OHX14CTC AS STRING)
  END as coronal_caries_tooth_count_14, 
 
 CASE
-WHEN REPLACE(OHX15CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX15CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX15CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX15CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX15CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -671,7 +671,7 @@ ELSE SAFE_CAST(OHX15CTC AS STRING)
  END as coronal_caries_tooth_count_15, 
 
 CASE
-WHEN REPLACE(OHX18CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX18CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX18CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX18CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX18CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -692,7 +692,7 @@ ELSE SAFE_CAST(OHX18CTC AS STRING)
  END as coronal_caries_tooth_count_18, 
 
 CASE
-WHEN REPLACE(OHX19CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX19CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX19CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX19CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX19CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -713,7 +713,7 @@ ELSE SAFE_CAST(OHX19CTC AS STRING)
  END as coronal_caries_tooth_count_19, 
 
 CASE
-WHEN REPLACE(OHX20CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX20CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX20CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX20CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX20CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -734,7 +734,7 @@ ELSE SAFE_CAST(OHX20CTC AS STRING)
  END as coronal_caries_tooth_count_20, 
 
 CASE
-WHEN REPLACE(OHX21CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX21CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX21CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX21CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX21CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -755,7 +755,7 @@ ELSE SAFE_CAST(OHX21CTC AS STRING)
  END as coronal_caries_tooth_count_21, 
 
 CASE
-WHEN REPLACE(OHX22CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX22CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX22CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX22CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX22CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -776,7 +776,7 @@ ELSE SAFE_CAST(OHX22CTC AS STRING)
  END as coronal_caries_tooth_count_22, 
 
 CASE
-WHEN REPLACE(OHX23CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX23CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX23CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX23CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX23CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -797,7 +797,7 @@ ELSE SAFE_CAST(OHX23CTC AS STRING)
  END as coronal_caries_tooth_count_23, 
 
 CASE
-WHEN REPLACE(OHX24CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX24CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX24CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX24CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX24CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -818,7 +818,7 @@ ELSE SAFE_CAST(OHX24CTC AS STRING)
  END as coronal_caries_tooth_count_24, 
 
 CASE
-WHEN REPLACE(OHX25CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX25CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX25CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX25CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX25CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -839,7 +839,7 @@ ELSE SAFE_CAST(OHX25CTC AS STRING)
  END as coronal_caries_tooth_count_25, 
 
 CASE
-WHEN REPLACE(OHX26CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX26CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX26CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX26CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX26CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -860,7 +860,7 @@ ELSE SAFE_CAST(OHX26CTC AS STRING)
  END as coronal_caries_tooth_count_26, 
 
 CASE
-WHEN REPLACE(OHX27CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX27CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX27CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX27CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX27CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -881,7 +881,7 @@ ELSE SAFE_CAST(OHX27CTC AS STRING)
  END as coronal_caries_tooth_count_27, 
 
 CASE
-WHEN REPLACE(OHX28CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX28CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX28CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX28CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX28CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -902,7 +902,7 @@ ELSE SAFE_CAST(OHX28CTC AS STRING)
  END as coronal_caries_tooth_count_28, 
 
 CASE
-WHEN REPLACE(OHX29CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX29CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX29CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX29CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX29CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -923,7 +923,7 @@ ELSE SAFE_CAST(OHX29CTC AS STRING)
  END as coronal_caries_tooth_count_29, 
 
 CASE
-WHEN REPLACE(OHX30CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX30CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX30CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX30CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX30CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -944,7 +944,7 @@ ELSE SAFE_CAST(OHX30CTC AS STRING)
  END as coronal_caries_tooth_count_30, 
 
 CASE
-WHEN REPLACE(OHX31CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
+    WHEN REPLACE(OHX31CTC,'.0','') = 'A' THEN 'Primary tooth with a restored surface condition' -- categorize string values 
 WHEN REPLACE(OHX31CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHX31CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHX31CTC,'.0','') = 'F' THEN 'Permanent tooth with a restored surface condition' -- categorize string values 
@@ -965,7 +965,7 @@ ELSE SAFE_CAST(OHX31CTC AS STRING)
  END as coronal_caries_tooth_count_31, 
 
 CASE
-WHEN REPLACE(OHX02CSC,'.0','') = 'Coronal Caries:  Surface condition #2' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX02CSC,'.0','') = 'Coronal Caries:  Surface condition #2' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX02CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX02CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX02CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -987,7 +987,7 @@ ELSE SAFE_CAST(OHX02CSC AS STRING)
  END as coronal_caries_surface_condition_2, 
 
 CASE
-WHEN REPLACE(OHX03CSC,'.0','') = 'Coronal Caries:  Surface condition #3' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX03CSC,'.0','') = 'Coronal Caries:  Surface condition #3' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX03CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX03CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX03CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1009,7 +1009,7 @@ ELSE SAFE_CAST(OHX03CSC AS STRING)
  END as coronal_caries_surface_condition_3, 
 
 CASE
-WHEN REPLACE(OHX04CSC,'.0','') = 'Coronal Caries:  Surface condition #4' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX04CSC,'.0','') = 'Coronal Caries:  Surface condition #4' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX04CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX04CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX04CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1031,7 +1031,7 @@ ELSE SAFE_CAST(OHX04CSC AS STRING)
  END as coronal_caries_surface_condition_4, 
 
 CASE
-WHEN REPLACE(OHX05CSC,'.0','') = 'Coronal Caries:  Surface condition #5' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX05CSC,'.0','') = 'Coronal Caries:  Surface condition #5' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX05CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX05CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX05CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1053,7 +1053,7 @@ ELSE SAFE_CAST(OHX05CSC AS STRING)
  END as coronal_caries_surface_condition_5, 
 
 CASE
-WHEN REPLACE(OHX06CSC,'.0','') = 'Coronal Caries:  Surface condition #6' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX06CSC,'.0','') = 'Coronal Caries:  Surface condition #6' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX06CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX06CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX06CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1075,7 +1075,7 @@ ELSE SAFE_CAST(OHX06CSC AS STRING)
  END as coronal_caries_surface_condition_6, 
 
 CASE
-WHEN REPLACE(OHX07CSC,'.0','') = 'Coronal Caries:  Surface condition #7' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX07CSC,'.0','') = 'Coronal Caries:  Surface condition #7' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX07CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX07CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX07CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1097,7 +1097,7 @@ ELSE SAFE_CAST(OHX07CSC AS STRING)
  END as coronal_caries_surface_condition_7, 
 
 CASE
-WHEN REPLACE(OHX08CSC,'.0','') = 'Coronal Caries:  Surface condition #8' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX08CSC,'.0','') = 'Coronal Caries:  Surface condition #8' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX08CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX08CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX08CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1119,7 +1119,7 @@ ELSE SAFE_CAST(OHX08CSC AS STRING)
  END as coronal_caries_surface_condition_8, 
 
 CASE
-WHEN REPLACE(OHX09CSC,'.0','') = 'Coronal Caries:  Surface condition #9' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX09CSC,'.0','') = 'Coronal Caries:  Surface condition #9' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX09CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX09CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX09CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1141,7 +1141,7 @@ ELSE SAFE_CAST(OHX09CSC AS STRING)
  END as coronal_caries_surface_condition_9, 
 
 CASE
-WHEN REPLACE(OHX10CSC,'.0','') = 'Coronal Caries:  Surface condition #10' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX10CSC,'.0','') = 'Coronal Caries:  Surface condition #10' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX10CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX10CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX10CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1163,7 +1163,7 @@ ELSE SAFE_CAST(OHX10CSC AS STRING)
  END as coronal_caries_surface_condition_10, 
 
 CASE
-WHEN REPLACE(OHX11CSC,'.0','') = 'Coronal Caries:  Surface condition #11' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX11CSC,'.0','') = 'Coronal Caries:  Surface condition #11' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX11CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX11CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX11CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1185,7 +1185,7 @@ ELSE SAFE_CAST(OHX11CSC AS STRING)
  END as coronal_caries_surface_condition_11, 
 
 CASE
-WHEN REPLACE(OHX12CSC,'.0','') = 'Coronal Caries:  Surface condition #12' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX12CSC,'.0','') = 'Coronal Caries:  Surface condition #12' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX12CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX12CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX12CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1207,7 +1207,7 @@ ELSE SAFE_CAST(OHX12CSC AS STRING)
  END as coronal_caries_surface_condition_12, 
 
 CASE
-WHEN REPLACE(OHX13CSC,'.0','') = 'Coronal Caries:  Surface condition #13' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX13CSC,'.0','') = 'Coronal Caries:  Surface condition #13' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX13CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX13CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX13CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1229,7 +1229,7 @@ ELSE SAFE_CAST(OHX13CSC AS STRING)
  END as coronal_caries_surface_condition_13, 
 
 CASE
-WHEN REPLACE(OHX14CSC,'.0','') = 'Coronal Caries:  Surface condition #14' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX14CSC,'.0','') = 'Coronal Caries:  Surface condition #14' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX14CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX14CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX14CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1251,7 +1251,7 @@ ELSE SAFE_CAST(OHX14CSC AS STRING)
  END as coronal_caries_surface_condition_14, 
 
 CASE
-WHEN REPLACE(OHX15CSC,'.0','') = 'Coronal Caries:  Surface condition #15' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX15CSC,'.0','') = 'Coronal Caries:  Surface condition #15' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX15CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX15CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX15CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1273,7 +1273,7 @@ ELSE SAFE_CAST(OHX15CSC AS STRING)
  END as coronal_caries_surface_condition_15, 
 
 CASE
-WHEN REPLACE(OHX18CSC,'.0','') = 'Coronal Caries:  Surface condition #18' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX18CSC,'.0','') = 'Coronal Caries:  Surface condition #18' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX18CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX18CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX18CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1295,7 +1295,7 @@ ELSE SAFE_CAST(OHX18CSC AS STRING)
  END as coronal_caries_surface_condition_18, 
 
 CASE
-WHEN REPLACE(OHX19CSC,'.0','') = 'Coronal Caries:  Surface condition #19' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX19CSC,'.0','') = 'Coronal Caries:  Surface condition #19' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX19CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX19CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX19CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1317,7 +1317,7 @@ ELSE SAFE_CAST(OHX19CSC AS STRING)
  END as coronal_caries_surface_condition_19, 
 
 CASE
-WHEN REPLACE(OHX20CSC,'.0','') = 'Coronal Caries:  Surface condition #20' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX20CSC,'.0','') = 'Coronal Caries:  Surface condition #20' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX20CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX20CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX20CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1339,7 +1339,7 @@ ELSE SAFE_CAST(OHX20CSC AS STRING)
  END as coronal_caries_surface_condition_20, 
 
 CASE
-WHEN REPLACE(OHX21CSC,'.0','') = 'Coronal Caries:  Surface condition #21' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX21CSC,'.0','') = 'Coronal Caries:  Surface condition #21' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX21CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX21CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX21CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1361,7 +1361,7 @@ ELSE SAFE_CAST(OHX21CSC AS STRING)
  END as coronal_caries_surface_condition_21, 
 
 CASE
-WHEN REPLACE(OHX22CSC,'.0','') = 'Coronal Caries:  Surface condition #22' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX22CSC,'.0','') = 'Coronal Caries:  Surface condition #22' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX22CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX22CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX22CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1383,7 +1383,7 @@ ELSE SAFE_CAST(OHX22CSC AS STRING)
  END as coronal_caries_surface_condition_22, 
 
 CASE
-WHEN REPLACE(OHX23CSC,'.0','') = 'Coronal Caries:  Surface condition #23' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX23CSC,'.0','') = 'Coronal Caries:  Surface condition #23' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX23CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX23CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX23CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1405,7 +1405,7 @@ ELSE SAFE_CAST(OHX23CSC AS STRING)
  END as coronal_caries_surface_condition_23, 
 
 CASE
-WHEN REPLACE(OHX24CSC,'.0','') = 'Coronal Caries:  Surface condition #24' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX24CSC,'.0','') = 'Coronal Caries:  Surface condition #24' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX24CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX24CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX24CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1427,7 +1427,7 @@ ELSE SAFE_CAST(OHX24CSC AS STRING)
  END as coronal_caries_surface_condition_24, 
 
 CASE
-WHEN REPLACE(OHX25CSC,'.0','') = 'Coronal Caries:  Surface condition #25' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX25CSC,'.0','') = 'Coronal Caries:  Surface condition #25' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX25CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX25CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX25CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1449,7 +1449,7 @@ ELSE SAFE_CAST(OHX25CSC AS STRING)
  END as coronal_caries_surface_condition_25, 
 
 CASE
-WHEN REPLACE(OHX26CSC,'.0','') = 'Coronal Caries:  Surface condition #26' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX26CSC,'.0','') = 'Coronal Caries:  Surface condition #26' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX26CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX26CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX26CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1471,7 +1471,7 @@ ELSE SAFE_CAST(OHX26CSC AS STRING)
  END as coronal_caries_surface_condition_26, 
 
 CASE
-WHEN REPLACE(OHX27CSC,'.0','') = 'Coronal Caries:  Surface condition #27' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX27CSC,'.0','') = 'Coronal Caries:  Surface condition #27' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX27CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX27CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX27CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1493,7 +1493,7 @@ ELSE SAFE_CAST(OHX27CSC AS STRING)
  END as coronal_caries_surface_condition_27, 
 
 CASE
-WHEN REPLACE(OHX28CSC,'.0','') = 'Coronal Caries:  Surface condition #28' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX28CSC,'.0','') = 'Coronal Caries:  Surface condition #28' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX28CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX28CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX28CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1515,7 +1515,7 @@ ELSE SAFE_CAST(OHX28CSC AS STRING)
  END as coronal_caries_surface_condition_28, 
 
 CASE
-WHEN REPLACE(OHX29CSC,'.0','') = 'Coronal Caries:  Surface condition #29' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX29CSC,'.0','') = 'Coronal Caries:  Surface condition #29' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX29CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX29CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX29CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1537,7 +1537,7 @@ ELSE SAFE_CAST(OHX29CSC AS STRING)
  END as coronal_caries_surface_condition_29, 
 
 CASE
-WHEN REPLACE(OHX30CSC,'.0','') = 'Coronal Caries:  Surface condition #30' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX30CSC,'.0','') = 'Coronal Caries:  Surface condition #30' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX30CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX30CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX30CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1559,7 +1559,7 @@ ELSE SAFE_CAST(OHX30CSC AS STRING)
  END as coronal_caries_surface_condition_30, 
 
 CASE
-WHEN REPLACE(OHX31CSC,'.0','') = 'Coronal Caries:  Surface condition #31' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX31CSC,'.0','') = 'Coronal Caries:  Surface condition #31' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX31CSC,'.0','') = '0' THEN 'Lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX31CSC,'.0','') = '1' THEN 'Occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX31CSC,'.0','') = '2' THEN 'Facial AMALGAM restoration' -- categorize string values 
@@ -1581,203 +1581,203 @@ ELSE SAFE_CAST(OHX31CSC AS STRING)
  END as coronal_caries_surface_condition_31, 
 
 CASE
-WHEN REPLACE(OHX02RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX02RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX02RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX02RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX02RTC AS STRING) 
  END as coronal_caries_second_restoration_2, 
 
 CASE
-WHEN REPLACE(OHX03RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX03RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX03RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX03RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX03RTC AS STRING) 
  END as coronal_caries_second_restoration_3, 
 
 CASE
-WHEN REPLACE(OHX04RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX04RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX04RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX04RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX04RTC AS STRING) 
  END as coronal_caries_second_restoration_4, 
 
 CASE
-WHEN REPLACE(OHX05RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX05RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX05RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX05RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX05RTC AS STRING) 
  END as coronal_caries_second_restoration_5, 
 
 CASE
-WHEN REPLACE(OHX06RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX06RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX06RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX06RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX06RTC AS STRING) 
  END as coronal_caries_second_restoration_6, 
 
 CASE
-WHEN REPLACE(OHX07RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX07RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX07RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX07RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX07RTC AS STRING) 
  END as coronal_caries_second_restoration_7, 
 
 CASE
-WHEN REPLACE(OHX08RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX08RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX08RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX08RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX08RTC AS STRING) 
  END as coronal_caries_second_restoration_8, 
 
 CASE
-WHEN REPLACE(OHX09RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX09RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX09RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX09RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX09RTC AS STRING) 
  END as coronal_caries_second_restoration_9, 
 
 CASE
-WHEN REPLACE(OHX10RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX10RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX10RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX10RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX10RTC AS STRING) 
  END as coronal_caries_second_restoration_10, 
 
 CASE
-WHEN REPLACE(OHX11RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX11RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX11RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX11RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX11RTC AS STRING) 
  END as coronal_caries_second_restoration_11, 
 
 CASE
-WHEN REPLACE(OHX12RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX12RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX12RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX12RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX12RTC AS STRING) 
  END as coronal_caries_second_restoration_12, 
 
 CASE
-WHEN REPLACE(OHX13RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX13RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX13RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX13RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX13RTC AS STRING) 
  END as coronal_caries_second_restoration_13, 
 
 CASE
-WHEN REPLACE(OHX14RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX14RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX14RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX14RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX14RTC AS STRING) 
  END as coronal_caries_second_restoration_14, 
 
 CASE
-WHEN REPLACE(OHX15RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX15RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX15RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX15RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX15RTC AS STRING) 
  END as coronal_caries_second_restoration_15, 
 
 CASE
-WHEN REPLACE(OHX18RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX18RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX18RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX18RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX18RTC AS STRING) 
  END as coronal_caries_second_restoration_18, 
 
 CASE
-WHEN REPLACE(OHX19RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX19RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX19RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX19RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX19RTC AS STRING) 
  END as coronal_caries_second_restoration_19, 
 
 CASE
-WHEN REPLACE(OHX20RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX20RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX20RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX20RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX20RTC AS STRING) 
  END as coronal_caries_second_restoration_20, 
 
 CASE
-WHEN REPLACE(OHX21RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX21RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX21RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX21RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX21RTC AS STRING) 
  END as coronal_caries_second_restoration_21, 
 
 CASE
-WHEN REPLACE(OHX22RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX22RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX22RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX22RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX22RTC AS STRING) 
  END as coronal_caries_second_restoration_22, 
 
 CASE
-WHEN REPLACE(OHX23RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX23RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX23RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX23RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX23RTC AS STRING) 
  END as coronal_caries_second_restoration_23, 
 
 CASE
-WHEN REPLACE(OHX24RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX24RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX24RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX24RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX24RTC AS STRING) 
  END as coronal_caries_second_restoration_24, 
 
 CASE
-WHEN REPLACE(OHX25RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX25RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX25RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX25RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX25RTC AS STRING) 
  END as coronal_caries_second_restoration_25, 
 
 CASE
-WHEN REPLACE(OHX26RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX26RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX26RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX26RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX26RTC AS STRING) 
  END as coronal_caries_second_restoration_26, 
 
 CASE
-WHEN REPLACE(OHX27RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX27RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX27RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX27RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX27RTC AS STRING) 
  END as coronal_caries_second_restoration_27, 
 
 CASE
-WHEN REPLACE(OHX28RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX28RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX28RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX28RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX28RTC AS STRING) 
  END as coronal_caries_second_restoration_28, 
 
 CASE
-WHEN REPLACE(OHX29RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX29RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX29RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX29RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX29RTC AS STRING) 
  END as coronal_caries_second_restoration_29, 
 
 CASE
-WHEN REPLACE(OHX30RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX30RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX30RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX30RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX30RTC AS STRING) 
  END as coronal_caries_second_restoration_30, 
 
 CASE
-WHEN REPLACE(OHX31RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
+    WHEN REPLACE(OHX31RTC,'.0','') = 'A' THEN 'Primary tooth with secondary dental restoration present' -- categorize string values 
 WHEN REPLACE(OHX31RTC,'.0','') = 'F' THEN 'Permanent tooth with secondary dental restoration present' -- categorize string values 
 WHEN OHX31RTC IS NULL THEN NULL 
 ELSE SAFE_CAST(OHX31RTC AS STRING) 
  END as coronal_caries_second_restoration_31, 
 
 CASE
-WHEN REPLACE(OHX02RSC,'.0','') = 'Coronal Caries: 2nd restoration code #2' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX02RSC,'.0','') = 'Coronal Caries: 2nd restoration code #2' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX02RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX02RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX02RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1794,7 +1794,7 @@ ELSE SAFE_CAST(OHX02RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_2, 
 
 CASE
-WHEN REPLACE(OHX03RSC,'.0','') = 'Coronal Caries: 2nd restoration code #3' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX03RSC,'.0','') = 'Coronal Caries: 2nd restoration code #3' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX03RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX03RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX03RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1811,7 +1811,7 @@ ELSE SAFE_CAST(OHX03RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_3, 
 
 CASE
-WHEN REPLACE(OHX04RSC,'.0','') = 'Coronal Caries: 2nd restoration code #4' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX04RSC,'.0','') = 'Coronal Caries: 2nd restoration code #4' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX04RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX04RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX04RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1828,7 +1828,7 @@ ELSE SAFE_CAST(OHX04RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_4, 
 
 CASE
-WHEN REPLACE(OHX05RSC,'.0','') = 'Coronal Caries: 2nd restoration code #5' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX05RSC,'.0','') = 'Coronal Caries: 2nd restoration code #5' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX05RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX05RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX05RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1845,7 +1845,7 @@ ELSE SAFE_CAST(OHX05RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_5, 
 
 CASE
-WHEN REPLACE(OHX06RSC,'.0','') = 'Coronal Caries: 2nd restoration code #6' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX06RSC,'.0','') = 'Coronal Caries: 2nd restoration code #6' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX06RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX06RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX06RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1862,7 +1862,7 @@ ELSE SAFE_CAST(OHX06RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_6, 
 
 CASE
-WHEN REPLACE(OHX07RSC,'.0','') = 'Coronal Caries: 2nd restoration code #7' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX07RSC,'.0','') = 'Coronal Caries: 2nd restoration code #7' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX07RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX07RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX07RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1879,7 +1879,7 @@ ELSE SAFE_CAST(OHX07RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_7, 
 
 CASE
-WHEN REPLACE(OHX08RSC,'.0','') = 'Coronal Caries: 2nd restoration code #8' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX08RSC,'.0','') = 'Coronal Caries: 2nd restoration code #8' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX08RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX08RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX08RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1896,7 +1896,7 @@ ELSE SAFE_CAST(OHX08RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_8, 
 
 CASE
-WHEN REPLACE(OHX09RSC,'.0','') = 'Coronal Caries: 2nd restoration code #9' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX09RSC,'.0','') = 'Coronal Caries: 2nd restoration code #9' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX09RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX09RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX09RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1913,7 +1913,7 @@ ELSE SAFE_CAST(OHX09RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_9, 
 
 CASE
-WHEN REPLACE(OHX10RSC,'.0','') = 'Coronal Caries: 2nd restoration code #10' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX10RSC,'.0','') = 'Coronal Caries: 2nd restoration code #10' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX10RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX10RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX10RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1930,7 +1930,7 @@ ELSE SAFE_CAST(OHX10RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_10, 
 
 CASE
-WHEN REPLACE(OHX11RSC,'.0','') = 'Coronal Caries: 2nd restoration code #11' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX11RSC,'.0','') = 'Coronal Caries: 2nd restoration code #11' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX11RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX11RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX11RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1947,7 +1947,7 @@ ELSE SAFE_CAST(OHX11RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_11, 
 
 CASE
-WHEN REPLACE(OHX12RSC,'.0','') = 'Coronal Caries: 2nd restoration code #12' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX12RSC,'.0','') = 'Coronal Caries: 2nd restoration code #12' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX12RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX12RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX12RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1964,7 +1964,7 @@ ELSE SAFE_CAST(OHX12RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_12, 
 
 CASE
-WHEN REPLACE(OHX13RSC,'.0','') = 'Coronal Caries: 2nd restoration code #13' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX13RSC,'.0','') = 'Coronal Caries: 2nd restoration code #13' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX13RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX13RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX13RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1981,7 +1981,7 @@ ELSE SAFE_CAST(OHX13RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_13, 
 
 CASE
-WHEN REPLACE(OHX14RSC,'.0','') = 'Coronal Caries: 2nd restoration code #14' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX14RSC,'.0','') = 'Coronal Caries: 2nd restoration code #14' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX14RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX14RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX14RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -1998,7 +1998,7 @@ ELSE SAFE_CAST(OHX14RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_14, 
 
 CASE
-WHEN REPLACE(OHX15RSC,'.0','') = 'Coronal Caries: 2nd restoration code #15' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX15RSC,'.0','') = 'Coronal Caries: 2nd restoration code #15' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX15RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX15RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX15RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -2015,7 +2015,7 @@ ELSE SAFE_CAST(OHX15RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_15, 
 
 CASE
-WHEN REPLACE(OHX18RSC,'.0','') = 'Coronal Caries: 2nd restoration code #18' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX18RSC,'.0','') = 'Coronal Caries: 2nd restoration code #18' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX18RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX18RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX18RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -2032,7 +2032,7 @@ ELSE SAFE_CAST(OHX18RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_18, 
 
 CASE
-WHEN REPLACE(OHX19RSC,'.0','') = 'Coronal Caries: 2nd restoration code #19' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX19RSC,'.0','') = 'Coronal Caries: 2nd restoration code #19' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX19RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX19RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX19RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -2049,7 +2049,7 @@ ELSE SAFE_CAST(OHX19RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_19, 
 
 CASE
-WHEN REPLACE(OHX20RSC,'.0','') = 'Coronal Caries: 2nd restoration code #20' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX20RSC,'.0','') = 'Coronal Caries: 2nd restoration code #20' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX20RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX20RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX20RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -2066,7 +2066,7 @@ ELSE SAFE_CAST(OHX20RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_20, 
 
 CASE
-WHEN REPLACE(OHX21RSC,'.0','') = 'Coronal Caries: 2nd restoration code #21' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX21RSC,'.0','') = 'Coronal Caries: 2nd restoration code #21' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX21RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX21RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX21RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -2083,7 +2083,7 @@ ELSE SAFE_CAST(OHX21RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_21, 
 
 CASE
-WHEN REPLACE(OHX22RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
+    WHEN REPLACE(OHX22RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX22RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX22RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX22RSC,'.0','') = '3' THEN 'mesial AMALGAM restoration' -- categorize string values 
@@ -2099,7 +2099,7 @@ ELSE SAFE_CAST(OHX22RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_22, 
 
 CASE
-WHEN REPLACE(OHX23RSC,'.0','') = 'Coronal Caries: 2nd restoration code #23' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX23RSC,'.0','') = 'Coronal Caries: 2nd restoration code #23' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX23RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX23RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX23RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -2116,7 +2116,7 @@ ELSE SAFE_CAST(OHX23RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_23, 
 
 CASE
-WHEN REPLACE(OHX24RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
+    WHEN REPLACE(OHX24RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX24RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX24RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX24RSC,'.0','') = '3' THEN 'mesial AMALGAM restoration' -- categorize string values 
@@ -2132,7 +2132,7 @@ ELSE SAFE_CAST(OHX24RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_24, 
 
 CASE
-WHEN REPLACE(OHX25RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
+    WHEN REPLACE(OHX25RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX25RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX25RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX25RSC,'.0','') = '3' THEN 'mesial AMALGAM restoration' -- categorize string values 
@@ -2148,7 +2148,7 @@ ELSE SAFE_CAST(OHX25RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_25, 
 
 CASE
-WHEN REPLACE(OHX26RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
+    WHEN REPLACE(OHX26RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX26RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX26RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX26RSC,'.0','') = '3' THEN 'mesial AMALGAM restoration' -- categorize string values 
@@ -2164,7 +2164,7 @@ ELSE SAFE_CAST(OHX26RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_26, 
 
 CASE
-WHEN REPLACE(OHX27RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
+    WHEN REPLACE(OHX27RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX27RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX27RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX27RSC,'.0','') = '3' THEN 'mesial AMALGAM restoration' -- categorize string values 
@@ -2180,7 +2180,7 @@ ELSE SAFE_CAST(OHX27RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_27, 
 
 CASE
-WHEN REPLACE(OHX28RSC,'.0','') = 'Coronal Caries: 2nd restoration code #28' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX28RSC,'.0','') = 'Coronal Caries: 2nd restoration code #28' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX28RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX28RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX28RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -2197,7 +2197,7 @@ ELSE SAFE_CAST(OHX28RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_28, 
 
 CASE
-WHEN REPLACE(OHX29RSC,'.0','') = 'Coronal Caries: 2nd restoration code #29' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX29RSC,'.0','') = 'Coronal Caries: 2nd restoration code #29' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX29RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX29RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX29RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -2214,7 +2214,7 @@ ELSE SAFE_CAST(OHX29RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_29, 
 
 CASE
-WHEN REPLACE(OHX30RSC,'.0','') = 'Coronal Caries: 2nd restoration code #30' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX30RSC,'.0','') = 'Coronal Caries: 2nd restoration code #30' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX30RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX30RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX30RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -2231,7 +2231,7 @@ ELSE SAFE_CAST(OHX30RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_30, 
 
 CASE
-WHEN REPLACE(OHX31RSC,'.0','') = 'Coronal Caries: 2nd restoration code #31' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHX31RSC,'.0','') = 'Coronal Caries: 2nd restoration code #31' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHX31RSC,'.0','') = '0' THEN 'lingual AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX31RSC,'.0','') = '1' THEN 'occlusal AMALGAM restoration' -- categorize string values 
 WHEN REPLACE(OHX31RSC,'.0','') = '2' THEN 'facial AMALGAM restoration' -- categorize string values 
@@ -2248,7 +2248,7 @@ ELSE SAFE_CAST(OHX31RSC AS STRING)
  END as coronal_caries_2nd_restoration_code_31, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXRCAR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXRCAR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXRCAR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXRCAR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Cannot be accessed' -- categorize numeric values
 WHEN OHXRCAR IS NULL THEN NULL 
@@ -2256,7 +2256,7 @@ ELSE SAFE_CAST(OHXRCAR AS STRING)
  END as root_caries, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXRCARO AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Root caries detected' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXRCARO AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Root caries detected' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXRCARO AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Root caries not detected' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXRCARO AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Cannot be accessed' -- categorize string values 
 WHEN OHXRCARO IS NULL THEN NULL 
@@ -2264,7 +2264,7 @@ ELSE SAFE_CAST(OHXRCARO AS STRING)
  END as other_non_carious_root_lesion, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXRRES AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Root restoration detected' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXRRES AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Root restoration detected' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXRRES AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Root restoration not detected' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXRRES AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Cannot be accessed' -- categorize numeric values
 WHEN OHXRRES IS NULL THEN NULL 
@@ -2272,7 +2272,7 @@ ELSE SAFE_CAST(OHXRRES AS STRING)
  END as root_caries_restoration, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXRRESO AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Root restoration detected' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXRRESO AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Root restoration detected' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXRRESO AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Root restoration not detected' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXRRESO AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Cannot be accessed' -- categorize string values 
 WHEN OHXRRESO IS NULL THEN NULL 
@@ -2280,7 +2280,7 @@ ELSE SAFE_CAST(OHXRRESO AS STRING)
  END as other_non_carious_root_restoration, 
 
 CASE
-WHEN REPLACE(OHX02SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX02SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX02SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX02SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX02SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2293,7 +2293,7 @@ ELSE SAFE_CAST(OHX02SE AS STRING)
  END as dental_sealants_2, 
 
 CASE
-WHEN REPLACE(OHX03SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX03SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX03SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX03SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX03SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2306,7 +2306,7 @@ ELSE SAFE_CAST(OHX03SE AS STRING)
  END as dental_sealants_3, 
 
 CASE
-WHEN REPLACE(OHX04SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX04SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX04SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX04SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX04SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2319,7 +2319,7 @@ ELSE SAFE_CAST(OHX04SE AS STRING)
  END as dental_sealants_4, 
 
 CASE
-WHEN REPLACE(OHX05SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX05SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX05SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX05SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX05SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2332,7 +2332,7 @@ ELSE SAFE_CAST(OHX05SE AS STRING)
  END as dental_sealants_5, 
 
 CASE
-WHEN REPLACE(OHX07SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX07SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX07SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX07SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX07SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2345,7 +2345,7 @@ ELSE SAFE_CAST(OHX07SE AS STRING)
  END as dental_sealants_7, 
 
 CASE
-WHEN REPLACE(OHX10SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX10SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX10SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX10SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX10SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2358,7 +2358,7 @@ ELSE SAFE_CAST(OHX10SE AS STRING)
  END as dental_sealants_10, 
 
 CASE
-WHEN REPLACE(OHX12SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX12SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX12SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX12SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX12SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2371,7 +2371,7 @@ ELSE SAFE_CAST(OHX12SE AS STRING)
  END as dental_sealants_12, 
 
 CASE
-WHEN REPLACE(OHX13SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX13SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX13SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX13SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX13SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2384,7 +2384,7 @@ ELSE SAFE_CAST(OHX13SE AS STRING)
  END as dental_sealants_13, 
 
 CASE
-WHEN REPLACE(OHX14SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX14SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX14SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX14SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX14SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2397,7 +2397,7 @@ ELSE SAFE_CAST(OHX14SE AS STRING)
  END as dental_sealants_14, 
 
 CASE
-WHEN REPLACE(OHX15SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX15SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX15SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX15SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX15SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2410,7 +2410,7 @@ ELSE SAFE_CAST(OHX15SE AS STRING)
  END as dental_sealants_15, 
 
 CASE
-WHEN REPLACE(OHX18SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX18SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX18SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX18SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX18SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2423,7 +2423,7 @@ ELSE SAFE_CAST(OHX18SE AS STRING)
  END as dental_sealants_18, 
 
 CASE
-WHEN REPLACE(OHX19SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX19SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX19SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX19SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX19SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2436,7 +2436,7 @@ ELSE SAFE_CAST(OHX19SE AS STRING)
  END as dental_sealants_19, 
 
 CASE
-WHEN REPLACE(OHX20SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX20SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX20SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX20SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX20SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2449,7 +2449,7 @@ ELSE SAFE_CAST(OHX20SE AS STRING)
  END as dental_sealants_20, 
 
 CASE
-WHEN REPLACE(OHX21SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX21SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX21SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX21SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX21SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2462,7 +2462,7 @@ ELSE SAFE_CAST(OHX21SE AS STRING)
  END as dental_sealants_21, 
 
 CASE
-WHEN REPLACE(OHX28SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX28SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX28SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX28SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX28SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2475,7 +2475,7 @@ ELSE SAFE_CAST(OHX28SE AS STRING)
  END as dental_sealants_28, 
 
 CASE
-WHEN REPLACE(OHX29SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX29SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX29SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX29SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX29SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2488,7 +2488,7 @@ ELSE SAFE_CAST(OHX29SE AS STRING)
  END as dental_sealants_29, 
 
 CASE
-WHEN REPLACE(OHX30SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX30SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX30SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX30SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX30SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2501,7 +2501,7 @@ ELSE SAFE_CAST(OHX30SE AS STRING)
  END as dental_sealants_30, 
 
 CASE
-WHEN REPLACE(OHX31SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
+    WHEN REPLACE(OHX31SE,'.0','') = '0' THEN 'Sealant not present' -- categorize string values 
 WHEN REPLACE(OHX31SE,'.0','') = '1' THEN 'Occlusal sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX31SE,'.0','') = '2' THEN 'Facial sealant on permanent tooth' -- categorize string values 
 WHEN REPLACE(OHX31SE,'.0','') = '3' THEN 'Lingual sealant on permanent tooth' -- categorize string values 
@@ -2514,7 +2514,7 @@ ELSE SAFE_CAST(OHX31SE AS STRING)
  END as dental_sealants_31, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXDECAY AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXDECAY AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXDECAY AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXDECAY AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Could not assess' -- categorize string values 
 WHEN OHXDECAY IS NULL THEN NULL 
@@ -2522,7 +2522,7 @@ ELSE SAFE_CAST(OHXDECAY AS STRING)
  END as dental_decay_present, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXREST AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXREST AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXREST AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXREST AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Could not assess' -- categorize string values 
 WHEN OHXREST IS NULL THEN NULL 
@@ -2530,7 +2530,7 @@ ELSE SAFE_CAST(OHXREST AS STRING)
  END as dental_restoration_present, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXSEAL AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXSEAL AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXSEAL AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(OHXSEAL AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Could not assess' -- categorize string values 
 WHEN OHXSEAL IS NULL THEN NULL 
@@ -2538,7 +2538,7 @@ ELSE SAFE_CAST(OHXSEAL AS STRING)
  END as dental_sealant_present, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHAEXSTS AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Completed' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHAEXSTS AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Completed' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHAEXSTS AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Partial' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHAEXSTS AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Not Done' -- categorize numeric values
 WHEN OHAEXSTS IS NULL THEN NULL 
@@ -2546,7 +2546,7 @@ ELSE SAFE_CAST(OHAEXSTS AS STRING)
  END as overall_oral_health_exam_status_OHAEXSTS, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHASCST3 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Complete' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHASCST3 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Complete' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHASCST3 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Partial' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHASCST3 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Not done' -- categorize numeric values
 WHEN OHASCST3 IS NULL THEN NULL 
@@ -2554,14 +2554,14 @@ ELSE SAFE_CAST(OHASCST3 AS STRING)
  END as dentition_status_code_OHASCST3, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXEDEN AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXEDEN AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHXEDEN AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '2' -- categorize numeric values
 WHEN OHXEDEN IS NULL THEN NULL 
 ELSE SAFE_CAST(OHXEDEN AS STRING) 
  END as edentulous_yes, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2574,7 +2574,7 @@ ELSE SAFE_CAST(OHX08DI AS STRING)
  END as fluorosis_di_8, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2587,7 +2587,7 @@ ELSE SAFE_CAST(OHX07DI AS STRING)
  END as fluorosis_di_7, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX06DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX06DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX06DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX06DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX06DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2600,7 +2600,7 @@ ELSE SAFE_CAST(OHX06DI AS STRING)
  END as fluorosis_di_6, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX05DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX05DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX05DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX05DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX05DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2613,7 +2613,7 @@ ELSE SAFE_CAST(OHX05DI AS STRING)
  END as fluorosis_di_5, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX04DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX04DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX04DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX04DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX04DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2626,7 +2626,7 @@ ELSE SAFE_CAST(OHX04DI AS STRING)
  END as fluorosis_di_4, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX03DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX03DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX03DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX03DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX03DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2639,7 +2639,7 @@ ELSE SAFE_CAST(OHX03DI AS STRING)
  END as fluorosis_di_3, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX02DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX02DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX02DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX02DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX02DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2652,7 +2652,7 @@ ELSE SAFE_CAST(OHX02DI AS STRING)
  END as fluorosis_di_2, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2665,7 +2665,7 @@ ELSE SAFE_CAST(OHX09DI AS STRING)
  END as fluorosis_di_9, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2678,7 +2678,7 @@ ELSE SAFE_CAST(OHX10DI AS STRING)
  END as fluorosis_di_10, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX11DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX11DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX11DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX11DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX11DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2691,7 +2691,7 @@ ELSE SAFE_CAST(OHX11DI AS STRING)
  END as fluorosis_di_11, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX12DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX12DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX12DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX12DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX12DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2704,7 +2704,7 @@ ELSE SAFE_CAST(OHX12DI AS STRING)
  END as fluorosis_di_12, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX13DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX13DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX13DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX13DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX13DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2717,7 +2717,7 @@ ELSE SAFE_CAST(OHX13DI AS STRING)
  END as fluorosis_di_13, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX14DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX14DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX14DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX14DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX14DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2730,7 +2730,7 @@ ELSE SAFE_CAST(OHX14DI AS STRING)
  END as fluorosis_di_14, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX15DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX15DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX15DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX15DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX15DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2743,7 +2743,7 @@ ELSE SAFE_CAST(OHX15DI AS STRING)
  END as fluorosis_di_15, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2756,7 +2756,7 @@ ELSE SAFE_CAST(OHX24DI AS STRING)
  END as fluorosis_di_24, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2769,7 +2769,7 @@ ELSE SAFE_CAST(OHX23DI AS STRING)
  END as fluorosis_di_23, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX22DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX22DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX22DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX22DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX22DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2782,7 +2782,7 @@ ELSE SAFE_CAST(OHX22DI AS STRING)
  END as fluorosis_di_22, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX21DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX21DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX21DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX21DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX21DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2795,7 +2795,7 @@ ELSE SAFE_CAST(OHX21DI AS STRING)
  END as fluorosis_di_21, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX20DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX20DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX20DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX20DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX20DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2808,7 +2808,7 @@ ELSE SAFE_CAST(OHX20DI AS STRING)
  END as fluorosis_di_20, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX19DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX19DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX19DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX19DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX19DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2821,7 +2821,7 @@ ELSE SAFE_CAST(OHX19DI AS STRING)
  END as fluorosis_di_19, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX18DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX18DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX18DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX18DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX18DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2834,7 +2834,7 @@ ELSE SAFE_CAST(OHX18DI AS STRING)
  END as fluorosis_di_18, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2847,7 +2847,7 @@ ELSE SAFE_CAST(OHX25DI AS STRING)
  END as fluorosis_di_25, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2860,7 +2860,7 @@ ELSE SAFE_CAST(OHX26DI AS STRING)
  END as fluorosis_di_26, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX27DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX27DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX27DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX27DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX27DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2873,7 +2873,7 @@ ELSE SAFE_CAST(OHX27DI AS STRING)
  END as fluorosis_di_27, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX28DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX28DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX28DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX28DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX28DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2886,7 +2886,7 @@ ELSE SAFE_CAST(OHX28DI AS STRING)
  END as fluorosis_di_28, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX29DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX29DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX29DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX29DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX29DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2899,7 +2899,7 @@ ELSE SAFE_CAST(OHX29DI AS STRING)
  END as fluorosis_di_29, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX30DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX30DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX30DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX30DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX30DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2912,7 +2912,7 @@ ELSE SAFE_CAST(OHX30DI AS STRING)
  END as fluorosis_di_30, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX31DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX31DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Normal' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX31DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX31DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Mild' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX31DI AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Moderate' -- categorize numeric values
@@ -2925,7 +2925,7 @@ ELSE SAFE_CAST(OHX31DI AS STRING)
  END as fluorosis_di_31, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture present that does not involve the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture which involves the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX08TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Untreated damage (indicative of pulpal involvement)' -- categorize numeric values
@@ -2938,7 +2938,7 @@ ELSE SAFE_CAST(OHX08TR AS STRING)
  END as incisor_trauma_8, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture present that does not involve the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture which involves the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX07TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Untreated damage (indicative of pulpal involvement)' -- categorize numeric values
@@ -2951,7 +2951,7 @@ ELSE SAFE_CAST(OHX07TR AS STRING)
  END as incisor_trauma_7, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture present that does not involve the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture which involves the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX09TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Untreated damage (indicative of pulpal involvement)' -- categorize numeric values
@@ -2964,7 +2964,7 @@ ELSE SAFE_CAST(OHX09TR AS STRING)
  END as incisor_trauma_9, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture present that does not involve the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture which involves the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX10TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Untreated damage (indicative of pulpal involvement)' -- categorize numeric values
@@ -2977,7 +2977,7 @@ ELSE SAFE_CAST(OHX10TR AS STRING)
  END as incisor_trauma_10, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture present that does not involve the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture which involves the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX24TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Untreated damage (indicative of pulpal involvement)' -- categorize numeric values
@@ -2990,7 +2990,7 @@ ELSE SAFE_CAST(OHX24TR AS STRING)
  END as incisor_trauma_24, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture present that does not involve the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture which involves the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX23TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Untreated damage (indicative of pulpal involvement)' -- categorize numeric values
@@ -3003,7 +3003,7 @@ ELSE SAFE_CAST(OHX23TR AS STRING)
  END as incisor_trauma_23, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture present that does not involve the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture which involves the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX25TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Untreated damage (indicative of pulpal involvement)' -- categorize numeric values
@@ -3016,7 +3016,7 @@ ELSE SAFE_CAST(OHX25TR AS STRING)
  END as incisor_trauma_25, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'No evidence of traumatic injury' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture present that does not involve the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Unrestored enamel fracture which involves the dentine' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHX26TR AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Untreated damage (indicative of pulpal involvement)' -- categorize numeric values
@@ -3029,7 +3029,7 @@ ELSE SAFE_CAST(OHX26TR AS STRING)
  END as incisor_trauma_26, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD08TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD08TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD08TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD08TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD08TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3038,7 +3038,7 @@ ELSE SAFE_CAST(OHD08TC AS STRING)
  END as tooth_count_8_OHD08TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD07TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD07TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD07TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD07TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD07TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3047,7 +3047,7 @@ ELSE SAFE_CAST(OHD07TC AS STRING)
  END as tooth_count_7_OHD07TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD06TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD06TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD06TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD06TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD06TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3056,7 +3056,7 @@ ELSE SAFE_CAST(OHD06TC AS STRING)
  END as tooth_count_6_OHD06TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD05TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD05TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD05TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD05TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD05TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3065,7 +3065,7 @@ ELSE SAFE_CAST(OHD05TC AS STRING)
  END as tooth_count_5_OHD05TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD04TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD04TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD04TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD04TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD04TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3074,7 +3074,7 @@ ELSE SAFE_CAST(OHD04TC AS STRING)
  END as tooth_count_4_OHD04TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD03TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD03TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD03TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD03TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
 WHEN OHD03TC IS NULL THEN NULL 
@@ -3082,7 +3082,7 @@ ELSE SAFE_CAST(OHD03TC AS STRING)
  END as tooth_count_3_OHD03TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD02TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD02TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD02TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD02TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
 WHEN OHD02TC IS NULL THEN NULL 
@@ -3090,7 +3090,7 @@ ELSE SAFE_CAST(OHD02TC AS STRING)
  END as tooth_count_2_OHD02TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD01TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD01TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD01TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD01TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
 WHEN OHD01TC IS NULL THEN NULL 
@@ -3098,7 +3098,7 @@ ELSE SAFE_CAST(OHD01TC AS STRING)
  END as tooth_count_1_OHD01TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD09TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD09TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD09TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD09TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD09TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3107,7 +3107,7 @@ ELSE SAFE_CAST(OHD09TC AS STRING)
  END as tooth_count_9_OHD09TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD10TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD10TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD10TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD10TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD10TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3116,7 +3116,7 @@ ELSE SAFE_CAST(OHD10TC AS STRING)
  END as tooth_count_10_OHD10TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD11TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD11TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD11TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD11TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD11TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3125,7 +3125,7 @@ ELSE SAFE_CAST(OHD11TC AS STRING)
  END as tooth_count_11_OHD11TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD12TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD12TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD12TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD12TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD12TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3134,7 +3134,7 @@ ELSE SAFE_CAST(OHD12TC AS STRING)
  END as tooth_count_12_OHD12TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD13TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD13TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD13TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD13TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD13TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3143,7 +3143,7 @@ ELSE SAFE_CAST(OHD13TC AS STRING)
  END as tooth_count_13_OHD13TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD14TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD14TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD14TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD14TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
 WHEN OHD14TC IS NULL THEN NULL 
@@ -3151,7 +3151,7 @@ ELSE SAFE_CAST(OHD14TC AS STRING)
  END as tooth_count_14_OHD14TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD15TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD15TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD15TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD15TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
 WHEN OHD15TC IS NULL THEN NULL 
@@ -3159,7 +3159,7 @@ ELSE SAFE_CAST(OHD15TC AS STRING)
  END as tooth_count_15_OHD15TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD16TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD16TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD16TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD16TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
 WHEN OHD16TC IS NULL THEN NULL 
@@ -3167,7 +3167,7 @@ ELSE SAFE_CAST(OHD16TC AS STRING)
  END as tooth_count_16_OHD16TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD24TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD24TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD24TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD24TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD24TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3176,7 +3176,7 @@ ELSE SAFE_CAST(OHD24TC AS STRING)
  END as tooth_count_24_OHD24TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD23TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD23TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD23TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD23TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD23TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3185,7 +3185,7 @@ ELSE SAFE_CAST(OHD23TC AS STRING)
  END as tooth_count_23_OHD23TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD22TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD22TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD22TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD22TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD22TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3194,7 +3194,7 @@ ELSE SAFE_CAST(OHD22TC AS STRING)
  END as tooth_count_22_OHD22TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD21TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD21TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD21TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD21TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD21TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3203,7 +3203,7 @@ ELSE SAFE_CAST(OHD21TC AS STRING)
  END as tooth_count_21_OHD21TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD20TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD20TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD20TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD20TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD20TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3212,7 +3212,7 @@ ELSE SAFE_CAST(OHD20TC AS STRING)
  END as tooth_count_20_OHD20TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD19TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD19TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD19TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD19TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
 WHEN OHD19TC IS NULL THEN NULL 
@@ -3220,7 +3220,7 @@ ELSE SAFE_CAST(OHD19TC AS STRING)
  END as tooth_count_19_OHD19TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD18TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD18TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD18TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD18TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
 WHEN OHD18TC IS NULL THEN NULL 
@@ -3228,7 +3228,7 @@ ELSE SAFE_CAST(OHD18TC AS STRING)
  END as tooth_count_18_OHD18TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD17TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD17TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD17TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD17TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
 WHEN OHD17TC IS NULL THEN NULL 
@@ -3236,7 +3236,7 @@ ELSE SAFE_CAST(OHD17TC AS STRING)
  END as tooth_count_17_OHD17TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD25TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD25TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD25TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD25TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD25TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3245,7 +3245,7 @@ ELSE SAFE_CAST(OHD25TC AS STRING)
  END as tooth_count_25_OHD25TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD26TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD26TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD26TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD26TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD26TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3254,7 +3254,7 @@ ELSE SAFE_CAST(OHD26TC AS STRING)
  END as tooth_count_26_OHD26TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD27TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD27TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD27TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD27TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD27TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3263,7 +3263,7 @@ ELSE SAFE_CAST(OHD27TC AS STRING)
  END as tooth_count_27_OHD27TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD28TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD28TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD28TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD28TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD28TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3272,7 +3272,7 @@ ELSE SAFE_CAST(OHD28TC AS STRING)
  END as tooth_count_28_OHD28TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD29TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD29TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Primary tooth (deciduous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD29TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD29TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD29TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
@@ -3281,7 +3281,7 @@ ELSE SAFE_CAST(OHD29TC AS STRING)
  END as tooth_count_29_OHD29TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD30TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD30TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD30TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD30TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
 WHEN OHD30TC IS NULL THEN NULL 
@@ -3289,7 +3289,7 @@ ELSE SAFE_CAST(OHD30TC AS STRING)
  END as tooth_count_30_OHD30TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD31TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD31TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD31TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD31TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
 WHEN OHD31TC IS NULL THEN NULL 
@@ -3297,7 +3297,7 @@ ELSE SAFE_CAST(OHD31TC AS STRING)
  END as tooth_count_31_OHD31TC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD32TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD32TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Permanent tooth (succedaneous)' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD32TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Implant' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(OHD32TC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not present' -- categorize numeric values
 WHEN OHD32TC IS NULL THEN NULL 
@@ -3305,7 +3305,7 @@ ELSE SAFE_CAST(OHD32TC AS STRING)
  END as tooth_count_32_OHD32TC, 
 
 CASE
-WHEN REPLACE(OHD08CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD08CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD08CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD08CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD08CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3320,7 +3320,7 @@ ELSE SAFE_CAST(OHD08CTC AS STRING)
  END as coronal_caries_tooth_count_8_OHD08CTC, 
 
 CASE
-WHEN REPLACE(OHD08CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD08CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD08CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD08CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
 WHEN REPLACE(OHD08CSC,'.0','') = '3' THEN 'Mesial caries' -- categorize string values 
@@ -3334,7 +3334,7 @@ ELSE SAFE_CAST(OHD08CSC AS STRING)
  END as coronal_caries_surface_condition_8_OHD08CSC, 
 
 CASE
-WHEN REPLACE(OHD07CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD07CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD07CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD07CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD07CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3349,7 +3349,7 @@ ELSE SAFE_CAST(OHD07CTC AS STRING)
  END as coronal_caries_tooth_count_7_OHD07CTC, 
 
 CASE
-WHEN REPLACE(OHD07CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD07CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD07CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD07CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
 WHEN REPLACE(OHD07CSC,'.0','') = '3' THEN 'Mesial caries' -- categorize string values 
@@ -3363,7 +3363,7 @@ ELSE SAFE_CAST(OHD07CSC AS STRING)
  END as coronal_caries_surface_condition_7_OHD07CSC, 
 
 CASE
-WHEN REPLACE(OHD06CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD06CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD06CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD06CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD06CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3378,7 +3378,7 @@ ELSE SAFE_CAST(OHD06CTC AS STRING)
  END as coronal_caries_tooth_count_6_OHD06CTC, 
 
 CASE
-WHEN REPLACE(OHD06CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD06CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD06CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD06CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
 WHEN REPLACE(OHD06CSC,'.0','') = '3' THEN 'Mesial caries' -- categorize string values 
@@ -3392,7 +3392,7 @@ ELSE SAFE_CAST(OHD06CSC AS STRING)
  END as coronal_caries_surface_condition_6_OHD06CSC, 
 
 CASE
-WHEN REPLACE(OHD05CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD05CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD05CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD05CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD05CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3407,7 +3407,7 @@ ELSE SAFE_CAST(OHD05CTC AS STRING)
  END as coronal_caries_tooth_count_5_OHD05CTC, 
 
 CASE
-WHEN REPLACE(OHD05CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD05CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD05CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD05CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD05CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -3423,7 +3423,7 @@ ELSE SAFE_CAST(OHD05CSC AS STRING)
  END as coronal_caries_surface_condition_5_OHD05CSC, 
 
 CASE
-WHEN REPLACE(OHD04CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD04CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD04CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD04CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD04CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3438,7 +3438,7 @@ ELSE SAFE_CAST(OHD04CTC AS STRING)
  END as coronal_caries_tooth_count_4_OHD04CTC, 
 
 CASE
-WHEN REPLACE(OHD04CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD04CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD04CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD04CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD04CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -3454,7 +3454,7 @@ ELSE SAFE_CAST(OHD04CSC AS STRING)
  END as coronal_caries_surface_condition_4_OHD04CSC, 
 
 CASE
-WHEN REPLACE(OHD03CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
+    WHEN REPLACE(OHD03CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD03CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
 WHEN REPLACE(OHD03CTC,'.0','') = 'R' THEN 'Missing due to dental disease but replaced' -- categorize string values 
 WHEN REPLACE(OHD03CTC,'.0','') = 'S' THEN 'Sound permanent tooth' -- categorize string values 
@@ -3467,7 +3467,7 @@ ELSE SAFE_CAST(OHD03CTC AS STRING)
  END as coronal_caries_tooth_count_3_OHD03CTC, 
 
 CASE
-WHEN REPLACE(OHD03CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD03CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD03CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD03CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD03CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -3483,7 +3483,7 @@ ELSE SAFE_CAST(OHD03CSC AS STRING)
  END as coronal_caries_surface_condition_3_OHD03CSC, 
 
 CASE
-WHEN REPLACE(OHD02CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
+    WHEN REPLACE(OHD02CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD02CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
 WHEN REPLACE(OHD02CTC,'.0','') = 'R' THEN 'Missing due to dental disease but replaced' -- categorize string values 
 WHEN REPLACE(OHD02CTC,'.0','') = 'S' THEN 'Sound permanent tooth' -- categorize string values 
@@ -3496,7 +3496,7 @@ ELSE SAFE_CAST(OHD02CTC AS STRING)
  END as coronal_caries_tooth_count_2_OHD02CTC, 
 
 CASE
-WHEN REPLACE(OHD02CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD02CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD02CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD02CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD02CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -3512,7 +3512,7 @@ ELSE SAFE_CAST(OHD02CSC AS STRING)
  END as coronal_caries_surface_condition_2_OHD02CSC, 
 
 CASE
-WHEN REPLACE(OHD09CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD09CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD09CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD09CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD09CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3527,7 +3527,7 @@ ELSE SAFE_CAST(OHD09CTC AS STRING)
  END as coronal_caries_tooth_count_9_OHD09CTC, 
 
 CASE
-WHEN REPLACE(OHD09CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD09CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD09CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD09CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
 WHEN REPLACE(OHD09CSC,'.0','') = '3' THEN 'Mesial caries' -- categorize string values 
@@ -3541,7 +3541,7 @@ ELSE SAFE_CAST(OHD09CSC AS STRING)
  END as coronal_caries_surface_condition_9_OHD09CSC, 
 
 CASE
-WHEN REPLACE(OHD10CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD10CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD10CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD10CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD10CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3556,7 +3556,7 @@ ELSE SAFE_CAST(OHD10CTC AS STRING)
  END as coronal_caries_tooth_count_10_OHD10CTC, 
 
 CASE
-WHEN REPLACE(OHD10CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD10CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD10CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD10CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
 WHEN REPLACE(OHD10CSC,'.0','') = '3' THEN 'Mesial caries' -- categorize string values 
@@ -3570,7 +3570,7 @@ ELSE SAFE_CAST(OHD10CSC AS STRING)
  END as coronal_caries_surface_condition_10_OHD10CSC, 
 
 CASE
-WHEN REPLACE(OHD11CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD11CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD11CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD11CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD11CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3585,7 +3585,7 @@ ELSE SAFE_CAST(OHD11CTC AS STRING)
  END as coronal_caries_tooth_count_11_OHD11CTC, 
 
 CASE
-WHEN REPLACE(OHD11CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD11CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD11CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD11CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
 WHEN REPLACE(OHD11CSC,'.0','') = '3' THEN 'Mesial caries' -- categorize string values 
@@ -3599,7 +3599,7 @@ ELSE SAFE_CAST(OHD11CSC AS STRING)
  END as coronal_caries_surface_condition_11_OHD11CSC, 
 
 CASE
-WHEN REPLACE(OHD12CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD12CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD12CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD12CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD12CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3614,7 +3614,7 @@ ELSE SAFE_CAST(OHD12CTC AS STRING)
  END as coronal_caries_tooth_count_12_OHD12CTC, 
 
 CASE
-WHEN REPLACE(OHD12CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD12CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD12CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD12CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD12CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -3630,7 +3630,7 @@ ELSE SAFE_CAST(OHD12CSC AS STRING)
  END as coronal_caries_surface_condition_12_OHD12CSC, 
 
 CASE
-WHEN REPLACE(OHD13CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD13CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD13CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD13CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD13CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3645,7 +3645,7 @@ ELSE SAFE_CAST(OHD13CTC AS STRING)
  END as coronal_caries_tooth_count_13_OHD13CTC, 
 
 CASE
-WHEN REPLACE(OHD13CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD13CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD13CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD13CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD13CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -3661,7 +3661,7 @@ ELSE SAFE_CAST(OHD13CSC AS STRING)
  END as coronal_caries_surface_condition_13_OHD13CSC, 
 
 CASE
-WHEN REPLACE(OHD14CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
+    WHEN REPLACE(OHD14CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD14CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
 WHEN REPLACE(OHD14CTC,'.0','') = 'R' THEN 'Missing due to dental disease but replaced' -- categorize string values 
 WHEN REPLACE(OHD14CTC,'.0','') = 'S' THEN 'Sound permanent tooth' -- categorize string values 
@@ -3674,7 +3674,7 @@ ELSE SAFE_CAST(OHD14CTC AS STRING)
  END as coronal_caries_tooth_count_14_OHD14CTC, 
 
 CASE
-WHEN REPLACE(OHD14CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD14CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD14CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD14CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD14CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -3690,7 +3690,7 @@ ELSE SAFE_CAST(OHD14CSC AS STRING)
  END as coronal_caries_surface_condition_14_OHD14CSC, 
 
 CASE
-WHEN REPLACE(OHD15CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
+    WHEN REPLACE(OHD15CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD15CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
 WHEN REPLACE(OHD15CTC,'.0','') = 'R' THEN 'Missing due to dental disease but replaced' -- categorize string values 
 WHEN REPLACE(OHD15CTC,'.0','') = 'S' THEN 'Sound permanent tooth' -- categorize string values 
@@ -3703,7 +3703,7 @@ ELSE SAFE_CAST(OHD15CTC AS STRING)
  END as coronal_caries_tooth_count_15_OHD15CTC, 
 
 CASE
-WHEN REPLACE(OHD15CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD15CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD15CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD15CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD15CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -3719,7 +3719,7 @@ ELSE SAFE_CAST(OHD15CSC AS STRING)
  END as coronal_caries_surface_condition_15_OHD15CSC, 
 
 CASE
-WHEN REPLACE(OHD24CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD24CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD24CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD24CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD24CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3734,7 +3734,7 @@ ELSE SAFE_CAST(OHD24CTC AS STRING)
  END as coronal_caries_tooth_count_24_OHD24CTC, 
 
 CASE
-WHEN REPLACE(OHD24CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD24CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD24CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD24CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
 WHEN REPLACE(OHD24CSC,'.0','') = '3' THEN 'Mesial caries' -- categorize string values 
@@ -3748,7 +3748,7 @@ ELSE SAFE_CAST(OHD24CSC AS STRING)
  END as coronal_caries_surface_condition_24_OHD24CSC, 
 
 CASE
-WHEN REPLACE(OHD23CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD23CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD23CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD23CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD23CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3763,7 +3763,7 @@ ELSE SAFE_CAST(OHD23CTC AS STRING)
  END as coronal_caries_tooth_count_23_OHD23CTC, 
 
 CASE
-WHEN REPLACE(OHD23CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD23CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD23CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD23CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
 WHEN REPLACE(OHD23CSC,'.0','') = '3' THEN 'Mesial caries' -- categorize string values 
@@ -3777,7 +3777,7 @@ ELSE SAFE_CAST(OHD23CSC AS STRING)
  END as coronal_caries_surface_condition_23_OHD23CSC, 
 
 CASE
-WHEN REPLACE(OHD22CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD22CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD22CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD22CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD22CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3792,7 +3792,7 @@ ELSE SAFE_CAST(OHD22CTC AS STRING)
  END as coronal_caries_tooth_count_22_OHD22CTC, 
 
 CASE
-WHEN REPLACE(OHD22CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD22CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD22CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD22CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
 WHEN REPLACE(OHD22CSC,'.0','') = '3' THEN 'Mesial caries' -- categorize string values 
@@ -3806,7 +3806,7 @@ ELSE SAFE_CAST(OHD22CSC AS STRING)
  END as coronal_caries_surface_condition_22_OHD22CSC, 
 
 CASE
-WHEN REPLACE(OHD21CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD21CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD21CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD21CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD21CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3821,7 +3821,7 @@ ELSE SAFE_CAST(OHD21CTC AS STRING)
  END as coronal_caries_tooth_count_21_OHD21CTC, 
 
 CASE
-WHEN REPLACE(OHD21CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD21CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD21CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD21CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD21CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -3837,7 +3837,7 @@ ELSE SAFE_CAST(OHD21CSC AS STRING)
  END as coronal_caries_surface_condition_21_OHD21CSC, 
 
 CASE
-WHEN REPLACE(OHD20CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD20CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD20CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD20CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD20CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3852,7 +3852,7 @@ ELSE SAFE_CAST(OHD20CTC AS STRING)
  END as coronal_caries_tooth_count_20_OHD20CTC, 
 
 CASE
-WHEN REPLACE(OHD20CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD20CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD20CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD20CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD20CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -3868,7 +3868,7 @@ ELSE SAFE_CAST(OHD20CSC AS STRING)
  END as coronal_caries_surface_condition_20_OHD20CSC, 
 
 CASE
-WHEN REPLACE(OHD19CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
+    WHEN REPLACE(OHD19CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD19CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
 WHEN REPLACE(OHD19CTC,'.0','') = 'R' THEN 'Missing due to dental disease but replaced' -- categorize string values 
 WHEN REPLACE(OHD19CTC,'.0','') = 'S' THEN 'Sound permanent tooth' -- categorize string values 
@@ -3881,7 +3881,7 @@ ELSE SAFE_CAST(OHD19CTC AS STRING)
  END as coronal_caries_tooth_count_19_OHD19CTC, 
 
 CASE
-WHEN REPLACE(OHD19CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD19CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD19CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD19CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD19CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -3897,7 +3897,7 @@ ELSE SAFE_CAST(OHD19CSC AS STRING)
  END as coronal_caries_surface_condition_19_OHD19CSC, 
 
 CASE
-WHEN REPLACE(OHD18CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
+    WHEN REPLACE(OHD18CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD18CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
 WHEN REPLACE(OHD18CTC,'.0','') = 'R' THEN 'Missing due to dental disease but replaced' -- categorize string values 
 WHEN REPLACE(OHD18CTC,'.0','') = 'S' THEN 'Sound permanent tooth' -- categorize string values 
@@ -3910,7 +3910,7 @@ ELSE SAFE_CAST(OHD18CTC AS STRING)
  END as coronal_caries_tooth_count_18_OHD18CTC, 
 
 CASE
-WHEN REPLACE(OHD18CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD18CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD18CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD18CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD18CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -3926,7 +3926,7 @@ ELSE SAFE_CAST(OHD18CSC AS STRING)
  END as coronal_caries_surface_condition_18_OHD18CSC, 
 
 CASE
-WHEN REPLACE(OHD25CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD25CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD25CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD25CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD25CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3941,7 +3941,7 @@ ELSE SAFE_CAST(OHD25CTC AS STRING)
  END as coronal_caries_tooth_count_25_OHD25CTC, 
 
 CASE
-WHEN REPLACE(OHD25CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD25CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD25CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD25CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
 WHEN REPLACE(OHD25CSC,'.0','') = '3' THEN 'Mesial caries' -- categorize string values 
@@ -3955,7 +3955,7 @@ ELSE SAFE_CAST(OHD25CSC AS STRING)
  END as coronal_caries_surface_condition_25_OHD25CSC, 
 
 CASE
-WHEN REPLACE(OHD26CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD26CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD26CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD26CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD26CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3970,7 +3970,7 @@ ELSE SAFE_CAST(OHD26CTC AS STRING)
  END as coronal_caries_tooth_count_26_OHD26CTC, 
 
 CASE
-WHEN REPLACE(OHD26CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD26CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD26CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD26CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
 WHEN REPLACE(OHD26CSC,'.0','') = '3' THEN 'Mesial caries' -- categorize string values 
@@ -3984,7 +3984,7 @@ ELSE SAFE_CAST(OHD26CSC AS STRING)
  END as coronal_caries_surface_condition_26_OHD26CSC, 
 
 CASE
-WHEN REPLACE(OHD27CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD27CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD27CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD27CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD27CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -3999,7 +3999,7 @@ ELSE SAFE_CAST(OHD27CTC AS STRING)
  END as coronal_caries_tooth_count_27_OHD27CTC, 
 
 CASE
-WHEN REPLACE(OHD27CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD27CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD27CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD27CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
 WHEN REPLACE(OHD27CSC,'.0','') = '3' THEN 'Mesial caries' -- categorize string values 
@@ -4013,7 +4013,7 @@ ELSE SAFE_CAST(OHD27CSC AS STRING)
  END as coronal_caries_surface_condition_27_OHD27CSC, 
 
 CASE
-WHEN REPLACE(OHD28CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD28CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD28CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD28CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD28CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -4028,7 +4028,7 @@ ELSE SAFE_CAST(OHD28CTC AS STRING)
  END as coronal_caries_tooth_count_28_OHD28CTC, 
 
 CASE
-WHEN REPLACE(OHD28CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD28CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD28CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD28CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD28CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -4044,7 +4044,7 @@ ELSE SAFE_CAST(OHD28CSC AS STRING)
  END as coronal_caries_surface_condition_28_OHD28CSC, 
 
 CASE
-WHEN REPLACE(OHD29CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
+    WHEN REPLACE(OHD29CTC,'.0','') = 'D' THEN 'Sound primary tooth' -- categorize string values 
 WHEN REPLACE(OHD29CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD29CTC,'.0','') = 'K' THEN 'Primary tooth with surface condition (s)' -- categorize string values 
 WHEN REPLACE(OHD29CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
@@ -4059,7 +4059,7 @@ ELSE SAFE_CAST(OHD29CTC AS STRING)
  END as coronal_caries_tooth_count_29_OHD29CTC, 
 
 CASE
-WHEN REPLACE(OHD29CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD29CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD29CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD29CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD29CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -4075,7 +4075,7 @@ ELSE SAFE_CAST(OHD29CSC AS STRING)
  END as coronal_caries_surface_condition_29_OHD29CSC, 
 
 CASE
-WHEN REPLACE(OHD30CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
+    WHEN REPLACE(OHD30CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD30CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
 WHEN REPLACE(OHD30CTC,'.0','') = 'R' THEN 'Missing due to dental disease but replaced' -- categorize string values 
 WHEN REPLACE(OHD30CTC,'.0','') = 'S' THEN 'Sound permanent tooth' -- categorize string values 
@@ -4088,7 +4088,7 @@ ELSE SAFE_CAST(OHD30CTC AS STRING)
  END as coronal_caries_tooth_count_30_OHD30CTC, 
 
 CASE
-WHEN REPLACE(OHD30CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD30CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD30CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD30CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD30CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 
@@ -4104,7 +4104,7 @@ ELSE SAFE_CAST(OHD30CSC AS STRING)
  END as coronal_caries_surface_condition_30_OHD30CSC, 
 
 CASE
-WHEN REPLACE(OHD31CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
+    WHEN REPLACE(OHD31CTC,'.0','') = 'E' THEN 'Missing due to dental disease' -- categorize string values 
 WHEN REPLACE(OHD31CTC,'.0','') = 'M' THEN 'Missing due to other causes' -- categorize string values 
 WHEN REPLACE(OHD31CTC,'.0','') = 'R' THEN 'Missing due to dental disease but replaced' -- categorize string values 
 WHEN REPLACE(OHD31CTC,'.0','') = 'S' THEN 'Sound permanent tooth' -- categorize string values 
@@ -4117,7 +4117,7 @@ ELSE SAFE_CAST(OHD31CTC AS STRING)
  END as coronal_caries_tooth_count_31_OHD31CTC, 
 
 CASE
-WHEN REPLACE(OHD31CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(OHD31CSC,'.0','') = 'Multiple surface conditions found' THEN 'Value was recorded' -- categorize string values 
 WHEN REPLACE(OHD31CSC,'.0','') = '0' THEN 'Lingual surface caries' -- categorize string values 
 WHEN REPLACE(OHD31CSC,'.0','') = '1' THEN 'Occlusal/incisal caries' -- categorize string values 
 WHEN REPLACE(OHD31CSC,'.0','') = '2' THEN 'Facial surface caries' -- categorize string values 

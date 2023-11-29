@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN WTSSGP2Y IS NULL THEN NULL 
+    WHEN WTSSGP2Y IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSSGP2Y AS FLOAT64) 
  END as surplus_specimen_agp_2_year_weights, 
 
 CASE
-WHEN SSAGP IS NULL THEN NULL 
+    WHEN SSAGP IS NULL THEN NULL 
 ELSE SAFE_CAST(SSAGP AS FLOAT64) 
  END as alpha_1_acid_glycoprotein_g_l, 
 

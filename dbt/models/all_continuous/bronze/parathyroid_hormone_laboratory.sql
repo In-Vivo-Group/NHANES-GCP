@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXPT21 IS NULL THEN NULL 
+    WHEN LBXPT21 IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXPT21 AS FLOAT64) 
  END as parathyroid_hormone_elecys_method_pg_ml, 
 

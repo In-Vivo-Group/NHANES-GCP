@@ -2,17 +2,17 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN WTFSM IS NULL THEN NULL 
+    WHEN WTFSM IS NULL THEN NULL 
 ELSE SAFE_CAST(WTFSM AS FLOAT64) 
  END as smoking_weights, 
 
 CASE
-WHEN LBXFOR IS NULL THEN NULL 
+    WHEN LBXFOR IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXFOR AS FLOAT64) 
  END as formaldehyde_nmol_g_hb, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDFORLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the limit of detection' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDFORLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the limit of detection' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDFORLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below limit of detection' -- categorize numeric values
 WHEN LBDFORLC IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDFORLC AS STRING) 

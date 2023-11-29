@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXTC IS NULL THEN NULL 
+    WHEN LBXTC IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXTC AS FLOAT64) 
  END as total_cholesterol_mg_dl, 
 
 CASE
-WHEN LBDTCSI IS NULL THEN NULL 
+    WHEN LBDTCSI IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDTCSI AS FLOAT64) 
  END as total_cholesterol_mmol_l, 
 

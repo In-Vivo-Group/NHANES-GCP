@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ502 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ502 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ502 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ502 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ502 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -11,7 +11,7 @@ ELSE SAFE_CAST(CBQ502 AS STRING)
  END as hand_card_booklet_available, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ503 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ503 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ503 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ503 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ503 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -20,7 +20,7 @@ ELSE SAFE_CAST(CBQ503 AS STRING)
  END as a_package_with_food_label_available, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ506 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ506 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ506 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ506 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ506 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -29,7 +29,7 @@ ELSE SAFE_CAST(CBQ506 AS STRING)
  END as buy_food_from_fast_food_pizza_places, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ536 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ536 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ536 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ536 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ536 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -38,7 +38,7 @@ ELSE SAFE_CAST(CBQ536 AS STRING)
  END as notice_calories_at_fast_food_pizza_place, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ541 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ541 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ541 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ541 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ541 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -47,7 +47,7 @@ ELSE SAFE_CAST(CBQ541 AS STRING)
  END as use_calorie_info_at_fast_food_pizza, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ551 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ551 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ551 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ551 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ551 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -56,7 +56,7 @@ ELSE SAFE_CAST(CBQ551 AS STRING)
  END as eat_from_restaurant_w_waiter, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ581 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ581 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ581 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ581 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ581 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -65,7 +65,7 @@ ELSE SAFE_CAST(CBQ581 AS STRING)
  END as notice_calories_at_restaurant_w_waiter, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ586 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ586 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ586 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ586 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ586 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -74,7 +74,7 @@ ELSE SAFE_CAST(CBQ586 AS STRING)
  END as use_calorie_info_at_restaurant_w_waiter, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ830 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ830 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ830 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ830 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ830 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -83,7 +83,7 @@ ELSE SAFE_CAST(CBQ830 AS STRING)
  END as eat_at_all_you_can_eat_buffet, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ835 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ835 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ835 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ835 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ835 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -92,7 +92,7 @@ ELSE SAFE_CAST(CBQ835 AS STRING)
  END as notice_calorie_info_at_buffet, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ840 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ840 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ840 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ840 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ840 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -101,7 +101,7 @@ ELSE SAFE_CAST(CBQ840 AS STRING)
  END as use_calorie_information_at_buffet, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ845 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ845 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ845 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ845 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ845 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -110,7 +110,7 @@ ELSE SAFE_CAST(CBQ845 AS STRING)
  END as buy_from_coffee_shop_juice_bar, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ850 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ850 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ850 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ850 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ850 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -119,7 +119,7 @@ ELSE SAFE_CAST(CBQ850 AS STRING)
  END as notice_calorie_info_at_coffee_shop, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ855 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ855 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ855 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ855 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ855 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -128,7 +128,7 @@ ELSE SAFE_CAST(CBQ855 AS STRING)
  END as use_calorie_info_at_coffee_shop, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ860 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ860 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ860 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ860 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ860 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -137,7 +137,7 @@ ELSE SAFE_CAST(CBQ860 AS STRING)
  END as buy_at_recreational_places, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ865 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ865 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ865 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ865 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ865 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -146,7 +146,7 @@ ELSE SAFE_CAST(CBQ865 AS STRING)
  END as notice_calories_at_recreational_places, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ870 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ870 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ870 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ870 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ870 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -155,7 +155,7 @@ ELSE SAFE_CAST(CBQ870 AS STRING)
  END as use_calorie_info_at_recreational_places, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ875 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ875 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ875 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ875 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ875 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -164,7 +164,7 @@ ELSE SAFE_CAST(CBQ875 AS STRING)
  END as buy_prepared_foods_from_grocery_store, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ880 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ880 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ880 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ880 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ880 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -173,7 +173,7 @@ ELSE SAFE_CAST(CBQ880 AS STRING)
  END as notice_calorie_info_at_grocery_store, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ885 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ885 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ885 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ885 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ885 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -182,7 +182,7 @@ ELSE SAFE_CAST(CBQ885 AS STRING)
  END as use_calorie_info_at_grocery_store, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ890 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ890 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ890 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ890 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ890 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -191,7 +191,7 @@ ELSE SAFE_CAST(CBQ890 AS STRING)
  END as buy_prepared_food_at_convenience_store, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ895 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ895 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ895 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ895 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ895 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -200,7 +200,7 @@ ELSE SAFE_CAST(CBQ895 AS STRING)
  END as notice_calorie_info_at_convenience_store, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ900 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ900 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ900 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ900 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ900 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -209,7 +209,7 @@ ELSE SAFE_CAST(CBQ900 AS STRING)
  END as use_calorie_info_at_convenience_store, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ645 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Less than 500 calories' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ645 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Less than 500 calories' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ645 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '500-1000 calories' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ645 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN '1001-1500 calories' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ645 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN '1501-2000 calories' -- categorize numeric values
@@ -223,7 +223,7 @@ ELSE SAFE_CAST(CBQ645 AS STRING)
  END as calories_needed_per_day, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ700 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ700 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ700 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ700 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ700 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -236,7 +236,7 @@ ELSE SAFE_CAST(CBQ700 AS STRING)
  END as use_expiration_date_on_food_packages, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ780 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -249,7 +249,7 @@ ELSE SAFE_CAST(DBQ780 AS STRING)
  END as use_health_claims_on_food_packages, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ750 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -262,7 +262,7 @@ ELSE SAFE_CAST(DBQ750 AS STRING)
  END as use_nutrition_facts_panel_on_food_label, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ760 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -275,7 +275,7 @@ ELSE SAFE_CAST(DBQ760 AS STRING)
  END as use_ingredients_list_on_food_label, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ770 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -288,7 +288,7 @@ ELSE SAFE_CAST(DBQ770 AS STRING)
  END as use_serving_size_info_on_food_label, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ905 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ905 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ905 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ905 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ905 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
@@ -301,7 +301,7 @@ ELSE SAFE_CAST(CBQ905 AS STRING)
  END as use_number_of_servings_on_food_label, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ910 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ910 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ910 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ910 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ910 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
@@ -314,7 +314,7 @@ ELSE SAFE_CAST(CBQ910 AS STRING)
  END as use_footnote_on_food_label, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ685 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ685 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ685 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ685 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ685 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -327,7 +327,7 @@ ELSE SAFE_CAST(CBQ685 AS STRING)
  END as use_percent_daily_value_on_food_label, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ915 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Only percent daily value' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ915 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Only percent daily value' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ915 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Percent daily value more often' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ915 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Both percent daily value and amount of nutrients about the same' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ915 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Amount of nutrients more often' -- categorize string values 
@@ -340,7 +340,7 @@ ELSE SAFE_CAST(CBQ915 AS STRING)
  END as use_percent_daily_value_or_nutrients, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ925 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN '5 % of the calories in one serving come from Vit A' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ925 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN '5 % of the calories in one serving come from Vit A' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ925 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'One serving contains 5% Vit A by weight' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ925 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'One serving supplies 5% of the Vit A you should have in a day' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ925 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -350,7 +350,7 @@ ELSE SAFE_CAST(CBQ925 AS STRING)
  END as what_does_5_daily_value_mean, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ930 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ930 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ930 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ930 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ930 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
@@ -363,7 +363,7 @@ ELSE SAFE_CAST(CBQ930 AS STRING)
  END as use_calorie_information_on_food_label, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ935 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ935 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ935 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ935 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ935 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
@@ -376,7 +376,7 @@ ELSE SAFE_CAST(CBQ935 AS STRING)
  END as use_sugars_info_on_food_label, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ945 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ945 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ945 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ945 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ945 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
@@ -389,7 +389,7 @@ ELSE SAFE_CAST(CBQ945 AS STRING)
  END as use_sodium_info_on_food_label, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ950 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ950 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Always' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ950 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Most of the time' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ950 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Sometimes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBQ950 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'Rarely' -- categorize string values 
@@ -402,7 +402,7 @@ ELSE SAFE_CAST(CBQ950 AS STRING)
  END as use_second_column_on_food_label, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'To watch my weight and/or lose weight' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'To watch my weight and/or lose weight' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN CBQ738A IS NULL THEN NULL 
@@ -410,73 +410,73 @@ ELSE SAFE_CAST(CBQ738A AS STRING)
  END as check_label_to_watch_my_weight, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A family member is trying to watch weight and/or lose weight' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'A family member is trying to watch weight and/or lose weight' -- categorize numeric values
 WHEN CBQ738B IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ738B AS STRING) 
  END as check_label_for_family_member_s_weight, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'To watch for diabetes, high triglycerides, high cholesterol, high blood pressure or other health conditions' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'To watch for diabetes, high triglycerides, high cholesterol, high blood pressure or other health conditions' -- categorize numeric values
 WHEN CBQ738C IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ738C AS STRING) 
  END as check_label_for_my_health_conditions, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'A family member has a health condition (for example, diabetes, high triglycerides, high cholesterol, high blood pressure, etc)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'A family member has a health condition (for example, diabetes, high triglycerides, high cholesterol, high blood pressure, etc)' -- categorize numeric values
 WHEN CBQ738D IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ738D AS STRING) 
  END as check_label_for_other_s_health_condition, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'I am allergic to certain food(s)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'I am allergic to certain food(s)' -- categorize numeric values
 WHEN CBQ738E IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ738E AS STRING) 
  END as check_label_for_my_food_allergies, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738F AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(6 AS FLOAT64),0) AS INT64) THEN 'My family member(s) has food allergies' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738F AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(6 AS FLOAT64),0) AS INT64) THEN 'My family member(s) has food allergies' -- categorize numeric values
 WHEN CBQ738F IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ738F AS STRING) 
  END as check_label_for_other_s_food_allergies, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'To avoid certain ingredients (such as MSG, high fructose corn syrup, color dyes, artificial preservatives, or hydrogenated oils, etc.)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'To avoid certain ingredients (such as MSG, high fructose corn syrup, color dyes, artificial preservatives, or hydrogenated oils, etc.)' -- categorize numeric values
 WHEN CBQ738G IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ738G AS STRING) 
  END as check_label_to_avoid_certain_ingredients, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(8 AS FLOAT64),0) AS INT64) THEN 'To increase certain nutrients in my/familys diet (such as fiber, calcium, etc)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(8 AS FLOAT64),0) AS INT64) THEN 'To increase certain nutrients in my/familys diet (such as fiber, calcium, etc)' -- categorize numeric values
 WHEN CBQ738H IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ738H AS STRING) 
  END as check_label_to_increase_certain_nutrient, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'To compare which brand/food is better/healthier' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'To compare which brand/food is better/healthier' -- categorize numeric values
 WHEN CBQ738I IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ738I AS STRING) 
  END as check_label_to_compare_b_w_brands_foods, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'To make better/healthier choices for me and my family' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'To make better/healthier choices for me and my family' -- categorize numeric values
 WHEN CBQ738J IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ738J AS STRING) 
  END as check_label_to_make_better_choices, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN 'To watch for calorie content or certain nutrients (such as sodium, trans fat, sugar, carbohydrates, or protein, etc.)' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN 'To watch for calorie content or certain nutrients (such as sodium, trans fat, sugar, carbohydrates, or protein, etc.)' -- categorize numeric values
 WHEN CBQ738K IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ738K AS STRING) 
  END as check_label_to_watch_certain_nutrients, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738CD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(91 AS FLOAT64),0) AS INT64) THEN 'Others' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ738CD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(91 AS FLOAT64),0) AS INT64) THEN 'Others' -- categorize numeric values
 WHEN CBQ738CD IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ738CD AS STRING) 
  END as check_label_for_other_reasons, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'I dont have time' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'I dont have time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN CBQ698A IS NULL THEN NULL 
@@ -484,61 +484,61 @@ ELSE SAFE_CAST(CBQ698A AS STRING)
  END as not_check_label_don_t_have_the_time, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'The print is too small for me to read' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'The print is too small for me to read' -- categorize numeric values
 WHEN CBQ698B IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ698B AS STRING) 
  END as not_check_label_the_print_is_too_small, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Im satisfied with my health so there is no need for me to check' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Im satisfied with my health so there is no need for me to check' -- categorize numeric values
 WHEN CBQ698C IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ698C AS STRING) 
  END as not_check_label_satisfied_w_my_health, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'I have a good diet so there is no need to check labels' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'I have a good diet so there is no need to check labels' -- categorize numeric values
 WHEN CBQ698D IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ698D AS STRING) 
  END as not_check_label_i_have_a_good_diet, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'I usually buy foods that Im used to, so I dont feel that I need to check labels' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'I usually buy foods that Im used to, so I dont feel that I need to check labels' -- categorize numeric values
 WHEN CBQ698E IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ698E AS STRING) 
  END as not_check_label_mostly_familiar_foods, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698F AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(6 AS FLOAT64),0) AS INT64) THEN 'I buy what I or my family like, I dont care about the labels' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698F AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(6 AS FLOAT64),0) AS INT64) THEN 'I buy what I or my family like, I dont care about the labels' -- categorize numeric values
 WHEN CBQ698F IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ698F AS STRING) 
  END as not_check_label_don_t_care_about_labels, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'I dont think the food labels are important to me' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'I dont think the food labels are important to me' -- categorize numeric values
 WHEN CBQ698G IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ698G AS STRING) 
  END as not_check_label_not_important_to_me, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(8 AS FLOAT64),0) AS INT64) THEN 'I wont know what to look for even if I read the labels' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(8 AS FLOAT64),0) AS INT64) THEN 'I wont know what to look for even if I read the labels' -- categorize numeric values
 WHEN CBQ698H IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ698H AS STRING) 
  END as not_check_label_what_to_look_for, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'I cant read English that well' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'I cant read English that well' -- categorize numeric values
 WHEN CBQ698I IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ698I AS STRING) 
  END as not_check_label_can_t_read_english_well, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698CD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(91 AS FLOAT64),0) AS INT64) THEN 'Others' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ698CD AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(91 AS FLOAT64),0) AS INT64) THEN 'Others' -- categorize numeric values
 WHEN CBQ698CD IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ698CD AS STRING) 
  END as not_check_label_for_other_reasons, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ695A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'The amount of this food that people should eat' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ695A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'The amount of this food that people should eat' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ695A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ695A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
 WHEN CBQ695A IS NULL THEN NULL 
@@ -546,19 +546,19 @@ ELSE SAFE_CAST(CBQ695A AS STRING)
  END as serving_size_amount_people_should_eat, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ695B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'The amount of this food that people usually eat' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ695B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'The amount of this food that people usually eat' -- categorize numeric values
 WHEN CBQ695B IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ695B AS STRING) 
  END as serving_size_amount_people_usually_eat, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ695C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Something that makes it easier to compare foods' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ695C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Something that makes it easier to compare foods' -- categorize numeric values
 WHEN CBQ695C IS NULL THEN NULL 
 ELSE SAFE_CAST(CBQ695C AS STRING) 
  END as serving_size_help_comparing_among_foods, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ785 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'English' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ785 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'English' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ785 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Spanish' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ785 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'English and Spanish' -- categorize numeric values
 WHEN CBQ785 IS NULL THEN NULL 
@@ -566,12 +566,12 @@ ELSE SAFE_CAST(CBQ785 AS STRING)
  END as language_of_the_interview, 
 
 CASE
-WHEN WTDRD1 IS NULL THEN NULL 
+    WHEN WTDRD1 IS NULL THEN NULL 
 ELSE SAFE_CAST(WTDRD1 AS FLOAT64) 
  END as dietary_day_one_sample_weight, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBD925 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN '10% of calories/serving come from Vit D' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBD925 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN '10% of calories/serving come from Vit D' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBD925 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'One serving has 10% Vit D by weight' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBD925 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'One serving has 10% Vit D needed per day' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(CBD925 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -581,13 +581,13 @@ ELSE SAFE_CAST(CBD925 AS STRING)
  END as what_does_the_daily_value_mean_to_you, 
 
 CASE
-WHEN WTDRD1PP IS NOT NULL THEN SAFE_CAST(WTDRD1PP AS FLOAT64) -- correct wrong data types for numerical data 
+    WHEN WTDRD1PP IS NOT NULL THEN SAFE_CAST(WTDRD1PP AS FLOAT64) -- correct wrong data types for numerical data 
 WHEN WTDRD1PP IS NULL THEN NULL 
 ELSE SAFE_CAST(WTDRD1PP AS FLOAT64) 
  END as dietary_day_one_sample_weight_WTDRD1PP, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ505 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ505 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ505 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ505 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ505 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -596,7 +596,7 @@ ELSE SAFE_CAST(CBQ505 AS STRING)
  END as eat_at_fast_food_pizza_places, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ510 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ510 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ510 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ510 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ510 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -605,7 +605,7 @@ ELSE SAFE_CAST(CBQ510 AS STRING)
  END as fast_food_pizza_cheaper_than_cooking, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ515 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ515 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ515 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ515 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ515 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -614,7 +614,7 @@ ELSE SAFE_CAST(CBQ515 AS STRING)
  END as fast_food_pizza_more_nutritious, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ520 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ520 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ520 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ520 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ520 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -623,7 +623,7 @@ ELSE SAFE_CAST(CBQ520 AS STRING)
  END as fast_food_pizza_tastes_better, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ525 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ525 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ525 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ525 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ525 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -632,7 +632,7 @@ ELSE SAFE_CAST(CBQ525 AS STRING)
  END as fast_food_pizza_more_convenient, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ530 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ530 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ530 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ530 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ530 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -641,7 +641,7 @@ ELSE SAFE_CAST(CBQ530 AS STRING)
  END as eat_at_fast_food_places_to_socialize, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ535 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ535 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ535 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ535 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ535 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -650,7 +650,7 @@ ELSE SAFE_CAST(CBQ535 AS STRING)
  END as saw_nutrition_info_on_fast_food_menu, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ540 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ540 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ540 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ540 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ540 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -659,7 +659,7 @@ ELSE SAFE_CAST(CBQ540 AS STRING)
  END as used_nutrition_info_to_choose_fast_foods, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ545 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Often' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ545 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Often' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ545 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ545 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ545 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
@@ -670,7 +670,7 @@ ELSE SAFE_CAST(CBQ545 AS STRING)
  END as would_use_fast_food_nutrition_info, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ550 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ550 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ550 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ550 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ550 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -679,7 +679,7 @@ ELSE SAFE_CAST(CBQ550 AS STRING)
  END as eat_at_restaurants_w_waiter, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ555 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ555 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ555 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ555 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ555 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -688,7 +688,7 @@ ELSE SAFE_CAST(CBQ555 AS STRING)
  END as restaurants_cheaper_than_cooking, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ560 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ560 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ560 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ560 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ560 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -697,7 +697,7 @@ ELSE SAFE_CAST(CBQ560 AS STRING)
  END as restaurant_foods_more_nutritious, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ565 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ565 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ565 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ565 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ565 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -706,7 +706,7 @@ ELSE SAFE_CAST(CBQ565 AS STRING)
  END as restaurant_foods_taste_better, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ570 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ570 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ570 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ570 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ570 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -715,7 +715,7 @@ ELSE SAFE_CAST(CBQ570 AS STRING)
  END as restaurants_more_convenient, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ575 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ575 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ575 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ575 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ575 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -724,7 +724,7 @@ ELSE SAFE_CAST(CBQ575 AS STRING)
  END as eat_at_restaurants_to_socialize, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ580 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ580 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ580 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ580 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ580 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -733,7 +733,7 @@ ELSE SAFE_CAST(CBQ580 AS STRING)
  END as saw_nutrition_info_on_restaurant_menu, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ585 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ585 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ585 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ585 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ585 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -742,7 +742,7 @@ ELSE SAFE_CAST(CBQ585 AS STRING)
  END as used_nutrition_info_in_restaurant, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ590 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Often' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ590 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Often' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ590 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ590 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ590 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Never' -- categorize numeric values
@@ -753,7 +753,7 @@ ELSE SAFE_CAST(CBQ590 AS STRING)
  END as would_use_restaurant_nutrition_info, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ595 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ595 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ595 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ595 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ595 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -762,7 +762,7 @@ ELSE SAFE_CAST(CBQ595 AS STRING)
  END as heard_of_mypyramid, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ600 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ600 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ600 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ600 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ600 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -771,7 +771,7 @@ ELSE SAFE_CAST(CBQ600 AS STRING)
  END as heard_of_food_pyramid, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ605 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ605 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ605 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ605 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ605 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -780,7 +780,7 @@ ELSE SAFE_CAST(CBQ605 AS STRING)
  END as looked_up_mypyramid_on_internet, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ610 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ610 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ610 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ610 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ610 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -789,37 +789,37 @@ ELSE SAFE_CAST(CBQ610 AS STRING)
  END as tried_mypyramid_plan, 
 
 CASE
-WHEN CBD620 IS NULL THEN NULL 
+    WHEN CBD620 IS NULL THEN NULL 
 ELSE SAFE_CAST(CBD620 AS FLOAT64) 
  END as cups_of_milk_needed_per_day, 
 
 CASE
-WHEN CBD625 IS NULL THEN NULL 
+    WHEN CBD625 IS NULL THEN NULL 
 ELSE SAFE_CAST(CBD625 AS FLOAT64) 
  END as cups_of_fruits_needed_per_day, 
 
 CASE
-WHEN CBD630 IS NULL THEN NULL 
+    WHEN CBD630 IS NULL THEN NULL 
 ELSE SAFE_CAST(CBD630 AS FLOAT64) 
  END as cups_of_vegetables_needed_per_day, 
 
 CASE
-WHEN CBD635 IS NULL THEN NULL 
+    WHEN CBD635 IS NULL THEN NULL 
 ELSE SAFE_CAST(CBD635 AS FLOAT64) 
  END as ounces_of_meat_beans_needed_per_day, 
 
 CASE
-WHEN CBD637 IS NULL THEN NULL 
+    WHEN CBD637 IS NULL THEN NULL 
 ELSE SAFE_CAST(CBD637 AS FLOAT64) 
  END as ounces_of_grains_needed_per_day, 
 
 CASE
-WHEN CBD640 IS NULL THEN NULL 
+    WHEN CBD640 IS NULL THEN NULL 
 ELSE SAFE_CAST(CBD640 AS FLOAT64) 
  END as ounces_of_whole_grains_needed_per_day, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ890 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Strongly agree' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ890 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Strongly agree' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ890 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Somewhat agree' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ890 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Neither agree nor disagree' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DBQ890 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Somewhat disagree' -- categorize numeric values
@@ -831,7 +831,7 @@ ELSE SAFE_CAST(DBQ890 AS STRING)
  END as are_people_born_to_be_fat_thin, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ655 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Strongly agree' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ655 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Strongly agree' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ655 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Somewhat agree' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ655 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Neither agree nor disagree' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ655 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Somewhat disagree' -- categorize numeric values
@@ -843,7 +843,7 @@ ELSE SAFE_CAST(CBQ655 AS STRING)
  END as no_reason_for_me_to_change_my_diet, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very important' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Somewhat important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Not too important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ660 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not at all important' -- categorize numeric values
@@ -855,7 +855,7 @@ ELSE SAFE_CAST(CBQ660 AS STRING)
  END as importance_of_price, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ665 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very important' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ665 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ665 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Somewhat important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ665 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Not too important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ665 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not at all important' -- categorize numeric values
@@ -866,7 +866,7 @@ ELSE SAFE_CAST(CBQ665 AS STRING)
  END as importance_of_nutrition, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ670 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very important' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ670 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ670 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Somewhat important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ670 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Not too important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ670 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not at all important' -- categorize numeric values
@@ -877,7 +877,7 @@ ELSE SAFE_CAST(CBQ670 AS STRING)
  END as importance_of_taste, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ675 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very important' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ675 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ675 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Somewhat important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ675 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Not too important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ675 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not at all important' -- categorize numeric values
@@ -888,7 +888,7 @@ ELSE SAFE_CAST(CBQ675 AS STRING)
  END as importance_of_food_preparation_easiness, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ680 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very important' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ680 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Very important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ680 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Somewhat important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ680 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Not too important' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ680 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Not at all important' -- categorize numeric values
@@ -899,7 +899,7 @@ ELSE SAFE_CAST(CBQ680 AS STRING)
  END as importance_of_how_well_the_food_keeps, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD710 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD710 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD710 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD710 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD710 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -912,7 +912,7 @@ ELSE SAFE_CAST(CBD710 AS STRING)
  END as check_snack_item_s_food_label, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD715 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD715 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD715 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD715 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD715 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -925,7 +925,7 @@ ELSE SAFE_CAST(CBD715 AS STRING)
  END as check_breakfast_cereal_s_food_label, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD720 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD720 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD720 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD720 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD720 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -938,7 +938,7 @@ ELSE SAFE_CAST(CBD720 AS STRING)
  END as check_salad_dressing_s_food_label, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD725 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD725 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD725 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD725 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD725 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -951,7 +951,7 @@ ELSE SAFE_CAST(CBD725 AS STRING)
  END as check_raw_meat_poultry_fish_s_food_label, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD730 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD730 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD730 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD730 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD730 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -964,7 +964,7 @@ ELSE SAFE_CAST(CBD730 AS STRING)
  END as check_processed_meat_s_food_label, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD735 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD735 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD735 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD735 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD735 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -977,7 +977,7 @@ ELSE SAFE_CAST(CBD735 AS STRING)
  END as check_bread_s_food_label, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD740 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD740 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD740 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD740 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Do not shop for food' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD740 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
@@ -987,7 +987,7 @@ ELSE SAFE_CAST(CBD740 AS STRING)
  END as bought_food_labeled_organic, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ790 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ790 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ790 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ790 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ790 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -1000,7 +1000,7 @@ ELSE SAFE_CAST(CBQ790 AS STRING)
  END as how_often_did_you_buy_organic_fruits, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ795 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ795 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ795 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ795 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ795 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -1013,7 +1013,7 @@ ELSE SAFE_CAST(CBQ795 AS STRING)
  END as how_often_did_you_buy_organic_vegetables, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ800 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ800 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ800 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ800 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ800 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -1026,7 +1026,7 @@ ELSE SAFE_CAST(CBQ800 AS STRING)
  END as how_often_did_you_buy_organic_milk, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ805 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ805 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ805 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ805 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ805 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -1039,7 +1039,7 @@ ELSE SAFE_CAST(CBQ805 AS STRING)
  END as how_often_did_you_buy_organic_eggs, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ810 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ810 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ810 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ810 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ810 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -1052,7 +1052,7 @@ ELSE SAFE_CAST(CBQ810 AS STRING)
  END as how_often_did_you_buy_organic_baby_foods, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ815 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ815 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ815 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ815 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ815 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -1065,7 +1065,7 @@ ELSE SAFE_CAST(CBQ815 AS STRING)
  END as how_often_did_you_buy_organic_poultry, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ820 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ820 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ820 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ820 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ820 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values
@@ -1078,7 +1078,7 @@ ELSE SAFE_CAST(CBQ820 AS STRING)
  END as how_often_did_you_buy_organic_meats, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ825 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ825 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ825 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ825 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBQ825 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -1087,7 +1087,7 @@ ELSE SAFE_CAST(CBQ825 AS STRING)
  END as ever_seen_usda_organic_seal, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD745 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD745 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Always' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD745 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Most of the time' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD745 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CBD745 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Rarely' -- categorize numeric values

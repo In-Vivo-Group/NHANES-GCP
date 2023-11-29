@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN SSKLOTH IS NULL THEN NULL 
+    WHEN SSKLOTH IS NULL THEN NULL 
 ELSE SAFE_CAST(SSKLOTH AS FLOAT64) 
  END as klotho_pg_ml, 
 

@@ -2,12 +2,12 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN WTSSUG2Y IS NULL THEN NULL 
+    WHEN WTSSUG2Y IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSSUG2Y AS FLOAT64) 
  END as ssusg_e_2_year_weights, 
 
 CASE
-WHEN SSUSG IS NULL THEN NULL 
+    WHEN SSUSG IS NULL THEN NULL 
 ELSE SAFE_CAST(SSUSG AS FLOAT64) 
  END as urine_specific_gravity, 
 

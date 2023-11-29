@@ -2,13 +2,13 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN REPLACE(LBXBVPH,'.0','') = 'PH of Bacterial Vaginosis Specimen' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(LBXBVPH,'.0','') = 'PH of Bacterial Vaginosis Specimen' THEN 'Value was recorded' -- categorize string values 
 WHEN LBXBVPH IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXBVPH AS STRING) 
  END as ph_of_bacterial_vaginosis_specimen, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(LBXTV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Positive' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBXTV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Positive' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(LBXTV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Negative' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(LBXTV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Uninterpretable' -- categorize numeric values
 WHEN LBXTV IS NULL THEN NULL 
@@ -16,7 +16,7 @@ ELSE SAFE_CAST(LBXTV AS STRING)
  END as trichomonas_vaginalis, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(LBXBV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Positive' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBXBV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Positive' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(LBXBV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Negative' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(LBXBV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Intermediate' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(LBXBV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Lack of lactobacillis/abnormal epithelial cells' -- categorize numeric values
