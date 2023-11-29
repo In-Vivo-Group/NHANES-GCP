@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.neonicotinoids_urine_surplus_laboratory

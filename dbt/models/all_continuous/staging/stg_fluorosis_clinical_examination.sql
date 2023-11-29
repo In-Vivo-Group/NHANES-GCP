@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.fluorosis_clinical_examination

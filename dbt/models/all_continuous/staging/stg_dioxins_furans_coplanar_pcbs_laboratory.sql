@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.dioxins_furans_coplanar_pcbs_laboratory

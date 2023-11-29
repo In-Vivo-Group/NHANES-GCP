@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cadmium_lead_total_mercury_blood_laboratory

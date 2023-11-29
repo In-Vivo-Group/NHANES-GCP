@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.dermatology_examination

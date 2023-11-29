@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.anti_mullerian_hormone_amh_inhibin_b_surplus_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.pesticides_organochlorine_metabolites_serum_pooled_samples_surplus_laboratory

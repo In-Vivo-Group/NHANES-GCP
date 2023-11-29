@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.polycyclic_aromatic_hydrocarbons_pah_urine_special_sample_laboratory

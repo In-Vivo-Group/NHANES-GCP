@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.kidney_conditions_questionnaire

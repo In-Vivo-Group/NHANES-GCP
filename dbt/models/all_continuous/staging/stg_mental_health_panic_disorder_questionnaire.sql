@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.mental_health_panic_disorder_questionnaire

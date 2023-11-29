@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.n_terminal_pro_bnp_surplus_laboratory

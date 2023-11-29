@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.ferritin_transferrin_receptor_laboratory

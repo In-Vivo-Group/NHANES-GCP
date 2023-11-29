@@ -2,9 +2,11 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN WTSVOC2Y IS NULL THEN NULL 
-ELSE SAFE_CAST(WTSVOC2Y AS FLOAT64) 
- END as voc_subsample_weight, 
+WHEN WTSVOCPR IS NOT NULL THEN SAFE_CAST(WTSVOCPR AS FLOAT64) -- correct wrong data types for numerical data 
+WHEN WTSVOCPR IS NOT NULL THEN SAFE_CAST(WTSVOCPR AS FLOAT64) -- correct wrong data types for numerical data 
+WHEN WTSVOCPR IS NULL THEN NULL 
+ELSE SAFE_CAST(WTSVOCPR AS FLOAT64) 
+ END as voc_subsample_weight_pre_pandemic, 
 
 CASE
 WHEN LBX2DF IS NULL THEN NULL 
@@ -345,18 +347,6 @@ ELSE SAFE_CAST(LBDVMCLC AS STRING)
  END as blood_methylene_chloride_comment_code, 
 
 CASE
-WHEN LBXVME IS NULL THEN NULL 
-ELSE SAFE_CAST(LBXVME AS FLOAT64) 
- END as blood_mtbe_ng_ml, 
-
-CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDVMELC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above detection limit' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDVMELC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
-WHEN LBDVMELC IS NULL THEN NULL 
-ELSE SAFE_CAST(LBDVMELC AS STRING) 
- END as blood_mtbe_comment_code, 
-
-CASE
 WHEN LBXVMCP IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXVMCP AS FLOAT64) 
  END as blood_methylcyclopentane_ng_ml, 
@@ -367,6 +357,18 @@ WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDVMPLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROU
 WHEN LBDVMPLC IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDVMPLC AS STRING) 
  END as blood_methylcyclopentane_comment_code, 
+
+CASE
+WHEN LBXVME IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXVME AS FLOAT64) 
+ END as blood_mtbe_ng_ml, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDVMELC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDVMELC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDVMELC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDVMELC AS STRING) 
+ END as blood_mtbe_comment_code, 
 
 CASE
 WHEN LBXVMIK IS NULL THEN NULL 
@@ -489,11 +491,9 @@ ELSE SAFE_CAST(LBDVXYLC AS STRING)
  END as blood_m_p_xylene_comment_code, 
 
 CASE
-WHEN WTSVOCPR IS NOT NULL THEN SAFE_CAST(WTSVOCPR AS FLOAT64) -- correct wrong data types for numerical data 
-WHEN WTSVOCPR IS NOT NULL THEN SAFE_CAST(WTSVOCPR AS FLOAT64) -- correct wrong data types for numerical data 
-WHEN WTSVOCPR IS NULL THEN NULL 
-ELSE SAFE_CAST(WTSVOCPR AS FLOAT64) 
- END as voc_subsample_weight_pre_pandemic, 
+WHEN WTSVOC2Y IS NULL THEN NULL 
+ELSE SAFE_CAST(WTSVOC2Y AS FLOAT64) 
+ END as voc_subsample_weight, 
 
 CASE
 WHEN LBXVDX IS NULL THEN NULL 
@@ -533,8 +533,6 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/VOCWB_J.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_VOCWB.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/VOCWB_I.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/VOCWB_H.htm
 */

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.folic_acid_unmetabolized_surplus_laboratory

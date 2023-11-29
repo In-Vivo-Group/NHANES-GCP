@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.dietary_interview_technical_support_file_food_code_format_file_dietary

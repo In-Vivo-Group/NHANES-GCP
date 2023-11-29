@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.phytoestrogens_urine_laboratory

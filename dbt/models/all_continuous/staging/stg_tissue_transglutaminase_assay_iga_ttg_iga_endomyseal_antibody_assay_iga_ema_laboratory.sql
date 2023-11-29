@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.tissue_transglutaminase_assay_iga_ttg_iga_endomyseal_antibody_assay_iga_ema_laboratory

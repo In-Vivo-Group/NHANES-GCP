@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.smoking_cigarette_tobacco_use_adult_questionnaire

@@ -3,12 +3,12 @@ SEQN as respondent_sequence_number, -- could not identify transformation logic
 
 CASE
 WHEN LBXBCR IS NULL THEN NULL 
-ELSE SAFE_CAST(LBXBCR AS STRING) 
+ELSE SAFE_CAST(LBXBCR AS FLOAT64) 
  END as chromium_ug_l, 
 
 CASE
 WHEN LBDBCRSI IS NULL THEN NULL 
-ELSE SAFE_CAST(LBDBCRSI AS STRING) 
+ELSE SAFE_CAST(LBDBCRSI AS FLOAT64) 
  END as chromium_nmol_l, 
 
 CASE
@@ -20,12 +20,12 @@ ELSE SAFE_CAST(LBDBCRLC AS STRING)
 
 CASE
 WHEN LBXBCO IS NULL THEN NULL 
-ELSE SAFE_CAST(LBXBCO AS STRING) 
+ELSE SAFE_CAST(LBXBCO AS FLOAT64) 
  END as cobalt_ug_l, 
 
 CASE
 WHEN LBDBCOSI IS NULL THEN NULL 
-ELSE SAFE_CAST(LBDBCOSI AS STRING) 
+ELSE SAFE_CAST(LBDBCOSI AS FLOAT64) 
  END as cobalt_nmol_l, 
 
 CASE
@@ -49,5 +49,4 @@ dataset,
 Docs utilized to generate this SQL can be found at:
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/CRCO_J.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_CRCO.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/CRCO_I.htm
 */

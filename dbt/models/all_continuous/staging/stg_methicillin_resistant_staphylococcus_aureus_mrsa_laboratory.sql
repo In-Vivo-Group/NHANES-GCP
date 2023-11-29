@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.methicillin_resistant_staphylococcus_aureus_mrsa_laboratory

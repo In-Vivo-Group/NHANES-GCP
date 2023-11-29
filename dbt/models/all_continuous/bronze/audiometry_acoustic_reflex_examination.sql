@@ -3768,8 +3768,8 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/AUXAR_J.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_AUXAR.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/AUXAR_J.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/AUXAR_I.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/AUXAR_G.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/AUXAR_F.htm

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.pooled_sample_technical_support_file_laboratory

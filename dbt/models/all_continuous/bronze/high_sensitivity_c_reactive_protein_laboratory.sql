@@ -3,7 +3,7 @@ SEQN as respondent_sequence_number, -- could not identify transformation logic
 
 CASE
 WHEN LBXHSCRP IS NULL THEN NULL 
-ELSE SAFE_CAST(LBXHSCRP AS STRING) 
+ELSE SAFE_CAST(LBXHSCRP AS FLOAT64) 
  END as hs_c_reactive_protein_mg_l, 
 
 CASE

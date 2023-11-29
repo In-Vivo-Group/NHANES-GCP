@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.non_dioxin_like_polychlorinated_biphenyls_laboratory

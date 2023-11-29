@@ -9,7 +9,7 @@ ELSE SAFE_CAST(WTSA2YR AS STRING)
 
 CASE
 WHEN URXUAS IS NULL THEN NULL 
-ELSE SAFE_CAST(URXUAS AS STRING) 
+ELSE SAFE_CAST(URXUAS AS FLOAT64) 
  END as arsenic_total_urine_ug_l, 
 
 CASE
@@ -20,14 +20,8 @@ ELSE SAFE_CAST(URDUASLC AS STRING)
  END as arsenic_total_urine_comment_code, 
 
 CASE
-WHEN SAFE_CAST(WTSAPRP AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN NULL --remove no lab specimen samples from data 
-WHEN WTSAPRP IS NULL THEN NULL 
-ELSE SAFE_CAST(WTSAPRP AS STRING) 
- END as subsample_a_weights_pre_pandemic, 
-
-CASE
 WHEN URXUCR IS NULL THEN NULL 
-ELSE SAFE_CAST(URXUCR AS STRING) 
+ELSE SAFE_CAST(URXUCR AS FLOAT64) 
  END as urinary_creatinine, 
 
 start_year,
@@ -43,7 +37,6 @@ dataset,
 /* 
 Docs utilized to generate this SQL can be found at:
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/UTAS_J.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_UTAS.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/UTAS_I.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/UTAS_H.htm
 */

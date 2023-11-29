@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.dual_energy_x_ray_absorptiometry_whole_body_second_exam_examination

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.mercury_inorganic_blood_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.phthalates_phytoestrogens_pahs_urine_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.telomere_mean_and_standard_deviation_surplus_laboratory

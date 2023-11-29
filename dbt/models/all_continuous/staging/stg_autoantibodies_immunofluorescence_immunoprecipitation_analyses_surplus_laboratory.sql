@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.autoantibodies_immunofluorescence_immunoprecipitation_analyses_surplus_laboratory

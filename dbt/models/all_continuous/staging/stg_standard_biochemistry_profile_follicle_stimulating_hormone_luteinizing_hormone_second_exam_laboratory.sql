@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.standard_biochemistry_profile_follicle_stimulating_hormone_luteinizing_hormone_second_exam_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.demographic_variables_sample_weights_demographics

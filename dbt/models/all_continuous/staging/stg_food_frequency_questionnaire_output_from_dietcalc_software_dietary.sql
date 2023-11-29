@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.food_frequency_questionnaire_output_from_dietcalc_software_dietary

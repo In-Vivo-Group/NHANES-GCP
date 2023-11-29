@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.exhaled_nitric_oxide_examination

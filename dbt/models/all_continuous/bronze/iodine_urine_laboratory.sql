@@ -5,7 +5,7 @@ CASE
 WHEN WTSA2YR IS NOT NULL THEN SAFE_CAST(WTSA2YR AS FLOAT64) -- correct wrong data types for numerical data 
 WHEN SAFE_CAST(WTSA2YR AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN NULL --remove no lab specimen samples from data 
 WHEN WTSA2YR IS NULL THEN NULL 
-ELSE SAFE_CAST(WTSA2YR AS FLOAT64) 
+ELSE SAFE_CAST(WTSA2YR AS STRING) 
  END as subsample_a_weights, 
 
 CASE
@@ -24,7 +24,7 @@ CASE
 WHEN WTSAPRP IS NOT NULL THEN SAFE_CAST(WTSAPRP AS FLOAT64) -- correct wrong data types for numerical data 
 WHEN SAFE_CAST(WTSAPRP AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN NULL --remove no lab specimen samples from data 
 WHEN WTSAPRP IS NULL THEN NULL 
-ELSE SAFE_CAST(WTSAPRP AS FLOAT64) 
+ELSE SAFE_CAST(WTSAPRP AS STRING) 
  END as subsample_a_weights_pre_pandemic, 
 
 CASE

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.chlamydia_gonorrhea_urine_laboratory

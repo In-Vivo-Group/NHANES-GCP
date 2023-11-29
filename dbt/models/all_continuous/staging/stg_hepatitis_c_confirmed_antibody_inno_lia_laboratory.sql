@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.hepatitis_c_confirmed_antibody_inno_lia_laboratory

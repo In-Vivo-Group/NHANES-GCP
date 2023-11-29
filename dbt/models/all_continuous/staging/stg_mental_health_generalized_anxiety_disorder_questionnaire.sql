@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.mental_health_generalized_anxiety_disorder_questionnaire

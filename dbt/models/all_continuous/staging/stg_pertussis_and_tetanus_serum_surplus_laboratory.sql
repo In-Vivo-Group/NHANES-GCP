@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.pertussis_and_tetanus_serum_surplus_laboratory

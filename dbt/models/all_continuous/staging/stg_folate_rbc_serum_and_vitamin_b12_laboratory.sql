@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.folate_rbc_serum_and_vitamin_b12_laboratory

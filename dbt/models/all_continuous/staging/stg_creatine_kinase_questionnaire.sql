@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.creatine_kinase_questionnaire

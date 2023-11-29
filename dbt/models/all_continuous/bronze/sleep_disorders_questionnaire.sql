@@ -337,8 +337,8 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_SLQ.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SLQ_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_SLQ.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/SLQ_I.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/SLQ_H.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/SLQ_G.htm

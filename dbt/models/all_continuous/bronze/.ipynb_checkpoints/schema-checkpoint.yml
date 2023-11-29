@@ -1,0 +1,261 @@
+version: 2
+
+models:
+
+  - name: acculturation_questionnaire
+    description: The Acculturation section (variable name prefix ACQ) provides personal interview data on language use in the home. Questions asked and response categories used were customized, based on self-identified race and Hispanic origin, as shown in the table below.
+    columns:
+
+      - name: respondent_sequence_number
+        description: Respondent sequence number.
+
+      - name: speak_english_at_home_nhw_or_nhb
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: speak_spanish_at_home_nhw_or_nhb
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: speak_other_language_at_home_nhw_or_nhb
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: language_s_spoken_at_home_hispanics
+        description: HAND CARD ACQ1.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "MEXICAN AMERICAN" OR "OTHER HISPANIC" (i.e., RIDRETH3=1, OR 2).
+
+      - name: language_s_spoken_at_home_asians
+        description: THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED "NON-HISPANIC ASIAN" (i.e., RIDRETH3=6).
+
+      - name: respondent_sequence_number_SEQN
+        description: Respondent sequence number.
+
+      - name: speak_english_at_home_nhw_or_nhb_ACD011A
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: speak_spanish_at_home_nhw_or_nhb_ACD011B
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: speak_other_language_at_home_nhw_or_nhb_ACD011C
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: language_s_spoken_at_home_hispanics_ACD040
+        description: HAND CARD ACQ1.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "MEXICAN AMERICAN" OR "OTHER HISPANIC" (i.e., RIDRETH3=1, OR 2).
+
+      - name: language_s_spoken_at_home_asians_ACD110
+        description: THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED "NON-HISPANIC ASIAN" (i.e., RIDRETH3=6).
+
+      - name: respondent_sequence_number_SEQN
+        description: Respondent sequence number.
+
+      - name: speak_english_at_home_nhw_or_nhb_ACD011A
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: speak_spanish_at_home_nhw_or_nhb_ACD011B
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: speak_other_language_at_home_nhw_or_nhb_ACD011C
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: language_s_spoken_at_home_hispanics_ACD040
+        description: HAND CARD ACQ1.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "MEXICAN AMERICAN" OR "OTHER HISPANIC" (i.e., RIDRETH3=1, OR 2).
+
+      - name: language_s_spoken_at_home_asians_ACD110
+        description: THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED "NON-HISPANIC ASIAN" (i.e., RIDRETH3=6).
+
+      - name: respondent_sequence_number_SEQN
+        description: Respondent sequence number.
+
+      - name: speak_english_at_home_nhw_or_nhb_ACD011A
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: speak_spanish_at_home_nhw_or_nhb_ACD011B
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: speak_other_language_at_home_nhw_or_nhb_ACD011C
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: language_s_spoken_at_home_hispanics_ACD040
+        description: HAND CARD ACQ1.
+THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED AS "MEXICAN AMERICAN" OR "OTHER HISPANIC" (i.e., RIDRETH3=1, OR 2).
+
+      - name: language_s_spoken_at_home_asians_ACD110
+        description: THIS VARIABLE ONLY APPLIES TO PARTICIPANTS SELF-IDENTIFIED "NON-HISPANIC ASIAN" (i.e., RIDRETH3=6).
+
+      - name: respondent_sequence_number_SEQN
+        description: Respondent sequence number.
+
+      - name: speak_english_at_home_nhw_or_nhb_ACD011A
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLY TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: speak_spanish_at_home_nhw_or_nhb_ACD011B
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLY TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: speak_other_language_at_home_nhw_or_nhb_ACD011C
+        description: CODE ALL THAT APPLY.
+THIS VARIABLE ONLY APPLY TO PARTICIPANTS SELF-IDENTIFIED AS "NON-HISPANIC WHITE", "NON-HISPANIC BLACK", OR "OTHER RACE - INCLUDING MULTI-RACIAL" (i.e., RIDRETH3=3, 4, OR 7).
+
+      - name: language_s_spoken_at_home_hispanics_ACD040
+        description: HAND CARD ACQ1.
+THIS VARIABLE ONLY APPLY TO PARTICIPANTS SELF-IDENTIFIED AS "MEXICAN AMERICAN" OR "OTHER HISPANIC" (i.e., RIDRETH3=1, OR 2).
+
+      - name: language_s_spoken_at_home_asians_ACD110
+        description: THIS VARIABLE ONLY APPLY TO PARTICIPANTS SELF-IDENTIFIED "NON-HISPANIC ASIAN" (i.e., RIDRETH3=6).
+
+      - name: respondent_sequence_number_SEQN
+        description: Respondent sequence number.
+
+      - name: english_usually_spoken_at_home
+        description: CODE ALL THAT APPLY
+
+      - name: spanish_usually_spoken_at_home
+        description: CODE ALL THAT APPLY
+
+      - name: other_language_s_usually_spoken_at_home
+        description: CODE ALL THAT APPLY
+
+      - name: language_s_usually_spoken_at_home
+        description: HAND CARD ACQ1
+
+      - name: respondent_sequence_number_SEQN
+        description: Respondent sequence number.
+
+      - name: english_usually_spoken_at_home_ACD010A
+        description: CODE ALL THAT APPLY
+
+      - name: spanish_usually_spoken_at_home_ACD010B
+        description: CODE ALL THAT APPLY
+
+      - name: other_language_s_usually_spoken_at_home_ACD010C
+        description: CODE ALL THAT APPLY
+
+      - name: language_s_usually_spoken_at_home_ACD040
+        description: HAND CARD ACQ1
+
+      - name: respondent_sequence_number_SEQN
+        description: Respondent sequence number.
+
+      - name: english_usually_spoken_at_home_ACD010A
+        description: CODE ALL THAT APPLY
+
+      - name: spanish_usually_spoken_at_home_ACD010B
+        description: CODE ALL THAT APPLY
+
+      - name: other_language_s_usually_spoken_at_home_ACD010C
+        description: CODE ALL THAT APPLY
+
+      - name: language_s_usually_spoken_at_home_ACD040
+        description: HAND CARD ACQ1
+
+      - name: respondent_sequence_number_SEQN
+        description: Respondent sequence number.
+
+      - name: english_usually_spoken_at_home_ACD010A
+        description: CODE ALL THAT APPLY
+
+      - name: spanish_usually_spoken_at_home_ACD010B
+        description: CODE ALL THAT APPLY
+
+      - name: other_language_s_usually_spoken_at_home_ACD010C
+        description: CODE ALL THAT APPLY
+
+      - name: language_s_read_and_spoken
+        description: HAND CARD ACQ1
+
+      - name: language_s_used_as_child
+        description: HAND CARD ACQ1
+
+      - name: language_s_usually_spoken_at_home_ACD040
+        description: HAND CARD ACQ1
+
+      - name: language_s_usually_used_to_think
+        description: HAND CARD ACQ1
+
+      - name: language_s_usually_used_with_friends
+        description: HAND CARD ACQ1
+
+      - name: father_s_country_of_birth
+        description: In what country was {your/SP's} father born?
+
+      - name: mother_s_country_of_birth
+        description: In what country was {your/SP's} mother born?
+
+      - name: respondent_sequence_number_SEQN
+        description: Respondent sequence number.
+
+      - name: english_usually_spoken_at_home_ACD010A
+        description: CODE ALL THAT APPLY
+
+      - name: spanish_usually_spoken_at_home_ACD010B
+        description: CODE ALL THAT APPLY
+
+      - name: other_language_s_usually_spoken_at_home_ACD010C
+        description: CODE ALL THAT APPLY
+
+      - name: language_s_read_and_spoken_ACQ020
+        description: HAND CARD ACQ1
+
+      - name: language_s_used_as_child_ACQ030
+        description: HAND CARD ACQ1
+
+      - name: language_s_usually_spoken_at_home_ACD040
+        description: HAND CARD ACQ1
+
+      - name: language_s_usually_used_to_think_ACQ050
+        description: HAND CARD ACQ1
+
+      - name: language_s_usually_used_with_friends_ACQ060
+        description: HAND CARD ACQ1
+
+      - name: father_s_country_of_birth_ACD070
+        description: In what country was {your/SP's} father born?
+
+      - name: mother_s_country_of_birth_ACD080
+        description: In what country was {your/SP's} mother born?
+
+      - name: respondent_sequence_number_SEQN
+        description: Respondent sequence number.
+
+      - name: english_usually_spoken_at_home_ACD010A
+        description: CODE ALL THAT APPLY
+
+      - name: spanish_usually_spoken_at_home_ACD010B
+        description: CODE ALL THAT APPLY
+
+      - name: other_language_s_usually_spoken_at_home_ACD010C
+        description: CODE ALL THAT APPLY
+
+      - name: language_s_read_and_spoken_ACQ020
+        description: HAND CARD ACQ1
+
+      - name: language_s_used_as_child_ACQ030
+        description: HAND CARD ACQ1
+
+      - name: language_s_usually_spoken_at_home_ACD040
+        description: HAND CARD ACQ1
+
+      - name: language_s_usually_used_to_think_ACQ050
+        description: HAND CARD ACQ1
+
+      - name: language_s_usually_used_with_friends_ACQ060
+        description: HAND CARD ACQ1
+
+      - name: father_s_country_of_birth_ACD070
+        description: In what country was {your/SP's} father born?
+
+      - name: mother_s_country_of_birth_ACD080
+        description: In what country was {your/SP's} mother born?

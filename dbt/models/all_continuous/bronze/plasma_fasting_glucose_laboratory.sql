@@ -2,9 +2,9 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN WTSAF2YR IS NULL THEN NULL 
-ELSE SAFE_CAST(WTSAF2YR AS FLOAT64) 
- END as fasting_subsample_2_year_mec_weight, 
+WHEN WTSAFPRP IS NULL THEN NULL 
+ELSE SAFE_CAST(WTSAFPRP AS FLOAT64) 
+ END as fasting_subsample_weight, 
 
 CASE
 WHEN LBXGLU IS NULL THEN NULL 
@@ -17,9 +17,9 @@ ELSE SAFE_CAST(LBDGLUSI AS FLOAT64)
  END as fasting_glucose_mmol_l, 
 
 CASE
-WHEN WTSAFPRP IS NULL THEN NULL 
-ELSE SAFE_CAST(WTSAFPRP AS FLOAT64) 
- END as fasting_subsample_weight, 
+WHEN WTSAF2YR IS NULL THEN NULL 
+ELSE SAFE_CAST(WTSAF2YR AS FLOAT64) 
+ END as fasting_subsample_2_year_mec_weight, 
 
 CASE
 WHEN PHAFSTHR IS NULL THEN NULL 
@@ -43,7 +43,6 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/GLU_J.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_GLU.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/GLU_I.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/GLU_H.htm

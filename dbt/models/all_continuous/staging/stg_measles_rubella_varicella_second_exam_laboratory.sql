@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.measles_rubella_varicella_second_exam_laboratory

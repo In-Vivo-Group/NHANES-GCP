@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.human_papillomavirus_hpv_oral_rinse_laboratory

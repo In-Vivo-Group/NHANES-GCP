@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.melamine_urine_surplus_laboratory

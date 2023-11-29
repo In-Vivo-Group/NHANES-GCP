@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cholesterol_total_hdl_ldl_triglycerides_second_exam_laboratory

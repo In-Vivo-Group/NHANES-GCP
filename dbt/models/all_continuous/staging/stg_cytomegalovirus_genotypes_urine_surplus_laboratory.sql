@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cytomegalovirus_genotypes_urine_surplus_laboratory

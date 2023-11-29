@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.volatile_n_nitrosamine_compounds_vnas_urine_special_sample_laboratory

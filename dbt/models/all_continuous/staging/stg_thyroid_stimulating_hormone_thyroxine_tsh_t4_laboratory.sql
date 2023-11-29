@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.thyroid_stimulating_hormone_thyroxine_tsh_t4_laboratory

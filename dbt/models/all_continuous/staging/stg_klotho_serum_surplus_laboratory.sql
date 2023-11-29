@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.klotho_serum_surplus_laboratory

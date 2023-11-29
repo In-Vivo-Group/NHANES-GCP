@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.acrylamide_glycidamide_special_sample_laboratory

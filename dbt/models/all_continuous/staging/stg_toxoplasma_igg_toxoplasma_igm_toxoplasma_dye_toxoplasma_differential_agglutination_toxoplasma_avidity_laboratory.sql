@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.toxoplasma_igg_toxoplasma_igm_toxoplasma_dye_toxoplasma_differential_agglutination_toxoplasma_avidity_laboratory

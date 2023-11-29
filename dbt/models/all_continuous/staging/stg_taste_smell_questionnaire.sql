@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.taste_smell_questionnaire

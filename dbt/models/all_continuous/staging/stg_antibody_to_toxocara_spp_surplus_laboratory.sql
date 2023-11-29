@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.antibody_to_toxocara_spp_surplus_laboratory

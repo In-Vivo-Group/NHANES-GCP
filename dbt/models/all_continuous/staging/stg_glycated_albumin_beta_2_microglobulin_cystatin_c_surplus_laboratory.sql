@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.glycated_albumin_beta_2_microglobulin_cystatin_c_surplus_laboratory

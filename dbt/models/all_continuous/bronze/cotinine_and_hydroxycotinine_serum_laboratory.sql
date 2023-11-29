@@ -3,7 +3,7 @@ SEQN as respondent_sequence_number, -- could not identify transformation logic
 
 CASE
 WHEN LBXCOT IS NULL THEN NULL 
-ELSE SAFE_CAST(LBXCOT AS STRING) 
+ELSE SAFE_CAST(LBXCOT AS FLOAT64) 
  END as cotinine_serum_ng_ml, 
 
 CASE
@@ -15,7 +15,7 @@ ELSE SAFE_CAST(LBDCOTLC AS STRING)
 
 CASE
 WHEN LBXHCT IS NULL THEN NULL 
-ELSE SAFE_CAST(LBXHCT AS STRING) 
+ELSE SAFE_CAST(LBXHCT AS FLOAT64) 
  END as hydroxycotinine_serum_ng_ml, 
 
 CASE

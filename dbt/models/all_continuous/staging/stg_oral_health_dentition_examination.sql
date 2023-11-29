@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.oral_health_dentition_examination

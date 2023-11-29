@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.varicella_zoster_virus_antibody_surplus_laboratory

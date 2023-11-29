@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.sex_steroid_hormone_serum_laboratory

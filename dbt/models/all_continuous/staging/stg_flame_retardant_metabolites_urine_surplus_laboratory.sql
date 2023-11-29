@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.flame_retardant_metabolites_urine_surplus_laboratory

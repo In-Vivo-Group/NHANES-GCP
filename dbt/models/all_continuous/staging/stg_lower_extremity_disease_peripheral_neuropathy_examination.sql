@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.lower_extremity_disease_peripheral_neuropathy_examination

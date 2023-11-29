@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.erythrocyte_protoporphyrin_laboratory

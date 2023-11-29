@@ -22,14 +22,6 @@ dataset,
 /* 
 Docs utilized to generate this SQL can be found at:
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/HEPB_S_J.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_HEPB_S.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/HEPB_S_I.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/HEPB_S_H.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/HEPB_S_G.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/HEPB_S_F.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/HEPB_S_E.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/HEPB_S_D.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2003-2004/L02HBS_C.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2001-2002/L02HBS_B.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/L02HBS.htm
 */

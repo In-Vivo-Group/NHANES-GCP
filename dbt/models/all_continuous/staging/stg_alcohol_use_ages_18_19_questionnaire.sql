@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.alcohol_use_ages_18_19_questionnaire

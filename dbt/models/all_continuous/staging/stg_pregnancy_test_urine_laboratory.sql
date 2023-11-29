@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.pregnancy_test_urine_laboratory

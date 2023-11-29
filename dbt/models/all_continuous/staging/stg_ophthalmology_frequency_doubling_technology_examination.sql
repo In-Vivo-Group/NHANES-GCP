@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.ophthalmology_frequency_doubling_technology_examination

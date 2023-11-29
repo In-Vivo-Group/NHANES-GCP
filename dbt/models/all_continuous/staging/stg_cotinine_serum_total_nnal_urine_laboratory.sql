@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cotinine_serum_total_nnal_urine_laboratory

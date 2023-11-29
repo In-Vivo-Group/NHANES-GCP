@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.dual_energy_x_ray_absorptiometry_t9_vertebrae_morphology_examination

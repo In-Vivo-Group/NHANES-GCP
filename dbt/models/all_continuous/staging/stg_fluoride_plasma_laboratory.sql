@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.fluoride_plasma_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.shared_exclusion_questions_examination

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.muscle_strength_grip_test_examination

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.dual_energy_x_ray_absorptiometry_android_gynoid_measurements_examination

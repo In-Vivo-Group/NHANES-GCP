@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.air_quality_questionnaire

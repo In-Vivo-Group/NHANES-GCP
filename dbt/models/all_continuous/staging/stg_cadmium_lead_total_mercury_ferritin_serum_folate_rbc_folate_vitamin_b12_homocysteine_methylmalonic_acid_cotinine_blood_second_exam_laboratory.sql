@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cadmium_lead_total_mercury_ferritin_serum_folate_rbc_folate_vitamin_b12_homocysteine_methylmalonic_acid_cotinine_blood_second_exam_laboratory

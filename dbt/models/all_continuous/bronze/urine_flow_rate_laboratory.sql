@@ -58,9 +58,7 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/UCFLOW_J.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_UCFLOW.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/UCFLOW_I.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/UCFLOW_H.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/UCFLOW_G.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/UCFLOW_F.htm

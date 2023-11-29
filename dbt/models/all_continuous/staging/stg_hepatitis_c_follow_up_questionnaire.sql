@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.hepatitis_c_follow_up_questionnaire

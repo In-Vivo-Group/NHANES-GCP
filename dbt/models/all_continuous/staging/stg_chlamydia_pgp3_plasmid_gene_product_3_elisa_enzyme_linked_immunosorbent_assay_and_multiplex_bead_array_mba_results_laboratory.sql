@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.chlamydia_pgp3_plasmid_gene_product_3_elisa_enzyme_linked_immunosorbent_assay_and_multiplex_bead_array_mba_results_laboratory

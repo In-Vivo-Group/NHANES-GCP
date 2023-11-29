@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.polyfluoroalkyl_chemicals_pooled_samples_surplus_laboratory

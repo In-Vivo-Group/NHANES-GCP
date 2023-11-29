@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.terpenes_serum_surplus_laboratory

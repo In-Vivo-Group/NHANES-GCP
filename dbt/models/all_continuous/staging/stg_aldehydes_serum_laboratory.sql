@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.aldehydes_serum_laboratory

@@ -33,6 +33,4 @@ https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/HEPE_J.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_HEPE.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/HEPE_I.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/HEPE_H.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/HEPE_G.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/HEPE_F.htm
 */

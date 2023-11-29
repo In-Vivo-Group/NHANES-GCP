@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.organophosphate_insecticides_diakyl_phosphate_metabolites_urine_laboratory

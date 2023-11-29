@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.miscellaneous_pain_questionnaire

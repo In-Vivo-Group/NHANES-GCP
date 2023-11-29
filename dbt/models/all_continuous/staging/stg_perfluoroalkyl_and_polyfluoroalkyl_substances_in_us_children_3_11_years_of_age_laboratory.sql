@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.perfluoroalkyl_and_polyfluoroalkyl_substances_in_us_children_3_11_years_of_age_laboratory
