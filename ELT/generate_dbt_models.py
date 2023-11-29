@@ -1,58 +1,84 @@
+import logging
+import os
 import re
 import time
 
 import pandas as pd
 import requests
-import sqlfluff
-from bs4 import BeautifulSoup
-
 from all_continuous_nhanes_schemas import table_schemas
+from bs4 import BeautifulSoup
 from utils import generate_filename
 
-with open("bq_tables.txt", "r") as f:
-    tables = f.readlines()
+# Constants
+PROJECT_ID = os.getenv("PROJECT_ID")
+TABLES_FILE_PATH = "all_continuous_nhanes_schemas.py"
+SCHEMA_YAML_PATH = "../dbt/models/all_continuous/bronze/schema.yml"
+STG_SQL_PATH = "../dbt/models/all_continuous/staging/"
+BRONZE_SQL_PATH = "../dbt/models/all_continuous/bronze/"
+SKIP_COLUMNS = ["DSDSUPID"]
 
-tables = [t.strip() for t in tables if "---" not in t and t != "nhanes_file_metadata"]
-
-skip_columns = ["DSDSUPID"]
-
-with open(f"../dbt/models/all_continuous/bronze/schema.yml", "w") as f:
-    f.write(
-        f"""version: 2
-
-models:
-"""
-    )
+# Configure logging
+logging.basicConfig(level=logging.INFO)
 
 
-start_time = time.time()
+def read_tables():
+    """
+    Reads table names returns a list of table names.
 
-for table_name in tables:
-    if table_name == "nhanes_file_metadata":
-        continue
-    table_schema = table_schemas[table_name]
-    column_type_dict = {
-        d["name"]: d["type"] for d in table_schema if d != "nhanes_file_metadata"
-    }
+    Returns:
+        list: A list of table names read from the file.
+    """
+    
+    return list(sorted(list(set([s for s in table_schemas.keys() if s != "nhanes_file_metadata"]))))
 
+
+def write_initial_yaml_schema(file_path):
+    """
+    Writes the initial YAML schema to a specified file.
+
+    Args:
+        file_path (str): The path of the YAML file where the schema will be written.
+    """
+    with open(file_path, "w") as f:
+        f.write("version: 2\n\nmodels:\n")
+
+
+def scrape_variable_definitions(url):
+    """
+    Scrapes variable definitions from a given URL using BeautifulSoup.
+
+    Args:
+        url (str): The URL from which to scrape data.
+
+    Returns:
+        BeautifulSoup object: Parsed HTML content from the URL, or None if the request fails.
+    """
+    time.sleep(1)
     try:
-        data_df = pd.read_gbq(
-            f"""SELECT DISTINCT doc_file_url, start_year, end_year
-            FROM nhanes.{table_name}
-            WHERE doc_file_url IS NOT NULL
-            ORDER BY start_year DESC
-            """,
-            project_id="nhanes-genai",
-            dialect="standard",
-        )
+        response = requests.get(url)
+        soup = BeautifulSoup(response.text, "lxml")
+        return soup
+    except requests.exceptions.RequestException as e:
+        logging.error(f"Request failed for {url}: {e}")
+        return None
 
-    except Exception as ex:
-        print(ex)
-        print(table_name)
+
+def generate_variable_definitions(data_df, table_schema, table_name, column_type_dict):
+    """
+    Generates variable definitions by scraping web pages.
+
+    Args:
+        data_df (DataFrame): DataFrame containing URLs to scrape.
+        table_schema (dict): The schema of the table for which variable definitions are being generated.
+        table_name (str): Name of the table for which variable definitions are being generated.
+        column_type_dict (dict): Data types of the columns in the table.
+
+    Returns:
+        tuple: A tuple containing the component description and a list of variable definitions.
+    """
 
     variable_definitions = []
     component_description = ""
-
     for url in data_df["doc_file_url"].tolist():
         time.sleep(1)
         try:
@@ -68,7 +94,7 @@ for table_name in tables:
             # r = requests.get(url)
             # soup = BeautifulSoup(r.text, 'lxml')
             # if not soup.find('div',id='Codebook'):
-            print(f"Unable to find codebook for {table_name} in {url}")
+            logging.info(f"Unable to find codebook for {table_name} in {url}")
             continue
 
         else:
@@ -125,7 +151,7 @@ for table_name in tables:
                 if (
                     variable_name in column_type_dict.keys()
                     and variable_name not in [n["name"] for n in variable_definitions]
-                    and variable_name not in skip_columns
+                    and variable_name not in SKIP_COLUMNS
                 ):
                     if table:
                         headers = []
@@ -269,13 +295,25 @@ for table_name in tables:
                                 "sql"
                             ] = f"{variable_name} as {variable_name}, -- could not automatically decode name of variable or transformation logic \n"
                 else:
-                    # variable_definition['sql'] = f"-- {variable_name} as {variable_name}, -- not included in table but included in docs without transformation logic \n"
-                    # print(f"Passing on {variable_name}")
                     pass
 
                 if variable_definition:
                     variable_definitions.append(variable_definition)
+    return component_description, variable_definitions
 
+
+def generate_sql_file(variable_definitions, table_name, data_df):
+    """
+    Generates an SQL file from the variable definitions for a specific table.
+
+    Args:
+        variable_definitions (list): A list of dictionaries containing variable definitions.
+        table_name (str): The name of the table for which the SQL file is being generated.
+        data_df (dataframe): Table containing links to documentation files.
+
+    Returns:
+        str: A string containing the generated SQL commands.
+    """
     stg_alias = f"stg_{table_name}"
     sql = """SELECT
 """
@@ -303,8 +341,22 @@ Docs utilized to generate this SQL can be found at:
 """.format(
         stg_alias, "\n".join(data_df["doc_file_url"].tolist())
     )
+    return sql
 
-    with open(f"../dbt/models/all_continuous/bronze/schema.yml", "a") as f:
+
+def append_to_yaml_schema(
+    file_path, table_name, component_description, variable_definitions
+):
+    """
+    Appends information about a table and its columns to an existing YAML schema file.
+
+    Args:
+        file_path (str): Path to the YAML schema file.
+        table_name (str): Name of the table to append to the schema.
+        component_description (str): Description of the table component.
+        variable_definitions (list): List of variable definitions for the table columns.
+    """
+    with open(file_path, "a") as f:
         f.write(
             f"""
   - name: {table_name}
@@ -321,12 +373,76 @@ Docs utilized to generate this SQL can be found at:
 """
                 )
 
-    with open(f"../dbt/models/all_continuous/staging/{stg_alias}.sql", "w") as f:
+
+def write_stg_sql_file(file_path, table_name):
+    """
+    Writes a dbt staging SQL file for staging a specific NHANES table.
+
+    Args:
+        file_path (str): Path to write the SQL file.
+        table_name (str): Name of the table for which the SQL file is being written.
+    """
+    with open(file_path, "w") as f:
         f.write(f"SELECT * FROM nhanes.{table_name}")
 
-    with open(f"../dbt/models/all_continuous/bronze/{table_name}.sql", "w") as f:
+
+def write_model_sql_file(sql, file_path):
+    """
+    Writes the bronze-level SQL model to a file.
+
+    Args:
+        sql (str): The SQL command(s) to be written to the file.
+        file_path (str): The path to the file where the SQL model will be written.
+    """
+    with open(file_path, "w") as f:
         f.write(sql)
 
-    print(f"Finished SQL generation for {table_name}")
 
-print(f"Entire proceess took {time.time() - start_time} seconds")
+def main():
+    """
+    Main function to orchestrate the reading, processing, and writing of table schema and SQL files.
+    """
+    start_time = time.time()
+    tables = read_tables()
+    write_initial_yaml_schema(SCHEMA_YAML_PATH)
+
+    for table_name in tables:
+        if table_name == "nhanes_file_metadata":
+            continue
+
+        table_schema = table_schemas[table_name]
+        column_type_dict = {d["name"]: d["type"] for d in table_schema}
+
+        try:
+            data_df = pd.read_gbq(
+                f"""SELECT DISTINCT doc_file_url, start_year, end_year
+                FROM nhanes.{table_name}
+                WHERE doc_file_url IS NOT NULL
+                ORDER BY start_year DESC
+                """,
+                project_id=PROJECT_ID,
+                dialect="standard",
+            )
+
+        except Exception as ex:
+            print(ex)
+            print(table_name)
+            raise
+
+        # Further processing...
+        component_description, variable_definitions = generate_variable_definitions(
+            data_df, table_schema, table_name, column_type_dict
+        )
+        sql = generate_sql_file(variable_definitions, table_name, data_df)
+        append_to_yaml_schema(
+            SCHEMA_YAML_PATH, table_name, component_description, variable_definitions
+        )
+        write_stg_sql_file(STG_SQL_PATH + f"stg_{table_name}.sql", table_name)
+        write_model_sql_file(sql, BRONZE_SQL_PATH + f"{table_name}.sql")
+        logging.info(f"Finished SQL generation for {table_name}")
+
+    logging.info(f"Entire process took {time.time() - start_time} seconds")
+
+
+if __name__ == "__main__":
+    main()
