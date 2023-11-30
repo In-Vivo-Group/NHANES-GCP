@@ -5,7 +5,7 @@ CASE
     WHEN SAFE_CAST(ROUND(SAFE_CAST(DXAFMRST AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Femur scan completed, all data are valid' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DXAFMRST AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Femur scan completed, but all data are invalid' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DXAFMRST AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Femur not scanned, pregnant' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(DXAFMRST AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Femur not scanned, weight > 450 lbs' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DXAFMRST AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Femur not scanned, weight > 300 lbs' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DXAFMRST AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'Femur not scanned, other reason' -- categorize numeric values
 WHEN DXAFMRST IS NULL THEN NULL 
 ELSE SAFE_CAST(DXAFMRST AS STRING) 
@@ -13,7 +13,8 @@ ELSE SAFE_CAST(DXAFMRST AS STRING)
 
 CASE
     WHEN SAFE_CAST(ROUND(SAFE_CAST(DXXFMBCC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'Valid data' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(DXXFMBCC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Removable or non-removable objects' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DXXFMBCC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Jewelry or other objects not removed' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(DXXFMBCC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Non-removable objects such as implants' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DXXFMBCC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Excessive x-ray noise due to obesity' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DXXFMBCC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Body parts out of scan region' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(DXXFMBCC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'Positioning problem' -- categorize numeric values
@@ -119,5 +120,7 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/DXXFEM_H.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/DXXFEM_F.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/DXXFEM_E.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DXXFEM_D.htm
 */

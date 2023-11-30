@@ -2,6 +2,35 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
+    WHEN WTSSBJ2Y IS NULL THEN NULL 
+ELSE SAFE_CAST(WTSSBJ2Y AS FLOAT64) 
+ END as surplus_specimen_b_17_18_2_yr_weights, 
+
+CASE
+    WHEN SSIPPP IS NULL THEN NULL 
+ELSE SAFE_CAST(SSIPPP AS FLOAT64) 
+ END as lab_2_isopropyl_phenyl_phenyl_phosphateug_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SSIPPPL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SSIPPPL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN SSIPPPL IS NULL THEN NULL 
+ELSE SAFE_CAST(SSIPPPL AS STRING) 
+ END as lab_2_isopropyl_phenyl_phenyl_phosphate_cd, 
+
+CASE
+    WHEN SSBPPP IS NULL THEN NULL 
+ELSE SAFE_CAST(SSBPPP AS FLOAT64) 
+ END as lab_4_tert_butyl_phenyl_phenyl_phosphateug_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(SSBPPPL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(SSBPPPL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN SSBPPPL IS NULL THEN NULL 
+ELSE SAFE_CAST(SSBPPPL AS STRING) 
+ END as lab_4_tert_butyl_phenyl_phenyl_phosphate_cd, 
+
+CASE
     WHEN WTSSBI2Y IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSSBI2Y AS FLOAT64) 
  END as surplus_specimen_b_15_16_2_year_weights, 
@@ -103,28 +132,9 @@ ELSE SAFE_CAST(SSTBBAL AS STRING)
  END as lab_2_3_4_5tetrabromobenzoicacid_ug_l_cmt_cd, 
 
 CASE
-    WHEN SSIPPP IS NULL THEN NULL 
-ELSE SAFE_CAST(SSIPPP AS FLOAT64) 
- END as lab_2_isopropyl_phenyl_phenyl_phosphateug_l, 
-
-CASE
-    WHEN SAFE_CAST(ROUND(SAFE_CAST(SSIPPPL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SSIPPPL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN '1 Below lower detection limit' -- categorize numeric values
-WHEN SSIPPPL IS NULL THEN NULL 
-ELSE SAFE_CAST(SSIPPPL AS STRING) 
- END as lab_2_isopropyl_phenyl_phenyl_phosphate_cd, 
-
-CASE
-    WHEN SSBPPP IS NULL THEN NULL 
-ELSE SAFE_CAST(SSBPPP AS FLOAT64) 
- END as lab_4_tert_butyl_phenyl_phenyl_phosphateug_l, 
-
-CASE
-    WHEN SAFE_CAST(ROUND(SAFE_CAST(SSBPPPL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(SSBPPPL AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
-WHEN SSBPPPL IS NULL THEN NULL 
-ELSE SAFE_CAST(SSBPPPL AS STRING) 
- END as lab_4_tert_butyl_phenyl_phenyl_phosphate_cd, 
+    WHEN WTSSBG2Y IS NULL THEN NULL 
+ELSE SAFE_CAST(WTSSBG2Y AS FLOAT64) 
+ END as surplus_specimen_b_11_12_2_year_weights, 
 
 start_year,
 end_year,
@@ -138,5 +148,7 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SSFR_J.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/SSFR_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/SSFR_G.htm
 */

@@ -84,7 +84,7 @@ ELSE SAFE_CAST(LBXMCHSI AS FLOAT64)
 CASE
     WHEN LBXMC IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXMC AS FLOAT64) 
- END as mchc_g_dl, 
+ END as mean_cell_hgb_conc_g_dl, 
 
 CASE
     WHEN LBXRDW IS NULL THEN NULL 
@@ -113,11 +113,6 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/CBC_H.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/CBC_G.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/CBC_F.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/CBC_E.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2003-2004/L25_C.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2001-2002/L25_B.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/LAB25.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/CBC_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/CBC_D.htm
 */

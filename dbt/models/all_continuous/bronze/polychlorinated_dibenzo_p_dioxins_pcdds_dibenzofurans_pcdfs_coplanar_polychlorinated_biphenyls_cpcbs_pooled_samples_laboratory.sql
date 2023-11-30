@@ -12,13 +12,12 @@ ELSE SAFE_CAST(RIAGENDR AS STRING)
  END as gender, 
 
 CASE
-    WHEN SAFE_CAST(ROUND(SAFE_CAST(RIDRETH1 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Mexican American' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(RIDRETH1 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Other Hispanic' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(RIDRETH1 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Non-Hispanic White' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(RIDRETH1 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Non-Hispanic Black' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(RIDRETH1 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'Other Race, Including Multiracial' -- categorize numeric values
-WHEN RIDRETH1 IS NULL THEN NULL 
-ELSE SAFE_CAST(RIDRETH1 AS STRING) 
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(ETHNICTY AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Non-Hispanic White' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(ETHNICTY AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Non-Hispanic Black' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(ETHNICTY AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Mexican American' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(ETHNICTY AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Other Hispanic & Non-Hispanic Multi-Racial' -- categorize numeric values
+WHEN ETHNICTY IS NULL THEN NULL 
+ELSE SAFE_CAST(ETHNICTY AS STRING) 
  END as ethnicity_recode, 
 
 CASE
@@ -38,7 +37,7 @@ ELSE SAFE_CAST(RIANSMP AS FLOAT64)
 CASE
     WHEN WTSMSMPA IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSMSMPA AS FLOAT64) 
- END as sum_of_adjusted_subsample_weights, 
+ END as adjust_sum_sampling_weights_in_same_pool, 
 
 CASE
     WHEN LBCD01 IS NULL THEN NULL 
@@ -88,12 +87,12 @@ ELSE SAFE_CAST(LBCF03 AS FLOAT64)
 CASE
     WHEN LBCF04 IS NULL THEN NULL 
 ELSE SAFE_CAST(LBCF04 AS FLOAT64) 
- END as lab_1_2_3_4_7_8_hcxdf_fg_g, 
+ END as lab_1_2_3_4_7_8_hexachlorofuran_hcxdf_fg_g, 
 
 CASE
     WHEN LBCF05 IS NULL THEN NULL 
 ELSE SAFE_CAST(LBCF05 AS FLOAT64) 
- END as lab_1_2_3_6_7_8_hxcdf_fg_g, 
+ END as lab_1_2_3_6_7_8_hexachlorofuran_hxcdf_fg_g, 
 
 CASE
     WHEN LBCF06 IS NULL THEN NULL 
@@ -163,12 +162,12 @@ ELSE SAFE_CAST(LBCD04LA AS FLOAT64)
 CASE
     WHEN LBCD05LA IS NULL THEN NULL 
 ELSE SAFE_CAST(LBCD05LA AS FLOAT64) 
- END as lab_1_2_3_4_6_7_8_hpcdd_lipid_adjust_pg_g, 
+ END as lab_1_2_3_4_6_7_8_hpcdd_lipid_adjusted_pg_g, 
 
 CASE
     WHEN LBCD07LA IS NULL THEN NULL 
 ELSE SAFE_CAST(LBCD07LA AS FLOAT64) 
- END as lab_1_2_3_4_6_7_8_9_ocdd_lipid_adjust_pg_g, 
+ END as lab_1_2_3_4_6_7_8_9_ocdd_lipid_adjusted_pg_g, 
 
 CASE
     WHEN LBCF01LA IS NULL THEN NULL 
@@ -183,7 +182,7 @@ ELSE SAFE_CAST(LBCF02LA AS FLOAT64)
 CASE
     WHEN LBCF03LA IS NULL THEN NULL 
 ELSE SAFE_CAST(LBCF03LA AS FLOAT64) 
- END as lab_2_3_4_7_8_pncdf_lipid_adjust_pg_g, 
+ END as lab_2_3_4_7_8_pncdf_lipid_adjusted_pg_g, 
 
 CASE
     WHEN LBCF04LA IS NULL THEN NULL 
@@ -208,22 +207,22 @@ ELSE SAFE_CAST(LBCF07LA AS FLOAT64)
 CASE
     WHEN LBCF08LA IS NULL THEN NULL 
 ELSE SAFE_CAST(LBCF08LA AS FLOAT64) 
- END as lab_1_2_3_4_6_7_8_hpcdf_lipid_adjust_pg_g, 
+ END as lab_1_2_3_4_6_7_8_hpcdf_lipid_adjusted_pg_g, 
 
 CASE
     WHEN LBCF09LA IS NULL THEN NULL 
 ELSE SAFE_CAST(LBCF09LA AS FLOAT64) 
- END as lab_1_2_3_4_7_8_9_hpcdf_lipid_adjust_pg_g, 
+ END as lab_1_2_3_4_7_8_9_hpcdf_lipid_adjusted_pg_g, 
 
 CASE
     WHEN LBCF10LA IS NULL THEN NULL 
 ELSE SAFE_CAST(LBCF10LA AS FLOAT64) 
- END as lab_1_2_3_4_6_7_8_9_ocdf_lipid_adjust_pg_g, 
+ END as lab_1_2_3_4_6_7_8_9_ocdf_lipid_adjusted_pg_g, 
 
 CASE
     WHEN LBCHXCLA IS NULL THEN NULL 
 ELSE SAFE_CAST(LBCHXCLA AS FLOAT64) 
- END as lab_3_3_4_4_5_5_hxcb_lipid_adjust_pg_g, 
+ END as lab_3_3_4_4_5_5_hxcb_lipid_adjusted_pg_g, 
 
 CASE
     WHEN LBCPCBLA IS NULL THEN NULL 
@@ -380,15 +379,6 @@ WHEN LBDTCDLC IS NULL THEN NULL
 ELSE SAFE_CAST(LBDTCDLC AS STRING) 
  END as lab_2_3_7_8_tcdd_comment_code, 
 
-CASE
-    WHEN SAFE_CAST(ROUND(SAFE_CAST(ETHNICTY AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Non-Hispanic White' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(ETHNICTY AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Non-Hispanic Black' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(ETHNICTY AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Mexican American' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(ETHNICTY AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Other Hispanic & Non-Hispanic Multi-Racial' -- categorize numeric values
-WHEN ETHNICTY IS NULL THEN NULL 
-ELSE SAFE_CAST(ETHNICTY AS STRING) 
- END as ethnicity_recode_ETHNICTY, 
-
 start_year,
 end_year,
 last_updated,
@@ -401,6 +391,5 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/DOXPOL_F.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/DOXPOL_E.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/DOXPOL_D.htm
 */

@@ -14350,22 +14350,22 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "start_year",
-    "type": "STRING"
+    "type": "INTEGER"
   },
   {
     "mode": "NULLABLE",
     "name": "end_year",
-    "type": "STRING"
+    "type": "INTEGER"
   },
   {
     "mode": "NULLABLE",
     "name": "last_updated",
-    "type": "STRING"
+    "type": "TIMESTAMP"
   },
   {
     "mode": "NULLABLE",
     "name": "published_date",
-    "type": "STRING"
+    "type": "DATE"
   },
   {
     "mode": "NULLABLE",
@@ -21882,22 +21882,22 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "start_year",
-    "type": "INTEGER"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
     "name": "end_year",
-    "type": "INTEGER"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
     "name": "last_updated",
-    "type": "TIMESTAMP"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
     "name": "published_date",
-    "type": "DATE"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
@@ -33598,7 +33598,7 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "DSDSUPID",
-    "type": "INTEGER"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
@@ -33817,16 +33817,6 @@ table_schemas = {
   },
   {
     "mode": "NULLABLE",
-    "name": "survey",
-    "type": "STRING"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "survey_type",
-    "type": "STRING"
-  },
-  {
-    "mode": "NULLABLE",
     "name": "start_year",
     "type": "INTEGER"
   },
@@ -33917,7 +33907,7 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "DSDSUPID",
-    "type": "INTEGER"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
@@ -34132,16 +34122,6 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "filename",
-    "type": "STRING"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "survey",
-    "type": "STRING"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "survey_type",
     "type": "STRING"
   },
   {
@@ -34898,7 +34878,7 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "DSDSUPID",
-    "type": "FLOAT"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
@@ -35017,7 +34997,7 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "DSDSUPID",
-    "type": "INTEGER"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
@@ -35472,16 +35452,6 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "filename",
-    "type": "STRING"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "survey",
-    "type": "STRING"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "survey_type",
     "type": "STRING"
   },
   {
@@ -38019,22 +37989,22 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "start_year",
-    "type": "STRING"
+    "type": "INTEGER"
   },
   {
     "mode": "NULLABLE",
     "name": "end_year",
-    "type": "STRING"
+    "type": "INTEGER"
   },
   {
     "mode": "NULLABLE",
     "name": "last_updated",
-    "type": "STRING"
+    "type": "TIMESTAMP"
   },
   {
     "mode": "NULLABLE",
     "name": "published_date",
-    "type": "STRING"
+    "type": "DATE"
   },
   {
     "mode": "NULLABLE",
@@ -42898,22 +42868,22 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "start_year",
-    "type": "STRING"
+    "type": "INTEGER"
   },
   {
     "mode": "NULLABLE",
     "name": "end_year",
-    "type": "STRING"
+    "type": "INTEGER"
   },
   {
     "mode": "NULLABLE",
     "name": "last_updated",
-    "type": "STRING"
+    "type": "TIMESTAMP"
   },
   {
     "mode": "NULLABLE",
     "name": "published_date",
-    "type": "STRING"
+    "type": "DATE"
   },
   {
     "mode": "NULLABLE",
@@ -56669,22 +56639,22 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "start_year",
-    "type": "INTEGER"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
     "name": "end_year",
-    "type": "INTEGER"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
     "name": "last_updated",
-    "type": "TIMESTAMP"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
     "name": "published_date",
-    "type": "DATE"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
@@ -60463,22 +60433,22 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "start_year",
-    "type": "INTEGER"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
     "name": "end_year",
-    "type": "INTEGER"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
     "name": "last_updated",
-    "type": "TIMESTAMP"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
     "name": "published_date",
-    "type": "DATE"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
@@ -60670,22 +60640,22 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "start_year",
-    "type": "STRING"
+    "type": "INTEGER"
   },
   {
     "mode": "NULLABLE",
     "name": "end_year",
-    "type": "STRING"
+    "type": "INTEGER"
   },
   {
     "mode": "NULLABLE",
     "name": "last_updated",
-    "type": "STRING"
+    "type": "TIMESTAMP"
   },
   {
     "mode": "NULLABLE",
     "name": "published_date",
-    "type": "STRING"
+    "type": "DATE"
   },
   {
     "mode": "NULLABLE",
@@ -61402,22 +61372,22 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "start_year",
-    "type": "STRING"
+    "type": "INTEGER"
   },
   {
     "mode": "NULLABLE",
     "name": "end_year",
-    "type": "STRING"
+    "type": "INTEGER"
   },
   {
     "mode": "NULLABLE",
     "name": "last_updated",
-    "type": "STRING"
+    "type": "TIMESTAMP"
   },
   {
     "mode": "NULLABLE",
     "name": "published_date",
-    "type": "STRING"
+    "type": "DATE"
   },
   {
     "mode": "NULLABLE",
@@ -93340,12 +93310,12 @@ table_schemas = {
   {
     "mode": "NULLABLE",
     "name": "PAXDAYD",
-    "type": "FLOAT"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",
     "name": "PAXDAYWD",
-    "type": "FLOAT"
+    "type": "STRING"
   },
   {
     "mode": "NULLABLE",

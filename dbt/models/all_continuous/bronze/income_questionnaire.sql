@@ -2,21 +2,6 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-    WHEN INDFMMPI IS NULL THEN NULL 
-ELSE SAFE_CAST(INDFMMPI AS FLOAT64) 
- END as family_monthly_poverty_level_index, 
-
-CASE
-    WHEN SAFE_CAST(ROUND(SAFE_CAST(INDFMMPC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Monthly poverty level index =1.30' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(INDFMMPC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '1.30 < Monthly poverty level index = 1.85' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(INDFMMPC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Monthly poverty level index >1.85' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(INDFMMPC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
-WHEN SAFE_CAST(ROUND(SAFE_CAST(INDFMMPC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
-WHEN INDFMMPC IS NULL THEN NULL 
-ELSE SAFE_CAST(INDFMMPC AS STRING) 
- END as family_monthly_poverty_level_category, 
-
-CASE
     WHEN SAFE_CAST(ROUND(SAFE_CAST(INQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(INQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(INQ020 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
@@ -117,6 +102,21 @@ ELSE SAFE_CAST(IND235 AS STRING)
  END as monthly_family_income, 
 
 CASE
+    WHEN INDFMMPI IS NULL THEN NULL 
+ELSE SAFE_CAST(INDFMMPI AS FLOAT64) 
+ END as family_monthly_poverty_level_index, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(INDFMMPC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Monthly poverty level index <= 1.30' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(INDFMMPC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '1.30 < Monthly poverty level index <= 1.85' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(INDFMMPC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Monthly poverty level index > 1.85' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(INDFMMPC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(INDFMMPC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN INDFMMPC IS NULL THEN NULL 
+ELSE SAFE_CAST(INDFMMPC AS STRING) 
+ END as family_monthly_poverty_level_category, 
+
+CASE
     WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(INQ300 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(INQ300 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(INQ300 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -188,8 +188,8 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_INQ.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/INQ_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_INQ.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/INQ_I.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/INQ_H.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/INQ_G.htm

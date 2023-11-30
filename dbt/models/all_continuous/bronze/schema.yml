@@ -5284,7 +5284,7 @@ models:
         description: Audiometry Subsample 4 Year Mec Weight
 
   - name: audiometry_wideband_reflectance_examination
-    description: The NHANES program suspended field operations in March 2020 due to the coronavirus disease 2019 COVID-19 pandemic. As a result, data collection for the NHANES 2019-2020 cycle was not completed and the collected data are not nationally representative. Therefore, data collected from 2019 to March 2020 were combined with data from the NHANES 2017-2018 cycle to form a nationally representative sample of NHANES 2017-March 2020 pre-pandemic data. These data are available to the public. Please refer to the Analytic Notes section for more details on the use of the data.  
+    description: The NHANES 2017-2018 audiometry exam component includes one main audiometry data file AUXJ and three middle ear testing data files. This wideband reflectance data file AUXWBRJ is one of three middle ear testing to evaluate the functional health of the middle ear system. The wideband reflectance measures the transmission of sound through the eardrum across a range of frequencies while ear canal pressure remains constant. The propose of the present data file is to provide the underlying raw data curves for this set of wideband reflectance, which will allow analysts to display actual wideband absorbance curves, make qualitative judgments regarding test adequacy and interpretation, and to perform quantitative analyses. 
     columns:
 
       - name: respondent_sequence_number
@@ -9409,7 +9409,7 @@ models:
         description: Nucleated red blood cells
 
   - name: complete_blood_count_with_5_part_differential_whole_blood_laboratory
-    description: The objectives ofthe complete blood count CBC with 5-Part Differential in whole blood component are to 1 Provide data for monitoring secular trends in measures of nutritional status in the U.S. population 2 Evaluate the effect of peoples habits and behaviors, such as physical activity and the use of alcohol, tobacco, and dietary supplements on peoples nutritional status and 3 Evaluate the effect of changes in nutrition and public health policies, - including welfare reform legislation, food fortification policy, and child nutrition programs, - on the nutritional status of the U.S. population.
+    description: The complete blood count CBC with 5-part differential counts red blood cells RBCs, white blood cells WBCs and platelets measures hemoglobin estimates the red cells volume and sorts the WBCs into subtypes. A CBC is a routine blood test used to evaluate your overall health and detect a wide range of disorders, including anemia, infection, and leukemia.
     columns:
 
       - name: respondent_sequence_number
@@ -9440,7 +9440,7 @@ models:
         description: Monocyte number 1000 cellsuL
 
       - name: segmented_neutrophils_num_1000_cell_ul
-        description: Segmented neutrophils num 1000 celluL
+        description: Segmented neutrophils number 1000 celluL
 
       - name: eosinophils_number_1000_cells_ul
         description: Eosinophils number 1000 cellsuL
@@ -9463,8 +9463,8 @@ models:
       - name: mean_cell_hemoglobin_pg
         description: Mean cell hemoglobin pg
 
-      - name: mchc_g_dl
-        description: Mean cell hemoglobin concentration gdL
+      - name: mean_cell_hgb_conc_g_dl
+        description: Mean Cell Hemoglobin Concentration gdL
 
       - name: red_cell_distribution_width
         description: Red cell distribution width 
@@ -9907,200 +9907,242 @@ models:
         description: How often do you buy organic food  Would you say always, most of the time, sometimes, or rarely
 
   - name: consumer_behavior_phone_follow_up_module_child_questionnaire
-    description: The NHANES program suspended field operations in March 2020 due to the coronavirus disease 2019 COVID-19 pandemic. As a result, data collection for the NHANES 2019-2020 cycle was not completed and the collected data are not nationally representative. Therefore, data collected from 2019 to March 2020 were combined with data from the NHANES 2017-2018 cycle to form a nationally representative sample of NHANES 2017-March 2020 pre-pandemic data. These data are available to the public. Please refer to the Analytic Notes section for more details on the use of the data.
+    description: The Consumer Behavior Phone Follow-up Module  Child CBQPFC section provides interview data for participants 1-15 years old on various dietary related consumer behavior topics at the family level. Topics included in the section are 
     columns:
 
       - name: respondent_sequence_number
         description: Respondent sequence number.
 
       - name: hand_card_booklet_available
-        description: Do you have the green hand card booklet It is in the same bag as the food measuring guides you used for yourwe used for SPs dietary phone interview. Ill wait while you locate it. Do you have it
+        description: You will need the green hand card booklet that is in the same bag as the food measuring guides we used for your dietary phone interview.  Ill wait while you locate it.  Do you have it
 
       - name: a_package_with_food_label_available
         description: Lets go ahead with the interview anyway.  Do you have a cereal box, can or package of food with a food label on the back or the side that you can use for this interview  Ill wait while you locate it.
 
-      - name: buy_food_from_fast_food_pizza_places
-        description: CAPI INSTRUCTION If CBQ502  2, 7, OR 9, REPLACE TEXT IN THE BRACES WITH THE FOLLOWINGOk, lets go ahead with the interview. I am going to ask you about eating foods and beverages from different places. The types of places include  fast food or pizza places restaurants with waiter or waitress service all-you-can-eat buffets places that sells mostly beverages, such as a coffee shop or juice bar, movie theatres, sports arenas, or other places of recreation grocery stores and convenience stores. We will start with foods or beverages from fast food or pizza places, then Ill ask you about each of the other places.
+      - name: eat_at_fast_food_pizza_places
+        description: CAPI INSTRUCTION If CBQ.5032, 7, OR 9,REPLACE TEXT IN THE BRACES WITH THE FOLLOWINGOk, lets go ahead with the interview.
 
-      - name: notice_calories_at_fast_food_pizza_place
-        description: At the last fast food or pizza place you bought foods or beverages, did you notice any calorie information on the menu
+      - name: fast_food_pizza_cheaper_than_cooking
+        description: Im going to read several reasons why you might buy food from fast food or pizza places instead of cooking at home.First, do you buy food from fast food or pizza places because it is cheaper than cooking at home
 
-      - name: use_calorie_info_at_fast_food_pizza
-        description: Did you use the information in deciding what to buy
+      - name: fast_food_pizza_more_nutritious
+        description: Do you buy food from fast food or pizza places because the foods there are more nutritious than foods cooked at home
 
-      - name: eat_from_restaurant_w_waiter
-        description: In the past 12 months, did you eat in or get take-out from a restaurant with waiter or waitress service
+      - name: fast_food_pizza_tastes_better
+        description: Do you buy food from fast food or pizza places because the foods there taste better than foods cooked at home
 
-      - name: notice_calories_at_restaurant_w_waiter
-        description: The last time you ate or got take-out from a restaurant with a waiter or waitress, did you notice any calorie information on the menu
+      - name: fast_food_pizza_more_convenient
+        description: Do you buy food from fast food or pizza places because it is more convenient than cooking at home
 
-      - name: use_calorie_info_at_restaurant_w_waiter
-        description: Did you use the information in deciding what to order
+      - name: eat_at_fast_food_places_to_socialize
+        description: Do you eat at fast food or pizza places instead of cooking at home to socialize with family and friends
 
-      - name: eat_at_all_you_can_eat_buffet
-        description: In the past 12 months, did you eat at an all-you-can-eat buffet style restaurant
+      - name: saw_nutrition_info_on_fast_food_menu
+        description: The last time when you ate out or bought food at a fast-food or pizza place, did you see nutrition or health information about any foods on the menu
 
-      - name: notice_calorie_info_at_buffet
-        description: The last time you ate at an all-you-can-eat buffet style restaurant, did you notice any calorie information on the menu
+      - name: used_nutrition_info_to_choose_fast_foods
+        description: Did you use the information in deciding which foods to buy
 
-      - name: use_calorie_information_at_buffet
-        description: Did you use the information in deciding what to eat
+      - name: would_use_fast_food_nutrition_info
+        description: HAND CARD  1CAPI INSTRUCTION Do NOT display the text in braces if CBQ.5022.
 
-      - name: buy_from_coffee_shop_juice_bar
-        description: In the past 12 months, did you buy any foods or beverages at a place that sells mostly beverages such as a coffee shop or juice bar
+      - name: eat_at_restaurants_w_waiter
+        description: For the following questions, please answer yes or no.  In the past 12 months, did you eat at a restaurant with waiter or waitress service
 
-      - name: notice_calorie_info_at_coffee_shop
-        description: The last time you bought foods or beverages at a place that sells mostly beverages, did you notice any calorie information on the menu
+      - name: restaurants_cheaper_than_cooking
+        description: Im going to read several reasons why you might eat at a restaurant with a waiter or waitress instead of cooking at home.  First, do you eat at a restaurant with a waiter or waitress because it is cheaper than cooking at home
 
-      - name: use_calorie_info_at_coffee_shop
-        description: Did you use the information in deciding what to order
+      - name: restaurant_foods_more_nutritious
+        description: Do you eat at a restaurant with a waiter or waitress because the foods there are more nutritious than foods cooked at home
 
-      - name: buy_at_recreational_places
-        description: In the past 12 months, did you buy any foods or beverages at movie theaters, sports arenas, or other places of recreation
+      - name: restaurant_foods_taste_better
+        description: Do you eat at a restaurant with a waiter or waitress because the foods there taste better than foods cooked at home
 
-      - name: notice_calories_at_recreational_places
-        description: The last time you bought foods or beverages at a movie theater, sports arena, or other place of recreation, did you notice any calorie information on the menu
+      - name: restaurants_more_convenient
+        description: Do you eat at a restaurant with a waiter or waitress because it is more convenient than cooking at home
 
-      - name: use_calorie_info_at_recreational_places
-        description: Did you use the information in deciding what to order
+      - name: eat_at_restaurants_to_socialize
+        description: Do you eat at a restaurant with a waiter or waitress instead of cooking at home to socialize with family and friends
 
-      - name: buy_prepared_foods_from_grocery_store
-        description: In the past 12 months, did you buy prepared foods such as salads, soups, chicken, sandwiches and cooked vegetables from grocery store salad bars and deli counters
+      - name: saw_nutrition_info_on_restaurant_menu
+        description: The last time you ate at a restaurant with a waiter or waitress, did you see nutrition or health information about any foods on the menu
 
-      - name: notice_calorie_info_at_grocery_store
-        description: The last time you bought prepared foods at a grocery store, did you notice any calorie information about these foods
+      - name: used_nutrition_info_in_restaurant
+        description: Did you use the information in deciding which foods to buy
 
-      - name: use_calorie_info_at_grocery_store
-        description: Did you use the information in deciding what to buy
+      - name: would_use_restaurant_nutrition_info
+        description: HAND CARD   1CAPI INSTRUCTION Do NOT display the text in braces if CBQ.5022.
 
-      - name: buy_prepared_food_at_convenience_store
-        description: In the past 12 months, did you buy prepared foods at convenience stores including gas stations or corner stores
+      - name: heard_of_mypyramid
+        description: Next Im going to ask a few questions about the nutritional guidelines recommended for Americans by the federal government.  Have you heard of My Pyramid
 
-      - name: notice_calorie_info_at_convenience_store
-        description: The last time you bought prepared foods at a convenience store, including a gas station or corner store, did you notice any calorie information about these foods
+      - name: heard_of_food_pyramid
+        description: Have you heard of the Food Pyramid or the Food Guide Pyramid
 
-      - name: use_calorie_info_at_convenience_store
-        description: Did you use the information in deciding what to buy
+      - name: looked_up_mypyramid_on_internet
+        description: Have you looked up the MyPyramid plan for a manwomanperson your age on the internet
+
+      - name: tried_mypyramid_plan
+        description: CAPI INSTRUCTION  IF CBQ595  Yes THEN DISPLAY My PyramidPlan Mi Piramide.  ELSE DISPLAY Pyramid planplan de la Piramide de Alimentos
+
+      - name: are_people_born_to_be_fat_thin
+        description: HAND CARD  3CAPI INSTRUCTION Do NOT display the text in braces if CBQ.5022.
+
+      - name: importance_of_price
+        description: HAND CARD  4CAPI INSTRUCTION Do NOT display the text in braces if CBQ.5022.
+
+      - name: importance_of_nutrition
+        description: HAND CARD  4
+
+      - name: importance_of_taste
+        description: HAND CARD  4
+
+      - name: importance_of_food_preparation_easiness
+        description: HAND CARD  4
+
+      - name: importance_of_how_well_the_food_keeps
+        description: HAND CARD  4
 
       - name: use_expiration_date_on_food_packages
-        description: HAND CARD  3 CAPI INSTRUCTION Do NOT display the text in braces if CBQ5022.
+        description: HAND CARD  5 CAPI INSTRUCTION Do NOT display the text in braces if CBQ.502 2.
 
       - name: use_health_claims_on_food_packages
-        description: HAND CARDS  4   5 CAPI INSTRUCTIONS IF CBQ5022,7,or 9, REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For example, Diets low in sodium may reduce the risk of high blood pressure, or Adequate calcium throughout life may reduce the risk of osteoporosis, Do NOT display Using hand card  5, in the third sentence.
+        description: HAND CARDS  8   9CAPI INSTRUCTIONS  IF CBQ.5022, 7, or 9, REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For example, Diets low in sodium may reduce the risk of high blood pressure, or Diets rich in calcium may reduce your risk of osteoporosis 
 
       - name: use_nutrition_facts_panel_on_food_label
-        description: HAND CARDS  6   7 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY DBQ750 AS SHOWN ABOVE. ELSE IF CBQ5031, REPLACE TEXT IN THE BRACES WITH THE FOLLOWING Next, we have some questions about food labels. On your cereal box, can, food package, etc. please look for the food label that is usually on the back or the side of the package. A food label has two parts, a Nutrition Facts panel and a list of ingredients. The Nutrition Facts panel of a food label lists the amount of calories, fat, fiber, carbohydrates and some other nutritional information. How often do you use the Nutrition Facts panel when deciding to buy a food product Do NOT display Looking at hand card  7, in the fourth sentence. ELSE IF CBQ5032, 7, OR 9, REPLACE TEXT IN THE BRACES WITH THE FOLLOWING Next, we have some questions about food labels. A food label usually is on the back or the side of the food package. It has two parts, a Nutrition Facts panel and a list of ingredients. The Nutrition Facts panel of a food label lists the amount of calories, fat, fiber, carbohydrates and some other nutritional information. How often do you use the Nutrition Facts panel when deciding to buy a food product
+        description: HAND CARDS  5   6CAPI INSTRUCTIONS  IF CBQ.5021, DISPLAY DBQ.750 AS SHOWN ABOVE.ELSE IF CBQ.5031, REPLACE TEXT IN THE BRACES WITH THE FOLLOWING Next, we have some questions about food labels.  On your cereal box, can, food package, etc. please look for the food label that is usually on the back or the side of the package.  A food label has two parts, a Nutrition Facts panel and a list of ingredients.  The Nutrition Facts panel of a food label lists the amount of calories, fat, fiber, carbohydrates and some other nutritional information.How often do you use the Nutrition Facts panel when deciding to buy a food productELSE IF CBQ.5032, 7, OR 9, REPLACE TEXT IN THE BRACES WITH THE FOLLOWING Next, we have some questions about food labels.  A food label usually is on the back or the side of the food package.  It has two parts, a Nutrition Facts panel and a list of ingredients.  The Nutrition Facts panel of a food label lists the amount of calories, fat, fiber, carbohydrates and some other nutritional information.How often do you use the Nutrition Facts panel when deciding to buy a food product
 
       - name: use_ingredients_list_on_food_label
-        description: HAND CARD  8   9 CAPI INSTRUCTION Do NOT display the text in braces if CBQ5022.
+        description: HAND CARD  6CAPI INSTRUCTION Do NOT display the text in braces if CBQ.5022.
 
       - name: use_serving_size_info_on_food_label
-        description: HAND CARDS  10   11 CAPI INSTRUCTION Do NOT display the text in braces if CBQ5022.
-
-      - name: use_number_of_servings_on_food_label
-        description: HAND CARDS  12   13  CAPI INSTRUCTION Do NOT display the text in braces if CBQ5022.
-
-      - name: use_footnote_on_food_label
-        description: HAND CARDS  14   15  CAPI INSTRUCTION Do NOT display the text in braces if CBQ5022.
+        description: HAND CARD  6CAPI INSTRUCTION Do NOT display the text in braces if CBQ.5022.
 
       - name: use_percent_daily_value_on_food_label
-        description: HAND CARDS  16   17  CAPI INSTRUCTION Do NOT display the text in braces if CBQ5022.
+        description: HAND CARD  6CAPI INSTRUCTION Do NOT display the text in braces if CBQ.5022.
 
-      - name: use_percent_daily_value_or_nutrients
-        description: HAND CARDS  18   19  CAPI INSTRUCTION Do NOT display the text in braces if CBQ5022.  CAPI INSTRUCTION  IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARDS  18   19.  IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARDS  20   21.  CAPI INSTRUCTION  RANDOMIZED ORDER VERSION  1  HAND CARDS  20   21  CAPI INSTRUCTION  RANDOMIZED ORDER VERSION 2
+      - name: check_snack_item_s_food_label
+        description: HAND CARD   9
 
-      - name: what_does_the_daily_value_mean_to_you
-        description: HAND CARDS 22  23  CAPI INSTRUCTION  IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARDS 22  23.  IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARDS 24  25.  CAPI INSTRUCTION  RANDOMIZED ORDER VERSION 1  HAND CARDS 24  25  CAPI INSTRUCTION  RANDOMIZED ORDER VERSION 2
+      - name: check_breakfast_cereal_s_food_label
+        description: HAND CARD  9
 
-      - name: use_calorie_information_on_food_label
-        description: HAND CARDS  26 and  27  CAPI INSTRUCTION Do NOT display the text in braces if CBQ5022.
+      - name: check_salad_dressing_s_food_label
+        description: HAND CARD  9
 
-      - name: use_sugars_info_on_food_label
-        description: HAND CARD  28   29  CAPI INSTRUCTION Do NOT display the text in braces if CBQ5022.
+      - name: check_raw_meat_poultry_fish_s_food_label
+        description: HAND CARD  9
 
-      - name: use_sodium_info_on_food_label
-        description: HAND CARDS  30   31  CAPI INSTRUCTION Do NOT display the text in braces if CBQ5022.
+      - name: check_processed_meat_s_food_label
+        description: HAND CARD  9
 
-      - name: use_second_column_on_food_label
-        description: HAND CARDS  32   33  CAPI INSTRUCTION Do NOT display the text in braces if CBQ5022.
+      - name: check_bread_s_food_label
+        description: HAND CARD  9
 
       - name: check_label_to_watch_my_weight
-        description: HAND CARD  34 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ738 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  34. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  35. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  35 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 10 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ737 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: check_label_for_family_member_s_weight
-        description: HAND CARD  34 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ738 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  34. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  35. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  35 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 10 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ737 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: check_label_for_my_health_conditions
-        description: HAND CARD  34 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ738 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  34. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  35. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  35 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 10 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ737 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: check_label_for_other_s_health_condition
-        description: HAND CARD  34 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ738 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  34. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  35. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  35 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 10 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ737 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: check_label_for_my_food_allergies
-        description: HAND CARD  34 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ738 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  34. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  35. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  35 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 10 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ737 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: check_label_for_other_s_food_allergies
-        description: HAND CARD  34 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ738 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  34. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  35. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  35 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 10 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ737 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: check_label_to_avoid_certain_ingredients
-        description: HAND CARD  34 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ738 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  34. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  35. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  35 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 10 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ737 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: check_label_to_increase_certain_nutrient
-        description: HAND CARD  34 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ738 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  34. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  35. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  35 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 10 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ737 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: check_label_to_compare_b_w_brands_foods
-        description: HAND CARD  34 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ738 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  34. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  35. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  35 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 10 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ737 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: check_label_to_make_better_choices
-        description: HAND CARD  34 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ738 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  34. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  35. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  35 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 10 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ737 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: check_label_to_watch_certain_nutrients
-        description: HAND CARD  34 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ738 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  34. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  35. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  35 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 10 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ737 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: check_label_for_other_reasons
-        description: HAND CARD  34 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ738 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  34. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  35. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  35 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 10 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ737 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: not_check_label_don_t_have_the_time
-        description: HAND CARD  36 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ698 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  36. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  37. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  37 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 11 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ697 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: not_check_label_the_print_is_too_small
-        description: HAND CARD  36 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ698 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  36. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  37. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  37 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 11 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ697 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: not_check_label_satisfied_w_my_health
-        description: HAND CARD  36 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ698 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  36. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  37. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  37 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 11 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ697 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: not_check_label_i_have_a_good_diet
-        description: HAND CARD  36 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ698 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  36. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  37. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  37 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 11 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ697 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: not_check_label_mostly_familiar_foods
-        description: HAND CARD  36 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ698 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  36. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  37. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  37 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 11 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ697 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: not_check_label_don_t_care_about_labels
-        description: HAND CARD  36 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ698 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  36. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  37. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  37 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 11 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ697 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: not_check_label_not_important_to_me
-        description: HAND CARD  36 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ698 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  36. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  37. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  37 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 11 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ697 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: not_check_label_what_to_look_for
-        description: HAND CARD  36 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ698 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  36. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  37. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  37 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 11 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ697 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: not_check_label_can_t_read_english_well
-        description: HAND CARD  36 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ698 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  36. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  37. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  37 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 11 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ697 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: not_check_label_for_other_reasons
-        description: HAND CARD  36 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ698 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARD  36. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARD  37. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARD  37 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: HAND CARD 11 CAPI INSTRUCTIONS IF CBQ5021, DISPLAY CBQ697 AS SHOWN ABOVE. ELSE IF CBQ5022, 7, OR 9 - 1. REPLACE TEXT IN THE BRACES WITH THE FOLLOWING For this next question you may give more than one answer. What is the reason or reasons that you rarely or never check the food label when deciding to buy a food product I will read you some examples. DISPLAY ALL THE RESPONSE CATEGORIES IN LOWER CASE. CODE ALL THAT APPLY.
 
       - name: serving_size_amount_people_should_eat
-        description: CODE ALL THAT APPLY HAND CARD  38   39 CAPI INSTRUCTION 1. Do NOT display the text in braces if CBQ5022 2. IF DBQ750  6  9 AND DBQ760  6  9 AND DBQ770  6  9 AND DBQ780  6  9, AND CBQ905  6  9, AND CBQ910  6  9 AND CBQ685  6  9, AND CBQ930  6  9, AND CBQ935  6  9, AND CBQ945  6  9, AND CBQ950  6  9, Do NOT display the word Again, in the introduction sentence. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARDS  38   39. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARDS  40   41. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARDS  40   41 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: CODE ALL THAT APPLY HAND CARD  7CAPI INSTRUCTION Do NOT display the text in braces if CBQ.5022.
 
       - name: serving_size_amount_people_usually_eat
-        description: CODE ALL THAT APPLY HAND CARD  38   39 CAPI INSTRUCTION 1. Do NOT display the text in braces if CBQ5022 2. IF DBQ750  6  9 AND DBQ760  6  9 AND DBQ770  6  9 AND DBQ780  6  9, AND CBQ905  6  9, AND CBQ910  6  9 AND CBQ685  6  9, AND CBQ930  6  9, AND CBQ935  6  9, AND CBQ945  6  9, AND CBQ950  6  9, Do NOT display the word Again, in the introduction sentence. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARDS  38   39. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARDS  40   41. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARDS  40   41 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: CODE ALL THAT APPLY  HAND CARD   7CAPI INSTRUCTION Do NOT display the text in braces if CBQ.5022.
 
       - name: serving_size_help_comparing_among_foods
-        description: CODE ALL THAT APPLY HAND CARD  38   39 CAPI INSTRUCTION 1. Do NOT display the text in braces if CBQ5022 2. IF DBQ750  6  9 AND DBQ760  6  9 AND DBQ770  6  9 AND DBQ780  6  9, AND CBQ905  6  9, AND CBQ910  6  9 AND CBQ685  6  9, AND CBQ930  6  9, AND CBQ935  6  9, AND CBQ945  6  9, AND CBQ950  6  9, Do NOT display the word Again, in the introduction sentence. CAPI INSTRUCTION IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 1 AND HAND CARDS  38   39. IF HOUSEHOLD ID EQUAL TO XXX, DISPLAY RANDOMIZED ORDER VERSION 2 AND HAND CARDS  40   41. CAPI INSTRUCTION RANDOMIZED ORDER VERSION 1 HAND CARDS  40   41 CAPI INSTRUCTION RANDOMIZED ORDER VERSION 2
+        description: CODE ALL THAT APPLY  HAND CARD  7CAPI INSTRUCTION Do NOT display the text in braces if CBQ.5022.
+
+      - name: bought_food_labeled_organic
+        description: INTERVIEWER INSTRUCTION  Include foods bought at the organic section in a store, or food stands labeled organic.
+
+      - name: how_often_did_you_buy_organic_fruits
+        description: HAND CARD 13  CAPI INSTRUCTION Do NOT display the text in braces if CBQ5022
+
+      - name: how_often_did_you_buy_organic_vegetables
+        description: HAND CARD 13
+
+      - name: how_often_did_you_buy_organic_milk
+        description: HAND CARD 13
+
+      - name: how_often_did_you_buy_organic_eggs
+        description: HAND CARD 13
+
+      - name: how_often_did_you_buy_organic_baby_foods
+        description: HAND CARD 13
+
+      - name: how_often_did_you_buy_organic_poultry
+        description: HAND CARD 13
+
+      - name: how_often_did_you_buy_organic_meats
+        description: HAND CARD 13INTERVIEWER INSTRUCTION Do not include seafood.
+
+      - name: ever_seen_usda_organic_seal
+        description: HAND CARD 14 CAPI INSTRUCTIONSIF CBQ5022, 7, or 9, REPLACE TEXT IN THE BRACES WITH THE FOLLOWING  Have you ever seen the USDA ORGANIC seal on a food product 
 
       - name: respondent_is_main_meal_planner_preparer
-        description: INTERVIEWER INSTRUCTION IF SP ANSWERS SOMETIMES OR 5050, ENTER YES
+        description: INTERVIEWER INSTRUCTION  IF SP ANSWERS SOMETIMES OR 5050, ENTER YES
 
       - name: respondent_shares_meal_preparation_duty
         description: Do you share in the planning or preparing of meals with someone else
@@ -10118,13 +10160,16 @@ models:
         description: Which of the following best describe your highest education level
 
       - name: respondent_s_gender
-        description: INTERVIEWER INSTRUCTION THIS IS A QUESTION FOR THE INTERVIEWER TO COMPLETE BY SELECTING THE APPROPRIATE OPTION. NO NEED TO READ THE QUESTION TO THE PARTICIPANT
+        description: INTERVIEWER INSTRUCTION THIS IS A QUESTION FOR THE INTERVIEWER TO COMPLETE BY SELECTING THE APPROPRIATE OPTION. NO NEED TO READ THE QUESTION TO THE SP
 
       - name: language_of_the_interview
-        description: INTERVIEWER INSTRUCTION THIS IS A QUESTION FOR THE INTERVIEWER TO COMPLETE BY SELECTING THE APPROPRIATE OPTION. NO NEED TO READ THE QUESTION TO THE PARTICIPANT
+        description: INTERVIEWER INSTRUCTION  THIS IS A QUESTION FOR THE INTERVIEWER TO COMPLETE BY SELECTING THE APPROPRIATE OPTION.  DO NOT READ THE QUESTION TO THE SP.
 
       - name: dietary_day_one_sample_weight
-        description: Dietary day one sample weight
+        description: Dietary day one sample weight.
+
+      - name: how_often_do_you_buy_organic_food
+        description: How often do you buy organic food  Would you say always, most of the time, sometimes, or rarely
 
   - name: consumer_behavior_questionnaire
     description: The Consumer Behavior questionnaire variable name prefix CBQ section provides interview data on food expenditures at the family level as part of the Flexible Consumer Behavior Survey FCBS module. 
@@ -11949,7 +11994,7 @@ models:
         description: Were youWas SP at work or at yourhisher job or business when youshe got these substances yourherhis skin
 
   - name: diabetes_questionnaire
-    description: The NHANES program suspended field operations in March 2020 due to the coronavirus disease 2019 COVID-19 pandemic. As a result, data collection for the NHANES 2019-2020 cycle was not completed and the collected data are not nationally representative. Therefore, data collected from 2019 to March 2020 were combined with data from the NHANES 2017-2018 cycle to form a nationally representative sample of NHANES 2017-March 2020 pre-pandemic data. These data are available to the public. Please refer to the Analytic Notes section for more details on the use of the data.
+    description: The diabetes section variable name prefix DIQ provides personal interview data on diabetes, prediabetes, use of insulin or oral hypoglycemic medications, and diabetic retinopathy. It also provides self-reported information on awareness of risk factors for diabetes, general knowledge of diabetic complications, and medical or personal cares associated with diabetes.
     columns:
 
       - name: respondent_sequence_number
@@ -11963,78 +12008,6 @@ models:
 
       - name: ever_told_you_have_prediabetes
         description: CAPI INSTRUCTION  HELP SCREEN  PREDIABETES, IMPAIRED FASTING GLUCOSE, IMPAIRED GLUCOSE TOLERANCE, OR BORDERLINE DIABETES OCCURS WHEN BLOOD SUGAR GLUCOSE LEVELS ARE HIGHER THAN NORMAL BUT NOT HIGH ENOUGH TO BE DIABETES.  HAND CARD DIQ1.
-
-      - name: had_blood_tested_past_three_years
-        description: INTERVIEWER INSTRUCTION  DO NOT INCLUDE URINE TESTS.
-
-      - name: taking_insulin_now
-        description: Is SPAre you now taking insulin
-
-      - name: how_long_taking_insulin
-        description: ENTER NUMBER OF MONTHS OR YEARS.
-
-      - name: unit_of_measure_month_year
-        description: ENTER UNIT.
-
-      - name: take_diabetic_pills_to_lower_blood_sugar
-        description: Is SPAre you now taking diabetic pills to lower hisheryour blood sugar  These are sometimes called oral agents or oral hypoglycemic agents.
-
-      - name: how_long_ago_saw_a_diabetes_specialist
-        description: INTERVIEWER INSTRUCTION  IF RESPONDENT ANSWERS TODAY OR A PERIOD LESS THAN A MONTH, CODE 1 - THE 0-12 MONTH CATEGORY.
-
-      - name: is_there_one_dr_you_see_for_diabetes
-        description: Is there one doctor or other health professional you usually seeSP usually sees for yourhisher diabetes  Do not include specialists to whom you haveSP has been referred such as diabetes educators, dieticians or foot and eye doctors.
-
-      - name: past_year_how_many_times_seen_doctor
-        description: ENTER NUMBER OF TIMES.
-
-      - name: how_often_check_blood_for_glucose_sugar
-        description: INTERVIEW INSTRUCTION DO NOT INCLUDE URINE TESTS.  CAPI INSTRUCTION SOFT EDIT 7 OR MORE PER DAY, 30 OR MORE PER WEEK. ENTER NUMBER OF TIMES.
-
-      - name: unit_of_measure_day_week_month_year
-        description: ENTER UNIT.
-
-      - name: past_year_dr_checked_for_a1c
-        description: Glycosylated GLY-KOH-SIH-LAY-TED hemoglobin or the A one C test measures your average level of blood sugar for the past 3 months, and usually ranges between 5.0 and 13.9. During the past 12 months, has a doctor or other health professional checked yourSPs glycosylated hemoglobin or A one C
-
-      - name: what_was_your_last_a1c_level
-        description: CAPI INSTRUCTION  SOFT EDIT FOR ANY NUMBER LESS THAN 5 OR MORE THAN 14.  ENTER VALUE
-
-      - name: what_does_dr_say_a1c_should_be
-        description: HAND CARD DIQ3
-
-      - name: what_was_your_recent_sbp
-        description: ENTER VALUES. CAPI INSTRUCTION SYSTOLIC SOFT EDIT 80-200. DIASTOLIC SOFT EDIT 0-150.
-
-      - name: what_was_your_recent_dbp
-        description: ENTER VALUES. CAPI INSTRUCTION SYSTOLIC SOFT EDIT 80-200. DIASTOLIC SOFT EDIT 0-150.
-
-      - name: what_does_dr_say_sbp_should_be
-        description: ENTER VALUES. INTERVIEWER INSTRUCTION. IF RANGE GIVEN, RECORD UPPER VALUE OF RANGE. CAPI INSTRUCTION SYSTOLIC SOFT EDIT 80-200. DIASTOLIC SOFT EDIT 0-150.
-
-      - name: what_does_dr_say_dbp_should_be
-        description: ENTER VALUES. INTERVIEWER INSTRUCTION. IF RANGE GIVEN, RECORD UPPER VALUE OF RANGE. CAPI INSTRUCTION SYSTOLIC SOFT EDIT 80-200. DIASTOLIC SOFT EDIT 0-150.
-
-      - name: what_was_most_recent_ldl_number
-        description: ENTER VALUE CAPI INSTRUCTION SOFT EDIT 40-250.
-
-      - name: what_does_dr_say_ldl_should_be
-        description: ENTER VALUE. INTERVIEWER INSTRUCTION IF RANGE GIVEN, RECORD UPPER VALUE OF RANGE. CAPI INSTRUCTION SOFT EDIT 40-250.
-
-      - name: past_year_times_dr_check_feet_for_sores
-        description: ENTER NUMBER OF TIMES.
-
-      - name: how_often_do_you_check_your_feet
-        description: ENTER NUMBER OF TIMES.
-
-      - name: unit_of_measure_day_week_month_year_DIQ350U
-        description: ENTER UNIT.
-
-      - name: last_time_had_pupils_dilated_for_exam
-        description: When was the last time youSP had an eye exam in which the pupils were dilated  This would have made youSP temporarily sensitive to bright light.
-
-      - name: diabetes_affected_eyes_had_retinopathy
-        description: Has a doctor ever told youSP that diabetes has affected yourhisher eyes or that youshe had retinopathy ret-in-op-ath-ee
 
       - name: ever_told_have_health_risk_for_diabetes
         description: Have youHas SP ever been told by a doctor or other health professional that you haveshe has health conditions or a medical or family history that increases yourhisher risk for diabetes
@@ -12113,6 +12086,78 @@ models:
 
       - name: polycystic_ovarian_syndrome
         description: INTERVIEWER INSTRUCTION DO NOT READ. CODE ALL THAT APPLY. CAPI INSTRUCTION IF RESPONDENT ANSWERS OTHER, ALLOW ENTRY OF RESPONSE UP TO 250 CHARACTERS. HAND CARD DIQ2
+
+      - name: had_blood_tested_past_three_years
+        description: INTERVIEWER INSTRUCTION  DO NOT INCLUDE URINE TESTS.
+
+      - name: taking_insulin_now
+        description: Is SPAre you now taking insulin
+
+      - name: how_long_taking_insulin
+        description: ENTER NUMBER OF MONTHS OR YEARS.
+
+      - name: unit_of_measure_month_year
+        description: ENTER UNIT.
+
+      - name: take_diabetic_pills_to_lower_blood_sugar
+        description: Is SPAre you now taking diabetic pills to lower hisheryour blood sugar  These are sometimes called oral agents or oral hypoglycemic agents.
+
+      - name: how_long_ago_saw_a_diabetes_specialist
+        description: INTERVIEWER INSTRUCTION  IF RESPONDENT ANSWERS TODAY OR A PERIOD LESS THAN A MONTH, CODE 1 - THE 0-12 MONTH CATEGORY.
+
+      - name: is_there_one_dr_you_see_for_diabetes
+        description: Is there one doctor or other health professional you usually seeSP usually sees for yourhisher diabetes  Do not include specialists to whom you haveSP has been referred such as diabetes educators, dieticians or foot and eye doctors.
+
+      - name: past_year_how_many_times_seen_doctor
+        description: ENTER NUMBER OF TIMES.
+
+      - name: how_often_check_blood_for_glucose_sugar
+        description: INTERVIEW INSTRUCTION DO NOT INCLUDE URINE TESTS.  CAPI INSTRUCTION SOFT EDIT 7 OR MORE PER DAY, 30 OR MORE PER WEEK. ENTER NUMBER OF TIMES.
+
+      - name: unit_of_measure_day_week_month_year
+        description: ENTER UNIT.
+
+      - name: past_year_dr_checked_for_a1c
+        description: Glycosylated GLY-KOH-SIH-LAY-TED hemoglobin or the A one C test measures your average level of blood sugar for the past 3 months, and usually ranges between 5.0 and 13.9. During the past 12 months, has a doctor or other health professional checked yourSPs glycosylated hemoglobin or A one C
+
+      - name: what_was_your_last_a1c_level
+        description: CAPI INSTRUCTION  SOFT EDIT FOR ANY NUMBER LESS THAN 5 OR MORE THAN 14.  ENTER VALUE
+
+      - name: what_does_dr_say_a1c_should_be
+        description: HAND CARD DIQ3
+
+      - name: what_was_your_recent_sbp
+        description: ENTER VALUES. CAPI INSTRUCTION SYSTOLIC SOFT EDIT 80-200. DIASTOLIC SOFT EDIT 0-150.
+
+      - name: what_was_your_recent_dbp
+        description: ENTER VALUES. CAPI INSTRUCTION SYSTOLIC SOFT EDIT 80-200. DIASTOLIC SOFT EDIT 0-150.
+
+      - name: what_does_dr_say_sbp_should_be
+        description: ENTER VALUES. INTERVIEWER INSTRUCTION. IF RANGE GIVEN, RECORD UPPER VALUE OF RANGE. CAPI INSTRUCTION SYSTOLIC SOFT EDIT 80-200. DIASTOLIC SOFT EDIT 0-150.
+
+      - name: what_does_dr_say_dbp_should_be
+        description: ENTER VALUES. INTERVIEWER INSTRUCTION. IF RANGE GIVEN, RECORD UPPER VALUE OF RANGE. CAPI INSTRUCTION SYSTOLIC SOFT EDIT 80-200. DIASTOLIC SOFT EDIT 0-150.
+
+      - name: what_was_most_recent_ldl_number
+        description: ENTER VALUE CAPI INSTRUCTION SOFT EDIT 40-250.
+
+      - name: what_does_dr_say_ldl_should_be
+        description: ENTER VALUE. INTERVIEWER INSTRUCTION IF RANGE GIVEN, RECORD UPPER VALUE OF RANGE. CAPI INSTRUCTION SOFT EDIT 40-250.
+
+      - name: past_year_times_dr_check_feet_for_sores
+        description: ENTER NUMBER OF TIMES.
+
+      - name: how_often_do_you_check_your_feet
+        description: ENTER NUMBER OF TIMES.
+
+      - name: unit_of_measure_day_week_month_year_DIQ350U
+        description: ENTER UNIT.
+
+      - name: last_time_had_pupils_dilated_for_exam
+        description: When was the last time youSP had an eye exam in which the pupils were dilated  This would have made youSP temporarily sensitive to bright light.
+
+      - name: diabetes_affected_eyes_had_retinopathy
+        description: Has a doctor ever told youSP that diabetes has affected yourhisher eyes or that youshe had retinopathy ret-in-op-ath-ee
 
       - name: when_was_your_diabetes_diagnosed
         description: Was yourhisher diabetes diagnosed...
@@ -15914,13 +15959,13 @@ models:
         description: Enter form code
 
   - name: dietary_supplement_use_30_day_individual_dietary_supplements_dietary
-    description: The Dietary Supplement and Prescription Medication DSQ Sectionof the Sample Person SP Questionnaire, collects information on 1 prescription and non-prescription dietary supplements DS, 2 non-prescription antacids, 3 prescription medications, and 4 low-dose aspirin.
+    description: The Dietary Supplement and Prescription Medication Section DSQ of the Sample Person SP Questionnaire, collects information on 1 prescription and non-prescription dietary supplements DS, 2 non-prescription antacids, 3 prescription medications, and 4 asthma medication. 
     columns:
 
       - name: respondent_sequence_number
-        description: Respondent sequence number.
+        description:  blank 
 
-      - name: supplement_id_number
+      - name: nchs_supplement_id
         description: Supplement ID Number
 
       - name: antacid_reported_as_a_dietary_supplement
@@ -15946,12 +15991,6 @@ models:
 
       - name: reported_serving_size_label_serving_size
         description: Reported serving sizelabel serving size
-
-      - name: reported_product_during_day_1
-        description: Was Supplement taken during the 24 Hour Recall, Day 1
-
-      - name: reported_product_during_day_2
-        description: Was Supplement taken during the 24 Hour Recall, Day 2
 
       - name: took_product_on_own_or_doctor_advised
         description: HAND CARD DSQ2
@@ -15992,7 +16031,7 @@ models:
       - name: for_healthy_joints_arthritis
         description: CAPI INSTRUCTION  IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME  IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT  HAND CARD DSQ3.  CODE ALL THAT APPLY.
 
-      - name: for_healthy_skin_hair_and_nails
+      - name: for_skin_health_dry_skin
         description: CAPI INSTRUCTION  IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME  IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT  HAND CARD DSQ3.  CODE ALL THAT APPLY.
 
       - name: for_weight_loss
@@ -16009,66 +16048,6 @@ models:
 
       - name: for_anemia_such_as_low_iron
         description: CAPI INSTRUCTION  IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME  IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT  HAND CARD DSQ3.  CODE ALL THAT APPLY.
-
-      - name: to_maintain_blood_sugar_diabetes
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_kidney_and_bladder_health
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_respiratory_health_asthma
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_allergies
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: to_improve_digestion
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_menopause_hot_flashes
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_muscle_related_issues_muscle_cramps
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_relaxation_stress_sleep
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_nervous_system_health
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_liver_health_detoxification
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_antioxidants
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: word_of_mouth_advertisement
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_thyroid_health_gout
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_weight_gain
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: low_levels_in_blood
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_support_after_surgery
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: headaches_and_dizziness
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: to_build_muscle
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_inflammation
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
-
-      - name: for_fluid_water_balance
-        description: CAPI INSTRUCTION IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT HAND CARD DSQ3. CODE ALL THAT APPLY.
 
       - name: other
         description: CAPI INSTRUCTION  IF CODE 1 IN DSQ.124, DISPLAY For what reason or reasons do youdoes SP take PRODUCT NAME  IF CODE 2 IN DSQ.124, DISPLAY For what reason or reasons did the doctor or other health professional tell youSP to take PRODUCT  HAND CARD DSQ3.  CODE ALL THAT APPLY.
@@ -16174,9 +16153,6 @@ models:
 
       - name: caffeine_mg
         description: Caffeine mg
-
-      - name: supplement_id_number_DSDSUPID
-        description: Supplement ID Number
 
   - name: dietary_supplement_use_30_day_total_dietary_supplements_dietary
     description: The NHANES program suspended field operations in March 2020 due to the coronavirus disease 2019 COVID-19 pandemic. As a result, data collection for the NHANES 2019-2020 cycle was not completed and the collected data are not nationally representative. Therefore, data collected from 2019 to March 2020 were combined with data from the NHANES 2017-2018 cycle to form a nationally representative sample of NHANES 2017-March 2020 pre-pandemic data. These data are available to the public. Please refer to the Analytic Notes section for more details on the use of the data.
@@ -17428,7 +17404,7 @@ models:
         description: Visceral adipose tissue volume
 
   - name: dual_energy_x_ray_absorptiometry_femur_examination
-    description: Users of the 2013-2014 dual-energy X-ray absorptiometry femur bone data DXXFEMH are encouraged to read the documentation before accessing the data file.
+    description: Users of the 2009-2010 dual-energy X-ray absorptiometry femur bone data DXXFEMF are encouraged to read the documentation before accessing the data file. Dual-energy x-ray absorptiometry DXA is the most widely accepted method of measuring bone density due in part to its speed, ease of use, and low radiation exposure Baran, 1997 Genant, 1996 Heymfield, 1989 Njeh, 1999. DXA scans of the proximal femur were administered in the NHANES mobile examination center MEC in 2005 through 2010. The femur scans provide bone measurements for the total femur, femoral neck, trochanter, intertrochanter, and Wards triangle. Measurements include 
     columns:
 
       - name: respondent_sequence_number
@@ -17441,49 +17417,49 @@ models:
         description: Total femur BMD invalidity code
 
       - name: total_femur_bmd
-        description: Total femur BMD
+        description: Total femur bone mineral density gmcm2
 
       - name: total_femur_bmc
-        description: Total femur BMC
+        description: Total femur bone mineral content gm
 
       - name: total_femur_area
-        description: Total femur area
+        description: Total femur area cm2
 
       - name: femoral_neck_bmd
-        description: Femoral neck BMD
+        description: Femoral neck bone mineral density gmcm2
 
       - name: femoral_neck_bmc
-        description: Femoral neck BMC
+        description: Femoral neck bone mineral content gm
 
       - name: femoral_neck_area
-        description: Femoral neck area
+        description: Femoral neck area cm2
 
       - name: trochanter_bmd
-        description: Trochanter BMD
+        description: Trochanter bone mineral density gmcm2
 
       - name: trochanter_bmc
-        description: Trochanter BMC
+        description: Trochanter bone mineral content gm
 
       - name: trochanter_area
-        description: Trochanter area
+        description: Trochanter area cm2
 
       - name: intertrochanter_bmd
-        description: Intertrochanter BMD
+        description: Intertrochanter bone mineral density gmcm2
 
       - name: intertrochanter_bmc
-        description: Intertrochanter BMC
+        description: Intertrochanter bone mineral content gm
 
       - name: intertrochanter_area
-        description: Intertrochanter area
+        description: Intertrochanter area cm2
 
       - name: wards_triangle_bmd
-        description: Wards triangle BMD
+        description: Wards triangle bone mineral density gmcm2
 
       - name: wards_triangle_bmc
-        description: Wards triangle BMC
+        description: Wards triangle bone mineral content gm
 
       - name: wards_triangle_area
-        description: Wards triangle area
+        description: Wards triangle area cm2
 
       - name: calculated_k_for_femur
         description: Calculated K for femur
@@ -20158,7 +20134,7 @@ models:
         description: y-coordinates of outline points 95
 
   - name: dual_energy_x_ray_absorptiometry_spine_examination
-    description: Users of the 2013-2014 dual-energy X-ray absorptiometry spine bone data DXXSPNH are encouraged to read the documentation before accessing the data file. 
+    description: Users of the 2009-2010 dual-energy X-ray absorptiometry spine bone data DXXSPNF are encouraged to read the documentation before accessing the data file. 
     columns:
 
       - name: respondent_sequence_number
@@ -20183,55 +20159,88 @@ models:
         description: L4 BMD invalidity code
 
       - name: total_spine_bmd
-        description: Total spine BMD
+        description: Total spine bone mineral density gmcm2
 
       - name: total_spine_bmc
-        description: Total spine BMC
+        description: Total spine bone mineral content gm
 
       - name: total_spine_area
-        description: Total spine area
+        description: Total spine area cm2
 
       - name: l1_bmd
-        description: L1 BMD
+        description: L1 bone mineral density gmcm2
 
       - name: l1_bmc
-        description: L1 BMC
+        description: L1 bone mineral content gm
 
       - name: l1_area
-        description: L1 area
+        description: L1 area cm2
 
       - name: l2_bmd
-        description: L2 BMD
+        description: L2 bone mineral density gmcm2
 
       - name: l2_bmc
-        description: L2 BMC
+        description: L2 bone mineral content gm
 
       - name: l2_area
-        description: L2 area
+        description: L2 area cm2
 
       - name: l3_bmd
-        description: L3 BMD
+        description: L3 bone mineral density gmcm2
 
       - name: l3_bmc
-        description: L3 BMC
+        description: L3 bone mineral content gm
 
       - name: l3_area
-        description: L3 area
+        description: L3 area cm2
 
       - name: l4_bmd
-        description: L4 BMD
+        description: L4 bone mineral density gmcm2
 
       - name: l4_bmc
-        description: L4 BMC
+        description: L4 bone mineral content gm
 
       - name: l4_area
-        description: L4 area
+        description: L4 area cm2
 
       - name: calculated_k_for_spine
         description: Calculated K for spine
 
       - name: calculated_do_for_spine
-        description: Calculated DO for spine
+        description: Calculated DO for Spine
+
+      - name: trabecular_bone_score_invalidity_code
+        description: Trabecular Bone Score invalidity code
+
+      - name: total_trabecular_bone_score
+        description: Total Trabecular Bone Score
+
+      - name: tbs_missing_data_reason
+        description: TBS missing data reason
+
+      - name: l1_tbs_invalidity_code
+        description: L1 TBS invalidity code
+
+      - name: l1_tbs
+        description: L1 TBS
+
+      - name: l2_tbs_invalidity_code
+        description: L2 TBS invalidity code
+
+      - name: l2_tbs
+        description: L2 TBS
+
+      - name: l3_tbs_invalidity_code
+        description: L3 TBS invalidity code
+
+      - name: l3_tbs
+        description: L3 TBS
+
+      - name: l4_tbs_invalidity_code
+        description: L4 TBS invalidity code
+
+      - name: l4_tbs
+        description: L4 TBS
 
   - name: dual_energy_x_ray_absorptiometry_t10_vertebrae_morphology_examination
     description:  Users of the 2013-2014 dual-energy X-ray absorptiometry T10 vertebrae morphology variable name prefix DXXT10H data are encouraged to read the documentation before accessing the data file.
@@ -26852,7 +26861,7 @@ models:
         description: Technicians for the primary and the second day exams.
 
   - name: early_childhood_questionnaire
-    description: The Early Childhood questionnaire variable name prefix ECQ section of the Sample Person Questionnaire provides personal interview data for children, including the age of the biological mother when the child participant was born, smoking habits of the mother while she was pregnant with the participant, birth weight and the proxys assessment of the participants current weight.
+    description: The NHANES program suspended field operations in March 2020 due to the coronavirus disease 2019 COVID-19 pandemic. As a result, data collection for the NHANES 2019-2020 cycle was not completed and the collected data are not nationally representative. Therefore, data collected from 2019 to March 2020 were combined with data from the NHANES 2017-2018 cycle to form a nationally representative sample of NHANES 2017-March 2020 pre-pandemic data. These data are available to the public. Please refer to the Analytic Notes section for more details on the use of the data.
     columns:
 
       - name: respondent_sequence_number
@@ -27681,11 +27690,26 @@ models:
         description: 2,3,4,5-tetrabromobenzoic Acid Comment Code
 
   - name: flame_retardants_urine_surplus_laboratory
-    description: Flame retardants FRs are either additive or reactive ingredientsapplied to household and consumer products to reduce the products flammabilityand to meet state and federal fire safety standards and regulations. Untilrecently, a dominant class of FR additives used for household products waspolybrominated diphenyl ethers PBDEs, which are persistent and can accumulatein the environment de Wit, 2002 Law et. al., 2006 Stapleton et. al., 2012.Flame retardant formulations containing chlorinated and non-chlorinatedorganophosphates and non-PBDE brominated chemicals have entered consumersmarkets as PBDEs have been phased-out in many countries van der Veen and deBoer, 2012. Some of these compounds used in flame retardant formulationsare triphenyl phosphate, tris1,3-dichloro-2-propyl phosphate,tris1-chloro-2-propyl phosphate, tris2-chloroethyl phosphate, tri-cresylphosphates, tributyl phosphate, tribenzyl phosphate, isopropyl triphenylphosphates, tertbutyltriphenyl phosphates, and2-ethylhexyl-2,3,4,5-tetrabromobenzoate. We recently developed a method tomeasure metabolites of these compounds that can be used as exposure biomarkersdiphenyl phosphate, bis1,3-dichloro-2-propyl phosphate,bis1-chloro-2-propyl phosphate, bis2-chloroethyl phosphate, di-cresylphosphates, dibutyl phosphate, dibenzyl phosphate, 2-isopropylphenylphenylphosphate PPPP, 4-tert-butylphenylphenyl phosphate tBPPP, and2,3,4,5-tetrabromobenzoic acid.
+    description: Flame retardants FRsare either additive or reactive ingredients applied to household and consumerproducts to reduce the products flammability and to meet state and federal firesafety standards and regulations. Until recently, a dominant class of FRadditives used for household products was polybrominated diphenyl ethersPBDEs, which are persistent and can accumulate in the environment de Wit,2002 Law et. al., 2006 Stapleton et. al., 2012. Flame retardant formulationscontaining chlorinated and non-chlorinated organophosphates and non-PBDE brominatedchemicals have entered consumers markets as PBDEs have been phased-out in manycountries van der Veen and de Boer, 2012. Several organophosphate aryl estertechnical mixtures have been increasingly used in residential applications.These mixtures contain isomers of isopropylated and tert-butylatedtriarylphosphate esters, such as isopropylphenyldiphenyl phosphate and tert-butylphenyl diphenyl phosphate Phillips et.al., 2017. Additionally, human exposure to these mixtures has beendemonstrated to be widespread in several studies Hammel et. al., 2016Phillips et. al., 2018. We developed a method to quantify biomarkers ofexposure of several flame retardants, including 2-isopropylphenylphenylphosphate iPPPP and 4-tert-butylphenylphenyl phosphate tBPPP, twometabolites of isopropylphenyl diphenyl phosphates and tert-butylphenyldiphenyl phosphates, respectively. 
     columns:
 
       - name: respondent_sequence_number
-        description: Respondent sequence number
+        description: Respondent sequence number.
+
+      - name: surplus_specimen_b_17_18_2_yr_weights
+        description: Surplus specimen 2 year weights B for 2017-2018
+
+      - name: lab_2_isopropyl_phenyl_phenyl_phosphateug_l
+        description: 2-isopropylphenylphenyl phosphate gL
+
+      - name: lab_2_isopropyl_phenyl_phenyl_phosphate_cd
+        description: 2-isopropylphenylphenyl phosphate gL comment code
+
+      - name: lab_4_tert_butyl_phenyl_phenyl_phosphateug_l
+        description: 4-tert-butylphenylphenyl phosphate gL
+
+      - name: lab_4_tert_butyl_phenyl_phenyl_phosphate_cd
+        description: 4-tert-butylphenylphenyl phosphate gL comment code
 
       - name: surplus_specimen_b_15_16_2_year_weights
         description: Surplus specimen 2 year weights B for 2015-2016
@@ -27738,17 +27762,8 @@ models:
       - name: lab_2_3_4_5tetrabromobenzoicacid_ug_l_cmt_cd
         description: 2,3,4,5-tetrabromobenzoic acid ugL comment code
 
-      - name: lab_2_isopropyl_phenyl_phenyl_phosphateug_l
-        description: 2isopropylphenylphenyl phosphate ugL
-
-      - name: lab_2_isopropyl_phenyl_phenyl_phosphate_cd
-        description: 2isopropylphenylphenyl phosphate comment code
-
-      - name: lab_4_tert_butyl_phenyl_phenyl_phosphateug_l
-        description: 4tert-butylphenylphenyl phosphate ugL
-
-      - name: lab_4_tert_butyl_phenyl_phenyl_phosphate_cd
-        description: 4tert-butylphenylphenyl phosphate comment code
+      - name: surplus_specimen_b_11_12_2_year_weights
+        description: Surplus specimen 2 year weights B for 2011-2012
 
   - name: fluoride_plasma_laboratory
     description: In 2010, a panel of federal scientists representing CDCDivision of Oral Health and National Institute of Dental DOH and Craniofacial Research NIDCR participated in the development of a new HHS recommendation for optimal fluoride level in drinking water community water fluoridation, as well as the development of guidelines for maximum fluoride levels in naturally fluoridated water. One of the recommendations of the federal panel was to strengthen the surveillance of dental caries and dental fluorosis with emphasis on determining fluoride exposures.
@@ -29322,7 +29337,7 @@ models:
         description: Hepatitis A antibody
 
   - name: hepatitis_b_core_antibody_surface_antigen_and_hepatitis_d_antibody_laboratory
-    description: Hepatitis viruses constitute a major public health problem because of the morbidity and mortality associated with the acute and chronic consequences of these infections. Co-infection with hepatitis D virus HDV in persons with acute or chronic hepatitis B virus HBV infection can lead to fulminant hepatitis. New immunization strategies have been developed to eliminate the spread of HBV and hepatitis A virus HAV in the United States. Recommendations have also been developed for the prevention and control of hepatitis C virus HCV infection. Because of the high rate of asymptomatic infection with these viruses, information about the prevalence of these diseases is needed to monitor prevention efforts. By testing a nationally representative sample of the U.S. population, NHANES will provide the most reliable estimates of age-specific prevalence needed to evaluate the effectiveness of the strategies to prevent these infections. In addition, NHANES provides the means to better define the epidemiology of other hepatitis viruses. NHANES testing for markers of infection with hepatitis viruses will be used to determine secular trends in infection rates across most age and racialethnic groups, and will provide a national picture of the epidemiologic determinants of these infections.
+    description: Hepatitis virusesconstitute a major public health problem because of the morbidity and mortalityassociated with the acute and chronic consequences of these infections. Co-infectionwith hepatitis D virus HDV in persons with acute or chronic hepatitis B virusHBV infection can lead to fulminant hepatitis. New immunization strategieshave been developed to eliminate the spread of HBV and hepatitis A virus HAVin the United States. Recommendations have also been developed for theprevention and control of hepatitis C virus HCV infection. Because of thehigh rate of asymptomatic infection with these viruses, information about theprevalence of these diseases is needed to monitor prevention efforts. Bytesting a nationally representative sample of the U.S. population, NHANES willprovide the most reliable estimates of age-specific prevalence needed toevaluate the effectiveness of the strategies to prevent these infections. Inaddition, NHANES provides the means to better define the epidemiology of otherhepatitis viruses. NHANES testing for markers of infection with hepatitisviruses will be used to determine secular trends in infection rates across mostage and racialethnic groups, and will provide a national picture of theepidemiologic determinants of these infections.
     columns:
 
       - name: respondent_sequence_number
@@ -29334,8 +29349,8 @@ models:
       - name: hepatitis_b_surface_antigen
         description: Hepatitis B surface antigen
 
-      - name: hepatitis_d_anti_hdv
-        description: Hepatitis D anti-HDV
+      - name: hepatitis_d_antibody_anti_hdv
+        description: Hepatitis D antibody anti-HDV
 
   - name: hepatitis_b_core_antibody_surface_antigen_hepatitis_c_confirmed_antibody_rna_hcv_rna_hepatitis_d_antibody_laboratory
     description: Hepatitis viruses constitute a major public health problem because of the morbidity and mortality associated with the acute and chronic consequences of these infections. New immunization strategies have been developed to eliminate the spread of hepatitis B virus HBV and hepatitis A virus HAV in the United States. Recommendations have also been developed for the prevention and control of hepatitis C virus HCV infection. Because of the high rate of asymptomatic infection with these viruses, information about the prevalence of these diseases is needed to monitor prevention efforts. By testing a nationally representative sample of the U.S. population, NHANES will provide the most reliable estimates of age-specific prevalence needed to evaluate the effectiveness of the strategies to prevent these infections. In addition, NHANES provides the means to better define the epidemiology of other hepatitis viruses. NHANES testing for markers of infection with hepatitis viruses will be used to determine secular trends in infection rates across most age and racialethnic groups, and will provide a national picture of the epidemiologic determinants of these infections.
@@ -29376,7 +29391,7 @@ models:
         description: Hepatitis D anti-HDV
 
   - name: hepatitis_b_surface_antibody_laboratory
-    description: Hepatitis virusesconstitute a major public health problem because of the morbidity and mortalityassociated with the acute and chronic consequences of these infections. Newimmunization strategies have been developed to eliminate the spread ofhepatitis B virus HBV and hepatitis A virus HAV in the United States.Recommendations have also been developed for the prevention and control ofhepatitis C virus HCV infection. Because of the high rate of asymptomaticinfection with these viruses, information about the prevalence of thesediseases is needed to monitor prevention efforts. By testing a nationallyrepresentative sample of the U.S. population, NHANES will provide the mostreliable estimates of age-specific prevalence needed to evaluate theeffectiveness of the strategies to prevent these infections. Testing forhepatitis B surface antibody contributes information important to distinguishimmunity from vaccination among persons who lack antibodies to hepatitis Bcore. NHANES testing for markers of infection with hepatitis viruses will beused to determine secular trends in infection rates across most age andracialethnic groups, and will provide a national picture of the epidemiologicdeterminants of these infections.
+    description: The NHANES program suspended field operations inMarch 2020 due to the coronavirus disease 2019 COVID-19 pandemic. As aresult, data collection for the NHANES 2019-2020 cycle was not completed andthe collected data are not nationally representative. Therefore,data collected from 2019 to March 2020 were combined with data from the NHANES2017-2018 cycle to form a nationally representative sample of NHANES 2017-March2020 pre-pandemic data. These data are available to the public. Please refer tothe Analytic Notes section for more details on the use of the data.
     columns:
 
       - name: respondent_sequence_number
@@ -29609,17 +29624,17 @@ models:
         description: Hepatitis C genotype
 
   - name: hepatitis_e_igg_igm_antibodies_laboratory
-    description: Hepatitis virusesconstitute a major public health problem because of the morbidity and mortalityassociated with the acute and chronic consequences of these infections. Newimmunization strategies have been developed to eliminate the spread ofhepatitis B virus HBV and hepatitis A virus HAV in the United States.Recommendations have also been developed for the prevention and control ofhepatitis C virus HCV infection. Infection with hepatitis E virus HEV hasbeen responsible for large water-borne epidemics of acute disease in developingcountries and for acute sporadic disease in industrialized developed countries.In immunocompromised individuals, infection with HEV may also cause chronic infection,which may progress to fibrosis and cirrhosis. Because of the high rate ofasymptomatic infection with these viruses, information about the prevalence ofthese diseases is needed to monitor prevention efforts. By testing a nationallyrepresentative sample of the U.S. population, NHANES will provide the mostreliable estimates of age-specific prevalence needed to evaluate theeffectiveness of the strategies to prevent these infections. In addition,NHANES provides the means to better define the epidemiology of other hepatitisviruses. NHANES testing for markers of infection with hepatitis viruses will beused to determine secular trends in infection rates across most age andracialethnic groups, and will provide a national picture of the epidemiologicdeterminants of these infections.
+    description: Hepatitis viruses constitute a major public health problem because of the morbidity and mortality associated with the acute and chronic consequences of these infections. New immunization strategies have been developed to eliminate the spread of hepatitis B virus HBV and hepatitis A virus HAV in the United States. Recommendations have also been developed for the prevention and control of hepatitis C virus HCV infection. Infection with hepatitis E virus HEV has been responsible for large water-borne epidemics of acute disease in developing countries and for acute sporadic disease in industrialized developed countries. In immunocompromised individuals, infection with HEV may also cause chronic infection, which may progress to fibrosis and cirrhosis. Because of the high rate of asymptomatic infection with these viruses, information about the prevalence of these diseases is needed to monitor prevention efforts. By testing a nationally representative sample of the U.S. population, NHANES will provide the most reliable estimates of age-specific prevalence needed to evaluate the effectiveness of the strategies to prevent these infections. In addition, NHANES provides the means to better define the epidemiology of other hepatitis viruses. NHANES testing for markers of infection with hepatitis viruses will be used to determine secular trends in infection rates across most age and racialethnic groups, and will provide a national picture of the epidemiologic determinants of these infections.
     columns:
 
       - name: respondent_sequence_number
         description: Respondent sequence number
 
-      - name: hepatitis_e_igg_anti_hev
-        description: Hepatitis E IgG anti-HEV
+      - name: hepatitis_e_igg_antibody_igg_anti_hev
+        description: Hepatitis E IgG antibody IgG anti-HEV
 
-      - name: hepatitis_e_igm_anti_hev
-        description: Hepatitis E IgM anti-HEV
+      - name: hepatitis_e_igm_antibody_igm_anti_hev
+        description: Hepatitis E IgM antibody IgM anti-HEV
 
   - name: hepatitis_questionnaire
     description: The Hepatitis questionnaire variable name prefix HEQ provides respondent-level interview data on previous diagnosis of hepatitis B and hepatitis C and, among participants reporting a previous diagnosis, reported prescription medication treatment.
@@ -30089,7 +30104,7 @@ models:
         description: Human epididymal. secretory protein pM
 
   - name: human_papillomavirus_hpv_6_11_16_18_antibody_serum_4_plex_clia_laboratory
-    description: Humanpapillomavirus HPV infection is the most common sexually transmittedinfection in the United States. Cervical infection with certain types of HPV iscausally associated with cervical cancer in women. No national surveillancesystem exists to measure the full burden of HPV infection, and no reliablenational population estimate of HPV exists. NHANES offers a unique opportunityto assess the prevalence of HPV infection in the general population. 
+    description: Humanpapillomavirus HPV infection is one of the most common sexually transmittedinfections in the United States. Cervical infection with certain types of HPVis a major risk factor for cervical cancer in women. No national surveillancesystem exists to measure the full burden of HPV infection, and no reliablenational population estimate of HPV exists. NHANES offers a unique opportunityto assess the prevalence of HPV infection in the general population. 
     columns:
 
       - name: respondent_sequence_number
@@ -30099,7 +30114,7 @@ models:
         description: HPV 06 Merck competitive Luminex assay
 
       - name: hpv_11_merck_competitive_luminex_assay
-        description: HPV 11Merck competitive Luminex assay
+        description: HPV 11 Merck competitive Luminex assay
 
       - name: hpv_16_merck_competitive_luminex_assay
         description: HPV 16 Merck competitive Luminex assay
@@ -31149,17 +31164,11 @@ models:
         description: CODE LESS THAN 2 DOSES ONLY IF MENTIONED BY RESPONDENT
 
   - name: income_questionnaire
-    description: The NHANES program suspended field operations in March 2020 due to the coronavirus disease 2019 COVID-19 pandemic. As a result, data collection for the NHANES 2019-2020 cycle was not completed and the collected data are not nationally representative. Therefore, data collected from 2019 to March 2020 were combined with data from the NHANES 2017-2018 cycle to form a nationally representative sample of NHANES 2017-March 2020 pre-pandemic data. These data are available to the public. Please refer to the Analytic Notes section for more details on the use of the data.
+    description: The income section variable name prefix INQ provides family level information on income sources, monthly income, family cash assets, and mode of transportation to grocery stores. Information on familys annual income was also collected in this section and was released as part of the Demographics file DEMOJ.
     columns:
 
       - name: respondent_sequence_number
         description: Respondent sequence number.
-
-      - name: family_monthly_poverty_level_index
-        description: Family monthly poverty level index, a ratio of monthly family income to the HHS poverty guidelines specific to family size.
-
-      - name: family_monthly_poverty_level_category
-        description: Family monthly poverty level index categories.
 
       - name: income_from_wages_salaries
         description: The next questions are about youryour combined family   income.  When answering these questions, please remember that by   incomecombined family income, I mean your incomeyour income plus the   income of NAMES OF OTHER NHANES FAMILY MEMBERS for LAST CALENDAR YEAR.    Did youyou and OTHER NHANES FAMILY MEMBERS 16 receive income in LAST   CALENDAR YEAR from wages and salaries Did youyou or OTHER FAMILY MEMBERS   16 get paid for work in LAST CALENDAR YEAR.
@@ -31190,6 +31199,12 @@ models:
 
       - name: monthly_family_income
         description: Monthly family income reported as a range value in   dollars.
+
+      - name: family_monthly_poverty_level_index
+        description: Family monthly poverty level index, a ratio of monthly family   income to the HHS poverty guidelines specific to family size.
+
+      - name: family_monthly_poverty_level_category
+        description: Family monthly poverty level index categories.
 
       - name: family_has_savings_more_than_20_000
         description: INTERVIEWER INSTRUCTION  INCLUDE CASH, SAVINGS OR CHECKING   ACCOUNTS, STOCKS, BONDS, MUTUAL FUNDS, RETIREMENT FUNDS SUCH AS PENSIONS,   IRAS, 401KS, ETC, AND CERTIFICATES OF DEPOSIT.  CAPI INSTRUCTION DISPLAY   you for single-person family DISPLAY the members of your family for   multi-persons family.
@@ -31574,6 +31589,9 @@ models:
       - name: respondent_sequence_number
         description: Respondent sequence number
 
+      - name: blood_metal_weights
+        description: Blood metal weights
+
       - name: blood_lead_ug_dl
         description: Blood lead ugdL
 
@@ -31586,8 +31604,8 @@ models:
       - name: blood_cadmium_ug_l
         description: Blood cadmium ugL
 
-      - name: blood_cadmium_nmol_l
-        description: Blood cadmium nmolL
+      - name: blood_cadmium_umol_l
+        description: Blood cadmium umolL
 
       - name: blood_cadmium_comment_code
         description: Blood cadmium comment code
@@ -31595,8 +31613,8 @@ models:
       - name: blood_mercury_total_ug_l
         description: Blood mercury, total ugL
 
-      - name: blood_mercury_total_nmol_l
-        description: Blood mercury, total nmolL
+      - name: blood_mercury_total_umol_l
+        description: Blood mercury, total umolL
 
       - name: blood_mercury_total_comment_code
         description: Blood mercury, total comment code
@@ -31613,8 +31631,8 @@ models:
       - name: blood_manganese_ug_l
         description: Blood manganese ugL
 
-      - name: blood_manganese_nmol_l
-        description: Blood manganese nmolL
+      - name: blood_manganese_umol_l
+        description: Blood manganese umolL
 
       - name: blood_manganese_comment_code
         description: Blood manganese comment code
@@ -46842,7 +46860,7 @@ models:
         description: Urinary creatinine
 
   - name: polychlorinated_dibenzo_p_dioxins_pcdds_dibenzofurans_pcdfs_coplanar_polychlorinated_biphenyls_cpcbs_pooled_samples_laboratory
-    description: Polychlorinated dibenzo-p-dioxins PCDDs, polychlorinated dibenzofurans PCDFs, and dioxin-like polychlorinated biphenyls PCBs coplanar are similar classes of chlorinated aromatic chemicals that are produced as contaminants or byproducts. They have no known commercial or natural use. Dioxins are produced primarily during the incineration or burning of waste the bleaching processes used in pulp and paper mills and the chemical syntheses of trichlorophenoxyacetic acid, hexachlorophene, vinyl chloride, trichlorophenol, and pentachlorophenol. Both the synthesis and heat-related degradation of PCBs will produce PCDF by-products. PCBs are chlorinated aromatic hydrocarbon chemicals that were once synthesized for use as heat-exchanger, transformer, and hydraulic fluids, and also used as additives to paints, oils, window caulking, and floor tiles.
+    description: Polychlorinated dibenzo-p-dioxins PCDDs, dibenzofurans PCDFs, and dioxin-like polychlorinated biphenyls PCBs coplanar and several mono-ortho-substituted PCBs are similar classes of chlorinated aromatic chemicals that are produced as contaminants or byproducts. They have no known commercial or natural use. Dioxins are produced primarily during the incineration or burning of waste the bleaching processes used in pulp and paper mills and the chemical syntheses of trichlorophenoxyacetic acid, hexachlorophene, vinyl chloride, trichlorophenol, and pentachlorophenol. Both the synthesis and heat-related degradation of PCBs will produce PCDF by-products. PCBs are chlorinated aromatic hydrocarbon chemicals that were once synthesized for use as heat-exchanger, transformer, and hydraulic fluids, and also used as additives to paints, oils, window caulking, and floor tiles.
     columns:
 
       - name: pool_identification_number
@@ -46860,8 +46878,8 @@ models:
       - name: number_of_samples_in_a_pool
         description: Number of samples in a  pool
 
-      - name: sum_of_adjusted_subsample_weights
-        description: Adjust sum sampling weights in same pool
+      - name: adjust_sum_sampling_weights_in_same_pool
+        description: Adjusted sum sampling weights in same pool
 
       - name: lab_1_2_3_7_8_pncdd_fg_g
         description: 1,2,3,7,8-Pentachlorodibenzo-p-dioxin pncdd fgg
@@ -46890,10 +46908,10 @@ models:
       - name: lab_2_3_4_7_8_pentachlorofuran_pncdf_fg_g
         description: 2,3,4,7,8-Pentachlorodibenzofuran pncdf fgg
 
-      - name: lab_1_2_3_4_7_8_hcxdf_fg_g
+      - name: lab_1_2_3_4_7_8_hexachlorofuran_hcxdf_fg_g
         description: 1,2,3,4,7,8-Hexachlorodibenzofuran hcxdf fgg
 
-      - name: lab_1_2_3_6_7_8_hxcdf_fg_g
+      - name: lab_1_2_3_6_7_8_hexachlorofuran_hxcdf_fg_g
         description: 1,2,3,6,7,8-Hexachlorodibenzofuran hxcdf fgg
 
       - name: lab_1_2_3_7_8_9_hexachlorodifuran_fg_g
@@ -46909,7 +46927,7 @@ models:
         description: 1,2,3,4,7,8,9-Heptachlorodibenzofuran  hpcdf fgg
 
       - name: lab_1_2_3_4_6_7_8_9_octachlorodifuran_fg_g
-        description: 1,2,3,4,6,7,8,9-Octachlorodibenzofuran ocdf fgg
+        description: 1,2,3,4,6,7,8,9-ocdf lipid adjustedpgg
 
       - name: lab_3_3_4_4_5_5_hexachlorobiphenyl_fg_g
         description: 3,3,4,4,5,5-hexachlorobiphenyl hxcb fgg
@@ -46924,64 +46942,64 @@ models:
         description: 2,3,7,8-Tetrachlorodienzo-p-dioxin tcdd fgg
 
       - name: lab_1_2_3_7_8_pncdd_lipid_adjusted_pg_g
-        description: 1,2,3,7,8-Pentachlorodibenzo-p-dioxin pncdd Lipid Adjusted pgg
+        description: 1,2,3,7,8-Pentachlorodibenzo-p-dioxin pncdd Lipid Adjusted
 
       - name: lab_1_2_3_4_7_8_hxcdd_lipid_adjusted_pg_g
-        description: 1,2,3,4,7,8-Hexachlorodibenzo-p-dioxin hxcdd Lipid Adjusted pgg
+        description: 1,2,3,4,7,8-Hexachlorodibenzo-p-dioxin hxcdd Lipid Adjusted
 
       - name: lab_1_2_3_6_7_8_hxcdd_lipid_adjusted_pg_g
-        description: 1,2,3,6,7,8-Hexachlorodibenzo-p-dioxin hxcdd Lipid Adjusted pgg
+        description: 1,2,3,6,7,8-Hexachlorodibenzo-p-dioxin hxcdd Lipid Adjusted
 
       - name: lab_1_2_3_7_8_9_hxcdd_lipid_adjusted_pg_g
-        description: 1,2,3,7,8,9-Hexachlorodibenzo-p-dioxin hxcdd Lipid Adjusted pgg
+        description: 1,2,3,7,8,9-Hexachlorodibenzo-p-dioxin hxcdd Lipid Adjusted
 
-      - name: lab_1_2_3_4_6_7_8_hpcdd_lipid_adjust_pg_g
-        description: 1,2,3,4,6,7,8-Heptachlororodibenzo-p-dioxin hpcdd Lipid Adjusted pgg
+      - name: lab_1_2_3_4_6_7_8_hpcdd_lipid_adjusted_pg_g
+        description: 1,2,3,4,6,7,8-Heptachlororodibenzo-p-dioxin hpcdd Lipid Adjusted
 
-      - name: lab_1_2_3_4_6_7_8_9_ocdd_lipid_adjust_pg_g
-        description: 1,2,3,4,6,7,8,9-Octachlorodibenzo-p-dioxin ocdd Lipid Adjusted pgg
+      - name: lab_1_2_3_4_6_7_8_9_ocdd_lipid_adjusted_pg_g
+        description: 1,2,3,4,6,7,8,9-Octachlorodibenzo-p-dioxin ocdd Lipid Adjusted
 
       - name: lab_2_3_7_8_tcdf_lipid_adjusted_pg_g
-        description: 2,3,7,8-Tetrachlorodibenzofuran tcdf Lipid Adjusted pgg
+        description: 2,3,7,8-Tetrachlorodibenzofuran tcdf Lipid Adjusted
 
       - name: lab_1_2_3_7_8_pncdf_lipid_adjusted_pg_g
-        description: 1,2,3,7,8-Pentachlorodibenzofuran pncdf Lipid Adjusted pgg
+        description: 1,2,3,7,8-Pentachlorodibenzofuran pncdf Lipid Adjusted
 
-      - name: lab_2_3_4_7_8_pncdf_lipid_adjust_pg_g
-        description: 2,3,4,7,8-Pentachlorodibenzofuran pncdf Lipid Adjusted pgg
+      - name: lab_2_3_4_7_8_pncdf_lipid_adjusted_pg_g
+        description: 2,3,4,7,8-Pentachlorodibenzofuran pncdf Lipid Adjusted
 
       - name: lab_1_2_3_4_7_8_hcxdf_lipid_adjusted_pg_g
-        description: 1,2,3,4,7,8-Hexachlorodibenzofuran hcxdf Lipid Adjusted pgg
+        description: 1,2,3,4,7,8-Hexachlorodibenzofuran hcxdf Lipid Adjusted
 
       - name: lab_1_2_3_6_7_8_hxcdf_lipid_adjusted_pg_g
-        description: 1,2,3,6,7,8-Hexachlorodibenzofuran hxcdf Lipid Adjusted pgg
+        description: 1,2,3,6,7,8-Hexachlorodibenzofuran hxcdf Lipid Adjusted
 
       - name: lab_1_2_3_7_8_9_hxcdf_lipid_adjusted_pg_g
-        description: 1,2,3,7,8,9-Hexachlorodibenzofuran hxcdf Lipid Adjusted pgg
+        description: 1,2,3,7,8,9-Hexachlorodibenzofuran hxcdf Lipid Adjusted
 
       - name: lab_2_3_4_6_7_8_hxcdf_lipid_adjusted_pg_g
-        description: 2,3,4,6,7,8-Hexchlorodibenzofuran hxcdf Lipid Adjusted pgg
+        description: 2,3,4,6,7,8-Hexchlorodibenzofuran hxcdf Lipid Adjusted
 
-      - name: lab_1_2_3_4_6_7_8_hpcdf_lipid_adjust_pg_g
-        description: 1,2,3,4,6,7,8-Heptachlorodibenzofuran hpcdf Lipid Adjusted pgg
+      - name: lab_1_2_3_4_6_7_8_hpcdf_lipid_adjusted_pg_g
+        description: 1,2,3,4,6,7,8-Heptachlorodibenzofuran hpcdf Lipid Adjusted
 
-      - name: lab_1_2_3_4_7_8_9_hpcdf_lipid_adjust_pg_g
-        description: 1,2,3,4,7,8,9-Heptachlorodibenzofuran Hpcdf Lipid Adjusted pgg
+      - name: lab_1_2_3_4_7_8_9_hpcdf_lipid_adjusted_pg_g
+        description: 1,2,3,4,7,8,9-Heptachlorodibenzofuran  Hpcdf Lipid Adjusted
 
-      - name: lab_1_2_3_4_6_7_8_9_ocdf_lipid_adjust_pg_g
-        description: 1,2,3,4,6,7,8,9-Octachlorodibenzofuran ocdf Lipid Adjusted pgg
+      - name: lab_1_2_3_4_6_7_8_9_ocdf_lipid_adjusted_pg_g
+        description: 1,2,3,4,6,7,8,9-Octachlorodibenzofuran ocdf Lipid Adjusted
 
-      - name: lab_3_3_4_4_5_5_hxcb_lipid_adjust_pg_g
-        description: 3,3,4,4,5,5-hexachlorobiphenyl hxcb Lipid Adjusted pgg
+      - name: lab_3_3_4_4_5_5_hxcb_lipid_adjusted_pg_g
+        description: 3,3,4,4,5,5-hexachlorobiphenyl hxcb Lipid Adjusted
 
       - name: lab_3_3_4_4_5_pncb_lipid_adjusted_pg_g
-        description: 3,3,4,4,5-Pentachlorobiphenyl pncb Lipid Adjusted pgg
+        description: 3,3,4,4,5-Pentachlorobiphenyl pncb Lipid Adjusted
 
       - name: lab_3_4_4_5_tcb_lipid_adjusted_pg_g
-        description: 3,4,4,5-Tetrachlorobiphenyl tcb Lipid Adjusted pgg
+        description: 3,4,4,5-Tetrachlorobiphenyl tcb Lipid Adjusted
 
       - name: lab_2_3_7_8_tcdd_lipid_adjusted_pg_g
-        description: 2,3,7,8-Tetrachlorodienzo-p-dioxin tcdd Lipid Adjusted pgg
+        description: 2,3,7,8-Tetrachlorodienzo-p-dioxin tcdd Lipid Adjusted
 
       - name: lab_1_2_3_7_8_pncdd_comment_code
         description: 1,2,3,7,8-Pentachlorodibenzo-p-dioxin pncdd comment code
@@ -47042,9 +47060,6 @@ models:
 
       - name: lab_2_3_7_8_tcdd_comment_code
         description: 2,3,7,8-Tetrachlorodienzo-p-dioxin tcdd comment code
-
-      - name: ethnicity_recode_ETHNICTY
-        description: Ethnicity - Recode
 
   - name: polycyclic_aromatic_hydrocarbons_pah_urine_laboratory
     description: PAHs constitute a group of chemicals formed during the incompletecombustion of coal, oil and gas, garbage, and other organic substances. Ingeneral, people are exposed to mixtures of PAHs, and the sources arewidespread, including vehicle exhaust, asphalt, coal tar, wildfires,agricultural burning, charbroiled foods, and tobacco smoke. Upon entering thebody, PAHs are readily metabolized and eliminated in urine. Urinaryconcentrations of PAH metabolites, specifically monohydroxylated PAHsOH-PAHs, have been used as biomarkers of human exposure to select PAHs,including naphthalene, fluorene, phenanthrene, and pyrene.
@@ -50790,23 +50805,14 @@ models:
         description: Testosterone total ngdL
 
   - name: toxoplasma_gondii_antibody_serum_surplus_laboratory
-    description: Sera from residualspecimens from NHANES 2013-2014 participants were tested for Toxoplasma gondii by an enzymeimmunoassay EIA that detects IgG and IgM antibodies against T. gondii. The results for theToxoplasma IgG in this data release are reported as IUml. Samples with results 33 IUmL should be coded as Positive, samples with results  27 IUmLshould be coded as Negative, and samples with results  27 IUmL and 33IUmL were considered Equivocal. The Toxoplasma IgM results are reported asRatio values. Sample Ratio  0.8 are coded as Negative, Sample Ratio  0.8 1 are coded as Equivocal, and Sample Ratio  1 are coded Positive. Allresults originally considered Equivocal were repeated at least twice forconfirmation and should be coded as Negative.
+    description: All available sera from residual specimens from NHANES 2009-2010 participants were tested for Toxoplasma gondii by an enzyme immunoassay EIA that detects IgG antibodies against T. gondii. All results in this data release are reported as IUml. Samples with results  33 IUmL should be coded as Positive, samples with results  27 IUmL should be coded as Negative, and samples with results  27 IUmL and 33 IUmL were considered Equivocal. All results originally considered Equivocal were repeated at least twice for confirmation and should be coded as Negative. 
     columns:
 
       - name: respondent_sequence_number
         description: Respondent sequence number.
 
-      - name: toxoplasmosis_igg_antibodies_iu_ml
-        description: Toxoplasmosis IgG antibodies IUml
-
-      - name: toxoplasmosis_igm_antibodies
-        description: Toxoplasmosis IgM antibodies
-
-      - name: toxoplasmosis_igg_avidity_iu_ml
-        description: Toxoplasmosis IgG Avidity IUml
-
-      - name: sstoca_and_sstoxo_2_year_weights
-        description: Surplus specimen SSTOCA and SSTOXO 2 year weights
+      - name: t_gondii_antibodies_iu_ml
+        description: T.gondii antibodies IUml
 
   - name: toxoplasma_igg_toxoplasma_igm_laboratory
     description: Serologic tests are available to determine who has become infected with toxoplasmosis. Toxoplasma-specific IgG antibodies are detectable 13 weeks after infection and remain detectable for the life of the individual. Toxoplasma-specific IgM antibodies are also detectable 13 weeks after infection but generally decline to nil by 1 year after infection. The presence of both IgG and IgM is evidence for infection within the last year. The presence of IgG antibody without IgM is considered indicative of past infection. All eligible participants were tested for serum IgG, and positive sera were tested for the presence of IgM. These data will be used to estimate the prevalence of toxoplasmosis in the U.S. and to determine whether the rates are changing over time. Toxoplasma IgG antibody was measured in NHANES III with an overall prevalence of 22.5.

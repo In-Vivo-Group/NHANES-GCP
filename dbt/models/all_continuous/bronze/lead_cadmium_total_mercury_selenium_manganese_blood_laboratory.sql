@@ -2,6 +2,11 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
+    WHEN WTSH2YR IS NULL THEN NULL 
+ELSE SAFE_CAST(WTSH2YR AS FLOAT64) 
+ END as blood_metal_weights, 
+
+CASE
     WHEN LBXBPB IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXBPB AS FLOAT64) 
  END as blood_lead_ug_dl, 
@@ -26,7 +31,7 @@ ELSE SAFE_CAST(LBXBCD AS FLOAT64)
 CASE
     WHEN LBDBCDSI IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDBCDSI AS FLOAT64) 
- END as blood_cadmium_nmol_l, 
+ END as blood_cadmium_umol_l, 
 
 CASE
     WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDBCDLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
@@ -43,7 +48,7 @@ ELSE SAFE_CAST(LBXTHG AS FLOAT64)
 CASE
     WHEN LBDTHGSI IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDTHGSI AS FLOAT64) 
- END as blood_mercury_total_nmol_l, 
+ END as blood_mercury_total_umol_l, 
 
 CASE
     WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDTHGLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
@@ -77,7 +82,7 @@ ELSE SAFE_CAST(LBXBMN AS FLOAT64)
 CASE
     WHEN LBDBMNSI IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDBMNSI AS FLOAT64) 
- END as blood_manganese_nmol_l, 
+ END as blood_manganese_umol_l, 
 
 CASE
     WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDBMNLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
@@ -98,5 +103,5 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/PBCD_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/PBCD_I.htm
 */

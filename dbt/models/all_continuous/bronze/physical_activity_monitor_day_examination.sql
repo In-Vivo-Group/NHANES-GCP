@@ -2,27 +2,27 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-    WHEN SAFE_CAST(PAXDAYD AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN '1st day of wear' 
-WHEN SAFE_CAST(PAXDAYD AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN '2nd day of wear' 
-WHEN SAFE_CAST(PAXDAYD AS FLOAT64) = SAFE_CAST(3 AS FLOAT64) THEN '3rd day of wear' 
-WHEN SAFE_CAST(PAXDAYD AS FLOAT64) = SAFE_CAST(4 AS FLOAT64) THEN '4th day of wear' 
-WHEN SAFE_CAST(PAXDAYD AS FLOAT64) = SAFE_CAST(5 AS FLOAT64) THEN '5th day of wear' 
-WHEN SAFE_CAST(PAXDAYD AS FLOAT64) = SAFE_CAST(6 AS FLOAT64) THEN '6th day of wear' 
-WHEN SAFE_CAST(PAXDAYD AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN '7th day of wear' 
-WHEN SAFE_CAST(PAXDAYD AS FLOAT64) = SAFE_CAST(8 AS FLOAT64) THEN '8th day of wear' 
-WHEN SAFE_CAST(PAXDAYD AS FLOAT64) = SAFE_CAST(9 AS FLOAT64) THEN '9th day of wear' 
+    WHEN REPLACE(PAXDAYD,'.0','') = '1' THEN '1st day of wear' -- categorize string values 
+WHEN REPLACE(PAXDAYD,'.0','') = '2' THEN '2nd day of wear' -- categorize string values 
+WHEN REPLACE(PAXDAYD,'.0','') = '3' THEN '3rd day of wear' -- categorize string values 
+WHEN REPLACE(PAXDAYD,'.0','') = '4' THEN '4th day of wear' -- categorize string values 
+WHEN REPLACE(PAXDAYD,'.0','') = '5' THEN '5th day of wear' -- categorize string values 
+WHEN REPLACE(PAXDAYD,'.0','') = '6' THEN '6th day of wear' -- categorize string values 
+WHEN REPLACE(PAXDAYD,'.0','') = '7' THEN '7th day of wear' -- categorize string values 
+WHEN REPLACE(PAXDAYD,'.0','') = '8' THEN '8th day of wear' -- categorize string values 
+WHEN REPLACE(PAXDAYD,'.0','') = '9' THEN '9th day of wear' -- categorize string values 
 WHEN PAXDAYD IS NULL THEN NULL 
 ELSE SAFE_CAST(PAXDAYD AS STRING) 
  END as day_of_pam_measurements_for_this_day, 
 
 CASE
-    WHEN SAFE_CAST(PAXDAYWD AS FLOAT64) = SAFE_CAST(1 AS FLOAT64) THEN 'Sunday' 
-WHEN SAFE_CAST(PAXDAYWD AS FLOAT64) = SAFE_CAST(2 AS FLOAT64) THEN 'Monday' 
-WHEN SAFE_CAST(PAXDAYWD AS FLOAT64) = SAFE_CAST(3 AS FLOAT64) THEN 'Tuesday' 
-WHEN SAFE_CAST(PAXDAYWD AS FLOAT64) = SAFE_CAST(4 AS FLOAT64) THEN 'Wednesday' 
-WHEN SAFE_CAST(PAXDAYWD AS FLOAT64) = SAFE_CAST(5 AS FLOAT64) THEN 'Thursday' 
-WHEN SAFE_CAST(PAXDAYWD AS FLOAT64) = SAFE_CAST(6 AS FLOAT64) THEN 'Friday' 
-WHEN SAFE_CAST(PAXDAYWD AS FLOAT64) = SAFE_CAST(7 AS FLOAT64) THEN 'Saturday' 
+    WHEN REPLACE(PAXDAYWD,'.0','') = '1' THEN 'Sunday' -- categorize string values 
+WHEN REPLACE(PAXDAYWD,'.0','') = '2' THEN 'Monday' -- categorize string values 
+WHEN REPLACE(PAXDAYWD,'.0','') = '3' THEN 'Tuesday' -- categorize string values 
+WHEN REPLACE(PAXDAYWD,'.0','') = '4' THEN 'Wednesday' -- categorize string values 
+WHEN REPLACE(PAXDAYWD,'.0','') = '5' THEN 'Thursday' -- categorize string values 
+WHEN REPLACE(PAXDAYWD,'.0','') = '6' THEN 'Friday' -- categorize string values 
+WHEN REPLACE(PAXDAYWD,'.0','') = '7' THEN 'Saturday' -- categorize string values 
 WHEN PAXDAYWD IS NULL THEN NULL 
 ELSE SAFE_CAST(PAXDAYWD AS STRING) 
  END as day_of_the_week, 

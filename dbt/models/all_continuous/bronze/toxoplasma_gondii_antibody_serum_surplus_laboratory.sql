@@ -2,24 +2,9 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-    WHEN SSTOXG IS NULL THEN NULL 
-ELSE SAFE_CAST(SSTOXG AS FLOAT64) 
- END as toxoplasmosis_igg_antibodies_iu_ml, 
-
-CASE
-    WHEN SSTOXM IS NULL THEN NULL 
-ELSE SAFE_CAST(SSTOXM AS FLOAT64) 
- END as toxoplasmosis_igm_antibodies, 
-
-CASE
-    WHEN SSTOXAV IS NULL THEN NULL 
-ELSE SAFE_CAST(SSTOXAV AS FLOAT64) 
- END as toxoplasmosis_igg_avidity_iu_ml, 
-
-CASE
-    WHEN WTSSTT2Y IS NULL THEN NULL 
-ELSE SAFE_CAST(WTSSTT2Y AS FLOAT64) 
- END as sstoca_and_sstoxo_2_year_weights, 
+    WHEN SSTOXO IS NULL THEN NULL 
+ELSE SAFE_CAST(SSTOXO AS FLOAT64) 
+ END as t_gondii_antibodies_iu_ml, 
 
 start_year,
 end_year,
@@ -33,6 +18,5 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/SSTOXO_H.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/SSTOXO_G.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/SSTOXO_F.htm
 */

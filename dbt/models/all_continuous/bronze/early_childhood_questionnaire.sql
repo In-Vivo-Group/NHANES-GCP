@@ -177,8 +177,8 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/ECQ_J.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_ECQ.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/ECQ_J.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/ECQ_I.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/ECQ_H.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/ECQ_G.htm

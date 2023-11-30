@@ -18,7 +18,10 @@ BRONZE_SQL_PATH = "../dbt/models/all_continuous/bronze/"
 SKIP_COLUMNS = ["DSDSUPID"]
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
 
 
 def read_tables():

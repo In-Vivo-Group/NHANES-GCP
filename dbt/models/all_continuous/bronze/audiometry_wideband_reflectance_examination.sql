@@ -1625,7 +1625,6 @@ dataset,
 
 /* 
 Docs utilized to generate this SQL can be found at:
-https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_AUXWBR.htm
 https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/AUXWBR_J.htm
-https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/AUXWBR_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_AUXWBR.htm
 */
