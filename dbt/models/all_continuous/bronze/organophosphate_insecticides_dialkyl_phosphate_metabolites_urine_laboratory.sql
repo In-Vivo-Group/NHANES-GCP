@@ -4,7 +4,7 @@ SEQN as respondent_sequence_number, -- could not identify transformation logic
 CASE
     WHEN SAFE_CAST(WTSB2YR AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN NULL --remove no lab specimen samples from data 
 WHEN WTSB2YR IS NULL THEN NULL 
-ELSE SAFE_CAST(WTSB2YR AS FLOAT) 
+ELSE SAFE_CAST(WTSB2YR AS FLOAT64) 
  END as environmental_subsample_b_weights, 
 
 CASE
