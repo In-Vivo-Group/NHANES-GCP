@@ -17,7 +17,9 @@ BUCKET_NAME = os.getenv("BUCKET_NAME")
 DATA_QUERY = "SELECT * FROM nhanes.nhanes_file_metadata"
 
 # Configure logging
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 
 def get_metadata_dataframe(query, project_id):

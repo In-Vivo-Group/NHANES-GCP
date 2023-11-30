@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 import pandas_gbq
 from dotenv import load_dotenv
+
 from utils import generate_filename, update_bq_table
 
 load_dotenv("myenv.env")
@@ -127,7 +128,9 @@ def convert_data_types_and_merge(df, file_df, metadata_cols):
     for column in df.columns:
         if column not in ["filename", "SEQN"]:
             try:
-                df[column] = pd.to_numeric(df[column], errors="coerce")
+                df[column] = pd.to_numeric(df[column], errors="coerce").replace(
+                    5.397605346934028e-79, 0
+                )
             except Exception as ex:
                 logging.warning(f"{ex} for {column} in {alias}")
 
@@ -142,14 +145,22 @@ def convert_data_types_and_merge(df, file_df, metadata_cols):
 
     df["start_year"] = df["start_year"].astype("Int64")
     df["end_year"] = df["end_year"].astype("Int64")
-    df["published_date"] = pd.to_datetime(df["published_date"], errors="ignore")
+    sub = pd.to_datetime(
+        df["published_date"], errors="coerce", format="%Y-%m-%d %H:%M:%S"
+    )
+    sub = sub.fillna(
+        pd.to_datetime(df["published_date"], format="%B %Y", errors="coerce")
+    )
+    df["published_date"] = sub
 
     return df
 
 
 def main():
+    completed_aliases = []
     configure_duckdb_gcp()
     warnings.simplefilter(action="ignore", category=FutureWarning)
+    warnings.simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
     metadata_df = get_metadata_df()
 
     file_subset_df = metadata_df[["data_file_name", "page_component"]].drop_duplicates()
@@ -174,18 +185,26 @@ def main():
     for data_file_name, page_component in file_subset_df.sort_values(
         by="data_file_name"
     ).values:
-        file_df = metadata_df[
-            (metadata_df["data_file_name"] == data_file_name.strip())
-            & (metadata_df["page_component"].str.contains(page_component.strip()))
-        ]
-        if process_file(
-            file_df, data_file_name, page_component, metadata_df, metadata_cols
-        ):
-            processed_count += 1
+        alias = generate_filename(
+            data_file_name.lower() + " " + page_component.lower(), ""
+        )
 
-        if processed_count % 10 == 0:
-            logging.info(f"Last 10 datasets took {time.time() - new_time} seconds")
-            new_time = time.time()
+        if alias not in completed_aliases:
+            file_df = metadata_df[
+                (metadata_df["data_file_name"] == data_file_name.strip())
+                & (metadata_df["page_component"].str.contains(page_component.strip()))
+            ]
+            if process_file(
+                file_df, data_file_name, page_component, metadata_df, metadata_cols
+            ):
+                processed_count += 1
+                completed_aliases.append(alias)
+
+            if processed_count % 10 == 0:
+                logging.info(f"Last 10 datasets took {time.time() - new_time} seconds")
+                new_time = time.time()
+        else:
+            logging.info(f"Skipping duplicate alias: {alias}")
 
     logging.info(f"Entire process took {time.time() - start_time} seconds")
 
