@@ -50618,16 +50618,16 @@ models:
       - name: surplus_specimen_terpenes_2_yr_weights
         description: Surplus specimen terpenes 2 year weights for 2013-2014
 
-      - name: î_pinene_ng_ml
+      - name: i_pinene_ng_ml
         description: -Pinene ngmL
 
-      - name: î_pinene_comment_code
+      - name: i_pinene_comment_code
         description: -Pinene Comment Code
 
-      - name: î²_pinene_ng_ml
+      - name: beta_pinene_ng_ml
         description: -Pinene ngmL
 
-      - name: î²_pinene_comment_code
+      - name: beta_pinene_comment_code
         description: -Pinene Comment Code
 
       - name: limonene_ng_ml
