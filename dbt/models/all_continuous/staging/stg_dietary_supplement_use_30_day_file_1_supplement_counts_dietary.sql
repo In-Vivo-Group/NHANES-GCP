@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.dietary_supplement_use_30_day_file_1_supplement_counts_dietary

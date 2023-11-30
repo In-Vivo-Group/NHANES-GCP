@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.sexual_behavior_questionnaire

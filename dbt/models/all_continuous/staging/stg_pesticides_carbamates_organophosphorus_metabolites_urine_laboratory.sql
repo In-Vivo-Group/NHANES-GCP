@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.pesticides_carbamates_organophosphorus_metabolites_urine_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.pyrethroids_herbicides_op_metabolites_urine_laboratory

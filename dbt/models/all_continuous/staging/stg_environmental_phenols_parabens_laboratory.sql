@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.environmental_phenols_parabens_laboratory

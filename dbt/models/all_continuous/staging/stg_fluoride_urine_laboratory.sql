@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.fluoride_urine_laboratory

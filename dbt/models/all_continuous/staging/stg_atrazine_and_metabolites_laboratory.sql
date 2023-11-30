@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.atrazine_and_metabolites_laboratory

@@ -2,7 +2,7 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often true' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032A AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032A AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Never true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032A AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -12,7 +12,7 @@ ELSE SAFE_CAST(FSD032A AS STRING)
  END as hh_worried_run_out_of_food, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032B AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often true' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032B AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032B AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Never true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032B AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -22,7 +22,7 @@ ELSE SAFE_CAST(FSD032B AS STRING)
  END as hh_food_didn_t_last, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032C AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often true' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032C AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032C AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032C AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Never true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032C AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -32,7 +32,7 @@ ELSE SAFE_CAST(FSD032C AS STRING)
  END as hh_couldn_t_afford_balanced_meals, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD041 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD041 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD041 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD041 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD041 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -41,7 +41,7 @@ ELSE SAFE_CAST(FSD041 AS STRING)
  END as hh_adults_cut_size_or_skip_meals, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD052 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Almost every month,' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD052 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Almost every month,' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD052 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some months but not every month, or' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD052 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Only 1 or 2 months?' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD052 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -51,7 +51,7 @@ ELSE SAFE_CAST(FSD052 AS STRING)
  END as hh_how_often_adults_cut_size_skip_meals, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD061 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD061 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD061 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD061 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD061 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -60,7 +60,7 @@ ELSE SAFE_CAST(FSD061 AS STRING)
  END as hh_eat_less_than_should, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD071 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD071 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD071 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD071 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD071 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -69,7 +69,7 @@ ELSE SAFE_CAST(FSD071 AS STRING)
  END as hh_hungry_but_didn_t_eat, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD081 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD081 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD081 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD081 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD081 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -78,7 +78,7 @@ ELSE SAFE_CAST(FSD081 AS STRING)
  END as hh_lost_weight_no_money_for_food, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD092 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD092 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD092 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD092 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD092 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -87,7 +87,7 @@ ELSE SAFE_CAST(FSD092 AS STRING)
  END as hh_adults_not_eat_whole_day, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD102 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Almost every month,' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD102 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Almost every month,' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD102 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some months but not every month, or' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD102 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Only 1 or 2 months?' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD102 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -97,7 +97,7 @@ ELSE SAFE_CAST(FSD102 AS STRING)
  END as hh_how_often_adults_not_eat_for_day, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032D AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often true' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032D AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032D AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032D AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Never true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032D AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -107,7 +107,7 @@ ELSE SAFE_CAST(FSD032D AS STRING)
  END as hh_relied_on_low_cost_food_for_child, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032E AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often true' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032E AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032E AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032E AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Never true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032E AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -117,7 +117,7 @@ ELSE SAFE_CAST(FSD032E AS STRING)
  END as hh_couldn_t_feed_child_balanced_meal, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032F AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often true' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032F AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032F AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032F AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Never true' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD032F AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -127,7 +127,7 @@ ELSE SAFE_CAST(FSD032F AS STRING)
  END as hh_child_not_eating_enough, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD111 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD111 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD111 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD111 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD111 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -136,7 +136,7 @@ ELSE SAFE_CAST(FSD111 AS STRING)
  END as hh_cut_size_of_child_meals, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD122 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD122 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD122 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD122 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD122 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -145,7 +145,7 @@ ELSE SAFE_CAST(FSD122 AS STRING)
  END as hh_child_skip_meals, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD132 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Almost every month,' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD132 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Almost every month,' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD132 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Some months but not every month, or' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD132 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Only 1 or 2 months?' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD132 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -155,7 +155,7 @@ ELSE SAFE_CAST(FSD132 AS STRING)
  END as hh_how_often_child_skip_meals, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD141 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD141 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD141 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD141 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD141 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -164,7 +164,7 @@ ELSE SAFE_CAST(FSD141 AS STRING)
  END as hh_child_hungry_in_last_12_months, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD146 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD146 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD146 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD146 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD146 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -173,7 +173,7 @@ ELSE SAFE_CAST(FSD146 AS STRING)
  END as hh_child_not_eat_whole_day, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDHH AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'HH full food security: 0' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDHH AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'HH full food security: 0' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDHH AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'HH marginal food security: 1-2' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDHH AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'HH low food security: 3-5 (HH w/o child) / 3-7 (HH w/ child)' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDHH AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'HH very low food security: 6-10 (HH w/o child) / 8-18 (HH w/ child)' -- categorize string values 
@@ -182,7 +182,7 @@ ELSE SAFE_CAST(FSDHH AS STRING)
  END as household_food_security_category, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDAD AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'AD full food security: 0' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDAD AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'AD full food security: 0' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDAD AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'AD marginal food security: 1-2' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDAD AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'AD low food security: 3-5' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDAD AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'AD very low food security: 6-10' -- categorize string values 
@@ -191,7 +191,7 @@ ELSE SAFE_CAST(FSDAD AS STRING)
  END as adult_food_security_category, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDCH AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'CH full or marginal food security: 0' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDCH AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'CH full or marginal food security: 0' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDCH AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'CH marginal food security: 1' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDCH AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'CH low food security: 2-4' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSDCH AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'CH very low food security: 5-8' -- categorize string values 
@@ -200,7 +200,7 @@ ELSE SAFE_CAST(FSDCH AS STRING)
  END as child_food_security_category, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD151 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD151 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD151 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD151 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD151 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -209,7 +209,7 @@ ELSE SAFE_CAST(FSD151 AS STRING)
  END as hh_emergency_food_received, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ165 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ165 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ165 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ165 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ165 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -218,13 +218,13 @@ ELSE SAFE_CAST(FSQ165 AS STRING)
  END as hh_fs_benefit_ever_received, 
 
 CASE
-WHEN SAFE_CAST(FSD165N AS FLOAT64) > 17.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSD165N AS FLOAT64) > 17.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSD165N IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD165N AS FLOAT64) 
  END as hh_fs_benefit_of_people_ever_received, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ012 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ012 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ012 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ012 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ012 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -233,13 +233,13 @@ ELSE SAFE_CAST(FSQ012 AS STRING)
  END as hh_fs_benefit_receive_in_last_12_months, 
 
 CASE
-WHEN SAFE_CAST(FSD012N AS FLOAT64) > 17.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSD012N AS FLOAT64) > 17.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSD012N IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD012N AS FLOAT64) 
  END as hh_fs_benefit_of_people_received_12m, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD230 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD230 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD230 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD230 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD230 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -248,31 +248,31 @@ ELSE SAFE_CAST(FSD230 AS STRING)
  END as hh_fs_benefit_currently_receive, 
 
 CASE
-WHEN SAFE_CAST(FSD230N AS FLOAT64) > 17.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSD230N AS FLOAT64) > 17.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSD230N IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD230N AS FLOAT64) 
  END as hh_fs_benefit_people_currently_receive, 
 
 CASE
-WHEN SAFE_CAST(FSD795 AS FLOAT64) > 23.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSD795 AS FLOAT64) > 23.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSD795 IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD795 AS FLOAT64) 
  END as hh_fs_benefit_of_months_received, 
 
 CASE
-WHEN SAFE_CAST(FSD225 AS FLOAT64) > 311.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSD225 AS FLOAT64) > 311.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSD225 IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD225 AS FLOAT64) 
  END as hh_fs_benefit_time_since_last_received, 
 
 CASE
-WHEN SAFE_CAST(FSD235 AS FLOAT64) > 975.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSD235 AS FLOAT64) > 975.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSD235 IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD235 AS FLOAT64) 
  END as hh_fs_benefit_amount_received_last_time, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD855 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD855 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD855 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD855 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD855 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -281,19 +281,19 @@ ELSE SAFE_CAST(FSD855 AS STRING)
  END as hh_fs_benefit_anticipate_will_receive, 
 
 CASE
-WHEN SAFE_CAST(FSD860 AS FLOAT64) > 46.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSD860 AS FLOAT64) > 46.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSD860 IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD860 AS FLOAT64) 
  END as hh_fs_benefit_time_will_receive, 
 
 CASE
-WHEN SAFE_CAST(FSQ865 AS FLOAT64) > 711.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSQ865 AS FLOAT64) > 711.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSQ865 IS NULL THEN NULL 
 ELSE SAFE_CAST(FSQ865 AS FLOAT64) 
  END as hh_fs_benefit_amount_will_receive, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ162 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ162 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ162 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ162 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ162 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -302,7 +302,7 @@ ELSE SAFE_CAST(FSQ162 AS STRING)
  END as hh_wic_benefit_receive_in_last_12_month, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ760 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ760 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ760 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ760 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ760 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -311,13 +311,13 @@ ELSE SAFE_CAST(FSQ760 AS STRING)
  END as hh_wic_benefit_received_in_last_30_days, 
 
 CASE
-WHEN SAFE_CAST(FSD760N AS FLOAT64) > 17.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSD760N AS FLOAT64) > 17.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSD760N IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD760N AS FLOAT64) 
  END as hh_wic_benefit_no_people_received, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ653 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ653 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ653 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ653 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ653 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -326,7 +326,7 @@ ELSE SAFE_CAST(FSQ653 AS STRING)
  END as ch_wic_benefit_ever_received, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660ZC AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660ZC AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660ZC AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660ZC AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660ZC AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -335,7 +335,7 @@ ELSE SAFE_CAST(FSD660ZC AS STRING)
  END as ch_wic_benefit_currently_receive, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD675 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD675 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD675 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD675 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD675 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -344,7 +344,7 @@ ELSE SAFE_CAST(FSD675 AS STRING)
  END as ch_wic_benefit_received_in_infancy, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD680 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD680 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD680 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD680 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD680 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -353,13 +353,13 @@ ELSE SAFE_CAST(FSD680 AS STRING)
  END as ch_wic_benefit_received_b_w_1_4_yrs_old, 
 
 CASE
-WHEN SAFE_CAST(FSD670ZC AS FLOAT64) > 71.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSD670ZC AS FLOAT64) > 71.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSD670ZC IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD670ZC AS FLOAT64) 
  END as ch_wic_benefit_of_months_received, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ690 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ690 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ690 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ690 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ690 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -368,13 +368,13 @@ ELSE SAFE_CAST(FSQ690 AS STRING)
  END as ch_wic_benefit_mom_received_while_preg, 
 
 CASE
-WHEN SAFE_CAST(FSQ695 AS FLOAT64) > 20.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSQ695 AS FLOAT64) > 20.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSQ695 IS NULL THEN NULL 
 ELSE SAFE_CAST(FSQ695 AS FLOAT64) 
  END as ch_wic_benefit_starting_month_of_preg, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD652ZW AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD652ZW AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD652ZW AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD652ZW AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD652ZW AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -383,13 +383,13 @@ ELSE SAFE_CAST(FSD652ZW AS STRING)
  END as wm_wic_benefit_receive_in_latest_preg, 
 
 CASE
-WHEN SAFE_CAST(FSD672ZW AS FLOAT64) > 20.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSD672ZW AS FLOAT64) > 20.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSD672ZW IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD672ZW AS FLOAT64) 
  END as wm_wic_benefit_starting_month_of_preg, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD652CW AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD652CW AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD652CW AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD652CW AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Currently pregnant' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD652CW AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -399,7 +399,7 @@ ELSE SAFE_CAST(FSD652CW AS STRING)
  END as wm_wic_benefit_receive_post_partum, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660ZW AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660ZW AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660ZW AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660ZW AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660ZW AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -408,7 +408,7 @@ ELSE SAFE_CAST(FSD660ZW AS STRING)
  END as wm_wic_benefit_currently_receive, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD162 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD162 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD162 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD162 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD162 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -417,13 +417,13 @@ ELSE SAFE_CAST(FSD162 AS STRING)
  END as hh_wic_benefit_receive_in_last_12_month_FSD162, 
 
 CASE
-WHEN SAFE_CAST(FSQ235 AS FLOAT64) > 1408.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSQ235 AS FLOAT64) > 1408.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSQ235 IS NULL THEN NULL 
 ELSE SAFE_CAST(FSQ235 AS FLOAT64) 
  END as hh_fs_benefit_amount_received_last_time_FSQ235, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650ZC AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650ZC AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650ZC AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650ZC AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650ZC AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -432,7 +432,7 @@ ELSE SAFE_CAST(FSD650ZC AS STRING)
  END as ch_wic_benefit_receive_in_last_12_month, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650ZW AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650ZW AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650ZW AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650ZW AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650ZW AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -441,13 +441,13 @@ ELSE SAFE_CAST(FSD650ZW AS STRING)
  END as wm_wic_benefit_receive_in_last_12_month, 
 
 CASE
-WHEN SAFE_CAST(FSD670ZW AS FLOAT64) > 59.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSD670ZW AS FLOAT64) > 59.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSD670ZW IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD670ZW AS FLOAT64) 
  END as wm_wic_benefit_of_months_received, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ171 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ171 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ171 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ171 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ171 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -456,7 +456,7 @@ ELSE SAFE_CAST(FSQ171 AS STRING)
  END as hh_fs_benefit_receive_in_last_12_months_FSQ171, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD401 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD401 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD401 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD401 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Never' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD401 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -466,7 +466,7 @@ ELSE SAFE_CAST(FSD401 AS STRING)
  END as meal_size_cut, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD421 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD421 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD421 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD421 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Never' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD421 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -476,7 +476,7 @@ ELSE SAFE_CAST(FSD421 AS STRING)
  END as ate_less_than_should, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD431 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD431 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD431 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD431 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Never' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD431 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -486,7 +486,7 @@ ELSE SAFE_CAST(FSD431 AS STRING)
  END as hungry, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD411 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD411 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Often' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD411 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Sometimes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD411 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'Never' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD411 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
@@ -496,7 +496,7 @@ ELSE SAFE_CAST(FSD411 AS STRING)
  END as skipped_meals, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD440 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD440 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD440 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD440 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD440 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -505,7 +505,7 @@ ELSE SAFE_CAST(FSD440 AS STRING)
  END as lost_weight, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD451 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Ever' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD451 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Ever' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD451 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'Never' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD451 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD451 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -514,7 +514,7 @@ ELSE SAFE_CAST(FSD451 AS STRING)
  END as not_eat_whole_day, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ440 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ440 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ440 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ440 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ440 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -523,7 +523,7 @@ ELSE SAFE_CAST(FSQ440 AS STRING)
  END as lost_weight_FSQ440, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ170 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ170 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ170 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ170 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ170 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -532,12 +532,12 @@ ELSE SAFE_CAST(FSQ170 AS STRING)
  END as fd_stmp_hh_authorized_last_12_mos, 
 
 CASE
-WHEN FSD170N IS NULL THEN NULL 
-ELSE SAFE_CAST(FSD170N AS STRING) 
+    WHEN FSD170N IS NULL THEN NULL 
+ELSE SAFE_CAST(FSD170N AS FLOAT64) 
  END as fd_stmp_hh_no_people_authorized, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD180 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -546,12 +546,12 @@ ELSE SAFE_CAST(FSD180 AS STRING)
  END as fd_stmp_sp_authorized_in_last_12_mos, 
 
 CASE
-WHEN FSD190 IS NULL THEN NULL 
-ELSE SAFE_CAST(FSD190 AS STRING) 
+    WHEN FSD190 IS NULL THEN NULL 
+ELSE SAFE_CAST(FSD190 AS FLOAT64) 
  END as fd_stmp_sp_mos_authorized_in_last_12_mos, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD200 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -560,19 +560,19 @@ ELSE SAFE_CAST(FSD200 AS STRING)
  END as fd_stmp_sp_currentlyauthorized, 
 
 CASE
-WHEN SAFE_CAST(FSQ210 AS FLOAT64) > 1011.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSQ210 AS FLOAT64) > 1011.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSQ210 IS NULL THEN NULL 
 ELSE SAFE_CAST(FSQ210 AS FLOAT64) 
  END as fd_stmp_hh_amount_last_month, 
 
 CASE
-WHEN SAFE_CAST(FSQ220 AS FLOAT64) > 1011.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSQ220 AS FLOAT64) > 1011.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSQ220 IS NULL THEN NULL 
 ELSE SAFE_CAST(FSQ220 AS FLOAT64) 
  END as fd_stmp_hh_amount_last_time, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -581,7 +581,7 @@ ELSE SAFE_CAST(FSD650 AS STRING)
  END as wic_sp_got_past_12_mos, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD660 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -590,12 +590,12 @@ ELSE SAFE_CAST(FSD660 AS STRING)
  END as wic_sp_currently_get, 
 
 CASE
-WHEN FSD670 IS NULL THEN NULL 
-ELSE SAFE_CAST(FSD670 AS STRING) 
+    WHEN FSD670 IS NULL THEN NULL 
+ELSE SAFE_CAST(FSD670 AS FLOAT64) 
  END as wic_sp_no_mos_received, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ400 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -604,12 +604,12 @@ ELSE SAFE_CAST(FSQ400 AS STRING)
  END as adult_cut_size_or_skipped_meals, 
 
 CASE
-WHEN FSQ410 IS NULL THEN NULL 
-ELSE SAFE_CAST(FSQ410 AS STRING) 
+    WHEN FSQ410 IS NULL THEN NULL 
+ELSE SAFE_CAST(FSQ410 AS FLOAT64) 
  END as adult_days_cut_size_or_skipped_meals, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ420 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ420 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ420 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ420 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ420 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -618,7 +618,7 @@ ELSE SAFE_CAST(FSQ420 AS STRING)
  END as adult_ate_less_than_should, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ430 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ430 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ430 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ430 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ430 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -627,7 +627,7 @@ ELSE SAFE_CAST(FSQ430 AS STRING)
  END as adult_hungry_didn_t_eat, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ450 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ450 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ450 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ450 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ450 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -636,13 +636,13 @@ ELSE SAFE_CAST(FSQ450 AS STRING)
  END as adult_not_eat_whole_day, 
 
 CASE
-WHEN SAFE_CAST(FSQ460 AS FLOAT64) > 21.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSQ460 AS FLOAT64) > 21.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSQ460 IS NULL THEN NULL 
 ELSE SAFE_CAST(FSQ460 AS FLOAT64) 
  END as adult_days_without_eating, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ470 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ470 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ470 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ470 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ470 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -651,7 +651,7 @@ ELSE SAFE_CAST(FSQ470 AS STRING)
  END as child_ate_less_than_should, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ480 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ480 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ480 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ480 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ480 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -660,7 +660,7 @@ ELSE SAFE_CAST(FSQ480 AS STRING)
  END as child_cut_size_of_meals, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ490 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ490 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ490 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ490 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ490 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -669,7 +669,7 @@ ELSE SAFE_CAST(FSQ490 AS STRING)
  END as child_hungry_in_last_30_days, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ500 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ500 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ500 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ500 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ500 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -678,13 +678,13 @@ ELSE SAFE_CAST(FSQ500 AS STRING)
  END as child_skipped_meal, 
 
 CASE
-WHEN SAFE_CAST(FSQ510 AS FLOAT64) > 21.0 THEN NULL -- remove missing, dont know, categories in float field  
+    WHEN SAFE_CAST(FSQ510 AS FLOAT64) > 21.0 THEN NULL -- remove missing, dont know, categories in float field  
 WHEN FSQ510 IS NULL THEN NULL 
 ELSE SAFE_CAST(FSQ510 AS FLOAT64) 
  END as child_days_skipped_meal, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ520 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ520 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ520 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ520 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSQ520 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -693,7 +693,7 @@ ELSE SAFE_CAST(FSQ520 AS STRING)
  END as child_not_eat_whole_day, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650C AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650C AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650C AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650C AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650C AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -702,7 +702,7 @@ ELSE SAFE_CAST(FSD650C AS STRING)
  END as child_wic_in_past_12_months, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD660C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD660C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD660C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD660C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD660C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -711,13 +711,13 @@ ELSE SAFE_CAST(FSD660C AS STRING)
  END as child_current_wic, 
 
 CASE
-WHEN FSD670C IS NOT NULL THEN SAFE_CAST(FSD670C AS FLOAT64) -- correct wrong data types for numerical data 
+    WHEN FSD670C IS NOT NULL THEN SAFE_CAST(FSD670C AS FLOAT64) -- correct wrong data types for numerical data 
 WHEN FSD670C IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD670C AS FLOAT64) 
  END as child_no_months_wic, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650M AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650M AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650M AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650M AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(FSD650M AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
@@ -726,7 +726,7 @@ ELSE SAFE_CAST(FSD650M AS STRING)
  END as mom_wic_in_past_12_months, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD660M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD660M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD660M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD660M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD660M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -735,13 +735,13 @@ ELSE SAFE_CAST(FSD660M AS STRING)
  END as mom_current_wic, 
 
 CASE
-WHEN FSD670M IS NOT NULL THEN SAFE_CAST(FSD670M AS FLOAT64) -- correct wrong data types for numerical data 
+    WHEN FSD670M IS NOT NULL THEN SAFE_CAST(FSD670M AS FLOAT64) -- correct wrong data types for numerical data 
 WHEN FSD670M IS NULL THEN NULL 
 ELSE SAFE_CAST(FSD670M AS FLOAT64) 
  END as mom_no_months_wic, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD160 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -750,7 +750,7 @@ ELSE SAFE_CAST(FSD160 AS STRING)
  END as household_wic_received, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD450 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD450 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD450 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD450 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD450 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -759,7 +759,7 @@ ELSE SAFE_CAST(FSD450 AS STRING)
  END as adult_not_eat_whole_day_FSD450, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD520 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD520 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD520 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD520 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD520 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -768,7 +768,7 @@ ELSE SAFE_CAST(FSD520 AS STRING)
  END as child_not_eat_whole_day_FSD520, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD655 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD655 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD655 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD655 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD655 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -777,7 +777,7 @@ ELSE SAFE_CAST(FSD655 AS STRING)
  END as child_received_wic_in_past_12_months, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD665 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN '0-6 months' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD665 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN '0-6 months' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD665 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN '7-12 months' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD665 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN '13-18 months' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD665 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN '19-24 months' -- categorize numeric values
@@ -788,7 +788,7 @@ ELSE SAFE_CAST(FSD665 AS STRING)
  END as how_long_child_receiving_wic, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ650 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ650 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ650 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ650 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSQ650 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
@@ -797,7 +797,7 @@ ELSE SAFE_CAST(FSQ650 AS STRING)
  END as mom_received_wic_in_past_12_months, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(HHFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'HH fully food secure' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(HHFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'HH fully food secure' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(HHFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'HH marginally food secure' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(HHFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'HH food insecure without hunger' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(HHFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'HH food insecure with hunger' -- categorize numeric values
@@ -806,7 +806,7 @@ ELSE SAFE_CAST(HHFDSEC AS STRING)
  END as household_food_security_category_HHFDSEC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(ADFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'AD fully food secure: 0' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(ADFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'AD fully food secure: 0' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(ADFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'AD marginally food secure: 1-2' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(ADFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'AD food insecure without hunger: 3-5' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(ADFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'AD food insecure with hunger: 6-10' -- categorize numeric values
@@ -815,7 +815,7 @@ ELSE SAFE_CAST(ADFDSEC AS STRING)
  END as adult_food_security_category_ADFDSEC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(CHFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'CH food quality & quantity unaffected: 0' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(CHFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'CH food quality & quantity unaffected: 0' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CHFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'CH marginally food secure: 1' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CHFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'CH reduced food quality or quantity: 2-4' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(CHFDSEC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'CH food insecure with hunger: 5-8' -- categorize numeric values
@@ -824,7 +824,7 @@ ELSE SAFE_CAST(CHFDSEC AS STRING)
  END as child_food_security_category_CHFDSEC, 
 
 CASE
-WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enough and the kinds of food wanted' -- categorize numeric values
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Enough and the kinds of food wanted' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Enough but not always the kinds of food wanted' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Sometimes/Often not enough to eat' -- categorize numeric values
 WHEN SAFE_CAST(ROUND(SAFE_CAST(FSD010 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.tobacco_specific_nitrosamines_tsnas_urine_laboratory

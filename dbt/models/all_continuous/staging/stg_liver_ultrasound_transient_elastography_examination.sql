@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.liver_ultrasound_transient_elastography_examination

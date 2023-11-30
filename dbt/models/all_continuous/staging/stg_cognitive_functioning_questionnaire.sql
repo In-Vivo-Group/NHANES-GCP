@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cognitive_functioning_questionnaire

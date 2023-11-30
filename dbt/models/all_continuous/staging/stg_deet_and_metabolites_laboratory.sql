@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.deet_and_metabolites_laboratory

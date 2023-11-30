@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.dietary_supplement_database_ingredient_information_dietary

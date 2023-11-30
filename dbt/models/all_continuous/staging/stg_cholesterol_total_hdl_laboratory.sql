@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cholesterol_total_hdl_laboratory

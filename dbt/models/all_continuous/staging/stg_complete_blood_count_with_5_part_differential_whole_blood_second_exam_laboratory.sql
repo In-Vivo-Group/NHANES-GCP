@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.complete_blood_count_with_5_part_differential_whole_blood_second_exam_laboratory

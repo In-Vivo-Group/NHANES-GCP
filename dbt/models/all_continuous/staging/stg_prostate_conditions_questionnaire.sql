@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.prostate_conditions_questionnaire

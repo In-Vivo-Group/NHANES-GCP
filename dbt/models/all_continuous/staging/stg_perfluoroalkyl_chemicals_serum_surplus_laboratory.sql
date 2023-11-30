@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.perfluoroalkyl_chemicals_serum_surplus_laboratory

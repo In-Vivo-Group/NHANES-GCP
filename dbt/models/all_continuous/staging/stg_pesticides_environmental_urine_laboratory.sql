@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.pesticides_environmental_urine_laboratory

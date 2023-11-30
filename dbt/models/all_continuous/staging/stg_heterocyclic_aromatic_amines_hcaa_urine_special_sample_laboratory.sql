@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.heterocyclic_aromatic_amines_hcaa_urine_special_sample_laboratory

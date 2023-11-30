@@ -1,0 +1,382 @@
+SELECT
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
+
+CASE
+    WHEN WTFAS2YR IS NULL THEN NULL 
+ELSE SAFE_CAST(WTFAS2YR AS FLOAT64) 
+ END as fatty_acid_subsample_2_year_weight, 
+
+CASE
+    WHEN LBXCAP IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXCAP AS FLOAT64) 
+ END as capric_acid_c10_0_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDCAPLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDCAPLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDCAPLC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDCAPLC AS STRING) 
+ END as capric_acid_c10_0_comment_code, 
+
+CASE
+    WHEN LBXLAR IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXLAR AS FLOAT64) 
+ END as lauric_acid_c12_0_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDLARLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDLARLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDLARLC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDLARLC AS STRING) 
+ END as lauric_acid_c12_0_comment_code, 
+
+CASE
+    WHEN LBXMR1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXMR1 AS FLOAT64) 
+ END as myristic_acid_14_0_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDMR1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDMR1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDMR1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDMR1LC AS STRING) 
+ END as myristic_acid_14_0_comment_code, 
+
+CASE
+    WHEN LBXPEN IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXPEN AS FLOAT64) 
+ END as pentadecanoic_acid_c15_0_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDPENLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDPENLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDPENLC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDPENLC AS STRING) 
+ END as pentadecanoic_acid_c15_0_comment_code, 
+
+CASE
+    WHEN LBXPM1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXPM1 AS FLOAT64) 
+ END as palmitic_acid_16_0_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDPM1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDPM1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDPM1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDPM1LC AS STRING) 
+ END as palmitic_acid_16_0_comment_code, 
+
+CASE
+    WHEN LBXMRG IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXMRG AS FLOAT64) 
+ END as margaric_acid_c17_0_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDMRGLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDMRGLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDMRGLC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDMRGLC AS STRING) 
+ END as margaric_acid_c17_0_comment_code, 
+
+CASE
+    WHEN LBXST1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXST1 AS FLOAT64) 
+ END as stearic_acid_18_0_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDST1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDST1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDST1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDST1LC AS STRING) 
+ END as stearic_acid_18_0_comment_code, 
+
+CASE
+    WHEN LBXAR1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXAR1 AS FLOAT64) 
+ END as arachidic_acid_20_0_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDAR1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDAR1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDAR1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDAR1LC AS STRING) 
+ END as arachidic_acid_20_0_comment_code, 
+
+CASE
+    WHEN LBXDA1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXDA1 AS FLOAT64) 
+ END as docosanoic_acid_22_0_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDDA1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDDA1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDDA1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDDA1LC AS STRING) 
+ END as docosanoic_acid_22_0_comment_code, 
+
+CASE
+    WHEN LBXTSA IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXTSA AS FLOAT64) 
+ END as tricosanoic_acid_c23_0_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDTSALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDTSALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDTSALC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDTSALC AS STRING) 
+ END as tricosanoic_acid_c23_0_comment_code, 
+
+CASE
+    WHEN LBXLG1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXLG1 AS FLOAT64) 
+ END as lignoceric_acid_24_0_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDLG1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDLG1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDLG1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDLG1LC AS STRING) 
+ END as lignoceric_acid_24_0_comment_code, 
+
+CASE
+    WHEN LBXML1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXML1 AS FLOAT64) 
+ END as myristoleic_acid_14_1n_5_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDML1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDML1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDML1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDML1LC AS STRING) 
+ END as myristoleic_acid_14_1n_5_comment_code, 
+
+CASE
+    WHEN LBXPL1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXPL1 AS FLOAT64) 
+ END as palmitoleic_acid_16_1n_7_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDPL1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDPL1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDPL1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDPL1LC AS STRING) 
+ END as palmitoleic_acid_16_1n_7_comment_code, 
+
+CASE
+    WHEN LBXVC1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXVC1 AS FLOAT64) 
+ END as cis_vaccenic_acid_18_1n_7_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDVC1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDVC1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDVC1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDVC1LC AS STRING) 
+ END as cis_vaccenic_acid_18_1n_7_comment_code, 
+
+CASE
+    WHEN LBXOL1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXOL1 AS FLOAT64) 
+ END as oleic_acid_18_1n_9_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDOL1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDOL1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDOL1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDOL1LC AS STRING) 
+ END as oleic_acid_18_1n_9_comment_code, 
+
+CASE
+    WHEN LBXEN1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXEN1 AS FLOAT64) 
+ END as eicosenoic_acid_20_1n_9_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDEN1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDEN1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDEN1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDEN1LC AS STRING) 
+ END as eicosenoic_acid_20_1n_9_comment_code, 
+
+CASE
+    WHEN LBXNR1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXNR1 AS FLOAT64) 
+ END as nervonic_acid_24_1n_9_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDNR1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDNR1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDNR1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDNR1LC AS STRING) 
+ END as nervonic_acid_24_1n_9_comment_code, 
+
+CASE
+    WHEN LBXLNA IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXLNA AS FLOAT64) 
+ END as linoleic_acid_18_2n_6_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDLNALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDLNALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDLNALC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDLNALC AS STRING) 
+ END as linoleic_acid_18_2n_6_comment_code, 
+
+CASE
+    WHEN LBXALN IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXALN AS FLOAT64) 
+ END as alpha_linolenic_acid_18_3n_3_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDALNLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDALNLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDALNLC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDALNLC AS STRING) 
+ END as alpha_linolenic_acid_18_3n_3_cmnt_code, 
+
+CASE
+    WHEN LBXGLA IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXGLA AS FLOAT64) 
+ END as gamma_linolenic_acid_18_3n_6_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDGLALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDGLALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDGLALC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDGLALC AS STRING) 
+ END as gamma_linolenic_acid_18_3n_6_cmnt_code, 
+
+CASE
+    WHEN LBXSD1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXSD1 AS FLOAT64) 
+ END as stearidonic_acid_c18_4n_3_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDSD1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDSD1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDSD1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDSD1LC AS STRING) 
+ END as stearidonic_acid_c18_4n_3_comment_code, 
+
+CASE
+    WHEN LBXED1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXED1 AS FLOAT64) 
+ END as eicosadienoic_acid_20_2n_6_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDED1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDED1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDED1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDED1LC AS STRING) 
+ END as eicosadienoic_acid_20_2n_6_comnt_code, 
+
+CASE
+    WHEN LBXHGL IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXHGL AS FLOAT64) 
+ END as homo_gamma_linolenic_acid_20_3n_6, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDHGLLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDHGLLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDHGLLC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDHGLLC AS STRING) 
+ END as homo_gamma_linolenic_acd_c20_3n_6_cmnt, 
+
+CASE
+    WHEN LBXET1 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXET1 AS FLOAT64) 
+ END as eicosatrienoic_acid_c20_3n_9_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDET1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDET1LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDET1LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDET1LC AS STRING) 
+ END as eicosatrienoic_acid_c20_3n_9_comt_code, 
+
+CASE
+    WHEN LBXARA IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXARA AS FLOAT64) 
+ END as arachidonic_acid_20_4n_6_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDARALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDARALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDARALC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDARALC AS STRING) 
+ END as arachidonic_acid_20_4n_6_comment_code, 
+
+CASE
+    WHEN LBXEPA IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXEPA AS FLOAT64) 
+ END as eicosapentaenoic_acid_20_5n_3_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDEPALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDEPALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDEPALC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDEPALC AS STRING) 
+ END as eicosapentaenoic_acid_20_5n_3_cmt_code, 
+
+CASE
+    WHEN LBXDTA IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXDTA AS FLOAT64) 
+ END as docosatetraenoic_acid_22_4n_6_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDDTALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDDTALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDDTALC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDDTALC AS STRING) 
+ END as docosatetraenoic_acid_22_4n_6_cmt_code, 
+
+CASE
+    WHEN LBXDP3 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXDP3 AS FLOAT64) 
+ END as docosapentaenoic_acid_22_5n_3_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDDP3LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDDP3LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDDP3LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDDP3LC AS STRING) 
+ END as docosapentaenoic_acid_22_5n_3_cmt_code, 
+
+CASE
+    WHEN LBXDP6 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXDP6 AS FLOAT64) 
+ END as docosapentaenoic_acid_22_5n_6_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDDP6LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDDP6LC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDDP6LC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDDP6LC AS STRING) 
+ END as docosapentaenoic_acid_22_5n_6_cmt_code, 
+
+CASE
+    WHEN LBXDHA IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXDHA AS FLOAT64) 
+ END as docosahexaenoic_acid_22_6n_3_umol_l, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDDHALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'At or above the detection limit' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDDHALC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Below lower detection limit' -- categorize numeric values
+WHEN LBDDHALC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDDHALC AS STRING) 
+ END as docosahexaenoic_acid_22_6n_3_cmnt_code, 
+
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
+ FROM {{ ref('stg_fatty_acids_serum_laboratory') }}
+
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/FAS_G.htm
+*/

@@ -1,0 +1,141 @@
+SELECT
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
+
+CASE
+    WHEN MSAEXLEN IS NULL THEN NULL 
+ELSE SAFE_CAST(MSAEXLEN AS FLOAT64) 
+ END as timed_walk_muscle_strength_time_sec, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXSTS AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Complete' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXSTS AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Partial' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXSTS AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Not done' -- categorize numeric values
+WHEN MSAEXSTS IS NULL THEN NULL 
+ELSE SAFE_CAST(MSAEXSTS AS STRING) 
+ END as timed_walk_and_muscle_strength_status, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXCMT AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Safety exclusion' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXCMT AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'SP refusal' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXCMT AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'No time' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXCMT AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Physical limitation' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXCMT AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'Communication problem' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXCMT AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(6 AS FLOAT64),0) AS INT64) THEN 'Equipment failure' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXCMT AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'SP ill/emergency' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXCMT AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(40 AS FLOAT64),0) AS INT64) THEN 'Unable to follow protocol' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXCMT AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(56 AS FLOAT64),0) AS INT64) THEN 'Came late/left early' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXCMT AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(72 AS FLOAT64),0) AS INT64) THEN 'Error (technician/software/supply)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAEXCMT AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Other, specify' -- categorize numeric values
+WHEN MSAEXCMT IS NULL THEN NULL 
+ELSE SAFE_CAST(MSAEXCMT AS STRING) 
+ END as timed_walk_and_muscle_strength_comments, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(MSDEXCLU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Chest/abdomen surgery past three weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSDEXCLU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Myocardial infarction (or"heart attack") in the past six weeks' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSDEXCLU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Told by dr had aneurysm in the brain or had a stroke' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSDEXCLU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Have severe neck or back pain today' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSDEXCLU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(5 AS FLOAT64),0) AS INT64) THEN 'Difficult in bending or straightening right knee' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSDEXCLU AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(6 AS FLOAT64),0) AS INT64) THEN 'Had right knee or right hip replacement' -- categorize numeric values
+WHEN MSDEXCLU IS NULL THEN NULL 
+ELSE SAFE_CAST(MSDEXCLU AS STRING) 
+ END as exclusion_criteria_for_muscle_strength, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(MSDCWUA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSDCWUA AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN MSDCWUA IS NULL THEN NULL 
+ELSE SAFE_CAST(MSDCWUA AS STRING) 
+ END as can_sp_walk_unassisted, 
+
+CASE
+    WHEN MSXW20TM IS NULL THEN NULL 
+ELSE SAFE_CAST(MSXW20TM AS FLOAT64) 
+ END as time_to_complete_20_ft_walk, 
+
+CASE
+    WHEN MSXW08TM IS NULL THEN NULL 
+ELSE SAFE_CAST(MSXW08TM AS FLOAT64) 
+ END as time_to_complete_8_ft_walk, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(MSXWPAIN AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSXWPAIN AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN MSXWPAIN IS NULL THEN NULL 
+ELSE SAFE_CAST(MSXWPAIN AS STRING) 
+ END as pain_reported_on_walking, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAWDEV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'None' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAWDEV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Cane' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAWDEV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Walker' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(MSAWDEV AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(4 AS FLOAT64),0) AS INT64) THEN 'Other' -- categorize numeric values
+WHEN MSAWDEV IS NULL THEN NULL 
+ELSE SAFE_CAST(MSAWDEV AS STRING) 
+ END as type_of_device_used, 
+
+CASE
+    WHEN MSDPTIME IS NULL THEN NULL 
+ELSE SAFE_CAST(MSDPTIME AS FLOAT64) 
+ END as time_to_peak_force_in_seconds, 
+
+CASE
+    WHEN MSDPFANG IS NULL THEN NULL 
+ELSE SAFE_CAST(MSDPFANG AS FLOAT64) 
+ END as angle_of_peak_force_degrees, 
+
+CASE
+    WHEN MSXARML IS NULL THEN NULL 
+ELSE SAFE_CAST(MSXARML AS FLOAT64) 
+ END as arm_length_cm, 
+
+CASE
+    WHEN MSXGRAV IS NULL THEN NULL 
+ELSE SAFE_CAST(MSXGRAV AS FLOAT64) 
+ END as gravity_correction_in_lb, 
+
+CASE
+    WHEN MSDPFVEL IS NULL THEN NULL 
+ELSE SAFE_CAST(MSDPFVEL AS FLOAT64) 
+ END as peak_force_velocity_degree_seconds, 
+
+CASE
+    WHEN MSDPF IS NULL THEN NULL 
+ELSE SAFE_CAST(MSDPF AS FLOAT64) 
+ END as peak_force_newtons, 
+
+CASE
+    WHEN MSDNTR IS NULL THEN NULL 
+ELSE SAFE_CAST(MSDNTR AS FLOAT64) 
+ END as number_of_trials, 
+
+CASE
+    WHEN MSDAPF IS NULL THEN NULL 
+ELSE SAFE_CAST(MSDAPF AS FLOAT64) 
+ END as average_peak_force_newtons, 
+
+CASE
+    WHEN MSDPFTR IS NULL THEN NULL 
+ELSE SAFE_CAST(MSDPFTR AS FLOAT64) 
+ END as the_selected_peak_force_trial, 
+
+CASE
+    WHEN MSXWTIME IS NULL THEN NULL 
+ELSE SAFE_CAST(MSXWTIME AS FLOAT64) 
+ END as time_to_complete_20_ft_walk_seconds, 
+
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
+ FROM {{ ref('stg_muscle_strength_examination') }}
+
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2001-2002/MSX_B.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/MSX.htm
+*/

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.oral_glucose_tolerance_test_laboratory

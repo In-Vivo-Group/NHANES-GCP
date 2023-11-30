@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.food_frequency_questionnaire_raw_questionnaire_responses_dietary

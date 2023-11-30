@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.high_sensitivity_cardiac_troponins_surplus_laboratory

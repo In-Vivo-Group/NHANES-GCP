@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.herpes_simplex_virus_type_1_surplus_laboratory

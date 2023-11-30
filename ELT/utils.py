@@ -105,6 +105,7 @@ def load_data_gbq(
     destination_table = client.get_table(dataset_ref.table(table_name))
     print("Table Row Count {} rows.".format(destination_table.num_rows))
 
+
 def enforce_bq_schema(report_df, alias):
     schema = []
     float_fields = []
@@ -222,7 +223,16 @@ def upload_blob_from_string(
 
 
 def generate_filename(title, extension):
-    return "_".join(re.sub(r"\W+", " ", title).lower().split()) + extension
+    return (
+        "_".join(
+            re.sub(r"\W+", " ", title)
+            .lower()
+            .replace("î²", "beta")
+            .replace("î", "i")
+            .split()
+        )
+        + extension
+    )
 
 
 def scrape_nhanes_table(soup, component):

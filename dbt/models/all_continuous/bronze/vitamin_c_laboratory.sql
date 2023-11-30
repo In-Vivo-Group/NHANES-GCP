@@ -2,17 +2,17 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN LBXVIC IS NULL THEN NULL 
+    WHEN LBXVIC IS NULL THEN NULL 
 ELSE SAFE_CAST(LBXVIC AS FLOAT64) 
  END as vitamin_c_mg_dl, 
 
 CASE
-WHEN LBDVICSI IS NULL THEN NULL 
+    WHEN LBDVICSI IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDVICSI AS FLOAT64) 
  END as vitamin_c_umol_l, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(LBDVICLC AS FLOAT64),0) AS INT64) AS STRING) = '0' THEN 'At or above detection limit' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(LBDVICLC AS FLOAT64),0) AS INT64) AS STRING) = '0' THEN 'At or above detection limit' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(LBDVICLC AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Below lower detection limit' -- categorize string values 
 WHEN LBDVICLC IS NULL THEN NULL 
 ELSE SAFE_CAST(LBDVICLC AS STRING) 

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cryptosporidum_toxoplasma_laboratory

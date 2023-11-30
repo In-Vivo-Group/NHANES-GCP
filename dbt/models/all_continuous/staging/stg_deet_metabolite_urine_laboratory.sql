@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.deet_metabolite_urine_laboratory

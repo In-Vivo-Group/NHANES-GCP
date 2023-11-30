@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.fatty_acids_plasma_surplus_laboratory

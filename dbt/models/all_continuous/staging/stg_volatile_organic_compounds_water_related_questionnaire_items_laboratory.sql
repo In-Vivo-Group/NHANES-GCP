@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.volatile_organic_compounds_water_related_questionnaire_items_laboratory

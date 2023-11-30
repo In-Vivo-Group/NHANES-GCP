@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.dual_energy_x_ray_absorptiometry_abdominal_aortic_calcification_examination

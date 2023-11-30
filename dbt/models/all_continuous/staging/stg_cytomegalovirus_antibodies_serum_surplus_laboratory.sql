@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cytomegalovirus_antibodies_serum_surplus_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.monoclonal_gammopathy_of_undetermined_significance_mgus_surplus_laboratory

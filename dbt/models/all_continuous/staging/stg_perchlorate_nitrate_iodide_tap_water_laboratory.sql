@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.perchlorate_nitrate_iodide_tap_water_laboratory

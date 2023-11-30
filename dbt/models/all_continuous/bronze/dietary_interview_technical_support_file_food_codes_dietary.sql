@@ -1,17 +1,17 @@
 SELECT
 CASE
-WHEN DRXFDCD IS NULL THEN NULL 
+    WHEN DRXFDCD IS NULL THEN NULL 
 ELSE SAFE_CAST(DRXFDCD AS FLOAT64) 
  END as food_code, 
 
 CASE
-WHEN REPLACE(DRXFCSD,'.0','') = 'Short Food Code Description' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(DRXFCSD,'.0','') = 'Short Food Code Description' THEN 'Value was recorded' -- categorize string values 
 WHEN DRXFCSD IS NULL THEN NULL 
 ELSE SAFE_CAST(DRXFCSD AS STRING) 
  END as short_food_code_description, 
 
 CASE
-WHEN REPLACE(DRXFCLD,'.0','') = 'Long Food Code Description' THEN 'Value was recorded' -- categorize string values 
+    WHEN REPLACE(DRXFCLD,'.0','') = 'Long Food Code Description' THEN 'Value was recorded' -- categorize string values 
 WHEN DRXFCLD IS NULL THEN NULL 
 ELSE SAFE_CAST(DRXFCLD AS STRING) 
  END as long_food_code_description, 

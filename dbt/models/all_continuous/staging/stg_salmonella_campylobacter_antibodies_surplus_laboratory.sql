@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.salmonella_campylobacter_antibodies_surplus_laboratory

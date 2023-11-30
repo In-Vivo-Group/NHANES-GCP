@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.polyaromatic_hydrocarbons_urine_laboratory

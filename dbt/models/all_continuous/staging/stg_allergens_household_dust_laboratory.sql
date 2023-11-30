@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.allergens_household_dust_laboratory

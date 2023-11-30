@@ -1,0 +1,230 @@
+SELECT
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
+
+CASE
+    WHEN LBXBCD IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXBCD AS FLOAT64) 
+ END as cadmium_ug_l, 
+
+CASE
+    WHEN LBDBCDSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDBCDSI AS FLOAT64) 
+ END as cadmium_nmol_l, 
+
+CASE
+    WHEN LBXBPB IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXBPB AS FLOAT64) 
+ END as lead_ug_dl, 
+
+CASE
+    WHEN LBDBPBSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDBPBSI AS FLOAT64) 
+ END as lead_umol_l, 
+
+CASE
+    WHEN LBXRBF IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXRBF AS FLOAT64) 
+ END as folate_rbc_ng_ml_rbc, 
+
+CASE
+    WHEN LBDRBFSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDRBFSI AS FLOAT64) 
+ END as folate_rbc_nmol_l_rbc, 
+
+CASE
+    WHEN LBXTHG IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXTHG AS FLOAT64) 
+ END as mercury_total_ug_l, 
+
+CASE
+    WHEN LBDTHGSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDTHGSI AS FLOAT64) 
+ END as mercury_total_umol_l, 
+
+CASE
+    WHEN LBXIHG IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXIHG AS FLOAT64) 
+ END as mercury_inorganic_ug_l, 
+
+CASE
+    WHEN LBDIHGSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDIHGSI AS FLOAT64) 
+ END as mercury_inorganic_umol_l, 
+
+CASE
+    WHEN LBDHCY IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDHCY AS FLOAT64) 
+ END as homocysteine_umol_l, 
+
+CASE
+    WHEN LBXFER IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXFER AS FLOAT64) 
+ END as ferritin_ng_ml, 
+
+CASE
+    WHEN LBDFERSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDFERSI AS FLOAT64) 
+ END as ferritin_ug_l, 
+
+CASE
+    WHEN LBXB12 IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXB12 AS FLOAT64) 
+ END as vitamin_b12_serum_pg_ml, 
+
+CASE
+    WHEN LBDB12SI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDB12SI AS FLOAT64) 
+ END as vitamin_b12_serum_pmol_l, 
+
+CASE
+    WHEN LBXFOL IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXFOL AS FLOAT64) 
+ END as folate_serum_ng_ml, 
+
+CASE
+    WHEN LBDFOLSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDFOLSI AS FLOAT64) 
+ END as folate_serum_nmol_l, 
+
+CASE
+    WHEN LBXMMA IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXMMA AS FLOAT64) 
+ END as methylmalonic_acid_umol_l, 
+
+CASE
+    WHEN LBXCOT IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXCOT AS FLOAT64) 
+ END as cotinine_ng_ml, 
+
+CASE
+    WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDCOTLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(0 AS FLOAT64),0) AS INT64) THEN 'detectable result' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(LBDCOTLC AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'below detectable limit' -- categorize numeric values
+WHEN LBDCOTLC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDCOTLC AS STRING) 
+ END as cotinine_comment_code, 
+
+CASE
+    WHEN URXUHG IS NULL THEN NULL 
+ELSE SAFE_CAST(URXUHG AS FLOAT64) 
+ END as mercury_urine_ng_ml, 
+
+CASE
+    WHEN LBXEPP IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXEPP AS FLOAT64) 
+ END as protoporphyrin_ug_dl_rbc, 
+
+CASE
+    WHEN LBDEPPSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDEPPSI AS FLOAT64) 
+ END as protoporphyrin_umol_l_rbc, 
+
+CASE
+    WHEN LBXIRN IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXIRN AS FLOAT64) 
+ END as iron_ug_dl, 
+
+CASE
+    WHEN LBDIRNSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDIRNSI AS FLOAT64) 
+ END as iron_umol_l, 
+
+CASE
+    WHEN LBXTIB IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXTIB AS FLOAT64) 
+ END as tibc_ug_dl, 
+
+CASE
+    WHEN LBDTIBSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDTIBSI AS FLOAT64) 
+ END as tibc_umol_l, 
+
+CASE
+    WHEN LBXPCT IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXPCT AS FLOAT64) 
+ END as transferrin_saturation, 
+
+CASE
+    WHEN LBXHCY IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXHCY AS FLOAT64) 
+ END as homocysteine_umol_l_LBXHCY, 
+
+CASE
+    WHEN LBDCOTSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDCOTSI AS FLOAT64) 
+ END as cotinine_nmol_l, 
+
+CASE
+    WHEN LBXSEL IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXSEL AS FLOAT64) 
+ END as selenium_ng_ml, 
+
+CASE
+    WHEN LBDSELSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDSELSI AS FLOAT64) 
+ END as selenium_nmol_l, 
+
+CASE
+    WHEN LBXGTC IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXGTC AS FLOAT64) 
+ END as gamma_tocopherol_ug_dl, 
+
+CASE
+    WHEN LBDGTCSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDGTCSI AS FLOAT64) 
+ END as gamma_tocopherol_umol_l, 
+
+CASE
+    WHEN LBXRPL IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXRPL AS FLOAT64) 
+ END as retinyl_palmitate_ug_dl, 
+
+CASE
+    WHEN LBDRPLSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDRPLSI AS FLOAT64) 
+ END as retinyl_palmitate_umol_l, 
+
+CASE
+    WHEN LBXRST IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXRST AS FLOAT64) 
+ END as retinyl_stearate_ug_dl, 
+
+CASE
+    WHEN LBDRSTSI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDRSTSI AS FLOAT64) 
+ END as retinyl_stearate_umol_l, 
+
+CASE
+    WHEN LBXVIA IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXVIA AS FLOAT64) 
+ END as vitamin_a_ug_dl, 
+
+CASE
+    WHEN LBDVIASI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDVIASI AS FLOAT64) 
+ END as vitamin_a_umol_l, 
+
+CASE
+    WHEN LBXVIE IS NULL THEN NULL 
+ELSE SAFE_CAST(LBXVIE AS FLOAT64) 
+ END as vitamin_e_ug_dl, 
+
+CASE
+    WHEN LBDVIESI IS NULL THEN NULL 
+ELSE SAFE_CAST(LBDVIESI AS FLOAT64) 
+ END as vitamin_e_umol_l, 
+
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
+ FROM {{ ref('stg_cadmium_lead_mercury_cotinine_nutritional_biochemistries_laboratory') }}
+
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2001-2002/L06_B.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/LAB06.htm
+*/

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.mono_2_ethyl_5_hydroxyhexyl_terephthalate_mono_2_ethyl_5_carboxypentyl_terephthalate_and_monooxoisononyl_phthalate_urine_surplus_laboratory

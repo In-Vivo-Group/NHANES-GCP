@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.human_epididymal_secretory_protein_e4_he4_serum_surplus_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.epstein_barr_virus_vca_igg_serum_surplus_laboratory

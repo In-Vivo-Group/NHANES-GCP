@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.poliovirus_serotypes_1_2_3_antibodies_serum_surplus_laboratory

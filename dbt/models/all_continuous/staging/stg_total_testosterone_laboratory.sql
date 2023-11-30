@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.total_testosterone_laboratory

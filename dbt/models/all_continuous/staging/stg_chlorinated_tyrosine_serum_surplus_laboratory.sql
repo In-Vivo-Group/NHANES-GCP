@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.chlorinated_tyrosine_serum_surplus_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.phthalates_plasticizers_metabolites_urine_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.vitamin_a_vitamin_e_carotenoids_second_exam_laboratory

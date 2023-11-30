@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.trichomonas_urine_laboratory

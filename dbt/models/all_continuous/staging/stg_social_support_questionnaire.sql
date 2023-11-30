@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.social_support_questionnaire

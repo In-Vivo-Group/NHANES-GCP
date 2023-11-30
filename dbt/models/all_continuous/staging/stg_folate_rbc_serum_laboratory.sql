@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.folate_rbc_serum_laboratory

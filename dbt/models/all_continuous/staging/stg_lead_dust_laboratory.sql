@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.lead_dust_laboratory

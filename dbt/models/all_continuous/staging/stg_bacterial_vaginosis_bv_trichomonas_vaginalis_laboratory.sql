@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.bacterial_vaginosis_bv_trichomonas_vaginalis_laboratory

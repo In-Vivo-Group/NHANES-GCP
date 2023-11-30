@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.transferrin_receptor_pregnant_women_surplus_laboratory

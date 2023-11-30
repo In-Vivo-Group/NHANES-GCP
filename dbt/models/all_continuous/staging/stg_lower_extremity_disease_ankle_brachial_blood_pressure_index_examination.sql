@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.lower_extremity_disease_ankle_brachial_blood_pressure_index_examination

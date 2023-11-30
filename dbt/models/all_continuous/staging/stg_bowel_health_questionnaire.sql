@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.bowel_health_questionnaire

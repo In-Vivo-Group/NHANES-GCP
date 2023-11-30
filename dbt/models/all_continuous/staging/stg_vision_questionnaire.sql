@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.vision_questionnaire

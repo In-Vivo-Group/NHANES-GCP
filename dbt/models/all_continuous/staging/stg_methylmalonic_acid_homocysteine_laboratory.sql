@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.methylmalonic_acid_homocysteine_laboratory

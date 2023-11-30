@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cotinine_hydroxycotinine_other_nicotine_metabolites_and_analogs_urine_special_sample_laboratory

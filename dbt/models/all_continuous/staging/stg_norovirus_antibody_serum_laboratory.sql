@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.norovirus_antibody_serum_laboratory

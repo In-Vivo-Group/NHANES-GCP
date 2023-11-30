@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cystatin_c_surplus_laboratory

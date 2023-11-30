@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.creatinine_albumin_urine_second_exam_laboratory

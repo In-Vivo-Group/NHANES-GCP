@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.polychlorinated_dibenzo_p_dioxins_pcdds_dibenzofurans_pcdfs_coplanar_polychlorinated_biphenyls_cpcbs_pooled_samples_laboratory

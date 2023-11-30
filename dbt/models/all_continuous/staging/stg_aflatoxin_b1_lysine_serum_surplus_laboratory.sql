@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.aflatoxin_b1_lysine_serum_surplus_laboratory

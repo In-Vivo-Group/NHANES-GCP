@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.folate_forms_individual_serum_laboratory

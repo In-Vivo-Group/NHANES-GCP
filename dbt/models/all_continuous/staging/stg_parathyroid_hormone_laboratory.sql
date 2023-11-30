@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.parathyroid_hormone_laboratory

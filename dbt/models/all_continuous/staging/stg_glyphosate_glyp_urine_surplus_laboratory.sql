@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.glyphosate_glyp_urine_surplus_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.serum_neurofilament_light_chain_serum_laboratory

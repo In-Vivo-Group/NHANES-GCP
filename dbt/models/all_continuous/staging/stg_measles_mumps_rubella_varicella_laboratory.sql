@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.measles_mumps_rubella_varicella_laboratory

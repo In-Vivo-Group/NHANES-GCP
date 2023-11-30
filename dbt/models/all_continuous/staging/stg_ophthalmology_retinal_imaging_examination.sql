@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.ophthalmology_retinal_imaging_examination

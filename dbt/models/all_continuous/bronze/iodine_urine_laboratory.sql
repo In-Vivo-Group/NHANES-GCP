@@ -2,43 +2,43 @@ SELECT
 SEQN as respondent_sequence_number, -- could not identify transformation logic 
 
 CASE
-WHEN WTSA2YR IS NOT NULL THEN SAFE_CAST(WTSA2YR AS FLOAT64) -- correct wrong data types for numerical data 
+    WHEN WTSA2YR IS NOT NULL THEN SAFE_CAST(WTSA2YR AS FLOAT64) -- correct wrong data types for numerical data 
 WHEN SAFE_CAST(WTSA2YR AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN NULL --remove no lab specimen samples from data 
 WHEN WTSA2YR IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSA2YR AS FLOAT64) 
  END as subsample_a_weights, 
 
 CASE
-WHEN URXUIO IS NULL THEN NULL 
+    WHEN URXUIO IS NULL THEN NULL 
 ELSE SAFE_CAST(URXUIO AS FLOAT64) 
  END as iodine_urine_ug_l, 
 
 CASE
-WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(URDUIOLC AS FLOAT64),0) AS INT64) AS STRING) = '0' THEN 'At or above detection limit' -- categorize string values 
+    WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(URDUIOLC AS FLOAT64),0) AS INT64) AS STRING) = '0' THEN 'At or above detection limit' -- categorize string values 
 WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(URDUIOLC AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Below lower detection limit' -- categorize string values 
 WHEN URDUIOLC IS NULL THEN NULL 
 ELSE SAFE_CAST(URDUIOLC AS STRING) 
  END as iodine_urine_comment_code, 
 
 CASE
-WHEN WTSAPRP IS NOT NULL THEN SAFE_CAST(WTSAPRP AS FLOAT64) -- correct wrong data types for numerical data 
+    WHEN WTSAPRP IS NOT NULL THEN SAFE_CAST(WTSAPRP AS FLOAT64) -- correct wrong data types for numerical data 
 WHEN SAFE_CAST(WTSAPRP AS FLOAT64) = SAFE_CAST(0 AS FLOAT64) THEN NULL --remove no lab specimen samples from data 
 WHEN WTSAPRP IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSAPRP AS FLOAT64) 
  END as subsample_a_weights_pre_pandemic, 
 
 CASE
-WHEN URXUCR IS NULL THEN NULL 
+    WHEN URXUCR IS NULL THEN NULL 
 ELSE SAFE_CAST(URXUCR AS FLOAT64) 
  END as creatinine_urine_mg_dl, 
 
 CASE
-WHEN WTSC2YR IS NULL THEN NULL 
+    WHEN WTSC2YR IS NULL THEN NULL 
 ELSE SAFE_CAST(WTSC2YR AS FLOAT64) 
  END as two_year_mec_weights_of_subsample_c, 
 
 CASE
-WHEN WTUIO2YR IS NULL THEN NULL 
+    WHEN WTUIO2YR IS NULL THEN NULL 
 ELSE SAFE_CAST(WTUIO2YR AS FLOAT64) 
  END as iodine_subsample_2_year_mec_weight, 
 

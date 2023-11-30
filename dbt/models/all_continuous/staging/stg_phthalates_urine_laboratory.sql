@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.phthalates_urine_laboratory

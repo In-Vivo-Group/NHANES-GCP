@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.human_papillomavirus_hpv_dna_vaginal_swab_roche_linear_array_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.aromatic_amines_urine_laboratory

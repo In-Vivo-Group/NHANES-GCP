@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cardiovascular_fitness_examination

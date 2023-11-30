@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.analgesic_pain_relievers_questionnaire

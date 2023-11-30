@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.prostate_specific_antigen_follow_up_questionnaire

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.glycohemoglobin_plasma_glucose_serum_c_peptide_insulin_second_exam_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.urine_specific_gravity_measurement_surplus_laboratory

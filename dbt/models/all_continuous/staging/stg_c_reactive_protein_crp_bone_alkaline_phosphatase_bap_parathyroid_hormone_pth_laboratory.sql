@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.c_reactive_protein_crp_bone_alkaline_phosphatase_bap_parathyroid_hormone_pth_laboratory

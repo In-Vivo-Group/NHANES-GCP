@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.allergen_specific_ige_s_total_ige_serum_laboratory

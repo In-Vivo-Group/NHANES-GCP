@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.autoantibodies_anti_dfs70_autoantibody_analyses_surplus_laboratory

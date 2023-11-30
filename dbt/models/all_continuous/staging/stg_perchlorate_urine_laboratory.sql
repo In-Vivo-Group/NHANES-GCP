@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.perchlorate_urine_laboratory
