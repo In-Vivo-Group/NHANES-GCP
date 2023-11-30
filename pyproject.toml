@@ -26,6 +26,7 @@ matplotlib = "^3.8.1"
 duckdb-engine = "^0.9.2"
 python-dotenv = "^1.0.0"
 sqlfluff = "^2.3.5"
+dbt = "^1.0.0.34.16"
 
 
 [build-system]

@@ -616,6 +616,19 @@ pandas = ">=0.24.2"
 pyarrow = ">=3.0.0"
 
 [[package]]
+name = "dbt"
+version = "1.0.0.34.16"
+description = "The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "dbt-1.0.0.34.16.tar.gz", hash = "sha256:dbc5796d99b6b20549498aa30073903e52df6b319f45e0cf402cab4a201eb200"},
+]
+
+[package.dependencies]
+setuptools = ">=61.2"
+
+[[package]]
 name = "debugpy"
 version = "1.8.0"
 description = "An implementation of the Debug Adapter Protocol for Python"
@@ -3993,4 +4006,4 @@ test = ["websockets"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.13"
-content-hash = "ac366d243222eb677a956519dcf1f951b073c9d6c503fe1bfa08fe2467d4f419"
+content-hash = "8d0897c459d704b92bf99b787a55058565849a8faf4792c9ca1b9ed6b8a3c495"
