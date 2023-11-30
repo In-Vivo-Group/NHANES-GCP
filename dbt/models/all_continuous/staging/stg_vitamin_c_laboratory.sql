@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.vitamin_c_laboratory

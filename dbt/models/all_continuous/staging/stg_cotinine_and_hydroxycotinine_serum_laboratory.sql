@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.cotinine_and_hydroxycotinine_serum_laboratory

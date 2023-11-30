@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.pesticide_use_questionnaire

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.preventive_aspirin_use_questionnaire

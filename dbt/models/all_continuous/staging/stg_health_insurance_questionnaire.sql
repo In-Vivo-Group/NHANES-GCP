@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.health_insurance_questionnaire

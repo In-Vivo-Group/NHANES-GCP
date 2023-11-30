@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.urine_flow_rate_laboratory

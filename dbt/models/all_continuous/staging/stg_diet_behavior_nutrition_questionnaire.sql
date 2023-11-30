@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.diet_behavior_nutrition_questionnaire

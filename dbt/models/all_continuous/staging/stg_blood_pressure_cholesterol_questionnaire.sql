@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.blood_pressure_cholesterol_questionnaire

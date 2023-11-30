@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.hepatitis_e_igg_igm_antibodies_laboratory

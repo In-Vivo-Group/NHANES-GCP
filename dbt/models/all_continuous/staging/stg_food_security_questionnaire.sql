@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.food_security_questionnaire

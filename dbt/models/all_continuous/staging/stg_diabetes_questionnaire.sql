@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.diabetes_questionnaire

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.nickel_urine_laboratory

@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.sleep_disorders_questionnaire

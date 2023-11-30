@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.mental_health_depression_screener_questionnaire

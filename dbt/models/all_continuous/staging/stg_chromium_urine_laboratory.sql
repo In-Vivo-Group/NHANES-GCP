@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.chromium_urine_laboratory

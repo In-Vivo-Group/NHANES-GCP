@@ -1,0 +1,1 @@
+SELECT * FROM nhanes.fasting_questionnaire_laboratory

@@ -1,0 +1,577 @@
+SELECT
+SEQN as respondent_sequence_number, -- could not identify transformation logic 
+
+CASE
+WHEN WHD010 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD010 AS FLOAT64) 
+ END as current_self_reported_height_inches, 
+
+CASE
+WHEN WHD020 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD020 AS FLOAT64) 
+ END as current_self_reported_weight_pounds, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Overweight,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Underweight, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'About the right weight?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ030 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN WHQ030 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ030 AS STRING) 
+ END as how_do_you_consider_your_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'More,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Less, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Stay about the same?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN WHQ040 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ040 AS STRING) 
+ END as like_to_weigh_more_less_or_same, 
+
+CASE
+WHEN WHD050 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD050 AS FLOAT64) 
+ END as self_reported_weight_1_yr_ago_pounds, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN WHQ060 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ060 AS STRING) 
+ END as weight_change_intentional, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ070 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN WHQ070 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ070 AS STRING) 
+ END as tried_to_lose_weight_in_past_year, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Ate less food (amount)' -- categorize numeric values
+WHEN WHD080A IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080A AS STRING) 
+ END as ate_less_to_lose_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN 'Switched to foods with lower calories' -- categorize numeric values
+WHEN WHD080B IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080B AS STRING) 
+ END as switched_to_foods_with_lower_calories, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(12 AS FLOAT64),0) AS INT64) THEN 'Ate less fat' -- categorize numeric values
+WHEN WHD080C IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080C AS STRING) 
+ END as ate_less_fat_to_lose_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(13 AS FLOAT64),0) AS INT64) THEN 'Exercised' -- categorize numeric values
+WHEN WHD080D IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080D AS STRING) 
+ END as exercised_to_lose_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(14 AS FLOAT64),0) AS INT64) THEN 'Skipped meals' -- categorize numeric values
+WHEN WHD080E IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080E AS STRING) 
+ END as skipped_meals, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080F AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(15 AS FLOAT64),0) AS INT64) THEN 'Ate diet foods or products' -- categorize numeric values
+WHEN WHD080F IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080F AS STRING) 
+ END as ate_diet_foods_or_products, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(16 AS FLOAT64),0) AS INT64) THEN 'Used a liquid diet formula such as slimfast or optifast' -- categorize numeric values
+WHEN WHD080G IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080G AS STRING) 
+ END as used_a_liquid_diet_formula, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(17 AS FLOAT64),0) AS INT64) THEN 'Joined a weight loss program such as Weight Watchers, Jenny Craig, Tops, or Overeaters Anonymous' -- categorize numeric values
+WHEN WHD080H IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080H AS STRING) 
+ END as joined_a_weight_loss_program, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(31 AS FLOAT64),0) AS INT64) THEN 'Took diet pills prescribed by a doctor' -- categorize numeric values
+WHEN WHD080I IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080I AS STRING) 
+ END as took_prescription_diet_pills, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(32 AS FLOAT64),0) AS INT64) THEN 'Took other pills, medicines, herbs, or supplements not needing a prescription' -- categorize numeric values
+WHEN WHD080J IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080J AS STRING) 
+ END as took_non_rx_suppl_to_lose_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(33 AS FLOAT64),0) AS INT64) THEN 'Took laxatives or vomited' -- categorize numeric values
+WHEN WHD080K IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080K AS STRING) 
+ END as took_laxatives_or_vomited, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(34 AS FLOAT64),0) AS INT64) THEN 'Drank a lot of water' -- categorize numeric values
+WHEN WHD080M IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080M AS STRING) 
+ END as drank_a_lot_of_water, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080N AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(30 AS FLOAT64),0) AS INT64) THEN 'Followed a special diet' -- categorize numeric values
+WHEN WHD080N IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080N AS STRING) 
+ END as followed_a_special_diet, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD080O AS FLOAT64),0) AS INT64) AS STRING) = '41' THEN 'Ate fewer carbohydrates' -- categorize string values 
+WHEN WHD080O IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080O AS STRING) 
+ END as ate_fewer_carbohydrates, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD080P AS FLOAT64),0) AS INT64) AS STRING) = '42' THEN 'Started to smoke or began to smoke again' -- categorize string values 
+WHEN WHD080P IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080P AS STRING) 
+ END as started_to_smoke_or_began_to_smoke_again, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD080Q AS FLOAT64),0) AS INT64) AS STRING) = '43' THEN 'Ate more fruits, vegetables, salads' -- categorize string values 
+WHEN WHD080Q IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080Q AS STRING) 
+ END as ate_more_fruits_vegetables_salads, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD080R AS FLOAT64),0) AS INT64) AS STRING) = '44' THEN 'Changed eating habits' -- categorize string values 
+WHEN WHD080R IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080R AS STRING) 
+ END as changed_eating_habits, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD080S AS FLOAT64),0) AS INT64) AS STRING) = '45' THEN 'Ate less sugar, candy, sweets' -- categorize string values 
+WHEN WHD080S IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080S AS STRING) 
+ END as ate_less_sugar_candy_sweets, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD080T AS FLOAT64),0) AS INT64) AS STRING) = '46' THEN 'Ate less junk food or fast food' -- categorize string values 
+WHEN WHD080T IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080T AS STRING) 
+ END as ate_less_junk_food_or_fast_food, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD080U AS FLOAT64),0) AS INT64) AS STRING) = '35' THEN 'Had weight loss surgery' -- categorize string values 
+WHEN WHD080U IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080U AS STRING) 
+ END as had_weight_loss_surgery_to_lose_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD080L AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(40 AS FLOAT64),0) AS INT64) THEN 'Other' -- categorize numeric values
+WHEN WHD080L IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD080L AS STRING) 
+ END as other, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ225 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN '1 to 2' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ225 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN '3 to 5' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ225 AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN '6 to 10' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ225 AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN '11 times or more' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ225 AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'Never' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ225 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ225 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN WHQ225 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ225 AS STRING) 
+ END as times_lost_10_lbs_or_more_to_lose_weight, 
+
+CASE
+WHEN WHD110 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD110 AS FLOAT64) 
+ END as self_reported_weight_10_yrs_ago_pounds, 
+
+CASE
+WHEN WHD120 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD120 AS FLOAT64) 
+ END as self_reported_weight_age_25_pounds, 
+
+CASE
+WHEN WHD130 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD130 AS FLOAT64) 
+ END as self_reported_height_age_25_inches, 
+
+CASE
+WHEN WHD140 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD140 AS FLOAT64) 
+ END as self_reported_greatest_weight_pounds, 
+
+CASE
+WHEN WHQ150 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ150 AS FLOAT64) 
+ END as age_when_heaviest_weight, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ190 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ190 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ190 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ190 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN WHQ190 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ190 AS STRING) 
+ END as have_you_ever_had_wt_loss_surgery, 
+
+CASE
+WHEN SAFE_CAST(WHQ200 AS FLOAT64) > 90.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN WHQ200 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ200 AS FLOAT64) 
+ END as age_when_you_had_wt_loss_surgery, 
+
+CASE
+WHEN SAFE_CAST(WHD045 AS FLOAT64) > 331.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN WHD045 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD045 AS FLOAT64) 
+ END as how_much_would_like_to_weigh_pounds, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ270 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ270 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ270 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ270 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN WHQ270 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ270 AS STRING) 
+ END as seek_help_from_a_health_professional, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ280A AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'personal trainer' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ280A AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ280A AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN WHQ280A IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ280A AS STRING) 
+ END as personal_trainer, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ280B AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'dietitian' -- categorize string values 
+WHEN WHQ280B IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ280B AS STRING) 
+ END as dietitian, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ280C AS FLOAT64),0) AS INT64) AS STRING) = '3' THEN 'nutritionist' -- categorize string values 
+WHEN WHQ280C IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ280C AS STRING) 
+ END as nutritionist, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ280D AS FLOAT64),0) AS INT64) AS STRING) = '4' THEN 'doctor, or' -- categorize string values 
+WHEN WHQ280D IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ280D AS STRING) 
+ END as doctor, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ280E AS FLOAT64),0) AS INT64) AS STRING) = '5' THEN 'other health professional' -- categorize string values 
+WHEN WHQ280E IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ280E AS STRING) 
+ END as other_health_professional, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ090 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN WHQ090 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ090 AS STRING) 
+ END as tried_not_to_gain_weight_in_past_year, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Ate less food (amount)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN WHD100A IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100A AS STRING) 
+ END as ate_less_food, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN 'Switched to foods with lower calories' -- categorize numeric values
+WHEN WHD100B IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100B AS STRING) 
+ END as switched_to_foods_with_lower_calories_WHD100B, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(12 AS FLOAT64),0) AS INT64) THEN 'Ate less fat' -- categorize numeric values
+WHEN WHD100C IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100C AS STRING) 
+ END as ate_less_fat, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100D AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(13 AS FLOAT64),0) AS INT64) THEN 'Exercised' -- categorize numeric values
+WHEN WHD100D IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100D AS STRING) 
+ END as exercised, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(14 AS FLOAT64),0) AS INT64) THEN 'Skipped meals' -- categorize numeric values
+WHEN WHD100E IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100E AS STRING) 
+ END as skipped_meals_WHD100E, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100F AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(15 AS FLOAT64),0) AS INT64) THEN 'Ate diet foods or products' -- categorize numeric values
+WHEN WHD100F IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100F AS STRING) 
+ END as ate_diet_foods_or_products_WHD100F, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(16 AS FLOAT64),0) AS INT64) THEN 'Used a liquid diet formula such as slimfast or optifast' -- categorize numeric values
+WHEN WHD100G IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100G AS STRING) 
+ END as used_liquid_diet_formula, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(17 AS FLOAT64),0) AS INT64) THEN 'Joined program to not gain weight' -- categorize numeric values
+WHEN WHD100H IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100H AS STRING) 
+ END as joined_program_to_not_gain_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(31 AS FLOAT64),0) AS INT64) THEN 'Took prescription diet pills' -- categorize numeric values
+WHEN WHD100I IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100I AS STRING) 
+ END as took_prescription_diet_pills_WHD100I, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(32 AS FLOAT64),0) AS INT64) THEN 'Took other pills, medicines, herbs, or supplements not needing a prescription' -- categorize numeric values
+WHEN WHD100J IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100J AS STRING) 
+ END as took_non_prescription_diet_pills, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(33 AS FLOAT64),0) AS INT64) THEN 'Took laxatives or vomited' -- categorize numeric values
+WHEN WHD100K IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100K AS STRING) 
+ END as took_laxatives_or_vomited_WHD100K, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100M AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(34 AS FLOAT64),0) AS INT64) THEN 'Drank a lot of water' -- categorize numeric values
+WHEN WHD100M IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100M AS STRING) 
+ END as drank_a_lot_of_water_WHD100M, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100N AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(30 AS FLOAT64),0) AS INT64) THEN 'Followed a special diet' -- categorize numeric values
+WHEN WHD100N IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100N AS STRING) 
+ END as followed_a_special_diet_WHD100N, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD100O AS FLOAT64),0) AS INT64) AS STRING) = '41' THEN 'Ate fewer carbohydrates' -- categorize string values 
+WHEN WHD100O IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100O AS STRING) 
+ END as ate_fewer_carbohydrates_WHD100O, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD100P AS FLOAT64),0) AS INT64) AS STRING) = '42' THEN 'Started to smoke or began to smoke again' -- categorize string values 
+WHEN WHD100P IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100P AS STRING) 
+ END as started_to_smoke_or_began_to_smoke_again_WHD100P, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD100Q AS FLOAT64),0) AS INT64) AS STRING) = '43' THEN 'Ate more fruits, vegetables, salads' -- categorize string values 
+WHEN WHD100Q IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100Q AS STRING) 
+ END as ate_more_fruits_vegetables_salads_WHD100Q, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD100R AS FLOAT64),0) AS INT64) AS STRING) = '44' THEN 'Changed eating habits' -- categorize string values 
+WHEN WHD100R IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100R AS STRING) 
+ END as changed_eating_habits_WHD100R, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD100S AS FLOAT64),0) AS INT64) AS STRING) = '45' THEN 'Ate less sugar, candy, sweets' -- categorize string values 
+WHEN WHD100S IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100S AS STRING) 
+ END as ate_less_sugar_candy_sweets_WHD100S, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHD100T AS FLOAT64),0) AS INT64) AS STRING) = '46' THEN 'Ate less junk food or fast food' -- categorize string values 
+WHEN WHD100T IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100T AS STRING) 
+ END as ate_less_junk_food_or_fast_food_WHD100T, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD100L AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(40 AS FLOAT64),0) AS INT64) THEN 'Other' -- categorize numeric values
+WHEN WHD100L IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD100L AS STRING) 
+ END as other_WHD100L, 
+
+CASE
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ210 AS FLOAT64),0) AS INT64) AS STRING) = '1' THEN 'Yes' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ210 AS FLOAT64),0) AS INT64) AS STRING) = '2' THEN 'No' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ210 AS FLOAT64),0) AS INT64) AS STRING) = '7' THEN 'Refused' -- categorize string values 
+WHEN SAFE_CAST(SAFE_CAST(ROUND(SAFE_CAST(WHQ210 AS FLOAT64),0) AS INT64) AS STRING) = '9' THEN 'Dont know' -- categorize string values 
+WHEN WHQ210 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ210 AS STRING) 
+ END as ever_tried_to_lose_weight, 
+
+CASE
+WHEN SAFE_CAST(WHD220 AS FLOAT64) > 261.0 THEN NULL -- remove missing, dont know, categories in float field  
+WHEN WHD220 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD220 AS FLOAT64) 
+ END as weight_loss_most_successful_pounds, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'More,' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'Less, or' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(3 AS FLOAT64),0) AS INT64) THEN 'Stay about the same?' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD040 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN WHD040 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD040 AS STRING) 
+ END as like_to_weigh_more_less_or_same_WHD040, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(1 AS FLOAT64),0) AS INT64) THEN 'Yes' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(2 AS FLOAT64),0) AS INT64) THEN 'No' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(7 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHD060 AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(9 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN WHD060 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD060 AS STRING) 
+ END as weight_change_intentional_WHD060, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ080C AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(12 AS FLOAT64),0) AS INT64) THEN 'Ate less fat' -- categorize numeric values
+WHEN WHQ080C IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ080C AS STRING) 
+ END as ate_less_fat_to_lose_weight_WHQ080C, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ080E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(14 AS FLOAT64),0) AS INT64) THEN 'Skipped meals' -- categorize numeric values
+WHEN WHQ080E IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ080E AS STRING) 
+ END as skipped_meals_to_lose_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ080G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(16 AS FLOAT64),0) AS INT64) THEN 'Used a liquid diet formula such as Slimfast or Optifast' -- categorize numeric values
+WHEN WHQ080G IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ080G AS STRING) 
+ END as used_liquid_diet_formula_to_lose_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ080H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(17 AS FLOAT64),0) AS INT64) THEN 'Joined a weight loss program such as Weight Watchers, Jenny Craig, Tops, or Overeaters Anonymous' -- categorize numeric values
+WHEN WHQ080H IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ080H AS STRING) 
+ END as joined_program_to_lose_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ080I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(18 AS FLOAT64),0) AS INT64) THEN 'Took diet pills prescribed by a doctor' -- categorize numeric values
+WHEN WHQ080I IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ080I AS STRING) 
+ END as took_rx_diet_pills_to_lose_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ080J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(19 AS FLOAT64),0) AS INT64) THEN 'Took other pills, medicines, herbs, or supplements not needing a prescription' -- categorize numeric values
+WHEN WHQ080J IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ080J AS STRING) 
+ END as took_non_rx_suppl_to_lose_weight_WHQ080J, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ080K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(20 AS FLOAT64),0) AS INT64) THEN 'Took laxatives or vomited' -- categorize numeric values
+WHEN WHQ080K IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ080K AS STRING) 
+ END as took_laxatives_to_lose_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ100A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(10 AS FLOAT64),0) AS INT64) THEN 'Ate less food (amount)' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ100A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(77 AS FLOAT64),0) AS INT64) THEN 'Refused' -- categorize numeric values
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ100A AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(99 AS FLOAT64),0) AS INT64) THEN 'Dont know' -- categorize numeric values
+WHEN WHQ100A IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ100A AS STRING) 
+ END as ate_less_to_not_gain_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ100B AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(11 AS FLOAT64),0) AS INT64) THEN 'Switched to foods with lower calories' -- categorize numeric values
+WHEN WHQ100B IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ100B AS STRING) 
+ END as lowered_calories_to_not_gain_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ100E AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(14 AS FLOAT64),0) AS INT64) THEN 'Skipped meals' -- categorize numeric values
+WHEN WHQ100E IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ100E AS STRING) 
+ END as skipped_meals_to_not_gain_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ100G AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(16 AS FLOAT64),0) AS INT64) THEN 'Used a liquid diet formula such as Slimfast or Optifast' -- categorize numeric values
+WHEN WHQ100G IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ100G AS STRING) 
+ END as used_liquid_diet_formula_to_not_gain, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ100H AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(17 AS FLOAT64),0) AS INT64) THEN 'Joined a weight loss program such as Weight Watchers, Jenny Craig, Tops, or Overeaters Anonymous' -- categorize numeric values
+WHEN WHQ100H IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ100H AS STRING) 
+ END as joined_program_to_not_gain_weight_WHQ100H, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ100I AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(18 AS FLOAT64),0) AS INT64) THEN 'Took diet pills prescribed by a doctor' -- categorize numeric values
+WHEN WHQ100I IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ100I AS STRING) 
+ END as took_rx_diet_pills_to_not_gain, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ100J AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(19 AS FLOAT64),0) AS INT64) THEN 'Took other pills, medicines, herbs, or supplements not needing a prescription' -- categorize numeric values
+WHEN WHQ100J IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ100J AS STRING) 
+ END as took_non_rx_suppl_to_not_gain_weight, 
+
+CASE
+WHEN SAFE_CAST(ROUND(SAFE_CAST(WHQ100K AS FLOAT64),0) AS INT64) = SAFE_CAST(ROUND(SAFE_CAST(20 AS FLOAT64),0) AS INT64) THEN 'Took laxatives or vomited' -- categorize numeric values
+WHEN WHQ100K IS NULL THEN NULL 
+ELSE SAFE_CAST(WHQ100K AS STRING) 
+ END as took_laxatives_to_not_gain_weight, 
+
+CASE
+WHEN WHD150 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD150 AS FLOAT64) 
+ END as age_when_heaviest_weight_WHD150, 
+
+CASE
+WHEN WHD160 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD160 AS FLOAT64) 
+ END as least_self_reported_weight_since_18_lbs, 
+
+CASE
+WHEN WHD170 IS NULL THEN NULL 
+ELSE SAFE_CAST(WHD170 AS FLOAT64) 
+ END as age_when_lightest_weight, 
+
+start_year,
+end_year,
+last_updated,
+published_date,
+parquet_filename,
+data_file_url,
+doc_file_url,
+dataset,
+ FROM {{ ref('stg_weight_history_questionnaire') }}
+
+/* 
+Docs utilized to generate this SQL can be found at:
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/WHQ_J.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/P_WHQ.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2015-2016/WHQ_I.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2013-2014/WHQ_H.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2011-2012/WHQ_G.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2009-2010/WHQ_F.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2007-2008/WHQ_E.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2005-2006/WHQ_D.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2003-2004/WHQ_C.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/2001-2002/WHQ_B.htm
+https://wwwn.cdc.gov/Nchs/Nhanes/1999-2000/WHQ.htm
+*/
