@@ -17,11 +17,10 @@ conda create --name myenv python=3.11 poetry
 2. git clone this repo
 3. cd into this repo
 4. activate the virtual environment `source myenv/bin/activate` or `conda activate myenv`
-4. run `poetry init`
-5. run `python scrape_nhanes_metadata.py` to gather the metadata for each file into Google Cloud Storage and store a table of those records in BigQuery. 
-6. run `python scrape_nhanes_data_files.py` to download the data files and docs for each NHANES survey record to Google Cloud Storage.
-7. run `python create_nhanes_dataset.py` to build the multi-year tables in BigQuery.
-8. run `bash get_bq_tables.sh` to store a list of tables that will be transformed in dbt.
-9. run `bash get_bq_schemas.sh` to store the column-level data types for each table.
-10. run `python generate_dbt_models.py` to iteratively create the data models from the docs available at the CDC website. 
-11. run `dbt build --select all_continuous.*` to build the tables in BigQuery from the models. 
+4. run `poetry install`
+5. run `python scrape_nhanes_metadata.py` to gather the metadata for each file into Google Cloud Storage and store a table of those records in BigQuery. ~60 seconds
+6. run `python scrape_nhanes_data_files.py` to download the data files and docs for each NHANES survey record to Google Cloud Storage. ~3 hours
+7. run `python create_nhanes_dataset.py` to build the multi-year tables in BigQuery. ~40 minutes
+8. run `bash get_bq_schemas.sh` to store the column-level data types for each table. ~10 minutes
+9. run `python generate_dbt_models.py` to iteratively create the data models from the docs available at the CDC website. ~20 minutes
+10. run `dbt build --select all_continuous.*` to build the tables in BigQuery from the models. ~10 minutes
