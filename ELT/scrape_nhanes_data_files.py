@@ -1,84 +1,117 @@
 import datetime
+import logging
+import os
 import time
-from urllib.parse import urlparse
-
-import numpy as np
-import pandas as pd
-import pandas_gbq
 import requests
-from bs4 import BeautifulSoup
 
+import pandas as pd
 from utils import (generate_filename, scrape_nhanes_table, update_bq_table,
                    upload_blob_from_string)
+from dotenv import load_dotenv
 
-bucket_name = "nhanes_clean"
+load_dotenv('./myenv.env')
 
-### GET METADATA DATAFRAME
-df = pd.read_gbq(
-    "SELECT * FROM nhanes.nhanes_file_metadata",
-    project_id="nhanes-genai",
-    dialect="standard",
+# Constants
+PROJECT_ID = os.getenv("PROJECT_ID")
+BUCKET_NAME = os.getenv("BUCKET_NAME")
+DATA_QUERY = "SELECT * FROM nhanes.nhanes_file_metadata"
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
-print(f"Preparing to download data and docs from {len(df)} datasets")
 
-### DOWNLOAD FILES FROM CDC AND STORE IN GCS BUCKET BY DATASET
-start_time = time.time()
-new_time = time.time()
-for index, row in df.iterrows():
-    if not row["doc_file_url"].endswith(".aspx"):
-        try:
-            r = requests.get(row["doc_file_url"], stream=True, timeout=20)
-            html_content = r.content
-            file_name = row["gcs_doc_filename"]
-            upload_blob_from_string(
-                bucket_name=bucket_name,
-                bucket_folder=row["dataset"] + "/docs/",
-                file_name=file_name,
-                blob_string=html_content,
-                encoding="text/html",
+def get_metadata_dataframe(query, project_id):
+    """
+    Fetches a DataFrame with metadata from a BigQuery table.
+
+    Args:
+        query (str): SQL query to fetch metadata.
+        project_id (str): Google Cloud project ID.
+
+    Returns:
+        DataFrame: A pandas DataFrame containing the metadata.
+    """
+    return pd.read_gbq(query, project_id=project_id, dialect="standard")
+
+
+def upload_document(bucket_name, row):
+    """
+    Uploads a document to Google Cloud Storage.
+
+    Args:
+        bucket_name (str): Name of the bucket where the document will be stored.
+        row (pd.Series): Row from the DataFrame containing document information.
+    """
+    try:
+        response = requests.get(row["doc_file_url"], stream=True, timeout=20)
+        upload_blob_from_string(
+            bucket_name=bucket_name,
+            bucket_folder=row["dataset"] + "/docs/",
+            file_name=row["gcs_doc_filename"],
+            blob_string=response.content,
+            encoding="text/html",
+        )
+    except Exception as ex:
+        logging.error(f"Error uploading {row['gcs_doc_filename']}: {ex}")
+
+
+def upload_data_file(bucket_name, row):
+    """
+    Uploads a data file to Google Cloud Storage.
+
+    Args:
+        bucket_name (str): Name of the bucket where the data file will be stored.
+        row (pd.Series): Row from the DataFrame containing data file information.
+    """
+    try:
+        data_file_df = pd.read_sas(row["data_file_url"])
+        data_file_df.to_parquet(
+            f"gs://{bucket_name}/{row['dataset']}/data/{row['gcs_data_filename'].replace('.XPT', '.parquet')}"
+        )
+    except Exception as ex:
+        logging.error(f"Error uploading {row['gcs_data_filename']}: {ex}")
+
+
+def process_files(df, bucket_name):
+    """
+    Processes and uploads files based on the metadata DataFrame.
+
+    Args:
+        df (DataFrame): DataFrame containing metadata about the files.
+        bucket_name (str): Name of the Google Cloud Storage bucket.
+    """
+    start_time = time.time()
+    for index, row in df.iterrows():
+        if not row["doc_file_url"].endswith(".aspx"):
+            upload_document(bucket_name, row)
+        else:
+            logging.info(f"Skipping document {row['doc_file_url']}")
+
+        if (
+            not pd.isnull(row["data_file_url"])
+            and "RDC" not in row["data_file_url"]
+            and row["gcs_data_filename"].lower().endswith(".xpt")
+        ):
+            upload_data_file(bucket_name, row)
+        else:
+            logging.info(f"Skipping data file {row['gcs_data_filename']}")
+
+        if index % 100 == 0 and index > 0:
+            logging.info(
+                f"Last 100 files completed in {time.time() - start_time} seconds"
             )
-        except Exception as ex:
-            print(ex)
-            print(f"Unable to upload {row['gcs_doc_filename']}")
-    else:
-        print(f"Skipping {row['doc_file_url']}")
+            start_time = time.time()
 
-    if (
-        not pd.isnull(row["data_file_url"])
-        and not "RDC" in row["data_file_url"]
-        and row["gcs_data_filename"].lower().endswith(".xpt")
-    ):
-        try:
-            data_file_df = pd.read_sas(row["data_file_url"])
+    logging.info(f"File Download process took {time.time() - start_time} seconds")
 
-            try:
-                data_file_df.astype(np.float64)
-            except Exception as ex1:
-                for column in data_file_df.columns.tolist():
-                    try:
-                        data_file_df[column] = data_file_df[column].astype(float)
-                    except Exception as ex2:
-                        print(
-                            f"Unable to cast {column} from {row['data_file_url']} as float"
-                        )
-                        continue
 
-            data_file_df.to_parquet(
-                f"gs://{bucket_name}/{row['dataset']}/data/{row['gcs_data_filename'].replace('.XPT','.parquet')}"
-            )
-            print(
-                f"{row['gcs_data_filename']} uploaded to gs://{bucket_name}/{row['dataset']}/data/"
-            )
-        except Exception as ex:
-            print(ex)
-            print(f"Unable to upload {row['gcs_data_filename']}")
+def main():
+    df = get_metadata_dataframe(DATA_QUERY, PROJECT_ID)
+    logging.info(f"Preparing to download data and docs from {len(df)} datasets")
+    process_files(df, BUCKET_NAME)
 
-    else:
-        print(f"Skipping {row['gcs_data_filename']}")
 
-    if index % 100 == 0 and index > 0:
-        print(f"Last 100 files completed in {time.time() - new_time} seconds")
-        new_time = time.time()
-
-print(f"File Download process took {time.time() - start_time} seconds")
+if __name__ == "__main__":
+    main()
