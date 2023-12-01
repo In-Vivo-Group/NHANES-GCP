@@ -23,4 +23,4 @@ conda create --name myenv python=3.11 poetry
 7. run `python create_nhanes_dataset.py` to build the multi-year tables in BigQuery. ~40 minutes
 8. run `bash get_bq_schemas.sh` to store the column-level data types for each table. ~10 minutes
 9. run `python generate_dbt_models.py` to iteratively create the data models from the docs available at the CDC website. ~20 minutes
-10. run `dbt build --select all_continuous.*` to build the tables in BigQuery from the models. ~10 minutes
+10. run `dbt build --select all_continuous.staging.* all_continuous.bronze.*` to build the tables in BigQuery from the models. ~12 minutes
