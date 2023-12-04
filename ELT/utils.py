@@ -22,6 +22,21 @@ def update_bq_table(
     max_error=0,
     schema=None,
 ):
+    """
+    Updates a BigQuery table with data from a DataFrame.
+
+    Parameters:
+    - df (pandas.DataFrame): The DataFrame containing data to upload.
+    - alias (str): Alias for the table.
+    - dataset (str, optional): The dataset ID in BigQuery. Defaults to 'nhanes'.
+    - bucket (str, optional): The Google Cloud Storage bucket name. Defaults to 'nhanes'.
+    - truncate (bool, optional): Flag to truncate the table before inserting new data. Defaults to True.
+    - max_error (int, optional): The maximum number of bad records allowed. Defaults to 0.
+    - schema (list, optional): The schema to use for the table. Defaults to None for autodetect.
+
+    Returns:
+    None
+    """
     filename = alias + "_" + datetime.datetime.now().strftime("%Y%m%d_%H%M%S") + ".csv"
 
     upload_csv_from_df(
@@ -55,6 +70,18 @@ def update_bq_table(
 
 
 def upload_csv_from_df(bucket_name, bucket_folder, file_name, dataframe):
+    """
+    Uploads a DataFrame to Google Cloud Storage as a CSV file.
+
+    Parameters:
+    - bucket_name (str): Name of the Google Cloud Storage bucket.
+    - bucket_folder (str): Folder path within the bucket.
+    - file_name (str): Name of the file to be created.
+    - dataframe (pandas.DataFrame): The DataFrame to be uploaded.
+
+    Returns:
+    None
+    """
     client = storage.Client()
     bucket = client.get_bucket(bucket_name)
     blob = bucket.blob(bucket_folder + file_name)
@@ -73,6 +100,23 @@ def load_data_gbq(
     append=True,
     bad_records=10,
 ):
+    """
+    Loads data from a CSV file in Google Cloud Storage into a BigQuery table.
+
+    Parameters:
+    - dataset_id (str): The dataset ID in BigQuery.
+    - table_name (str): The name of the table to be updated or created.
+    - bucket_name (str): The Google Cloud Storage bucket name.
+    - bucket_folder (str): Folder path within the bucket.
+    - file_name (str): Name of the CSV file in the bucket.
+    - schema (list): The schema to be used for the table.
+    - autodetect (bool, optional): Flag for schema autodetection. Defaults to False.
+    - append (bool, optional): Flag to append data to the table. Defaults to True.
+    - bad_records (int, optional): Number of bad records allowed. Defaults to 10.
+
+    Returns:
+    None
+    """
     client = bigquery.Client()
 
     dataset_ref = client.dataset(dataset_id)
@@ -107,6 +151,16 @@ def load_data_gbq(
 
 
 def enforce_bq_schema(report_df, alias):
+    """
+    Enforces a BigQuery schema on a DataFrame and prepares it for upload.
+
+    Parameters:
+    - report_df (pandas.DataFrame): The DataFrame to enforce the schema on.
+    - alias (str): Alias for the schema to be applied.
+
+    Returns:
+    tuple: A tuple containing the modified DataFrame and the schema list.
+    """
     schema = []
     float_fields = []
     int_fields = []
@@ -215,6 +269,19 @@ def enforce_bq_schema(report_df, alias):
 def upload_blob_from_string(
     bucket_name, bucket_folder, file_name, blob_string, encoding="text/html"
 ):
+    """
+    Uploads a string as a blob to Google Cloud Storage.
+
+    Parameters:
+    - bucket_name (str): The Google Cloud Storage bucket name.
+    - bucket_folder (str): Folder path within the bucket.
+    - file_name (str): The name of the file to be created.
+    - blob_string (str): The string content to be uploaded.
+    - encoding (str, optional): The content type of the blob. Defaults to "text/html".
+
+    Returns:
+    None
+    """
     client = storage.Client()
     bucket = client.get_bucket(bucket_name)
     blob = bucket.blob(bucket_folder + file_name)
@@ -223,6 +290,16 @@ def upload_blob_from_string(
 
 
 def generate_filename(title, extension):
+    """
+    Generates a standardized filename from a title and extension.
+
+    Parameters:
+    - title (str): The title to base the filename on.
+    - extension (str): The file extension.
+
+    Returns:
+    str: A formatted filename.
+    """
     return (
         "_".join(
             re.sub(r"\W+", " ", title)
@@ -236,6 +313,16 @@ def generate_filename(title, extension):
 
 
 def scrape_nhanes_table(soup, component):
+    """
+    Scrapes data from an NHANES table and returns it as a DataFrame.
+
+    Parameters:
+    - soup (bs4.BeautifulSoup): The BeautifulSoup object containing the NHANES table.
+    - component (str): The component of the NHANES data being scraped.
+
+    Returns:
+    pandas.DataFrame: DataFrame containing the scraped data.
+    """
     table = soup.find("table", id="GridView1")
 
     headers = []
