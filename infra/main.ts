@@ -11,8 +11,8 @@ import { ComputeInstance } from "@cdktf/provider-google/lib/compute-instance";
 import { ComputeFirewall} from "@cdktf/provider-google/lib/compute-firewall";
 import { StorageHmacKey } from "@cdktf/provider-google/lib/storage-hmac-key";
 import { readFileSync } from "fs";
-// import { RandomProvider } from "@cdktf/provider-random/lib/provider";
-// import {  id } from "@cdktf/provider-random";
+import { SecretManagerSecret } from "@cdktf/provider-google/lib/secret-manager-secret";
+import { SecretManagerSecretVersion } from '@cdktf/provider-google/lib/secret-manager-secret-version';
 
 
 
@@ -28,6 +28,7 @@ class nhanes extends TerraformStack {
     // const region = 'us-central1';
     const postfix = '001';
     const prefix = 'poc'
+    
     // define resources here
     const google = new GoogleProvider(this, "Google", {
       region: "us-central1",
@@ -38,21 +39,12 @@ class nhanes extends TerraformStack {
 
     serviceApis(this, google, [
       ["secret-manager-api", "secretmanager.googleapis.com"],
-      // ["cloud-resource-manager-api", "cloudresourcemanager.googleapis.com"],
       ["resourcemanager-api", "cloudresourcemanager.googleapis.com"],
       ["compute-api", "compute.googleapis.com"],
       ["iam-api", "iam.googleapis.com"],
       ["bigquery-reservations-api", "bigqueryreservation.googleapis.com"],
       
     ]);
-
-
-  //  new RandomProvider(this, "randomId", {});
-  
-  //   // Create a unique ID
-  //  const uniqueId = new id.RandomId(this, "uniqueId", {
-  //     byteLength: 8,
-  //   });
 
 
     new StorageBucket(this, "storageBucket", {
@@ -64,16 +56,17 @@ class nhanes extends TerraformStack {
     new BigqueryDataset(this, "dataset", {
       datasetId: "nhanes",
       location: "US",
+      deleteContentsOnDestroy: true,
     });
 
     const computeNetwork = new ComputeNetwork(this, "network", {
-      name: "pilot-nhanes-network",
+      name: `${prefix}-nhanes-network`,
 
 
     });
 
     new ComputeFirewall(this, "IAPFirewallRule", {
-      name: "pilot-nhanes-firewall-iap",
+      name: `${prefix}-nhanes-firewall-iap`,
       network: computeNetwork.name,
       sourceRanges: ['35.235.240.0/20'],
       allow: [
@@ -84,11 +77,10 @@ class nhanes extends TerraformStack {
       ],
     });
 
-
+// Create service account from list
     const serviceAccounts = [
-      { accountId: 'pilot-nhanes-compute-sa', displayName: 'pilot-nhanes-compute-sa' },
-      { accountId: 'pilot-nhanes-data-hmac-sa', displayName: 'pilot-nhanes-data-hmac-sa' },
-      // Add more service accounts as needed
+      { accountId: `${prefix}-nhanes-compute-sa`, displayName: `${prefix}-nhanes-compute-sa` },
+      { accountId: `${prefix}-nhanes-data-hmac-sa`, displayName: `${prefix}-nhanes-data-hmac-sa` },
     ];
 
     // Create each service account from the list
@@ -104,12 +96,35 @@ class nhanes extends TerraformStack {
         serviceAccountEmail: createdServiceAccounts[1].email,
         });
     
-    new ProjectIamMember(this, 'BigQueryDatasetIamHmac', {
-      role: 'roles/bigquery.dataViewer',
+    new ProjectIamMember(this, 'BigQueryDatasetIamHmacRW', {
+      role: 'roles/bigquery.dataOwner',
       member: `serviceAccount:${createdServiceAccounts[1].email}`,
       project: projectId,
     });
         
+    new ProjectIamMember(this, 'BigQueryDatasetIamHmacRO', {
+      role: 'roles/bigquery.dataViewer',
+      member: `serviceAccount:${createdServiceAccounts[1].email}`,
+      project: projectId,
+    });
+
+    new ProjectIamMember(this, 'SecretManagerAccessorApplication', {
+      role: 'roles/secretmanager.secretAccessor',
+      member: `serviceAccount:${createdServiceAccounts[1].email}`,
+      project: projectId,
+    });    
+    
+    new ProjectIamMember(this, 'BigQueryJobssetIamApp', {
+      role: 'roles/bigquery.jobUser',
+      member: `serviceAccount:${createdServiceAccounts[1].email}`,
+      project: projectId,
+    });
+
+    new ProjectIamMember(this, 'GoogleStorageViewer', {
+      role: 'roles/storage.objectViewer',
+      member: `serviceAccount:${createdServiceAccounts[1].email}`,
+      project: projectId,
+    });
 
     new TerraformOutput(this, "HMACAccessKey", {
         value: storageHMACkey.secret,
@@ -122,24 +137,50 @@ class nhanes extends TerraformStack {
         sensitive: true,
 
         });
+// Create Secret Manager Secrets
+    const HmacAccessSecret = new SecretManagerSecret(this, 'AccessKey', {
+      secretId: 'duckdbaccesskey',
+      replication: {
+        userManaged: {
+          replicas: [
+            { location: 'us-central1' }
+          ]
+    }
+        }
+    });  
+
+    const HmacAccessId = new SecretManagerSecret(this, 'AccessSecret', {
+      secretId: 'duckdbaccessid',
+      replication: {
+        userManaged: {
+          replicas: [
+            { location: 'us-central1' }
+          ]
+    }
+        }
+    });
     
-    // new SecretManagerSecret(this, 'DuckDBSecret', {
-    //   secretId: 'gcs-data-view-secret',
-    //   replication: {automatic : true},
-    // });
-    // new SecretManagerSecret(this, 'DuckDBSecret', {
-    //   secretId: 'gcs-data-view-secret',
-    //   replication: {
-    //     automatic: true,
-    //   },
-    // });
+    new SecretManagerSecretVersion(this, 'HmacAccessSecret', {
+      secret: HmacAccessSecret.id,
+      secretData: storageHMACkey.secret
+    });    
+    
+    new SecretManagerSecretVersion(this, 'HmacAccessID', {
+      secret: HmacAccessId.id,
+      secretData: storageHMACkey.accessId
+    });
+
     // Grant BigQuery Dataset Owner role
     new ProjectIamMember(this, 'BigQueryDatasetIam', {
       role: 'roles/bigquery.dataOwner',
       member: `serviceAccount:${createdServiceAccounts[0].email}`,
       project: projectId,
     });
-
+    new ProjectIamMember(this, 'BigQueryJobssetIamCompute', {
+      role: 'roles/bigquery.jobUser',
+      member: `serviceAccount:${createdServiceAccounts[0].email}`,
+      project: projectId,
+    });
     new ProjectIamMember(this, 'ComputeIam', {
       role: 'roles/compute.admin',
       member: `serviceAccount:${createdServiceAccounts[0].email}`,
@@ -158,12 +199,18 @@ class nhanes extends TerraformStack {
       project: projectId,
       });
 
+      new ProjectIamMember(this, 'SecretManagerAccessorCompute', {
+        role: 'roles/secretmanager.secretAccessor',
+        member: `serviceAccount:${createdServiceAccounts[0].email}`,
+        project: projectId,
+      });    
+            
     // Read local payload file for compute instance startup script
     const fileContents = readFileSync('/Users/abdul/Documents/wip/code/repos/NHANES-GPT/infra/startup-script.sh', 'utf8');
 
       new ComputeInstance(this, "ComputeInstance", {
         name: "p1-nhanes-compute-instance",
-        machineType: "f1-micro",
+        machineType: "e2-highmem-2",
         bootDisk: {
           initializeParams: {
             image: "ubuntu-os-cloud/ubuntu-2204-lts"
@@ -182,10 +229,6 @@ class nhanes extends TerraformStack {
           email: createdServiceAccounts[0].email,
           scopes: ['cloud-platform'],
       },
-      // metadata:
-      //   {
-      //     'startup-script': fileContents,
-      //   },
       metadataStartupScript: fileContents,
       dependsOn: [computeNetwork],
       });
