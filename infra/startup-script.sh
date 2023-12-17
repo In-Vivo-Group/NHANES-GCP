@@ -26,13 +26,13 @@ export PROJECT_HOME=/data/NHANES-GPT
 mkdir $DATA_DIR
 cd $DATA_DIR
 
+git clone git@github.com:In-Vivo-Group/NHANES-GPT.git $PROJECT_HOME
 # Create dbt directory
 mkdir /root/.dbt
 
 python --version > /tmp/python-version.txt
 
 ## Data processing steps TODO: here
-git clone git@github.com:In-Vivo-Group/NHANES-GPT.git
 
 # Set project home
 cd $PROJECT_HOME
