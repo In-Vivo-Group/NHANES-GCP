@@ -26,7 +26,6 @@ class nhanes extends TerraformStack {
 
     const projectId = 'corrdyn-nhanes';
     // const region = 'us-central1';
-    const postfix = '001';
     const prefix = 'poc'
     
     // define resources here
@@ -48,7 +47,8 @@ class nhanes extends TerraformStack {
 
 
     new StorageBucket(this, "storageBucket", {
-      name: `${prefix}-storage-bucket-nhanes-${postfix}`,
+      // Bucket is created with a random name to avoid conflicts
+      name: `${prefix}-storage-bucket-nhanes-${Math.random().toString(36).substring(2, 15)}`,
       location: "US",
       forceDestroy: true,
     });
@@ -210,7 +210,7 @@ class nhanes extends TerraformStack {
 
       new ComputeInstance(this, "ComputeInstance", {
         name: "p1-nhanes-compute-instance",
-        machineType: "e2-highmem-2",
+        machineType: "e2-highmem-4",
         bootDisk: {
           initializeParams: {
             image: "ubuntu-os-cloud/ubuntu-2204-lts"

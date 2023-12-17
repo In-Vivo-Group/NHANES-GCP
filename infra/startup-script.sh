@@ -20,52 +20,67 @@ poetry --version > /tmp/poetry-version.txt
 #  install venv
 python3.11 -m venv /root/myenv
 source /root/myenv/bin/activate
-mkdir /root/.dbt
-python --version > /tmp/python-version.txt
 
 
 export DATA_DIR=/data
+export PROJECT_HOME=/data/NHANES-GPT
 mkdir $DATA_DIR
 cd $DATA_DIR
 
+# Create dbt directory
+mkdir /root/.dbt
+
+python --version > /tmp/python-version.txt
+
 ## Data processing steps TODO: here
-# git clone git@github.com:In-Vivo-Group/NHANES-GPT.git
-# cd NHANES-GPT
+git clone git@github.com:In-Vivo-Group/NHANES-GPT.git
 
 # Set project home
-export PROJECT_HOME=/data/dummy-dummy
+cd $PROJECT_HOME
 # create dbt profile
 sudo bash create_dbt_profile_template.sh
 # install packages
 poetry install
+# Set project ID
+export PROJECT_ID=$(gcloud config get-value project)
 
-# TODO - Set evironment variables
+
+# Generate the data processing script
+cat > /root/dataprocessing.bash <<EOF
+
+
 export PROJECT_ID=$(gcloud config get-value project)
 export BUCKET_NAME=$(gsutil ls -b "gs://*" | sed 's|gs://||; s|/$||'|grep storage-bucket-nhanes)
 export GCP_KEY_ID=$(gcloud secrets versions access 1 --secret="duckdbaccessid" --project=$PROJECT_ID)
 export GCP_ACCESS_KEY=$(gcloud secrets versions access latest --secret="duckdbaccesskey" --project=$PROJECT_ID)
 
-
-echo "Environment variables set" > /tmp/env-vars-set.txt
+# This is required for duckdb to work
+. /root/myenv/bin/activate
+echo "Setting Home for user"
+export HOME=/root
 
 # execute the data processing steps
 cd $PROJECT_HOME/ELT
-echo "Starting data scraping - expected to take 5 mins to complete"
+echo "Starting data scraping - expected to take 5 mins to complete" 
 python scrape_nhanes_metadata.py
+echo "End data scraping - expected to take 5 mins to complete" 
 
-sleep 10
+sleep 30
 
-echo "Starting data scraping - expected to take 3 hours"
-# Expexted to take 3 hours
+echo "Starting data scraping - expected to take 4 hours" 
+# Expexted to take 4 hours
 python scrape_nhanes_data_files.py
+echo "End data scraping "
 
-sleep 10
+sleep 30
 
 # Expexted to take 40 mins
-echo "Starting data processing"
+echo "Starting data processing" 
 python create_nhanes_dataset.py
+echo "End data processing" 
 
 
+sleep 10
 
 # Store column level data
 
@@ -76,12 +91,17 @@ bash get_bq_schemas.sh
 python generate_dbt_models.py
 
 # Finally, run dbt
-echo "Starting dbt" 
+echo "Starting dbt" > /tmp/start-dbt.txt
 cd $PROJECT_HOME/dbt
 poetry run dbt build --select all_continuous.staging.* all_continuous.bronze.*
 
-# Sleep for 5 mins to allow for dbt to finish
-sleep 300
+sleep 60
 
-# Shutdown the instance
 sudo shutdown -h now
+
+
+EOF
+cd /root
+chmod +x dataprocessing.bash
+nohup ./dataprocessing.bash > /tmp/dataprocessing.log 2>&1 &
+

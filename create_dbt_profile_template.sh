@@ -1,4 +1,6 @@
 #!/bin/bash
+export PROJECT_ID=$(gcloud config get-value project)
+
 
 # Set variables
 mkdir /root/.dbt
@@ -10,7 +12,7 @@ default:
     dev:
       type: bigquery
       method: oauth
-      project: corrdyn-nhanes
+      project: $PROJECT_ID
       dataset: dbt
       threads: 4 
 EOF
