@@ -7,7 +7,6 @@ sudo apt-get update -y
 
 # # Install Python 3.11
 sudo apt-get install wget build-essential libncursesw5-dev unzip libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev python3-pip python3.11  python3.11-dev python3.11-venv -y
-touch /tmp/python3-11-installed.txt
 
 #  Install Poetry
 sudo mkdir /opt/poetry
