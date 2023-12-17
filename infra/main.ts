@@ -206,7 +206,7 @@ class nhanes extends TerraformStack {
       });    
             
     // Read local payload file for compute instance startup script
-    const fileContents = readFileSync('/Users/abdul/Documents/wip/code/repos/NHANES-GPT/infra/startup-script.sh', 'utf8');
+    const fileContents = readFileSync('./startup-script.sh', 'utf8');
 
       new ComputeInstance(this, "ComputeInstance", {
         name: "p1-nhanes-compute-instance",
