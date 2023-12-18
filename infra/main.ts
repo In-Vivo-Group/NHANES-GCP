@@ -1,5 +1,5 @@
 import { Construct } from "constructs";
-import { App, TerraformStack, TerraformOutput } from "cdktf";
+import { App, TerraformStack, TerraformOutput, TerraformVariable } from "cdktf";
 import { GoogleProvider } from "@cdktf/provider-google/lib/provider";
 import { serviceApis } from "./util";
 import { StorageBucket } from "@cdktf/provider-google/lib/storage-bucket";
@@ -18,16 +18,21 @@ import { SecretManagerSecretVersion } from "@cdktf/provider-google/lib/secret-ma
 class nhanes extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
+    
 
-    const projectId = "corrdyn-nhanes";
+    const projectId = new TerraformVariable(this, "project_id", {
+      type: "string",
+      description: "The project ID to deploy to.",
+    });
+
+    //const projectId = "corrdyn-nhanes";
     // const region = 'us-central1';
-    const prefix = "poc";
 
     // define resources here
     const google = new GoogleProvider(this, "Google", {
       region: "us-central1",
       zone: "us-central1-c",
-      project: projectId,
+      project: projectId.value,
     });
 
     serviceApis(this, google, [
@@ -35,14 +40,16 @@ class nhanes extends TerraformStack {
       ["resourcemanager-api", "cloudresourcemanager.googleapis.com"],
       ["compute-api", "compute.googleapis.com"],
       ["iam-api", "iam.googleapis.com"],
+      ["bigquery-api", "bigquery.googleapis.com"],
+      ["storage-api", "storage-api.googleapis.com"],
+      ["cloudapis-api", "cloudapis.googleapis.com"],
+      ["iamcredentials-api", "iamcredentials.googleapis.com"],
       ["bigquery-reservations-api", "bigqueryreservation.googleapis.com"],
     ]);
 
     new StorageBucket(this, "storageBucket", {
       // Bucket is created with a random name to avoid conflicts
-      name: `${prefix}-storage-bucket-nhanes-${Math.random()
-        .toString(36)
-        .substring(2, 15)}`,
+      name: `storage-bucket-nhanes-${Math.random().toString(36).substring(2, 14)}`,
       location: "US",
       forceDestroy: true,
     });
@@ -54,11 +61,11 @@ class nhanes extends TerraformStack {
     });
 
     const computeNetwork = new ComputeNetwork(this, "network", {
-      name: `${prefix}-nhanes-network`,
+      name: 'nhanes-network',
     });
 
     new ComputeFirewall(this, "IAPFirewallRule", {
-      name: `${prefix}-nhanes-firewall-iap`,
+      name: 'nhanes-firewall-iap',
       network: computeNetwork.name,
       sourceRanges: ["35.235.240.0/20"],
       allow: [
@@ -72,12 +79,12 @@ class nhanes extends TerraformStack {
     // Create service account from list
     const serviceAccounts = [
       {
-        accountId: `${prefix}-nhanes-compute-sa`,
-        displayName: `${prefix}-nhanes-compute-sa`,
+        accountId: 'nhanes-compute-sa',
+        displayName: 'nhanes-compute-sa',
       },
       {
-        accountId: `${prefix}-nhanes-data-hmac-sa`,
-        displayName: `${prefix}-nhanes-data-hmac-sa`,
+        accountId: 'nhanes-data-hmac-sa',
+        displayName: 'nhanes-data-hmac-sa',
       },
     ];
 
@@ -97,31 +104,31 @@ class nhanes extends TerraformStack {
     new ProjectIamMember(this, "BigQueryDatasetIamHmacRW", {
       role: "roles/bigquery.dataOwner",
       member: `serviceAccount:${createdServiceAccounts[1].email}`,
-      project: projectId,
+      project: projectId.value,
     });
 
     new ProjectIamMember(this, "BigQueryDatasetIamHmacRO", {
       role: "roles/bigquery.dataViewer",
       member: `serviceAccount:${createdServiceAccounts[1].email}`,
-      project: projectId,
+      project: projectId.value,
     });
 
     new ProjectIamMember(this, "SecretManagerAccessorApplication", {
       role: "roles/secretmanager.secretAccessor",
       member: `serviceAccount:${createdServiceAccounts[1].email}`,
-      project: projectId,
+      project: projectId.value,
     });
 
     new ProjectIamMember(this, "BigQueryJobssetIamApp", {
       role: "roles/bigquery.jobUser",
       member: `serviceAccount:${createdServiceAccounts[1].email}`,
-      project: projectId,
+      project: projectId.value,
     });
 
     new ProjectIamMember(this, "GoogleStorageViewer", {
       role: "roles/storage.objectViewer",
       member: `serviceAccount:${createdServiceAccounts[1].email}`,
-      project: projectId,
+      project: projectId.value,
     });
 
     new TerraformOutput(this, "HMACAccessKey", {
@@ -166,35 +173,35 @@ class nhanes extends TerraformStack {
     new ProjectIamMember(this, "BigQueryDatasetIam", {
       role: "roles/bigquery.dataOwner",
       member: `serviceAccount:${createdServiceAccounts[0].email}`,
-      project: projectId,
+      project: projectId.value,
     });
     new ProjectIamMember(this, "BigQueryJobssetIamCompute", {
       role: "roles/bigquery.jobUser",
       member: `serviceAccount:${createdServiceAccounts[0].email}`,
-      project: projectId,
+      project: projectId.value,
     });
     new ProjectIamMember(this, "ComputeIam", {
       role: "roles/compute.admin",
       member: `serviceAccount:${createdServiceAccounts[0].email}`,
-      project: projectId,
+      project: projectId.value,
     });
 
     new ProjectIamMember(this, "gcsIam", {
       role: "roles/storage.admin",
       member: `serviceAccount:${createdServiceAccounts[0].email}`,
-      project: projectId,
+      project: projectId.value,
     });
 
     new ProjectIamMember(this, "serviceAccountIam", {
       role: "roles/iam.serviceAccountUser",
       member: `serviceAccount:${createdServiceAccounts[0].email}`,
-      project: projectId,
+      project: projectId.value,
     });
 
     new ProjectIamMember(this, "SecretManagerAccessorCompute", {
       role: "roles/secretmanager.secretAccessor",
       member: `serviceAccount:${createdServiceAccounts[0].email}`,
-      project: projectId,
+      project: projectId.value,
     });
 
     // Read local payload file for compute instance startup script

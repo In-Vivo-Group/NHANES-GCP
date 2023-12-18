@@ -7,5 +7,8 @@
     "hashicorp/google@~> 5.0"
   ],
   "terraformModules": [],
-  "context": {}
+  "context": {
+    "excludeStackIdFromLogicalIds": "true"
+  }
+
 }
