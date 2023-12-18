@@ -68,7 +68,7 @@ export PROJECT_ID=project-validation-10
 cdktf init
 
 cdktf provider add random
-cdktf provider add provider-random
+cdktf provider add "google@~> 5.0"
 
 
 cdktf get
