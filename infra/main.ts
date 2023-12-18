@@ -1,5 +1,5 @@
 import { Construct } from "constructs";
-import { App, TerraformStack, TerraformOutput, GcsBackend } from "cdktf";
+import { App, TerraformStack, TerraformOutput } from "cdktf";
 import { GoogleProvider } from "@cdktf/provider-google/lib/provider";
 import { serviceApis } from "./util";
 import { StorageBucket } from "@cdktf/provider-google/lib/storage-bucket";
@@ -227,10 +227,5 @@ class nhanes extends TerraformStack {
 }
 
 const app = new App();
-const stack = new nhanes(app, "pilot-nhanes");
-new GcsBackend(stack, {
-  bucket: "tf-state-gcs-nhanes-001",
-  prefix: "terraform/state",
-});
-
+new nhanes(app, "pilot-nhanes");
 app.synth();
