@@ -26,7 +26,7 @@ export PROJECT_HOME=/data/NHANES-GPT
 mkdir $DATA_DIR
 cd $DATA_DIR
 
-git clone git@github.com:In-Vivo-Group/NHANES-GPT.git $PROJECT_HOME
+git clone https://github.com/In-Vivo-Group/NHANES-GPT.git $PROJECT_HOME
 # Create dbt directory
 mkdir /root/.dbt
 
