@@ -7,7 +7,7 @@ Create end-to-end NHANES dataset and required infra with Terraform CDK deploymen
 export PROJECT_ID=PROJECT_ID
 # Existing Service Account or create new SA
 export PROJECT_SA_ACCOUNT=service_account_email_address
-
+export GOOGLE_APPLICATION_CREDENTIALS=location_of_service_account_key
 gcloud projects add-iam-policy-binding $PROJECT_ID \
   --member="serviceAccount:$PROJECT_SA_ACCOUNT" \
   --role="roles/owner"
@@ -58,7 +58,7 @@ git clone https://github.com/In-Vivo-Group/NHANES-GPT.git
 ```
 
 
-# Init CDKTF 
+### Init CDKTF 
 
 ```
 
