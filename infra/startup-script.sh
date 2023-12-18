@@ -50,7 +50,7 @@ cat > /root/dataprocessing.bash <<EOF
 
 export PROJECT_ID=$(gcloud config get-value project)
 export BUCKET_NAME=$(gsutil ls -b "gs://*" | sed 's|gs://||; s|/$||'|grep storage-bucket-nhanes)
-export GCP_KEY_ID=$(gcloud secrets versions access 1 --secret="duckdbaccessid" --project=$PROJECT_ID)
+export GCP_KEY_ID=$(gcloud secrets versions access latest --secret="duckdbaccessid" --project=$PROJECT_ID)
 export GCP_ACCESS_KEY=$(gcloud secrets versions access latest --secret="duckdbaccesskey" --project=$PROJECT_ID)
 
 # This is required for duckdb to work
