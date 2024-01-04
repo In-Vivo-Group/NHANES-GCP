@@ -5,7 +5,12 @@
 - The public version of the data for this project can be found on the [NHANES website](https://www.cdc.gov/nchs/nhanes/index.htm).
 - Potential data integration ideas can be found on the [data linkage site](https://www.cdc.gov/nchs/data-linkage/index.htm) and in the data [linkage PDF](https://www.cdc.gov/nchs/data/datalinkage/LinkageTable_1.pdf). 
 
-# HOW TO RUN SCRIPTS TO PREPARE THE SAUSAGE
+
+
+## These are the scripts that are run when starting the project
+
+The entire process takes roughly 5-7 hours to complete. It is not consistent because it relies on unpredictable networking bandwidth with the CDC.
+
 1. Use venv or conda to create a virtual environment with poetry installed.
 ```
 python3.11 -m venv myenv
