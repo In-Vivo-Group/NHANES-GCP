@@ -109,5 +109,9 @@ Navigate to [Google Cloud Compute Instances](https://console.cloud.google.com/co
 
 We have sought to ensure, in as many ways as we can, that the VM shuts down automatically, but it is best to confirm directly to avoid any unwanted costs.
 
+### 10. Navigate to BigQuery and start your journey of analyzing the data
 
+Visit [BigQuery](https://console.cloud.google.com/bigquery) here. 
+
+Visit the [BigQuery Documentation](https://cloud.google.com/bigquery/docs), for more information about how to use BigQuery, here.
 
