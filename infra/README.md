@@ -12,7 +12,18 @@ This process costs under $10 to complete, but it is not free. In order to run th
 ![Screenshot 2024-01-05 at 1 35 24 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/b17f8d1b-c64c-4c44-9b4f-a88d64732fd7)
 ![Screenshot 2024-01-05 at 1 35 32 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/391ad449-9cbc-4564-a2fa-1c6d20c89aa2)
 
-## DEPLOYMENT: Navigate to Google Cloud Console and begin the process of deploying the cloud architecture using the steps below
+## DEPLOYMENT TLDR
+```bash
+export TF_VAR_project_id=$(gcloud config get-value project)
+git clone https://github.com/In-Vivo-Group/NHANES-GPT.git
+cd NHANES-GPT/infra
+npm install
+npm run get
+npm run synth
+npm run deploy #Ensure that your shell is authorized to change permissions and that you press ENTER to approve the changes
+```
+
+## DEPLOYMENT FULL WALKTHROUGH: Navigate to Google Cloud Console and begin the process of deploying the cloud architecture using the steps below
 Once you have an account and a project with a billing account associated, you can navigate to the [Google Cloud Console](https://console.cloud.google.com)
 
 ### 1. Activate your Cloud Shell in your Google Cloud project
