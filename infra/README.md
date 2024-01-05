@@ -105,6 +105,8 @@ You may need to hit the arrow on your project name to view them.
 
 ### 9. Wait at least 10 hours, then confirm that your VM has stopped running. 
 
+Navigate to [Google Cloud Compute Instances](https://console.cloud.google.com/compute/instances) to confirm the VM is in a "Stopped" state.
+
 We have sought to ensure, in as many ways as we can, that the VM shuts down automatically, but it is best to confirm directly to avoid any unwanted costs.
 
 
