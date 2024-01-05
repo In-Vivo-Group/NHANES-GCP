@@ -2,7 +2,7 @@
 The information below describes how to setup the NHANES dataset in your Google Cloud environment. At the end of this README, you will have:
 1. A Google Cloud Storage bucket containing datasets and documentation from NHANES
 2. A BigQuery dataset ('nhanes') containing the raw dataset for each NHANES Continuous table for all available years for each survey
-3. A BigQuery dataset ('dbt') containing the transformed dataset for each NHANES Continuous table for all available years for each survey. The transformations encode the variables according to the instructions provided in the CDC's documentation for each survey/year combination.
+3. A BigQuery dataset ('dbt') containing the transformed table for each NHANES Continuous survey for all available years. The transformations encode the variables according to the instructions provided in the CDC's documentation for each survey/year combination.
 
 ## Ensure you have a Google Cloud account
 If you do not currently have a Google Cloud account, navigate to [Google Cloud](https://cloud.google.com/) and set up your account. Create your first project as part of that setup process. Or you can create a new project and name it something meaningful for this NHANES work.
