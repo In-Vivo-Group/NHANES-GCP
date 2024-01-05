@@ -16,7 +16,7 @@ This process costs under $10 to complete, but it is not free. In order to run th
 Once you have an account and a project with a billing account associated, you can navigate to the [Google Cloud Console](https://console.cloud.google.com)
 
 ### 1. Activate your Cloud Shell in your Google Cloud project
-Then, select "Activate Cloud Shell" from the top right hand corner.
+Select "Activate Cloud Shell" from the top right hand corner.
 ![Screenshot 2024-01-05 at 12 32 46 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/1b9c3adf-5b20-483d-9ab6-bc7409b129c1)
 
 This will open a terminal at the bottom of your browser window.
