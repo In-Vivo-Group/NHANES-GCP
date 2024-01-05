@@ -22,7 +22,7 @@ Then, select "Activate Cloud Shell" from the top right hand corner.
 This will open a terminal at the bottom of your browser window.
 ![Screenshot 2024-01-05 at 12 33 00 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/b95ebb4c-59f2-460c-94f4-fbd6a8b35f44)
 
-### 2. Set the correct project name for your deployment as an environment variable.
+### 2. Set the correct project name for your deployment as an environment variable
 Run the following code in your shell.
 ```
 export TF_VAR_project_id=$(gcloud config get-value project)
@@ -97,7 +97,7 @@ Navigate to [Google Cloud Compute Instances](https://console.cloud.google.com/co
 
 ### 8. Wait 7 hours, then navigate to BigQuery and confirm that the datasets are present
 
-Navigate to [BigQuery](https://console.cloud.google.com/bigquery) and look at the datasets avaiable for your project. You should see `nhanes` and `dbt`.
+Navigate to [BigQuery](https://console.cloud.google.com/bigquery) and look at the datasets available for your project. You should see `nhanes` and `dbt`.
 
 ![Screenshot 2024-01-05 at 2 42 39 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/855a74af-15dc-4187-b5f5-22d45b6a119e)
 
