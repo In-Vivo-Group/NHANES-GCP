@@ -12,17 +12,17 @@ This process costs under $10 to complete, but it is not free. In order to run th
 ![Screenshot 2024-01-05 at 1 35 24 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/b17f8d1b-c64c-4c44-9b4f-a88d64732fd7)
 ![Screenshot 2024-01-05 at 1 35 32 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/391ad449-9cbc-4564-a2fa-1c6d20c89aa2)
 
-## Navigate to Google Cloud Console and begin the process of deploying the cloud architecture
+## Navigate to Google Cloud Console and begin the process of deploying the cloud architecture using the steps below
 Once you have an account and a project with a billing account associated, you can navigate to the [Google Cloud Console](https://console.cloud.google.com)
 
-### Activate your Cloud Shell in your Google Cloud project
+### 1. Activate your Cloud Shell in your Google Cloud project
 Then, select "Activate Cloud Shell" from the top right hand corner.
 ![Screenshot 2024-01-05 at 12 32 46 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/1b9c3adf-5b20-483d-9ab6-bc7409b129c1)
 
 This will open a terminal at the bottom of your browser window.
 ![Screenshot 2024-01-05 at 12 33 00 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/b95ebb4c-59f2-460c-94f4-fbd6a8b35f44)
 
-### Set the correct project name for your GCP project.
+### 2. Set the correct project name for your GCP project.
 Run the following code in your shell.
 ```
 export TF_VAR_project_id=$(gcloud config get-value project)
@@ -33,7 +33,8 @@ echo $TF_VAR_project_id
 ```
 ![Screenshot 2024-01-05 at 12 35 32 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/7677f4c5-110b-4be9-91f7-694b38faf28d)
 
-### Clone the repo into your Cloud Shell. Then, change the directory to the repo's infra directory (this present directory)
+### 3. Clone the repo into your Cloud Shell. Then, change the directory to the repo's infra directory (this present directory)
+
 Run the following line in your shell to clone the repo.
 ```
 git clone https://github.com/In-Vivo-Group/NHANES-GPT.git
@@ -45,14 +46,16 @@ Then run the following to change the directory.
 cd NHANES-GPT/infra
 ```
 
-### From the infra directory, install dependencies
+### 4. From the infra directory, install dependencies
+
 Run the following line in your shell to install dependencies.
 ```
 npm install 
 ```
 ![Screenshot 2024-01-05 at 12 38 18 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/7bed6859-39c1-4861-86c4-ef69bb7ccde7)
 
-### Prepare to deploy the required infrastructure
+### 5. Prepare to deploy the required infrastructure
+
 Run each of the following lines. Below are the expected outputs for each line.
 ```
 npm run get
@@ -64,7 +67,8 @@ npm run synth
 ```
 ![Screenshot 2024-01-05 at 1 19 24 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/116f31ab-c1d4-4f3b-b13e-2c535d50508b)
 
-### Deploy the required infrastructure 
+### 6. Deploy the required infrastructure 
+
 Run the line below.
 ```
 npm run deploy
@@ -81,20 +85,26 @@ The output will look like the following:
 When the process is completed successfully, you will see the following in your Cloud Shell:
 ![Screenshot 2024-01-05 at 2 11 25 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/c1b20717-e7fc-4509-a1c0-2ca59b53476b)
 
-### If you encounter any permissions errors on `npm run deploy`, just wait five minutes and run it again
+#### NOTE: If you encounter any permissions errors on `npm run deploy`, just wait five minutes and run it again
+
 Example errors you may encounter are below. We are working to minimize the occurrence of these errors, but that is not always possible. Just wait 5 minutes and run `npm run deploy` again.
 ![Screenshot 2024-01-05 at 2 37 49 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/7fb2874e-4472-4ed0-8a8e-18dd37234922)
 ![Screenshot 2024-01-05 at 2 38 01 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/08440bd8-f3c4-40f1-9a29-f2f5636f0085)
 
-### Confirm that the virtual machine (VM) that is building the datasets is running
+### 7. Confirm that the virtual machine (VM) that is building the datasets is running
+
 Navigate to [Google Cloud Compute Instances](https://console.cloud.google.com/compute/instances) and confirm that the `p1-nhanes-compute-instance` is running.
 
-### Wait 7 hours, then navigate to BigQuery and confirm that the datasets are present
+### 8. Wait 7 hours, then navigate to BigQuery and confirm that the datasets are present
+
 Navigate to [BigQuery](https://console.cloud.google.com/bigquery) and look at the datasets avaiable for your project. You should see `nhanes` and `dbt`.
+
 ![Screenshot 2024-01-05 at 2 42 39 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/855a74af-15dc-4187-b5f5-22d45b6a119e)
+
 You may need to hit the arrow on your project name to view them. 
 
-### Wait at least 10 hours, then confirm that your VM has stopped running. 
+### 9. Wait at least 10 hours, then confirm that your VM has stopped running. 
+
 We have sought to ensure, in as many ways as we can, that the VM shuts down automatically, but it is best to confirm directly to avoid any unwanted costs.
 
 
