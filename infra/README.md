@@ -4,15 +4,15 @@ The information below describes how to setup the NHANES dataset in your Google C
 2. A BigQuery dataset ('nhanes') containing the raw dataset for each NHANES Continuous table for all available years for each survey
 3. A BigQuery dataset ('dbt') containing the transformed table for each NHANES Continuous survey for all available years. The transformations encode the variables according to the instructions provided in the CDC's documentation for each survey/year combination.
 
-## Ensure you have a Google Cloud account
+## PREREQUISITE: Ensure you have a Google Cloud account
 If you do not currently have a Google Cloud account, navigate to [Google Cloud](https://cloud.google.com/) and set up your account. Create your first project as part of that setup process. Or you can create a new project and name it something meaningful for this NHANES work.
 
-## Ensure that you have linked your Google Cloud project to a billing account
+## PREREQUISITE: Ensure that you have linked your Google Cloud project to a billing account
 This process costs under $10 to complete, but it is not free. In order to run this process, you will need to navigate to [Google Cloud Billing](https://console.cloud.google.com/billing). Once you are there, select your project and either "Add a Billing Account" or "Link a Billing Account". 
 ![Screenshot 2024-01-05 at 1 35 24 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/b17f8d1b-c64c-4c44-9b4f-a88d64732fd7)
 ![Screenshot 2024-01-05 at 1 35 32 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/391ad449-9cbc-4564-a2fa-1c6d20c89aa2)
 
-## Navigate to Google Cloud Console and begin the process of deploying the cloud architecture using the steps below
+## DEPLOYMENT: Navigate to Google Cloud Console and begin the process of deploying the cloud architecture using the steps below
 Once you have an account and a project with a billing account associated, you can navigate to the [Google Cloud Console](https://console.cloud.google.com)
 
 ### 1. Activate your Cloud Shell in your Google Cloud project
