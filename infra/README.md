@@ -113,5 +113,5 @@ We have sought to ensure, in as many ways as we can, that the VM shuts down auto
 
 Visit [BigQuery](https://console.cloud.google.com/bigquery) here. 
 
-Visit the [BigQuery Documentation](https://cloud.google.com/bigquery/docs), for more information about how to use BigQuery, here.
+Visit the [BigQuery Documentation](https://cloud.google.com/bigquery/docs) for more information about how to use BigQuery.
 
