@@ -1,4 +1,4 @@
-# Deploying NHANES in your Google Cloud project
+# Deploying NHANES-GCP in your Google Cloud project
 The information below describes how to setup the NHANES dataset in your Google Cloud environment. At the end of this README, you will have:
 1. A Google Cloud Storage bucket containing datasets and documentation from NHANES
 2. A BigQuery dataset ('nhanes') containing the raw dataset for each NHANES Continuous table for all available years for each survey
