@@ -53,7 +53,7 @@ npm install
 ![Screenshot 2024-01-05 at 12 38 18 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/7bed6859-39c1-4861-86c4-ef69bb7ccde7)
 
 ### Prepare to deploy the required infrastructure
-Run each of the following lines. Below are the expected outputs.
+Run each of the following lines. Below are the expected outputs for each line.
 ```
 npm run get
 ```
@@ -72,6 +72,7 @@ npm run deploy
 This will require you to approve the creation of the infrastructure in two ways:
 1. The first dialog box will ask you to authorize your Cloud Shell to create permissions in the project. Ensure that you click "Authorize". This will only occur the first time you run this code in the shell.
 2. The second dialog will ask you to "Approve" the creation of the infrastructure by hitting ENTER on your keyboard (screenshot below). Hit ENTER.
+
 ![Screenshot 2024-01-05 at 1 33 43 PM](https://github.com/In-Vivo-Group/NHANES-GPT/assets/8191939/799cdc65-dc48-408d-9c6b-171504875e28)
 
 The output will look like the following:
