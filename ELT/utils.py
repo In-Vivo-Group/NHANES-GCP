@@ -1,16 +1,9 @@
-import csv
 import datetime
 import re
-from io import StringIO
 
-import google.cloud.bigquery
-import httplib2 as lib2  # Example of the "as" function
-import numpy as np
 import pandas as pd
-import pandas_gbq
 from google.cloud import bigquery, storage
 from google.cloud.bigquery import job
-from googleapiclient.discovery import build
 
 
 def update_bq_table(
@@ -46,12 +39,12 @@ def update_bq_table(
         dataframe=df,
     )
 
-    if truncate == True:
+    if truncate:
         append = False
     else:
         append = True
 
-    if schema == None:
+    if schema is None:
         autodetect = True
     else:
         autodetect = False
@@ -121,13 +114,13 @@ def load_data_gbq(
 
     dataset_ref = client.dataset(dataset_id)
     job_config = bigquery.LoadJobConfig()
-    if autodetect == True:
+    if autodetect:
         job_config.autodetect = True
     else:
         job_config.autodetect = False
         job_config.schema = schema
     job_config.skip_leading_rows = 1
-    if append == True:
+    if append:
         job_config.write_disposition = job.WriteDisposition.WRITE_APPEND
     else:
         job_config.write_disposition = job.WriteDisposition.WRITE_TRUNCATE
@@ -148,122 +141,6 @@ def load_data_gbq(
 
     destination_table = client.get_table(dataset_ref.table(table_name))
     print("Table Row Count {} rows.".format(destination_table.num_rows))
-
-
-def enforce_bq_schema(report_df, alias):
-    """
-    Enforces a BigQuery schema on a DataFrame and prepares it for upload.
-
-    Parameters:
-    - report_df (pandas.DataFrame): The DataFrame to enforce the schema on.
-    - alias (str): Alias for the schema to be applied.
-
-    Returns:
-    tuple: A tuple containing the modified DataFrame and the schema list.
-    """
-    schema = []
-    float_fields = []
-    int_fields = []
-    str_fields = []
-    date_fields = []
-    bool_fields = []
-    for record in table_schemas[alias]:
-        if "mode" not in record.keys():
-            record["mode"] = "NULLABLE"
-        schema.append(
-            bigquery.SchemaField(record["name"], record["type"], record["mode"])
-        )
-        if record["type"] == "FLOAT":
-            float_fields.append(record["name"])
-        elif record["type"] == "STRING":
-            str_fields.append(record["name"])
-        elif record["type"] == "DATE":
-            date_fields.append(record["name"])
-        elif record["type"] == "INTEGER":
-            int_fields.append(record["name"])
-        elif record["type"] == "BOOLEAN":
-            bool_fields.append(record["name"])
-    column_list = [record["name"] for record in table_schemas[alias]]
-    response_columns = list(report_df.columns)
-
-    missing_columns = list(set(column_list) - set(response_columns))
-    for column in missing_columns:
-        report_df[column] = np.nan
-
-    for field in float_fields:
-        try:
-            report_df[field] = pd.to_numeric(
-                report_df[field]
-                .fillna(0.0)
-                .astype(str)
-                .str.replace("%", "")
-                .str.replace(",", "")
-                .str.replace("$", "")
-                .fillna(0.0)
-            ).astype(float)
-        except Exception as ex:
-            print(field, "float")
-            print(ex)
-            pass
-
-    for field in int_fields:
-        try:
-            report_df[field] = pd.to_numeric(
-                report_df[field]
-                .fillna(0)
-                .astype(str)
-                .str.replace("%", "")
-                .str.replace(",", "")
-                .str.replace("$", "")
-                .replace(".0", "")
-            ).astype(int)
-        except Exception as ex:
-            print(field, "int")
-            print(ex)
-            pass
-    for field in str_fields:
-        try:
-            report_df[field] = report_df[field].fillna("").astype(str)
-        except Exception as ex:
-            print(field, "str")
-            print(ex)
-            pass
-    for field in date_fields:
-        try:
-            report_df[field] = pd.to_datetime(
-                report_df[field], errors="ignore"
-            ).dt.date.dt.strftime("%Y-%m-%d")
-        except Exception as ex:
-            print(field, "date")
-            print(ex)
-            pass
-    for field in bool_fields:
-        try:
-            if field in response_columns:
-                d = {
-                    "true": True,
-                    "false": False,
-                    "": False,
-                    "True": True,
-                    "False": False,
-                    "N": False,
-                    "Y": True,
-                    "y": True,
-                    "n": True,
-                    True: True,
-                    False: False,
-                }
-                report_df[field] = report_df[field].fillna(False).map(d)
-            else:
-                report_df[field] = False
-        except Exception as ex:
-            print(field, "bool")
-            print(ex)
-            pass
-
-    report_df = report_df[column_list]
-
-    return report_df, schema
 
 
 def upload_blob_from_string(

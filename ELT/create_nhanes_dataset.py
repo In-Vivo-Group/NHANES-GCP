@@ -1,15 +1,11 @@
 import logging
 import os
-import re
 import time
 import warnings
 
 import duckdb
-import numpy as np
 import pandas as pd
-import pandas_gbq
 from dotenv import load_dotenv
-
 from utils import generate_filename, update_bq_table
 
 load_dotenv("myenv.env")
@@ -132,7 +128,7 @@ def convert_data_types_and_merge(df, file_df, metadata_cols):
                     5.397605346934028e-79, 0
                 )
             except Exception as ex:
-                logging.warning(f"{ex} for {column} in {alias}")
+                logging.warning(f"{ex} for {column}")
 
     df["filename_only"] = df["filename"].apply(lambda x: x.split("/")[-1])
     df = df.merge(

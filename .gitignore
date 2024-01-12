@@ -3,13 +3,6 @@
 target/
 dbt_packages/
 logs/
-*/.ipynb_checkpoints/*
-.ipynb_checkpoints/*
-*/__pycache__/*
-__pycache__/*
-*/*/__pycache__/*
-*/*/.ipynb_checkpoints/*
-*/*/*.ipynb_checkpoints/*
-*/*/*/.ipynb_checkpoints/*
-*/*/*/*/.ipynb_checkpoints/*
+.ipynb_checkpoints
+__pycache__/
 .DS_Store

@@ -6,11 +6,10 @@ import time
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from utils import (generate_filename, scrape_nhanes_table, update_bq_table,
-                   upload_blob_from_string)
 from dotenv import load_dotenv
+from utils import generate_filename, scrape_nhanes_table, update_bq_table
 
-load_dotenv('./myenv.env')
+load_dotenv("./myenv.env")
 
 # Setup logging
 logging.basicConfig(
@@ -123,7 +122,9 @@ def scrape_metadata_for_dataset(soup, dataset_id):
             r = requests.get(url, timeout=20)
             soup = BeautifulSoup(r.text, "lxml")
             df = scrape_nhanes_table(soup, component_text)
-            df = process_metadata(df, dataset_id.replace("nav-group-", ""), component_text)
+            df = process_metadata(
+                df, dataset_id.replace("nav-group-", ""), component_text
+            )
             dfs.append(df)
     return dfs
 
