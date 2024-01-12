@@ -23,7 +23,6 @@ logging.basicConfig(
 )
 
 
-
 def read_tables():
     """
     Reads table names returns a list of table names.
@@ -440,13 +439,13 @@ def main():
             )
             if data_df.empty:
                 data_df = pd.read_gbq(
-                f"""SELECT DISTINCT doc_file_url, start_year, end_year
+                    f"""SELECT DISTINCT doc_file_url, start_year, end_year
                 FROM nhanes.nhanes_file_metadata
                 WHERE doc_file_url IS NOT NULL AND gcs_data_filename LIKE '%{table_name}%'
                 ORDER BY start_year DESC
                 """,
-                project_id=PROJECT_ID,
-                dialect="standard",
+                    project_id=PROJECT_ID,
+                    dialect="standard",
                 )
 
         except Exception as ex:

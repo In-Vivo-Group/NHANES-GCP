@@ -1,15 +1,13 @@
-import datetime
 import logging
 import os
 import time
-import requests
 
 import pandas as pd
-from utils import (generate_filename, scrape_nhanes_table, update_bq_table,
-                   upload_blob_from_string)
+import requests
 from dotenv import load_dotenv
+from utils import upload_blob_from_string
 
-load_dotenv('./myenv.env')
+load_dotenv("./myenv.env")
 
 # Constants
 PROJECT_ID = os.getenv("PROJECT_ID")
