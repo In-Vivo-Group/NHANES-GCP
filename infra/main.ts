@@ -1,7 +1,11 @@
 import { Construct } from "constructs";
 import { App, TerraformStack, TerraformOutput, TerraformVariable } from "cdktf";
 import { GoogleProvider } from "@cdktf/provider-google/lib/provider";
+import { TimeProvider } from "@cdktf/provider-time/lib/provider";
+import { RandomProvider } from "@cdktf/provider-random/lib/provider";
 import { serviceApis } from "./util";
+import { Sleep } from "@cdktf/provider-time/lib/sleep";
+import { StringResource } from "@cdktf/provider-random/lib/string-resource";
 import { StorageBucket } from "@cdktf/provider-google/lib/storage-bucket";
 import { BigqueryDataset } from "@cdktf/provider-google/lib/bigquery-dataset";
 import { ComputeNetwork } from "@cdktf/provider-google/lib/compute-network";
@@ -18,7 +22,6 @@ import { SecretManagerSecretVersion } from "@cdktf/provider-google/lib/secret-ma
 class nhanes extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
-    
 
     const projectId = new TerraformVariable(this, "project_id", {
       type: "string",
@@ -35,6 +38,9 @@ class nhanes extends TerraformStack {
       project: projectId.value,
     });
 
+    new RandomProvider(this, "Random", {});
+    new TimeProvider(this, "Time", {});
+
     serviceApis(this, google, [
       ["secret-manager-api", "secretmanager.googleapis.com"],
       ["resourcemanager-api", "cloudresourcemanager.googleapis.com"],
@@ -47,25 +53,38 @@ class nhanes extends TerraformStack {
       ["bigquery-reservations-api", "bigqueryreservation.googleapis.com"],
     ]);
 
-    new StorageBucket(this, "storageBucket", {
-      // Bucket is created with a random name to avoid conflicts
-      name: `storage-bucket-nhanes-${Math.random().toString(36).substring(2, 14)}`,
-      location: "US",
-      forceDestroy: true,
+    const sleepEnableAPI = new Sleep(this, "sleepEnableAPI", {
+      createDuration: "300s",
     });
 
-    new BigqueryDataset(this, "dataset", {
+    const randomString = new StringResource(this, "randomHash", {
+      length: 16,
+      special: false,
+      upper: false,
+    });
+
+    new StorageBucket(this, "storageBucket", {
+      // Bucket is created with a random name to avoid conflicts
+      name: `storage-bucket-nhanes-${randomString.result}`,
+      location: "US",
+      forceDestroy: true,
+      dependsOn: [sleepEnableAPI],
+    });
+
+    const bqDataset = new BigqueryDataset(this, "dataset", {
       datasetId: "nhanes",
       location: "US",
       deleteContentsOnDestroy: true,
+      dependsOn: [sleepEnableAPI],
     });
 
     const computeNetwork = new ComputeNetwork(this, "network", {
-      name: 'nhanes-network',
+      name: "nhanes-network",
+      dependsOn: [sleepEnableAPI],
     });
 
     new ComputeFirewall(this, "IAPFirewallRule", {
-      name: 'nhanes-firewall-iap',
+      name: "nhanes-firewall-iap",
       network: computeNetwork.name,
       sourceRanges: ["35.235.240.0/20"],
       allow: [
@@ -79,12 +98,12 @@ class nhanes extends TerraformStack {
     // Create service account from list
     const serviceAccounts = [
       {
-        accountId: 'nhanes-compute-sa',
-        displayName: 'nhanes-compute-sa',
+        accountId: "nhanes-compute-sa",
+        displayName: "nhanes-compute-sa",
       },
       {
-        accountId: 'nhanes-data-hmac-sa',
-        displayName: 'nhanes-data-hmac-sa',
+        accountId: "nhanes-data-hmac-sa",
+        displayName: "nhanes-data-hmac-sa",
       },
     ];
 
@@ -140,6 +159,7 @@ class nhanes extends TerraformStack {
       value: storageHMACkey.accessId,
       sensitive: true,
     });
+
     // Create Secret Manager Secrets
     const HmacAccessSecret = new SecretManagerSecret(this, "AccessKey", {
       secretId: "duckdbaccesskey",
@@ -148,6 +168,7 @@ class nhanes extends TerraformStack {
           replicas: [{ location: "us-central1" }],
         },
       },
+      dependsOn: [sleepEnableAPI],
     });
 
     const HmacAccessId = new SecretManagerSecret(this, "AccessSecret", {
@@ -157,14 +178,19 @@ class nhanes extends TerraformStack {
           replicas: [{ location: "us-central1" }],
         },
       },
+      dependsOn: [sleepEnableAPI],
     });
 
-    new SecretManagerSecretVersion(this, "HmacAccessSecret", {
-      secret: HmacAccessSecret.id,
-      secretData: storageHMACkey.secret,
-    });
+    const hmacAccessSecret = new SecretManagerSecretVersion(
+      this,
+      "HmacAccessSecret",
+      {
+        secret: HmacAccessSecret.id,
+        secretData: storageHMACkey.secret,
+      }
+    );
 
-    new SecretManagerSecretVersion(this, "HmacAccessID", {
+    const hmacAccessID = new SecretManagerSecretVersion(this, "HmacAccessID", {
       secret: HmacAccessId.id,
       secretData: storageHMACkey.accessId,
     });
@@ -228,7 +254,7 @@ class nhanes extends TerraformStack {
         scopes: ["cloud-platform"],
       },
       metadataStartupScript: fileContents,
-      dependsOn: [computeNetwork],
+      dependsOn: [computeNetwork, bqDataset, hmacAccessSecret, hmacAccessID],
     });
   }
 }

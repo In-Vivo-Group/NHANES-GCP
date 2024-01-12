@@ -23,6 +23,7 @@
   "dependencies": {
     "@cdktf/provider-google": "^13.0.0",
     "@cdktf/provider-random": "^11.0.0",
+    "@cdktf/provider-time": "^10.0.0",
     "cdktf": "^0.20.0",
     "cdktf-cli": "^0.20.0",
     "constructs": "^10.3.0"
