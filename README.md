@@ -22,3 +22,7 @@ But read the visit the [infrastructure README page](infra/README.md) for a detai
 ## Example Analyses
 
 There are four example BigQuery ML models to demonstrate how to leverage BQML and the NHANES data set in GCP. They can be found in the [dbt ANALYSES page](dbt/analyses)
+
+## Supporting Institutions
+
+This project was developed and supported by [CorrDyn](https://www.corrdyn.com/), a Data-Focused Technology Consultancy with deep experience in healthcare and life sciences. For more information, check out the [Data in Biotech podcast](https://podcasts.apple.com/gb/podcast/data-in-biotech/id1708993594) or follow us on LinkedIn: [James Winegar](https://www.linkedin.com/in/james-winegar/) and [Ross Katz](https://www.linkedin.com/in/b-ross-katz/)
