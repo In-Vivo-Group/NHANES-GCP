@@ -17,7 +17,7 @@ npm run synth
 npm run deploy #Ensure that your shell is authorized to change permissions and that you press ENTER to approve the changes
 ```
 
-But read the visit the [infrastructure README page](infra/README.md) for a detailed explanation. 
+But visit the [infrastructure README page](infra/README.md) for a detailed explanation. 
 
 ## Example Analyses
 
